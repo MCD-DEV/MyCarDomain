@@ -7607,6 +7607,40 @@ this.model_data_id = model_data_id;
     			    {
     			    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
     			    }
+    				// start of Doc
+    				outInsDrvDoc = "";
+    			    var drvAddDoc = data.vehQuotDoc;
+    			    //alert("came here");
+    				if(drvAddDoc){
+    					outInsDrvDoc += '<tr><th>'+"Document Required "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+    					 for(i=0;i<data.vehQuotExtras.length;i++)
+    						{
+    						 outInsDrvDoc= outInsDrvDoc+'<tr>'+'<td>'+data.vehQuotDoc[i].extras1+'</td><td>'+data.vehQuotDoc[i].extras2+'</td><td>'+data.vehQuotDoc[i].amount+'</td><td></tr>';
+    						}
+
+    				}
+    				else
+    			    {
+    					outInsDrvDoc='<h2>No records for Dealer Search Finance</h2>';
+    			    }
+    				// end of Doc
+    				// start of Term
+    				outInsDrvTerm = "";
+    			    var drvAddTerm = data.vehQuotTerm;
+    			    //alert("came here");
+    				if(drvAddTerm){
+    					outInsDrvTerm += '<tr><th>'+"Terms and Conditions "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+    					 for(i=0;i<data.vehQuotExtras.length;i++)
+    						{
+    						 outInsDrvTerm= outInsDrvTerm+'<tr>'+'<td>'+data.vehQuotTerm[i].extras1+'</td><td>'+data.vehQuotTerm[i].extras2+'</td><td>'+data.vehQuotTerm[i].amount+'</td><td></tr>';
+    						}
+
+    				}
+    				else
+    			    {
+    					outInsDrvTerm='<h2>No records for Dealer Search Finance</h2>';
+    			    }
+    				// end of Term
     				var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
     				var moveToUser = '<input type="checkbox" name="moveToUser" />';
     				
@@ -7716,6 +7750,14 @@ this.model_data_id = model_data_id;
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
     					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Document Details</div></div>\
+    					<tr><td></td><td>' +outInsDrvDoc + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Terms and Conditions</div></div>\
+    					<tr><td></td><td>' +outInsDrvTerm + '</td></tr>\
+    					</table>\
+    					<table>\
     					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
     					</table>\
     					<br/>\
@@ -7802,21 +7844,21 @@ this.model_data_id = model_data_id;
     			$('button.submit-editqtaDealerVehicleSearchModal').on('click', function(e) {
 
     				var jsonInput = $("#edit-qta-dealer-vehicle-search-content-form").convertFormDataToJSON();
-    				alert("data12");
+    				//alert("data12");
     				console.log(JSON.stringify(jsonInput));
 
     				$.ajax({
     					type: "POST",
-    					url: "api/vehicleSearchQuotation?_method=PUT",
+    					url: "api/vehicleSearchDealQuotation?_method=PUT",
     					data: jsonInput,
     					contentType:'application/json',
     					success: function(result){
     						console.log(JSON.stringify(result));
     						$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
     						alert("Successfully upated the Quotations");
-					alert("will call update12"+result.userId);
+					//alert("will call update12"+result.userId);
 					//console.log(JSON.stringify(result));
-					$scope.carCarQuotation(result.userId);
+					//$scope.carCarQuotation(result.userId);
 
     					}
     				});
@@ -10216,8 +10258,29 @@ this.model_data_id = model_data_id;
 							                            table.splice(0,1);
 
 							                            jsonInput.vehQuotExtras = table ;
+							                            
+							                            var table2 = $("#my-table94424");
+							                            var table0 = table2.tableToJSON({
+							                                ignoreColumns:[0],
+							                                headings: ['extras1', 'extras2', 'amount']
+							                              });
+							                            //delete table[0];
+
+							                            table0.splice(0,1);
+
+							                            jsonInput.vehQuotDoc = table0 ;
 							                            //alert("vehExtras"+table);
 														//alert("vehExtras"+jsonInput.vehQuotExtras);
+							                            var table3 = $("#my-table94434");
+							                            var table10 = table3.tableToJSON({
+							                                ignoreColumns:[0],
+							                                headings: ['extras1', 'extras2', 'amount']
+							                              });
+							                            //delete table[0];
+
+							                            table10.splice(0,1);
+
+							                            jsonInput.vehQuotTerm = table10 ;
 														
 														
 														// Transfer the object to a JSON string

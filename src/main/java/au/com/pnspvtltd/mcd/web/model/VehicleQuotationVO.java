@@ -10,7 +10,9 @@ import javax.persistence.OneToMany;
 
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.VehQuotDoc;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
+import au.com.pnspvtltd.mcd.domain.VehQuotTerm;
 
 public class VehicleQuotationVO {
 
@@ -120,7 +122,29 @@ public class VehicleQuotationVO {
 				this.mobCheck = mobCheck;
 			}
 	List<VehQuotExtras> vehQuotExtras;
+	List<VehQuotDoc> vehQuotDoc;
+	List<VehQuotTerm> vehQuotTerm;
 	
+	public List<VehQuotDoc> getVehQuotDoc() {
+		return vehQuotDoc;
+	}
+
+
+	public void setVehQuotDoc(List<VehQuotDoc> vehQuotDoc) {
+		this.vehQuotDoc = vehQuotDoc;
+	}
+
+
+	public List<VehQuotTerm> getVehQuotTerm() {
+		return vehQuotTerm;
+	}
+
+
+	public void setVehQuotTerm(List<VehQuotTerm> vehQuotTerm) {
+		this.vehQuotTerm = vehQuotTerm;
+	}
+
+
 	public boolean isStockTillAvail() {
 		return stockTillAvail;
 	}

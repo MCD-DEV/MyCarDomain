@@ -428,6 +428,38 @@ public class VehicleQuotation implements Serializable {
 			this.vehQuotExtras = vehQuotExtras;
 		}
 		
+		List<VehQuotDoc> vehQuotDoc;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "quotId")
+		
+		public List<VehQuotDoc> getVehQuotDoc() {
+			return vehQuotDoc;
+		}
+
+
+		public void setVehQuotDoc(
+				List<VehQuotDoc> vehQuotDoc) {
+			this.vehQuotDoc = vehQuotDoc;
+		}
+		
+		List<VehQuotTerm> vehQuotTerm;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "quotId")
+		
+		public List<VehQuotTerm> getVehQuotTerm() {
+			return vehQuotTerm;
+		}
+
+
+		public void setVehQuotTerm(
+				List<VehQuotTerm> vehQuotTerm) {
+			this.vehQuotTerm = vehQuotTerm;
+		}
+		
+		
+		
 		List<UserQuotationHistory> userQuotationHistory;
 		
 		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

@@ -86,6 +86,8 @@ public class VehicleQuotationController {
 			vehicleQuotation.setVehQuotExtras(vehQuotExtras);
 		}*/
 		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
+		vehicleQuotation.setVehQuotDoc(dealerVO.getVehQuotDoc());
+		vehicleQuotation.setVehQuotTerm(dealerVO.getVehQuotTerm());
 		vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		vehicleQuotation.setBasicPrice(dealerVO.getBasicPrice()); // set Basic Price
 		
@@ -149,7 +151,7 @@ public class VehicleQuotationController {
 		//vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
 		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
-		vehicleQuotation.setUserId(dealerVO.getUserId());
+		//vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotationRepository.save(vehicleQuotation);
 		vehicleQuotationRepository.flush();
 		return vehicleQuotation;
@@ -163,7 +165,9 @@ public class VehicleQuotationController {
 		List<VehicleQuotation> users = vehicleQuotationRepository.getDealerSearchForID(carSearchId);
 		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
 		for (VehicleQuotation search : users) {
-			VehicleQuotationVO dealVO= domainModelUtil.toExtQtDealerSearchVO(search);
+			//VehicleQuotationVO dealVO= domainModelUtil.toExtQtDealerSearchVO(search);
+			VehicleQuotationVO dealVO= domainModelUtil.fromVehicleQuotation(search,false);
+			
 		searchVOs.add(dealVO);
 		}
 		userAdminSearchVO12.setVehicleQuotationVO(searchVOs);

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
@@ -441,6 +442,7 @@ public class UserEBidController {
 					vehicleQuotation.setChat(vehicleQuotationVO.isChat());
 					vehicleQuotation.setRejectIt(vehicleQuotationVO.isRejectIt());
 					vehicleQuotation.setShortList(vehicleQuotationVO.isShortList());
+					vehicleQuotationVO.setUserId(vehicleQuotation.getUserId());
 					if(vehicleQuotationVO.getComment() != null){
 						UserQuotationHistory userQuotationHistory = new UserQuotationHistory();
 						userQuotationHistory.setComment(vehicleQuotationVO.getComment());
@@ -454,6 +456,51 @@ public class UserEBidController {
 							List<UserQuotationHistory> userQuotationHistorys = new ArrayList<>();
 							userQuotationHistorys.add(userQuotationHistory);
 							vehicleQuotation.setUserQuotationHistory(userQuotationHistorys);
+						}
+						vehicleQuotationRepository.flush();
+					}
+						
+					//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				}
+				return vehicleQuotationVO;
+	}
+	
+	@PutMapping("vehicleSearchDealQuotation")
+	@Transactional
+	public VehicleQuotationVO vehicleSearchDealQuotation(@RequestBody VehicleQuotationVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		  //TODO: create a service for VehicleQutotation to update quotation details
+		LOGGER.debug("Received request to update vehicle {}", vehicleQuotationVO.getQuotId());
+				if(vehicleQuotationVO != null){
+					VehicleQuotation vehicleQuotation = vehicleQuotationRepository.findOne(vehicleQuotationVO.getQuotId());
+					
+					
+					vehicleQuotation.setPostCode(vehicleQuotationVO.getPostCode());
+					vehicleQuotation.setTitle(vehicleQuotationVO.getTitle());
+					vehicleQuotation.setFname(vehicleQuotationVO.getFname());
+					vehicleQuotation.setLname(vehicleQuotationVO.getLname());
+					vehicleQuotation.setAddress(vehicleQuotationVO.getAddress());
+					vehicleQuotation.setMobileNum(vehicleQuotationVO.getMobileNum());
+					vehicleQuotation.setPrefDate(vehicleQuotationVO.getPrefDate());
+					vehicleQuotation.setMakeOffer(vehicleQuotationVO.isMakeOffer());
+					vehicleQuotation.setMakeDeposit(vehicleQuotationVO.isMakeDeposit());
+					vehicleQuotation.setChat(vehicleQuotationVO.isChat());
+					vehicleQuotation.setRejectIt(vehicleQuotationVO.isRejectIt());
+					vehicleQuotation.setShortList(vehicleQuotationVO.isShortList());
+					vehicleQuotationVO.setUserId(vehicleQuotation.getUserId());
+					if(vehicleQuotationVO.getComment() != null){
+						DealerQuotationHistory userQuotationHistory = new DealerQuotationHistory();
+						userQuotationHistory.setComment(vehicleQuotationVO.getComment());
+						Calendar calendar = Calendar.getInstance();
+					    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+					    
+						userQuotationHistory.setCreationDate(ourJavaTimestampObject);
+						if (vehicleQuotation.getDealerQuotationHistory() != null) {
+							vehicleQuotation.getDealerQuotationHistory().add(userQuotationHistory);
+						} else {
+							List<DealerQuotationHistory> userQuotationHistorys = new ArrayList<>();
+							userQuotationHistorys.add(userQuotationHistory);
+							vehicleQuotation.setDealerQuotationHistory(userQuotationHistorys);
 						}
 						vehicleQuotationRepository.flush();
 					}

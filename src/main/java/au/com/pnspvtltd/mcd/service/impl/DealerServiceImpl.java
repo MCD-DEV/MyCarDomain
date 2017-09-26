@@ -468,6 +468,7 @@ public class DealerServiceImpl implements DealerService {
 			dealerSearch = domainModelUtil.toExtDealerSearchAdmin(extDealerSearchVO);
 			
 			dealerSearch.setUserid(extDealerSearchVO.getUserid());
+			dealerSearch.setLatitude(0);
 			if (dealer.getExtDealSearch() != null) {
 				dealer.getExtDealSearch().add(dealerSearch);
 			} else {

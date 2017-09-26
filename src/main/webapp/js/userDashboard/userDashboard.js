@@ -3238,6 +3238,41 @@ $("#"+"fuelCard4").html(outLogT);
 			    {
 			    	outInsDrvAdd='<h2>No records for Dealer Search Finance</h2>';
 			    }
+				// start of Doc
+				outInsDrvDoc = "";
+			    var drvAddDoc = data.vehQuotDoc;
+			    //alert("came here");
+				if(drvAddDoc){
+					outInsDrvDoc += '<tr><th>'+"Document Required "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+					 for(i=0;i<data.vehQuotExtras.length;i++)
+						{
+						 outInsDrvDoc= outInsDrvDoc+'<tr>'+'<td>'+data.vehQuotDoc[i].extras1+'</td><td>'+data.vehQuotDoc[i].extras2+'</td><td>'+data.vehQuotDoc[i].amount+'</td><td></tr>';
+						}
+
+				}
+				else
+			    {
+					outInsDrvDoc='<h2>No records for Dealer Search Finance</h2>';
+			    }
+				// end of Doc
+				// start of Term
+				outInsDrvTerm = "";
+			    var drvAddTerm = data.vehQuotTerm;
+			    //alert("came here");
+				if(drvAddTerm){
+					outInsDrvTerm += '<tr><th>'+"Terms and Conditions "+'</th><th>'+"Quantity"+'</th><th>'+"Price"+'</th>'+'</th></tr>';
+					 for(i=0;i<data.vehQuotExtras.length;i++)
+						{
+						 outInsDrvTerm= outInsDrvTerm+'<tr>'+'<td>'+data.vehQuotTerm[i].extras1+'</td><td>'+data.vehQuotTerm[i].extras2+'</td><td>'+data.vehQuotTerm[i].amount+'</td><td></tr>';
+						}
+
+				}
+				else
+			    {
+					outInsDrvTerm='<h2>No records for Dealer Search Finance</h2>';
+			    }
+				// end of Term
+
 				var quotIdHiddenField = '<input type="hidden" name="quotId" value="' + data.quotId + '" />';
 				var moveToUser = '<input type="checkbox" name="moveToUser" />';
 				
@@ -3338,6 +3373,14 @@ $("#"+"fuelCard4").html(outLogT);
     					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Vehicle Extras Details</div></div>\
     					<tr><td></td><td>' +outInsDrvAdd + '</td></tr>\
     					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Document Details</div></div>\
+    					<tr><td></td><td>' +outInsDrvDoc + '</td></tr>\
+    					</table>\
+    					<table>\
+    					<div class="row"><div class="col-sm-12 col-md-12 product-search-title">Terms and Conditions</div></div>\
+    					<tr><td></td><td>' +outInsDrvTerm + '</td></tr>\
+    					</table>\
 					<table>\
 					<tr><td>Dealer Terms and Conditions</td><td>' + data.fname + '</td></tr>\
 					</table>\
@@ -3436,7 +3479,7 @@ $("#"+"fuelCard4").html(outLogT);
 				success: function(result){
 					$("#anchor-editDealerVehicleQuotationModal-" + result.quotId).data('details', result);
 					alert("Successfully upated the Quotations");
-					alert("will call update");
+					//alert("will call update");
 					$scope.carCarQuotation();
 
 				}
@@ -4749,7 +4792,7 @@ $("#"+"fuelCard4").html(outLogT);
 				success: function(result){
 					$("#anchor-editDealerVehicleSearchModal-" + result.quotId).data('details', result);
 					alert("Successfully upated the Quotations");
-					alert("will call update");
+					//alert("will call update");
 					carCarQuotation();
 
 				}

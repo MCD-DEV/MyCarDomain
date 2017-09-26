@@ -263,6 +263,60 @@ $(document).ready( function() {
     	      }
     	    });
     	  });
+// start of quot doc
+var i24=1;
+     $("#add_row24").click(function(){
+    	 var fname24= $("#fname240").val();
+	    var lname24= $("#lname240").val();
+	    var inslictype240= $("#inslictype240").val();
+	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+	    var markup124 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname24 + "</td><td>" + lname24 +"</td><td>" + inslictype240  + "</td></tr>";
+
+      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
+      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
+      $('#my-table94424').append(markup124);
+      i++;
+      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
+  });
+
+
+     $(".delete_row24").on("click", function(){
+    	    $("#my-table94424").find('input[name="record"]').each(function() {
+    	      if ($(this).is(":checked")) {
+    	        $(this).parents("tr").remove();
+    	      }
+    	    });
+    	  });
+
+// end of quot doc
+// start of quot doc
+var i34=1;
+     $("#add_row34").click(function(){
+    	 var fname34= $("#fname340").val();
+	    var lname34= $("#lname340").val();
+	    var inslictype340= $("#inslictype340").val();
+	    //var markup = "<tr><td><i class=\"soap-icon-close delete_row\" style=\"font-size:60px;color:red;\"></i></td><td>" + fname + "</td><td>" + lname +"</td><td>" + inslictype0 + "</td>" +"<td>" + dob0 + "</td></tr>";
+	    var markup134 = "<tr class=\"text-center\"><td><input type='checkbox' name='record'></td><td>" + fname34 + "</td><td>" + lname34 +"</td><td>" + inslictype340  + "</td></tr>";
+
+      //$('#addr'+i).html("<td>"+ (i+1) +"</td><td><input type='text' name='fname'  placeholder='First Name' class='input-text full-width'/></td><td><input type='text' name='lname0' placeholder='Last Name' class='input-text full-width'/></td><td><div class='selector'><select class='full-width' name='inslictype0' style='opacity:1'><option value='' selected disabled>Driving Licence Type</option><option>L-Learner</option><option>P-probation</option><option>Full Licence</option><option>OverSeas</option></select></div></td><td><input type='text' name='dob0' onfocus=\"(this.type='date')\" placeholder='DOB' class='input-text full-width'/></td>");
+      //<a id='delete_row' class="pull-right btn btn-danger"><i class="soap-icon-close">Delete Row</i></a>
+      //<a class='delete_row  btn btn-danger'><i class=\"soap-icon-close delete_row\" style=\"font-size:30px;color:red;\"></i></a>
+      $('#my-table94434').append(markup134);
+      i++;
+      //<td><input name='name"+i+"' type='text' placeholder='Name' class='form-control input-md'  /> </td><td><input  name='mail"+i+"' type='text' placeholder='Mail'  class='form-control input-md'></td><td><input  name='mobile"+i+"' type='text' placeholder='Mobile'  class='form-control input-md'></td>
+  });
+
+
+     $(".delete_row34").on("click", function(){
+    	    $("#my-table94434").find('input[name="record"]').each(function() {
+    	      if ($(this).is(":checked")) {
+    	        $(this).parents("tr").remove();
+    	      }
+    	    });
+    	  });
+
+// end of quot doc
 
 // start of Serv && maint
  var i1=1;
@@ -1456,6 +1510,133 @@ Date is Required</b></span>
 																		</table>
 																	</div>
 																</div>
+													
+													<!-- Start of Docs req -->
+													
+																<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select class="full-width" id="insDriversCtDoc"
+																				ng-model="insDriversCtDoc" name="insDriversCtDoc">
+																				<option value="" selected disabled>No of
+																					Documents Required</option>
+																				<option value="1">Yes</option>
+																				<option value="0">No</option>
+																			</select>
+																		</div>
+																	</div>
+													<div class="row" ng-show="insDriversCtDoc == 1">
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='fname240' id="fname240"
+																			placeholder='Document Details'
+																			class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='lname240' id='lname240'
+																			placeholder='Quantity' class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='inslictype240' id='inslictype240'
+																			placeholder='Price' class="input-text full-width" />
+																	</div>
+																</div>
+													<div class="row" ng-show="insDriversCtDoc == 1">
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <button type="button" class="append_row">Add User</button> -->
+																		<a id="add_row24" data-toggle="tooltip"
+																			data-placement="right" title="Click to Add Driver"
+																			class="btn btn-success pull-left"><i
+																			class="soap-icon-plus"></i></a><a
+																			class="delete_row24 pull-right btn btn-danger"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Delete Selected Driver s"><i
+																			class="soap-icon-close"></i></a>
+																	</div>
+																</div>
+													
+													
+																<div class="row" ng-show="insDriversCtDoc == 1" >
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <table id="my-table944">
+                                                                            <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+                                                                        </table>
+                                                                         -->
+																		<table class="table table-bordered table-hover"
+																			id="my-table94424">
+																			<tr>
+																				<th class="text-center">#</th>
+																				<th class="text-center">Document Required</th>
+																				<th class="text-center">Quantity</th>
+																				<th class="text-center">Price</th>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																
+																<!-- end of Docs req -->
+																
+																
+													<!-- Start of Terms req -->
+													
+																<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select class="full-width" id="insDriversCtTerm"
+																				ng-model="insDriversCtTerm" name="insDriversCtTerm">
+																				<option value="" selected disabled>Terms
+																					and Conditions</option>
+																				<option value="1">Yes</option>
+																				<option value="0">No</option>
+																			</select>
+																		</div>
+																	</div>
+													<div class="row" ng-show="insDriversCtTerm == 1">
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='fname340' id="fname340"
+																			placeholder='Terms Conditions'
+																			class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='lname340' id='lname340'
+																			placeholder='Quantity' class="input-text full-width" />
+																	</div>
+																	<div class="col-sm-3 col-md-3">
+																		<input type="text" name='inslictype340' id='inslictype340'
+																			placeholder='Price' class="input-text full-width" />
+																	</div>
+																</div>
+													<div class="row" ng-show="insDriversCtTerm == 1">
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <button type="button" class="append_row">Add User</button> -->
+																		<a id="add_row34" data-toggle="tooltip"
+																			data-placement="right" title="Click to Add Driver"
+																			class="btn btn-success pull-left"><i
+																			class="soap-icon-plus"></i></a><a
+																			class="delete_row34 pull-right btn btn-danger"
+																			data-toggle="tooltip" data-placement="top"
+																			title="Delete Selected Driver s"><i
+																			class="soap-icon-close"></i></a>
+																	</div>
+																</div>
+													
+													
+																<div class="row" ng-show="insDriversCtTerm == 1" >
+																	<div class="col-sm-12 col-md-12">
+																		<!-- <table id="my-table944">
+                                                                            <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
+                                                                        </table>
+                                                                         -->
+																		<table class="table table-bordered table-hover"
+																			id="my-table94434">
+																			<tr>
+																				<th class="text-center">#</th>
+																				<th class="text-center">Terms and Conditions</th>
+																				<th class="text-center">Quantity</th>
+																				<th class="text-center">Price</th>
+																			</tr>
+																		</table>
+																	</div>
+																</div>
+																
+																<!-- end of Terms req -->
 																<div class="row">
 														<div class="col-sm-3 col-md-3">&nbsp;</div>
 														<div class="col-sm-6 col-md-6">
