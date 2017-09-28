@@ -612,7 +612,7 @@ tjq(window).load(function() {
     });
 
     // middle block
-    tjq(".middle-block").middleblock();
+//    tjq(".middle-block").middleblock();
 
     // third level menu position to left
     function fixPositionSubmenu() {

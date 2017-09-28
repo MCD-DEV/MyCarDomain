@@ -2452,6 +2452,64 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
 	$body = $("body");
+	
+	$http({
+        method : 'GET',
+        url : 'api/tempCarModelYears'
+    }).then(function mySuccess(response) {
+    	 //$body.removeClass("loading");
+    	 $scope.yearsCar = response.data;
+    }, function myError(response) {
+    	$scope.yearsCar = response.statusText;
+    });
+	
+	
+	
+	$scope.makeForYear = function (year){
+		$body.addClass("loading");
+		$scope.MakesCarYear = "";
+		$scope.ModelsCarYearMake = "";
+		$scope.VarsCarYearMakeMod ="";
+		//'api/tempCarModelMakesForYear?modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelMakesForYear?modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.MakesCarYear = response.data;
+        }, function myError(response) {
+        	$scope.MakesCarYear = response.statusText;
+        });
+	}
+	
+	$scope.modelForYearMake = function (make,year){
+		$body.addClass("loading");
+		//'api/tempCarModelNamesForMake?modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelNamesForMake?modelDisplay='+make+'&modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.ModelsCarYearMake = response.data;
+        }, function myError(response) {
+        	$scope.ModelsCarYearMake = response.statusText;
+        });
+	}
+	
+	$scope.varForYearMakeMod = function (model,make,year){
+		$body.addClass("loading");
+		//'api/tempCarModelVariantForModel?modelName='+$scope.carmodelsins+'&modelDisplay='+$scope.carmakesins+'&modelYear='+$scope.caryearsins
+    	$http({
+            method : 'GET',
+            url : 'api/tempCarModelTrimForAllSelect?modelName='+model+'&modelDisplay='+make+'&modelYear='+year
+        }).then(function mySuccess(response) {
+        	 $body.removeClass("loading");
+        	 $scope.VarsCarYearMakeMod = response.data;
+        }, function myError(response) {
+        	$scope.VarsCarYearMakeMod = response.statusText;
+        });
+	}
+	
 	/*$scope.UserFirstName=value.firstName;
 	$scope.UserLastName=value.lastName;
 	$scope.UserPhoneNo=value.abnNumber;
@@ -4198,7 +4256,7 @@ alert("data"+jsonInput);
 		   	          		{
 		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 	
-		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.serviceMaintQuotationVO[i].servMaintQuotId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].dealerId+'<td>'+data.serviceMaintQuotationVO[i].carServMaintId+'</td>'+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].userId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].creationDate+'<td><a href="#" id="anchor-editqta1DealerVehicleSearchModal-' + data.serviceMaintQuotationVO[i].servMaintQuotId + '" data-details=\'' + JSON.stringify(data.serviceMaintQuotationVO[i]) + '\' class="anchor-editqta1DealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqta1DealerVehicleSearchModal">View</a></td></tr>';
+		   	          		 out= out+'<tr>'+'<td><a href="#" id="anchor-editqta1DealerVehicleSearchModal-' + data.serviceMaintQuotationVO[i].servMaintQuotId + '" data-details=\'' + JSON.stringify(data.serviceMaintQuotationVO[i]) + '\' class="anchor-editqta1DealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqta1DealerVehicleSearchModal">View</a></td>'+'<td>'+data.serviceMaintQuotationVO[i].servMaintQuotId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].dealerId+'<td>'+data.serviceMaintQuotationVO[i].carServMaintId+'</td>'+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].userId+'</td>'+'<td>'+data.serviceMaintQuotationVO[i].creationDate+'</tr>';
 		   	          		 //options += '<option>' +data.vehicleQuotationVO[i].extDealerSearchId+ '</option>';
 		   	          		}
 		   	           	   //$("#LeadQuoteId").html(options);
@@ -7525,7 +7583,7 @@ this.model_data_id = model_data_id;
 		   	          		{
 		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
 	
-		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.vehicleQuotationVO[i].quotId+'</td>'+'<td>'+data.vehicleQuotationVO[i].dealerId+'<td>'+data.vehicleQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.vehicleQuotationVO[i].userId+'</td>'+'<td>'+data.vehicleQuotationVO[i].creationDate+'<td><a href="#" id="anchor-editqtaDealerVehicleSearchModal-' + data.vehicleQuotationVO[i].quotId + '" data-details=\'' + JSON.stringify(data.vehicleQuotationVO[i]) + '\' class="anchor-editqtaDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqtaDealerVehicleSearchModal">View</a></td></tr>';
+		   	          		 out= out+'<tr>'+'<td><a href="#" id="anchor-editqtaDealerVehicleSearchModal-' + data.vehicleQuotationVO[i].quotId + '" data-details=\'' + JSON.stringify(data.vehicleQuotationVO[i]) + '\' class="anchor-editqtaDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editqtaDealerVehicleSearchModal">View</a></td>'+'<td>'+data.vehicleQuotationVO[i].quotId+'</td>'+'<td>'+data.vehicleQuotationVO[i].dealerId+'<td>'+data.vehicleQuotationVO[i].carSearchId+'</td>'+'</td>'+'<td>'+data.vehicleQuotationVO[i].userId+'</td>'+'<td>'+data.vehicleQuotationVO[i].creationDate+'</tr>';
 		   	          		 //options += '<option>' +data.vehicleQuotationVO[i].extDealerSearchId+ '</option>';
 		   	          		}
 		   	           	   //$("#LeadQuoteId").html(options);

@@ -50,19 +50,19 @@
     <script type="text/javascript" src="js/jquery.placeholder.js"></script>
 
     <!-- <script type="text/javascript" src="js/jquery-1.5.2.js" ></script> -->
-<script type="text/javascript" src="js/cufon-yui.js"></script>
-<script type="text/javascript" src="js/cufon-replace.js"></script>
-<script type="text/javascript" src="js/Cabin_400.font.js"></script>
+<!-- <script type="text/javascript" src="js/cufon-yui.js"></script>
+<script type="text/javascript" src="js/cufon-replace.js"></script> -->
+<!-- <script type="text/javascript" src="js/Cabin_400.font.js"></script> -->
 <script type="text/javascript" src="js/tabs.js"></script>
 <script type="text/javascript" src="js/jquery.jqtransform.js" ></script>
 <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript" src="js/atooltip.jquery.js"></script>
 <script type="text/javascript" src="js/script.js"></script>
-<script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<!-- <script src="js/carquery.0.3.4.js"type="text/javascript" ></script> -->
   <link rel="stylesheet" href="css12/reset.css" type="text/css" media="all">
 <link rel="stylesheet" href="css12/layout.css" type="text/css" media="all">
  <link rel="stylesheet" href="font/flaticon.css" type="text/css" media="all">
-<script src="js/carquery.0.3.4.js"type="text/javascript" ></script>
+<!-- <script src="js/carquery.0.3.4.js"type="text/javascript" ></script> -->
 <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
@@ -181,7 +181,7 @@ th, td {
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="js/angular-ui-router.js"></script>
 <script src="js/angular.js"></script>
-<script>
+<!-- <script>
         function showDiv2() {
              //alert("came here");
             var carquery = new CarQuery();
@@ -192,7 +192,7 @@ th, td {
 
             //carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims','car-model-auto-trims');
          }
-    </script>
+    </script> -->
 <script>
 function printDiv(divName) {
 	
@@ -228,6 +228,14 @@ function printDiv(divName) {
       <script type='text/javascript' src="http://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
     <![endif]-->
     <script src="js/servicelevelcarquery.0.3.6.js" type="text/javascript"></script>
+    <style>
+	.product-search-title {
+		font-size: 16px;
+		display: block;
+		font-weight: 800;
+		color: #bd191e;
+	}
+</style>
 </head>
 <body ng-app="mainApp13"  ng-controller="myController13" id="myController13">
 
@@ -547,20 +555,10 @@ $('.logBookBtn').click(function(){
 var servicelevel = new ServiceLevelCarQuery();
 servicelevel.init();
 servicelevel.initYearMakeModelTrim('ServL1', 'ServL2');
-
-
-var carquery = new CarQuery();
-carquery.init();
-carquery.initYearMakeModelTrim('car-years', 'car-makes', 'car-models', 'car-model-trims');
-
-//Set onclick function for the US filter checkbox and show data button
-$('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.checked} ); } );
-$('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
-$('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
 });
-// ]]&gt;</script>
+</script>
                    <div class="container">
-<script type="text/javascript">// <![CDATA[
+<!-- <script type="text/javascript">// <![CDATA[
 $(document).ready( function() {
 
 var carquery = new CarQuery();
@@ -572,7 +570,7 @@ $('#cq-sold-in-us').click( function(){ carquery.setFilters( {sold_in_us:this.che
 $('#cq-show-data').click(  function(){ carquery.populateCarData('car-model-data'); } );
 $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model-data','price', 'regNo', 'driveType', 'kilometer', 'vinNumber', 'vendorStockNo', 'stockItem'); } );
 });
-// ]]&gt;</script>
+// ]]&gt;</script> -->
                     <!-- <ul class="quick-menu pull-left">
                         <li><a href="Db_BetaV1.html">MY ACCOUNT</a></li>
 
@@ -910,7 +908,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                     <div class="clearfix"></div>
 
                                                     <div class="row">
-                                                        <div class="col-sm-3 col-md-3">
+                                                        <div class="col-sm-3 col-md-3 product-search-title">
                                                             <label>Search Criteria for User</label>
                                                         </div>
                                                         <div class="col-sm-3 col-md-6">
@@ -1028,9 +1026,11 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                           
                                                       </div>
                                                       <div class="col-sm-3 col-md-6">
-                                                          <div class="selector">
-                                                              <select id="car-years" name="caryears" ng-model="caryears"
-                                                                      class="full-width" ></select>
+                                                          <div class="selector">   
+                                                              <select id="car-years" name="caryears" ng-model="caryears" ng-options="x for x in yearsCar" ng-change="makeForYear(caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Which Year ?</option>
+                                                                        </select>        
                                                           </div>
                                                       </div>
                                                   </div><br />
@@ -1040,8 +1040,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                        </div>
                                                        <div class="col-sm-3 col-md-6">
                                                            <div class="selector">
-                                                               <select id="car-makes" name="carmakes" ng-model="carmakes"
-                                                                       class="full-width"></select>
+                                                           		 <select id="car-makes" name="carmakes" ng-model="carmakes" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakes,caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Make</option>
+                                                                        </select>
                                                            </div>
                                                        </div>
                                                    </div><br />
@@ -1051,8 +1053,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                        </div>
                                                        <div class="col-sm-3 col-md-6">
 	                                                       <div class="selector">
-	                                                          <select id="car-models" name="carmodels" ng-model="carmodels"
-	                                                                  class="full-width" ></select>
+	                                                          <select id="car-models" name="carmodels" ng-model="carmodels" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodels,carmakes,caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Model</option>
+                                                                        </select>
 	                                                      </div>
                                                        </div>
                                                    </div><br />
@@ -1062,8 +1066,10 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                                                       </div>
                                                       <div class="col-sm-3 col-md-6">
 	                                                      <div class="selector">
-	                                                         <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims"
-	                                                                 class="full-width" ></select>
+	                                                         <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims" ng-options="x for x in VarsCarYearMakeMod"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>AutoScoop Trim</option>
+                                                                        </select>
 	                                                     </div>
                                                       </div>
                                                   </div><br />
@@ -1334,127 +1340,132 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																	<form class="booking-form" id="QuoteNewfrm" name="QuoteNewfrm" ng-submit="submitMyQuoteNewfrm(QuoteNewfrm.$valid)" novalidate>
 															    	<h4><center>List of Leads for the selected Ebid Request</center></h4>
 															    	<div class="row">
-															    		<div class="selector">
+															    		<div class="selector col-sm-12 col-md-12">
 																			<select class="full-width" id="LeadQuoteId" name="LeadQuoteId" ng-model="LeadQuoteId">
 																				<option value="" disabled selected>Select a Lead</option>
 																			</select>
 																		</div>
 																	</div>
-																	<div class="col-sm-4 col-md-4">
-															<input type="text" onfocus="(this.type='date')"
-																ng-model="finDOB" id="finDOB" name="finDOB"
-																class="input-text full-width"
-																placeholder="Offer Valid Date" required /> <span
-																style="color: red"
-																ng-show="QuoteNewfrm.finDOB.$error.required &amp;&amp; (!QuoteNewfrm.finDOB.$pristine || QuoteNewfrm.$submitted)"><b>Offer Valid
-																	
-Date is Required</b></span>
-														</div>
-														<div class="col-sm-4 col-md-4 pull-left input-group">
-															<input type="text" id="finAnnualIncome"
-																name="finAnnualIncome" ng-model="finAnnualIncome"
-																ng-pattern="/^[0-9]*$/" class="input-text full-width"
-																value="" placeholder="Drive Away Price" required /> 
-																<span
-																class="input-group-addon">$</span>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome.$pristine || QuoteNewfrm.$submitted)"><b>Drive Away Price
-																	must be Numeric</b></span> <span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome.$error.pattern"><b>Drive
-																	Away Price is Required</b></span></div>
-																	<div class="col-sm-4 col-md-4 pull-left input-group">
-															<input type="text" id="finAnnualIncome1"
-																name="finAnnualIncome1" ng-model="finAnnualIncome1"
-																ng-pattern="/^[0-9]*$/" class="input-text full-width"
-																value="" placeholder="What you Save " required /> <span
-																class="input-group-addon">$</span>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome1.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome1.$pristine || QuoteNewfrm.$submitted)"><b>Save Price
-																	must be Numeric</b></span> <span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome1.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome1.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrmfinAnnualIncome1.$error.pattern"><b>Save
-																	Price is Required</b></span></div>
-																	
-																	<div class="col-sm-4 col-md-4 pull-left input-group">
-															<input type="text" id="finAnnualIncome2"
-																name="finAnnualIncome2" ng-model="finAnnualIncome2"
-																ng-pattern="/^[0-9]*$/" class="input-text full-width"
-																value="" placeholder="Actual value price " required /> <span
-																class="input-group-addon">$</span>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome2.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome2.$pristine || QuoteNewfrm.$submitted)"><b>Offer Price
-																	must be Numeric</b></span> <span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome2.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome2.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome2.$error.pattern"><b>Offer
-																	Price is Required</b></span></div>
-																	
-																	
+																<div class="row">
 																	<div class="col-sm-3 col-md-3">
-															<div class="selector">
-																<select id="car-years-fin" name="caryearsfin"
-																	ng-model="caryearsfin" class="full-width"
-																	required>
-																	<option value="" selected disabled>Year</option>
-																</select>
-															</div>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.caryearsfin.$error.required &amp;&amp; (!QuoteNewfrm.caryearsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
-																	year is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-																<select id="car-makes-fin" name="carmakesfin"
-																	ng-model="carmakesfin" class="full-width"
-																	required>
-																	<option value="" selected disabled>Make</option>
-																</select>
-															</div>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.carmakesfin.$error.required &amp;&amp; (!QuoteNewfrm.carmakesfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
-																	Make is Required</b></span>
-														</div>
-														<div class="col-sm-3 col-md-3">
-															<div class="selector">
-																<select id="car-models-fin" name="carmodelsfin"
-																	ng-model="carmodelsfin" class="full-width"
-																	required>
-																	<option value="" selected disabled>Model</option>
-																</select>
-															</div>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.carmodelsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
-																	model is Required</b></span>
-														</div>
-														<div class="row">
-														<div class="col-sm-3 col-md-3">&nbsp;</div>
-														<div class="col-sm-9 col-md-9">
-															<div class="selector">
-																<select id="car-model-auto-trims-fin"
-																	name="carmodelAutotrimsfin"
-																	ng-model="carmodelAutotrimsfin" class="full-width"
-																	required>
-																	<option value="" selected disabled>Autoscoop
-																		Trim</option>
-																</select>
-															</div>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.carmodelAutotrimsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelAutotrimsfin.$pristine || QuoteNewfrm.$submitted)"><b>Autoscoop
-																	Trim is Required</b></span>
-														</div>
-														
-														<div class="col-sm-4 col-md-4 pull-left input-group">
-															<input type="text" id="finAnnualIncome4"
-																name="finAnnualIncome4" ng-model="finAnnualIncome4"
-																ng-pattern="/^[0-9]*$/" class="input-text full-width"
-																value="" placeholder="Basic price for Make" required /> <span
-																class="input-group-addon">$</span>
-															<span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome4.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted)"><b>Basic Price
-																	must be Numeric</b></span> <span style="color: red"
-																ng-show="QuoteNewfrm.finAnnualIncome4.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome2.$error.pattern"><b>Basic
-																	Price is Required</b></span></div>
-													</div>
-													
-													<br />
-													<div class="col-sm-4 col-md-4">
+																		<input type="text" onfocus="(this.type='date')"
+																			ng-model="finDOB" id="finDOB" name="finDOB"
+																			class="input-text full-width"
+																			placeholder="Offer Valid Date" required /> <span
+																			style="color: red"
+																			ng-show="QuoteNewfrm.finDOB.$error.required &amp;&amp; (!QuoteNewfrm.finDOB.$pristine || QuoteNewfrm.$submitted)"><b>Offer
+																				Valid Date is Required</b></span>
+																	</div>
+																	<div class="col-sm-3 col-md-3 pull-left input-group">
+																		<input type="text" id="finAnnualIncome"
+																			name="finAnnualIncome" ng-model="finAnnualIncome"
+																			ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																			value="" placeholder="Drive Away Price" required />
+																		<span class="input-group-addon">$</span> <span
+																			style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome.$pristine || QuoteNewfrm.$submitted)"><b>Drive
+																				Away Price must be Numeric</b></span> <span style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome.$error.pattern"><b>Drive
+																				Away Price is Required</b></span>
+																	</div>
+																	<div class="col-sm-3 col-md-3 pull-left input-group">
+																		<input type="text" id="finAnnualIncome1"
+																			name="finAnnualIncome1" ng-model="finAnnualIncome1"
+																			ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																			value="" placeholder="What you Save " required /> <span
+																			class="input-group-addon">$</span> <span
+																			style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome1.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome1.$pristine || QuoteNewfrm.$submitted)"><b>Save
+																				Price must be Numeric</b></span> <span style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome1.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome1.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrmfinAnnualIncome1.$error.pattern"><b>Save
+																				Price is Required</b></span>
+																	</div>
+																	
+																	<div class="col-sm-3 col-md-3 pull-left input-group">
+																	<input type="text" id="finAnnualIncome2"
+																		name="finAnnualIncome2" ng-model="finAnnualIncome2"
+																		ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																		value="" placeholder="Actual value price " required />
+																	<span class="input-group-addon">$</span> <span
+																		style="color: red"
+																		ng-show="QuoteNewfrm.finAnnualIncome2.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome2.$pristine || QuoteNewfrm.$submitted)"><b>Offer
+																			Price must be Numeric</b></span> <span style="color: red"
+																		ng-show="QuoteNewfrm.finAnnualIncome2.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome2.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome2.$error.pattern"><b>Offer
+																			Price is Required</b></span>
+																</div>
+																</div>
+																
+																
+																
+
+																<div class="row">
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select id="car-years-fin" name="caryearsfin"
+																				ng-model="caryearsfin" class="full-width" required>
+																				<option value="" selected disabled>Year</option>
+																			</select>
+																		</div>
+																		<span style="color: red"
+																			ng-show="QuoteNewfrm.caryearsfin.$error.required &amp;&amp; (!QuoteNewfrm.caryearsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																				year is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select id="car-makes-fin" name="carmakesfin"
+																				ng-model="carmakesfin" class="full-width" required>
+																				<option value="" selected disabled>Make</option>
+																			</select>
+																		</div>
+																		<span style="color: red"
+																			ng-show="QuoteNewfrm.carmakesfin.$error.required &amp;&amp; (!QuoteNewfrm.carmakesfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																				Make is Required</b></span>
+																	</div>
+																	<div class="col-sm-4 col-md-4">
+																		<div class="selector">
+																			<select id="car-models-fin" name="carmodelsfin"
+																				ng-model="carmodelsfin" class="full-width" required>
+																				<option value="" selected disabled>Model</option>
+																			</select>
+																		</div>
+																		<span style="color: red"
+																			ng-show="QuoteNewfrm.carmodelsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
+																				model is Required</b></span>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-12 col-md-12">
+																		<div class="selector">
+																			<select id="car-model-auto-trims-fin"
+																				name="carmodelAutotrimsfin"
+																				ng-model="carmodelAutotrimsfin" class="full-width"
+																				required>
+																				<option value="" selected disabled>Autoscoop
+																					Trim</option>
+																			</select>
+																		</div>
+																		<span style="color: red"
+																			ng-show="QuoteNewfrm.carmodelAutotrimsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelAutotrimsfin.$pristine || QuoteNewfrm.$submitted)"><b>Autoscoop
+																				Trim is Required</b></span>
+																	</div>
+																</div>
+																<div class="row">
+																	<div class="col-sm-6 col-md-6 pull-left input-group">
+																		<input type="text" id="finAnnualIncome4"
+																			name="finAnnualIncome4" ng-model="finAnnualIncome4"
+																			ng-pattern="/^[0-9]*$/" class="input-text full-width"
+																			value="" placeholder="Basic price for Make" required />
+																		<span class="input-group-addon">$</span> <span
+																			style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome4.$error.pattern &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted)"><b>Basic
+																				Price must be Numeric</b></span> <span style="color: red"
+																			ng-show="QuoteNewfrm.finAnnualIncome4.$error.required &amp;&amp; (!QuoteNewfrm.finAnnualIncome4.$pristine || QuoteNewfrm.$submitted) &amp;&amp; !QuoteNewfrm.finAnnualIncome2.$error.pattern"><b>Basic
+																				Price is Required</b></span>
+																	</div>
+																</div>
+ 	
+																<div class="row">
+																	<div class="col-sm-6 col-md-6">
 																		<div class="selector">
 																			<select class="full-width" id="insDriversCt"
 																				ng-model="insDriversCt" name="insDriversCt">
@@ -1465,22 +1476,23 @@ Date is Required</b></span>
 																			</select>
 																		</div>
 																	</div>
-													<div class="row" ng-show="insDriversCt == 1">
-																	<div class="col-sm-3 col-md-3">
+																</div>
+																<div class="row" ng-show="insDriversCt == 1">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='fname0' id="fname0"
 																			placeholder='Offer Details'
 																			class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='lname0' id='lname0'
 																			placeholder='Quantity' class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='inslictype0' id='inslictype0'
 																			placeholder='Price' class="input-text full-width" />
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCt == 1">
+																<div class="row" ng-show="insDriversCt == 1">
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <button type="button" class="append_row">Add User</button> -->
 																		<a id="add_row" data-toggle="tooltip"
@@ -1493,7 +1505,7 @@ Date is Required</b></span>
 																			class="soap-icon-close"></i></a>
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCt == 1" >
+																<div class="row" ng-show="insDriversCt == 1">
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <table id="my-table944">
                                                                             <tr><th>First Name</th><th>Last Name</th><th>Driver License Type</th><th>Date Of Birth</th></tr>
@@ -1510,10 +1522,10 @@ Date is Required</b></span>
 																		</table>
 																	</div>
 																</div>
-													
-													<!-- Start of Docs req -->
-													
-																<div class="col-sm-4 col-md-4">
+
+																<!-- Start of Docs req -->
+																<div class="row">
+																	<div class="col-sm-6 col-md-6">
 																		<div class="selector">
 																			<select class="full-width" id="insDriversCtDoc"
 																				ng-model="insDriversCtDoc" name="insDriversCtDoc">
@@ -1524,22 +1536,24 @@ Date is Required</b></span>
 																			</select>
 																		</div>
 																	</div>
-													<div class="row" ng-show="insDriversCtDoc == 1">
-																	<div class="col-sm-3 col-md-3">
+																</div>
+																<div class="row" ng-show="insDriversCtDoc == 1">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='fname240' id="fname240"
 																			placeholder='Document Details'
 																			class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='lname240' id='lname240'
 																			placeholder='Quantity' class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
-																		<input type="text" name='inslictype240' id='inslictype240'
-																			placeholder='Price' class="input-text full-width" />
+																	<div class="col-sm-4 col-md-4">
+																		<input type="text" name='inslictype240'
+																			id='inslictype240' placeholder='Price'
+																			class="input-text full-width" />
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCtDoc == 1">
+																<div class="row" ng-show="insDriversCtDoc == 1">
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <button type="button" class="append_row">Add User</button> -->
 																		<a id="add_row24" data-toggle="tooltip"
@@ -1576,8 +1590,8 @@ Date is Required</b></span>
 																
 																
 													<!-- Start of Terms req -->
-													
-																<div class="col-sm-4 col-md-4">
+																<div class="row">
+																	<div class="col-sm-6 col-md-6">
 																		<div class="selector">
 																			<select class="full-width" id="insDriversCtTerm"
 																				ng-model="insDriversCtTerm" name="insDriversCtTerm">
@@ -1588,22 +1602,23 @@ Date is Required</b></span>
 																			</select>
 																		</div>
 																	</div>
-													<div class="row" ng-show="insDriversCtTerm == 1">
-																	<div class="col-sm-3 col-md-3">
+																</div>
+																<div class="row" ng-show="insDriversCtTerm == 1">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='fname340' id="fname340"
 																			placeholder='Terms Conditions'
 																			class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='lname340' id='lname340'
 																			placeholder='Quantity' class="input-text full-width" />
 																	</div>
-																	<div class="col-sm-3 col-md-3">
+																	<div class="col-sm-4 col-md-4">
 																		<input type="text" name='inslictype340' id='inslictype340'
 																			placeholder='Price' class="input-text full-width" />
 																	</div>
 																</div>
-													<div class="row" ng-show="insDriversCtTerm == 1">
+																<div class="row" ng-show="insDriversCtTerm == 1">
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <button type="button" class="append_row">Add User</button> -->
 																		<a id="add_row34" data-toggle="tooltip"
@@ -1616,8 +1631,8 @@ Date is Required</b></span>
 																			class="soap-icon-close"></i></a>
 																	</div>
 																</div>
-													
-													
+
+
 																<div class="row" ng-show="insDriversCtTerm == 1" >
 																	<div class="col-sm-12 col-md-12">
 																		<!-- <table id="my-table944">
@@ -1638,15 +1653,14 @@ Date is Required</b></span>
 																
 																<!-- end of Terms req -->
 																<div class="row">
-														<div class="col-sm-3 col-md-3">&nbsp;</div>
-														<div class="col-sm-6 col-md-6">
-															<textarea rows="4" cols="50" id="servAddNotes"
-																ng-model="servAddNotes" name="servAddNotes"
-																placeholder="Dealer Terms and Conditions"></textarea>
-														</div>
-														<div class="col-sm-3 col-md-3">&nbsp;</div>
-													</div>
-													<!-- <div class="row">
+																	<div class="col-sm-6 col-md-6">
+																		<textarea rows="4" cols="45" id="servAddNotes"
+																			ng-model="servAddNotes" name="servAddNotes"
+																			placeholder="Dealer Terms and Conditions"></textarea>
+																	</div>
+																	<div class="col-sm-3 col-md-3">&nbsp;</div>
+																</div>
+																<!-- <div class="row">
                                                         <div class="col-sm-3 col-md-3">
                                                         &nbsp;
                                                         </div>
@@ -1661,12 +1675,11 @@ Date is Required</b></span>
                                                         </div>
                                                     </div><br/> -->
 													
-													<br />
 																	<table id="logServMnt-image">
                                 							        </table>
 
 																		<div class="form-group row">
-																			<div class="col-sm-12 col-md-12">
+																			<div class="col-sm-6 col-md-6">
 																				<label>Upload Quotation Hard Copy</label> <input
 																					type="file" id="file-chooser-logservmaint" name="photoInvoice"
 																					class="input-text full-width" value=""
@@ -1677,7 +1690,7 @@ Date is Required</b></span>
 																		</div>
 																		<div class="row">
 										                                    <div class="col-sm-6 col-md-6">
-										                                        <button type="submit" class="full-width btn btn-warning btn-large">Create Quotation for External Dealer</button>
+										                                        <button type="submit" class="full-width btn btn-warning">Create Quotation for External Dealer</button>
 										                                    </div>
 										                                </div>
 																		</div>
