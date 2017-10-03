@@ -31,15 +31,17 @@ public class SearchServMaintVO {
 	private String photo3;
 private long idp;
 	
-private int mobile;
-private int landLine;
+/*private int mobile;
+private int landLine;*/
+private String abnNumber;
+private String email;
 private String drivingLicense;
 private boolean credStat;
 private boolean idCheck;
 private boolean mobCheck;
 
 	
-	public int getMobile() {
+	/*public int getMobile() {
 	return mobile;
 }
 
@@ -53,10 +55,27 @@ public int getLandLine() {
 
 public void setLandLine(int landLine) {
 	this.landLine = landLine;
-}
+}*/
+
 
 public String getDrivingLicense() {
 	return drivingLicense;
+}
+
+public String getAbnNumber() {
+	return abnNumber;
+}
+
+public void setAbnNumber(String abnNumber) {
+	this.abnNumber = abnNumber;
+}
+
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
 }
 
 public void setDrivingLicense(String drivingLicense) {

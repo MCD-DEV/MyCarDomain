@@ -365,8 +365,8 @@ public class UserEBidServiceImpl implements UserEBidService {
 		java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		search.setCreationDate(ourJavaDateObject);
 		// start of check
-		search.setMobile(user.getMobile());
-		search.setLandLine(user.getLandLine());
+		search.setAbnNumber(user.getAbnNumber());
+		search.setEmail(user.getEmail());
 		search.setDrivingLicense(user.getDrivingLicense());
 		search.setUserid(user.getUserId());
 		search.setMobCheck(user.isMobCheck());
@@ -388,8 +388,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		Calendar calendar12 = Calendar.getInstance();
 		java.sql.Date ourJavaDateObject1 = new java.sql.Date(calendar12.getTime().getTime());
 		// start of check
-		searchFinance.setMobile(user.getMobile());
-		searchFinance.setLandLine(user.getLandLine());
+		/*searchFinance.setMobile(user.getMobile());
+		searchFinance.setLandLine(user.getLandLine());*/
+		searchFinance.setAbnNumber(user.getAbnNumber());
+		searchFinance.setEmail(user.getEmail());
 		searchFinance.setDrivingLicense(user.getDrivingLicense());
 		searchFinance.setMobCheck(user.isMobCheck());
 		searchFinance.setIdCheck(user.isIdCheck());
@@ -423,8 +425,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		searchInsurance.setIdp(user.getUserId());
 		
 		// start of check
-		searchInsurance.setMobile(user.getMobile());
-		searchInsurance.setLandLine(user.getLandLine());
+		/*searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());*/
+		searchInsurance.setAbnNumber(user.getAbnNumber());
+		searchInsurance.setEmail(user.getEmail());
 		searchInsurance.setDrivingLicense(user.getDrivingLicense());
 		searchInsurance.setMobCheck(user.isMobCheck());
 		searchInsurance.setIdCheck(user.isIdCheck());
@@ -761,8 +765,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		searchFinance.setCreationDate(ourJavaDateObject);
 		searchFinance.setIdp(user.getUserId());
 		// start of check
-				searchFinance.setMobile(user.getMobile());
-				searchFinance.setLandLine(user.getLandLine());
+				/*searchFinance.setMobile(user.getMobile());
+				searchFinance.setLandLine(user.getLandLine());*/
+				searchFinance.setAbnNumber(user.getAbnNumber());
+				searchFinance.setEmail(user.getEmail());
 				searchFinance.setDrivingLicense(user.getDrivingLicense());
 				searchFinance.setMobCheck(user.isMobCheck());
 				searchFinance.setIdCheck(user.isIdCheck());
@@ -907,8 +913,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		// searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		// start of check
-		searchInsurance.setMobile(user.getMobile());
-		searchInsurance.setLandLine(user.getLandLine());
+	/*	searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());*/
+		searchInsurance.setAbnNumber(user.getAbnNumber());
+		searchInsurance.setEmail(user.getEmail());
 		searchInsurance.setDrivingLicense(user.getDrivingLicense());
 		searchInsurance.setMobCheck(user.isMobCheck());
 		searchInsurance.setIdCheck(user.isIdCheck());
@@ -1066,8 +1074,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		// start of check
-				searchInsurance.setMobile(user.getMobile());
-				searchInsurance.setLandLine(user.getLandLine());
+				/*searchInsurance.setMobile(user.getMobile());
+				searchInsurance.setLandLine(user.getLandLine());*/
+				searchInsurance.setAbnNumber(user.getAbnNumber());
+				searchInsurance.setEmail(user.getEmail());
 				searchInsurance.setDrivingLicense(user.getDrivingLicense());
 				searchInsurance.setMobCheck(user.isMobCheck());
 				searchInsurance.setIdCheck(user.isIdCheck());
@@ -1224,8 +1234,10 @@ public class UserEBidServiceImpl implements UserEBidService {
 		searchInsurance.setCreationDate(ourJavaDateObject);
 		searchInsurance.setIdp(user.getUserId());
 		// start of check
-		searchInsurance.setMobile(user.getMobile());
-		searchInsurance.setLandLine(user.getLandLine());
+		/*searchInsurance.setMobile(user.getMobile());
+		searchInsurance.setLandLine(user.getLandLine());*/
+		searchInsurance.setAbnNumber(user.getAbnNumber());
+		searchInsurance.setEmail(user.getEmail());
 		searchInsurance.setDrivingLicense(user.getDrivingLicense());
 		searchInsurance.setMobCheck(user.isMobCheck());
 		searchInsurance.setIdCheck(user.isIdCheck());

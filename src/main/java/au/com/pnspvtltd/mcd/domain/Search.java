@@ -30,8 +30,10 @@ public class Search implements Serializable {
 	private boolean insurance;
 	private boolean dealer;
 	private Long userid;
-	private int mobile;
-	private int landLine;
+	/*private int mobile;
+	private int landLine;*/
+	private String abnNumber;
+	private String email;
 	private String drivingLicense;
 	private boolean credStat;
 	private boolean idCheck;
@@ -39,6 +41,22 @@ public class Search implements Serializable {
 	
 	
 	
+	public String getAbnNumber() {
+		return abnNumber;
+	}
+
+	public void setAbnNumber(String abnNumber) {
+		this.abnNumber = abnNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public boolean isCredStat() {
 		return credStat;
 	}
@@ -63,7 +81,7 @@ public class Search implements Serializable {
 		this.mobCheck = mobCheck;
 	}
 
-	public int getMobile() {
+	/*public int getMobile() {
 		return mobile;
 	}
 
@@ -77,7 +95,7 @@ public class Search implements Serializable {
 
 	public void setLandLine(int landLine) {
 		this.landLine = landLine;
-	}
+	}*/
 
 	public String getDrivingLicense() {
 		return drivingLicense;
