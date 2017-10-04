@@ -5,15 +5,15 @@ public class AdminVerifyVO {
 	private Long carSearchId;
 	private boolean mobCheck;
 	private boolean idCheck;
-	private int mobile;
+	private String mobile;
 	private int landLine;
 	private String drivingLicense;
 	private String email;
 	
-	public int getMobile() {
+	public String getMobile() {
 		return mobile;
 	}
-	public void setMobile(int mobile) {
+	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
 	public int getLandLine() {

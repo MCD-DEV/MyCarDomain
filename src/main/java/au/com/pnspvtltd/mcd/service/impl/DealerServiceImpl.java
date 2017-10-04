@@ -598,7 +598,7 @@ public class DealerServiceImpl implements DealerService {
 		User user = userRepository.findOne(search.getUserid());
 		adminVerifyVO.setMobCheck(user.isMobCheck());
 		adminVerifyVO.setIdCheck(user.isIdCheck());
-		adminVerifyVO.setMobile(user.getMobile());
+		adminVerifyVO.setMobile(user.getAbnNumber());
 		adminVerifyVO.setDrivingLicense(user.getDrivingLicense());
 		adminVerifyVO.setEmail(user.getEmail());
 		return adminVerifyVO;
