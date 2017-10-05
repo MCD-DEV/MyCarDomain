@@ -38,6 +38,13 @@ import javax.persistence.Table;
 	private Long vehicleDealerFinanceDetailId;
 	
 	private String vehicleType;
+	private String afslNo;
+	private String authRepNo;
+	private String aclNo;
+	private String brokerLicenceNo;
+	private boolean isLoanNewVeh;
+	private boolean isLoanUsedVeh;
+	
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isFinancialInstitute;
@@ -45,9 +52,69 @@ import javax.persistence.Table;
 	private boolean isUsedCar;
 	private boolean isBoth;
 	
+	
+	
+	
 /*start */
 	
 	
+	public String getAclNo() {
+		return aclNo;
+	}
+
+	public void setAclNo(String aclNo) {
+		this.aclNo = aclNo;
+	}
+
+	public String getAfslNo() {
+		return afslNo;
+	}
+
+	public void setAfslNo(String afslNo) {
+		this.afslNo = afslNo;
+	}
+
+	public String getAuthRepNo() {
+		return authRepNo;
+	}
+
+	public void setAuthRepNo(String authRepNo) {
+		this.authRepNo = authRepNo;
+	}
+
+	public String getBrokerLicenceNo() {
+		return brokerLicenceNo;
+	}
+
+	public void setBrokerLicenceNo(String brokerLicenceNo) {
+		this.brokerLicenceNo = brokerLicenceNo;
+	}
+
+	public boolean isLoanNewVeh() {
+		return isLoanNewVeh;
+	}
+
+	public void setLoanNewVeh(boolean isLoanNewVeh) {
+		this.isLoanNewVeh = isLoanNewVeh;
+	}
+
+	public boolean isLoanUsedVeh() {
+		return isLoanUsedVeh;
+	}
+
+	public void setLoanUsedVeh(boolean isLoanUsedVeh) {
+		this.isLoanUsedVeh = isLoanUsedVeh;
+	}
+
+
+
+
+
+
+
+
+
+
 	// Flex start
 	private String flex1;	
 	private String flex2;	
@@ -64,6 +131,7 @@ import javax.persistence.Table;
 	private boolean isFlex13;
 	private boolean isFlex14;
 	
+	List<VehicleDealerFinInsDetails> vehicleDealerFinInsDetails;
 	
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "VEHICLEDEALERFINANCEDETAILID") public Long getVehicleDealerFinanceDetailId() {
 		return vehicleDealerFinanceDetailId;
@@ -72,7 +140,16 @@ import javax.persistence.Table;
 	public void setVehicleDealerFinanceDetailId(Long vehicleDealerFinanceDetailId) {
 		this.vehicleDealerFinanceDetailId = vehicleDealerFinanceDetailId;
 	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerFinanceDetailId")
+	public List<VehicleDealerFinInsDetails> getVehicleDealerFinInsDetails() {
+		return vehicleDealerFinInsDetails;
+	}
 
+	public void setVehicleDealerFinInsDetails(
+			List<VehicleDealerFinInsDetails> vehicleDealerFinInsDetails) {
+		this.vehicleDealerFinInsDetails = vehicleDealerFinInsDetails;
+	}
 	@Column(name = "VEHICLETYPE") public String getVehicleType() {
 		return vehicleType;
 	}

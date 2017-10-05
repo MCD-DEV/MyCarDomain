@@ -1,6 +1,9 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
+
+import au.com.pnspvtltd.mcd.domain.VehicleDealerFinInsDetails;
 
 
 public class VehicleDealerFinanceDetailsVO {
@@ -12,6 +15,12 @@ public class VehicleDealerFinanceDetailsVO {
 	private Long vehicleDealerFinanceDetailId;
 	
 	private String vehicleType;
+	private String afslNo;
+	private String authRepNo;
+	private String aclNo;
+	private String brokerLicenceNo;
+	private boolean isLoanNewVeh;
+	private boolean isLoanUsedVeh;
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isFinancialInstitute;
@@ -20,8 +29,64 @@ public class VehicleDealerFinanceDetailsVO {
 	private boolean isBoth;
 	
 /*start */
+	List<VehicleDealerFinInsDetailsVO> vehicleDealerFinInsDetails;
 	
-	
+	public List<VehicleDealerFinInsDetailsVO> getVehicleDealerFinInsDetails() {
+		return vehicleDealerFinInsDetails;
+	}
+
+	public void setVehicleDealerFinInsDetails(List<VehicleDealerFinInsDetailsVO> vehicleDealerFinInsDetails) {
+		this.vehicleDealerFinInsDetails = vehicleDealerFinInsDetails;
+	}
+
+	public String getAfslNo() {
+		return afslNo;
+	}
+
+	public String getAclNo() {
+		return aclNo;
+	}
+
+	public void setAclNo(String aclNo) {
+		this.aclNo = aclNo;
+	}
+
+	public void setAfslNo(String afslNo) {
+		this.afslNo = afslNo;
+	}
+
+	public String getAuthRepNo() {
+		return authRepNo;
+	}
+
+	public void setAuthRepNo(String authRepNo) {
+		this.authRepNo = authRepNo;
+	}
+
+	public String getBrokerLicenceNo() {
+		return brokerLicenceNo;
+	}
+
+	public void setBrokerLicenceNo(String brokerLicenceNo) {
+		this.brokerLicenceNo = brokerLicenceNo;
+	}
+
+	public boolean isLoanNewVeh() {
+		return isLoanNewVeh;
+	}
+
+	public void setLoanNewVeh(boolean isLoanNewVeh) {
+		this.isLoanNewVeh = isLoanNewVeh;
+	}
+
+	public boolean isLoanUsedVeh() {
+		return isLoanUsedVeh;
+	}
+
+	public void setLoanUsedVeh(boolean isLoanUsedVeh) {
+		this.isLoanUsedVeh = isLoanUsedVeh;
+	}
+
 	// Flex start
 	private String flex1;	
 	private String flex2;	

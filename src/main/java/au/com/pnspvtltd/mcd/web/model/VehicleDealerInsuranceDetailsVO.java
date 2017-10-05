@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.List;
 
 public class VehicleDealerInsuranceDetailsVO {
 
@@ -16,6 +17,14 @@ public class VehicleDealerInsuranceDetailsVO {
 	private Long vehicleDealerInsuranceDetailId;
 	
 	private String vehicleType;
+	private String afslNo;
+	private String authRepNo;
+	private String aclNo;
+	private String brokerLicenceNo;
+	private boolean isComprehensive;
+	private boolean isThirdParty;
+	private boolean isThirdProperty;
+	
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isInsuranceInstitute;
@@ -24,8 +33,72 @@ public class VehicleDealerInsuranceDetailsVO {
 	private boolean isBoth;
 	
 /*start */
+	List<VehicleDealerInsInsDetailsVO> vehicleDealerInsInsDetails;
 	
-	
+	public List<VehicleDealerInsInsDetailsVO> getVehicleDealerInsInsDetails() {
+		return vehicleDealerInsInsDetails;
+	}
+
+	public void setVehicleDealerInsInsDetails(List<VehicleDealerInsInsDetailsVO> vehicleDealerInsInsDetails) {
+		this.vehicleDealerInsInsDetails = vehicleDealerInsInsDetails;
+	}
+
+	public String getAfslNo() {
+		return afslNo;
+	}
+
+	public void setAfslNo(String afslNo) {
+		this.afslNo = afslNo;
+	}
+
+	public String getAuthRepNo() {
+		return authRepNo;
+	}
+
+	public void setAuthRepNo(String authRepNo) {
+		this.authRepNo = authRepNo;
+	}
+
+	public String getAclNo() {
+		return aclNo;
+	}
+
+	public void setAclNo(String aclNo) {
+		this.aclNo = aclNo;
+	}
+
+	public String getBrokerLicenceNo() {
+		return brokerLicenceNo;
+	}
+
+	public void setBrokerLicenceNo(String brokerLicenceNo) {
+		this.brokerLicenceNo = brokerLicenceNo;
+	}
+
+	public boolean isComprehensive() {
+		return isComprehensive;
+	}
+
+	public void setComprehensive(boolean isComprehensive) {
+		this.isComprehensive = isComprehensive;
+	}
+
+	public boolean isThirdParty() {
+		return isThirdParty;
+	}
+
+	public void setThirdParty(boolean isThirdParty) {
+		this.isThirdParty = isThirdParty;
+	}
+
+	public boolean isThirdProperty() {
+		return isThirdProperty;
+	}
+
+	public void setThirdProperty(boolean isThirdProperty) {
+		this.isThirdProperty = isThirdProperty;
+	}
+
 	// Flex start
 	private String flex1;	
 	private String flex2;	

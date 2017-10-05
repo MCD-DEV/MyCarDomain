@@ -2,6 +2,8 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
+
 public class DealerVO {
 
 	private Long dealerId;
@@ -37,6 +39,7 @@ public class DealerVO {
 	List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails;
 	List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails;
 	List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetails;
+	List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetails;
 	List<VehicleDealerMakeListhVO> vehicleDealerMakeList;
 	List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState;
 	List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion;
@@ -53,6 +56,14 @@ public class DealerVO {
 	private boolean isAreaOfOperartinPostcodes;
 	private boolean isAllMakes;
 	
+	public List<VehicleDealerTranspDetailsVO> getVehicleDealerTranspDetails() {
+		return vehicleDealerTranspDetails;
+	}
+
+	public void setVehicleDealerTranspDetails(List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetails) {
+		this.vehicleDealerTranspDetails = vehicleDealerTranspDetails;
+	}
+
 	public List<VehicleDealerDetailsVO> getVehicleDealerDetails() {
 		return vehicleDealerDetails;
 	}

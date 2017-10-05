@@ -38,6 +38,18 @@ import javax.persistence.Table;
 	private Long vehicleDealerServMaintDetailId;
 	
 	private String vehicleType;
+	private boolean isPetrol;
+	private boolean isDiesel;
+	private boolean isElectric;
+	private boolean all1;
+	private boolean clientPlaceDriveYes;
+	private boolean clientPlaceDriveMaybe;
+	private boolean clientPlaceDriveNo;
+	private boolean roadAssistance;
+	
+	
+	
+	
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isServMaintInstitute;
@@ -50,6 +62,81 @@ import javax.persistence.Table;
 	
 	// Flex start
 	private String flex1;	
+	public boolean isAll1() {
+		return all1;
+	}
+
+	public void setAll1(boolean all1) {
+		this.all1 = all1;
+	}
+
+	public boolean isPetrol() {
+		return isPetrol;
+	}
+
+	public void setPetrol(boolean isPetrol) {
+		this.isPetrol = isPetrol;
+	}
+
+	public boolean isDiesel() {
+		return isDiesel;
+	}
+
+	public void setDiesel(boolean isDiesel) {
+		this.isDiesel = isDiesel;
+	}
+
+	public boolean isElectric() {
+		return isElectric;
+	}
+
+	public void setElectric(boolean isElectric) {
+		this.isElectric = isElectric;
+	}
+
+	
+
+	public boolean isClientPlaceDriveYes() {
+		return clientPlaceDriveYes;
+	}
+
+	public void setClientPlaceDriveYes(boolean clientPlaceDriveYes) {
+		this.clientPlaceDriveYes = clientPlaceDriveYes;
+	}
+
+	public boolean isClientPlaceDriveMaybe() {
+		return clientPlaceDriveMaybe;
+	}
+
+	public void setClientPlaceDriveMaybe(boolean clientPlaceDriveMaybe) {
+		this.clientPlaceDriveMaybe = clientPlaceDriveMaybe;
+	}
+
+	public boolean isClientPlaceDriveNo() {
+		return clientPlaceDriveNo;
+	}
+
+	public void setClientPlaceDriveNo(boolean clientPlaceDriveNo) {
+		this.clientPlaceDriveNo = clientPlaceDriveNo;
+	}
+
+	public boolean isRoadAssistance() {
+		return roadAssistance;
+	}
+
+	public void setRoadAssistance(boolean roadAssistance) {
+		this.roadAssistance = roadAssistance;
+	}
+
+
+
+
+
+
+
+
+
+
 	private String flex2;	
 	private String flex3;	
 	private String flex4;
