@@ -91,6 +91,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerFinanceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -176,6 +177,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerFinanceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerMakeListhVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
 
@@ -1466,18 +1468,20 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			org.springframework.beans.BeanUtils.copyProperties(dealer, dealerVO,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
 							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
-							"vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
 
 			if (!isMinified) {
 
 				List<InventoryVO> inventoryVOs = new ArrayList<>();
+				if(dealer.getInventory() != null){
 				for (Inventory inventory : dealer.getInventory()) {
 					InventoryVO inventoryVO = new InventoryVO();
 					BeanUtils.copyProperties(inventoryVO, inventory);
 					inventoryVOs.add(inventoryVO);
 				}
 				dealerVO.setInventory(inventoryVOs);
-
+				}
+				if(dealer.getDealSearch() != null){
 				List<DealerSearchVO> searchVOs = new ArrayList<>();
 				for (DealerSearch search : dealer.getDealSearch()) {
 					DealerSearchVO searchVO = new DealerSearchVO();
@@ -1485,7 +1489,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					searchVOs.add(searchVO);
 				}
 				dealerVO.setDealSearch(searchVOs);
-
+				}
+				if(dealer.getDealSearchInsurance() != null){
 				List<DealerSearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
 				for (DealerSearchInsurance searchInsurance : dealer.getDealSearchInsurance()) {
 					DealerSearchInsuranceVO SearchInsuranceVO = new DealerSearchInsuranceVO();
@@ -1493,7 +1498,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					searchInsuranceVOs.add(SearchInsuranceVO);
 				}
 				dealerVO.setDealSearchInsurance(searchInsuranceVOs);
-				
+				}
+				if(dealer.getDealSearchServMaint() != null){
 				List<DealerSearchServMaintVO> dealerSearchServMaintVOs = new ArrayList<>();
 				for (DealerSearchServMaint dealerSearchServMaint : dealer.getDealSearchServMaint()) {
 					DealerSearchServMaintVO dealerSearchServMaintVO = new DealerSearchServMaintVO();
@@ -1501,10 +1507,10 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					dealerSearchServMaintVOs.add(dealerSearchServMaintVO);
 				}
 				dealerVO.setDealSearchServMaint(dealerSearchServMaintVOs);
+				}
 				
 				
-				
-
+				if(dealer.getDealSearchTransp() != null){
 				List<DealerSearchTranspVO> dealerSearchTranspVOs = new ArrayList<>();
 				for (DealerSearchTransp dealerSearchServMaint : dealer.getDealSearchTransp()) {
 					DealerSearchTranspVO dealerSearchTranspVO = new DealerSearchTranspVO();
@@ -1513,8 +1519,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 				dealerVO.setDealSearchTransp(dealerSearchTranspVOs);
 				
-				
-
+				}
+				if(dealer.getDealSearchFinance() != null){
 				List<DealerSearchFinanceVO> searchFinanceVOs = new ArrayList<>();
 				for (DealerSearchFinance searchFinance : dealer.getDealSearchFinance()) {
 					DealerSearchFinanceVO searchFinanceVO = new DealerSearchFinanceVO();
@@ -1522,7 +1528,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					searchFinanceVOs.add(searchFinanceVO);
 				}
 				dealerVO.setDealSearchFinance(searchFinanceVOs);
+				}
 				
+				if(dealer.getVehicleDealerDetails() != null){
 				List<VehicleDealerDetailsVO> vehicleDealerDetailsVO = new ArrayList<>();
 				for (VehicleDealerDetails vehicleDealerDetail : dealer.getVehicleDealerDetails()) {
 					VehicleDealerDetailsVO searchFinanceVO = new VehicleDealerDetailsVO();
@@ -1530,7 +1538,28 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					vehicleDealerDetailsVO.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerDetails(vehicleDealerDetailsVO);
+				}
+				if(dealer.getVehicleDealerTranspDetails() != null){
+				List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetailsVO= new ArrayList<>();
+				for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer.getVehicleDealerTranspDetails()) {
+					VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
+					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
+					vehicleDealerTranspDetailsVO.add(searchFinanceVO);
+				}
+				dealerVO.setVehicleDealerTranspDetails(vehicleDealerTranspDetailsVO);
+				}
 				
+				if(dealer.getVehicleDealerTranspDetails() != null){
+				List<VehicleDealerTranspDetailsVO> VehicleDealerTranspDetailsVO = new ArrayList<>();
+				for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer.getVehicleDealerTranspDetails()) {
+					VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
+					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
+					VehicleDealerTranspDetailsVO.add(searchFinanceVO);
+				}
+				dealerVO.setVehicleDealerTranspDetails(VehicleDealerTranspDetailsVO);
+				}
+				
+				if(dealer.getVehicleDealerFinanceDetails() != null){
 				List<VehicleDealerFinanceDetailsVO> VehicleDealerFinanceDetailsVO = new ArrayList<>();
 				for (VehicleDealerFinanceDetails VehicleDealerFinanceDetails : dealer.getVehicleDealerFinanceDetails()) {
 					VehicleDealerFinanceDetailsVO searchFinanceVO = new VehicleDealerFinanceDetailsVO();
@@ -1538,7 +1567,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					VehicleDealerFinanceDetailsVO.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerFinanceDetails(VehicleDealerFinanceDetailsVO);
+				}
 				
+				if(dealer.getVehicleDealerInsuranceDetails() != null){
 				List<VehicleDealerInsuranceDetailsVO> VehicleDealerInsuranceDetailsVOs = new ArrayList<>();
 				for (VehicleDealerInsuranceDetails VehicleDealerInsuranceDetails : dealer.getVehicleDealerInsuranceDetails()) {
 					VehicleDealerInsuranceDetailsVO searchFinanceVO = new VehicleDealerInsuranceDetailsVO();
@@ -1546,7 +1577,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					VehicleDealerInsuranceDetailsVOs.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerInsuranceDetails(VehicleDealerInsuranceDetailsVOs);
+				}
 				
+				if(dealer.getVehicleDealerServMaintDetails() != null){
 				List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetailsVOs = new ArrayList<>();
 				for (VehicleDealerServMaintDetails VehicleDealerInsuranceDetails : dealer.getVehicleDealerServMaintDetails()) {
 					VehicleDealerServMaintDetailsVO searchFinanceVO = new VehicleDealerServMaintDetailsVO();
@@ -1554,7 +1587,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					vehicleDealerServMaintDetailsVOs.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetailsVOs);
+				}
 				
+				if(dealer.getVehicleDealerMakeList() != null){
 				List<VehicleDealerMakeListhVO> vehicleDealerMakeListVOs = new ArrayList<>();
 				for (VehicleDealerMakeList VehicleDealerInsuranceDetails : dealer.getVehicleDealerMakeList()) {
 					VehicleDealerMakeListhVO searchFinanceVO = new VehicleDealerMakeListhVO();
@@ -1562,7 +1597,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					vehicleDealerMakeListVOs.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerMakeList(vehicleDealerMakeListVOs);
-				
+				}
+				if(dealer.getVehicleDealerAreaOfOperState() != null){
 				List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperStateVOs = new ArrayList<>();
 				for (VehicleDealerAreaOfOperState VehicleDealerInsuranceDetails : dealer.getVehicleDealerAreaOfOperState()) {
 					VehicleDealerAreaOfOperStateVO searchFinanceVO = new VehicleDealerAreaOfOperStateVO();
@@ -1570,7 +1606,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					vehicleDealerAreaOfOperStateVOs.add(searchFinanceVO);
 				}
 				dealerVO.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStateVOs);
-				
+				}
+				if(dealer.getVehicleDealerRegion() != null){
 				List<VehicleDealerAreaOfOperRegionVO> vehicleDealerAreaOfOperRegionVOs = new ArrayList<>();
 				for (VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion : dealer.getVehicleDealerRegion()) {
 					VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO = new VehicleDealerAreaOfOperRegionVO();
@@ -1579,9 +1616,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 				dealerVO.setVehicleDealerRegion(vehicleDealerAreaOfOperRegionVOs);
 				
+				}
 				
-				
-				
+				if(dealer.getVehicleDealerPostCode() != null){
 				List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerAreaOfOperPostCodeVOs = new ArrayList<>();
 				for (VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode : dealer.getVehicleDealerPostCode()) {
 					VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO = new VehicleDealerAreaOfOperPostCodeVO();
@@ -1589,7 +1626,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					vehicleDealerAreaOfOperPostCodeVOs.add(vehicleDealerAreaOfOperPostCodeVO);
 				}
 				dealerVO.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodeVOs);
-
+				}
 			}
 
 		} catch (IllegalAccessException e) {
@@ -1767,6 +1804,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			dealer.setVehicleDealerDetails(vehicleDealerDetails);
 			}
+			
+			if( dealerVO.getVehicleDealerTranspDetails() != null){
+				List<VehicleDealerTranspDetails> vehicleDealerTranspDetails = new ArrayList<>();
+				for (VehicleDealerTranspDetailsVO vehicleDealerTranspDetailVO : dealerVO.getVehicleDealerTranspDetails()) {
+					VehicleDealerTranspDetails vehicleDealerFinanceDetail = new VehicleDealerTranspDetails();
+					BeanUtils.copyProperties(vehicleDealerFinanceDetail, vehicleDealerTranspDetailVO);
+					vehicleDealerTranspDetails.add(vehicleDealerFinanceDetail);
+				}
+				dealer.setVehicleDealerTranspDetails(vehicleDealerTranspDetails);
+				}
+			
 			if( dealerVO.getVehicleDealerFinanceDetails() != null){
 			List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails = new ArrayList<>();
 			for (VehicleDealerFinanceDetailsVO vehicleDealerFinanceDetailVO : dealerVO.getVehicleDealerFinanceDetails()) {

@@ -239,7 +239,8 @@ public class DealerController {
 		LOGGER.debug("Received request to create Dealer with email {}", dealerVO.getEmail());
 		DealerVO createdDealer = dealerService.createDealer(dealerVO);
 		response.setStatus(HttpStatus.CREATED.value());
-		return createdDealer;
+		return dealerService.findById(createdDealer.getDealerId());
+		//createdDealer;
 	}
 	
 	@PutMapping("dealer")

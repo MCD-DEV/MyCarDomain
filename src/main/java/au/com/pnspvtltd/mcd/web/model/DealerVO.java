@@ -9,6 +9,16 @@ public class DealerVO {
 	private Long dealerId;
 	private String password;
 	private String email;
+	
+	private String vehicleType;
+	private String licenceNumber;
+	private String dealerGroupName;
+	private String designation;
+	private String additionalInfo;
+	private String subscription;
+	private String subscriptionType;
+	
+	
 	private boolean isAdmin;
 	private boolean isDealer;
 	private boolean isInsurer;
@@ -26,6 +36,81 @@ public class DealerVO {
 	private String suborb;
 	private String state;
 	private int postcode;
+	private boolean new1;
+	private boolean used;
+	
+	
+	public boolean isNew1() {
+		return new1;
+	}
+
+	public void setNew1(boolean new1) {
+		this.new1 = new1;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
+
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
+	public String getDealerGroupName() {
+		return dealerGroupName;
+	}
+
+	public void setDealerGroupName(String dealerGroupName) {
+		this.dealerGroupName = dealerGroupName;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
+	public String getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(String subscription) {
+		this.subscription = subscription;
+	}
+
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
+	}
 
 	List<InventoryVO> inventory;
 	List<DealerSearchVO> dealSearch;

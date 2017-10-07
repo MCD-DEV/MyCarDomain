@@ -21,6 +21,17 @@ public class Dealer implements Serializable {
 	private Long dealerId;
 	private String password;
 	private String email;
+	
+	private String vehicleType;
+	private String licenceNumber;
+	private String dealerGroupName;
+	private String designation;
+	private String additionalInfo;
+	private String subscription;
+	private String subscriptionType;
+	private boolean new1;
+	private boolean used;
+	
 	private boolean isAdmin;
 	private boolean isDealer;
 	private boolean isInsurer;
@@ -38,6 +49,23 @@ public class Dealer implements Serializable {
 	private String suborb;
 	private String state;
 	private int postcode;
+	
+	public boolean isNew1() {
+		return new1;
+	}
+
+	public void setNew1(boolean new1) {
+		this.new1 = new1;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
+
 	List<Inventory> inventory;
 
 	List<DealerSearch> dealSearch;
@@ -67,6 +95,65 @@ public class Dealer implements Serializable {
 	private boolean isAreaOfOperartinStates;
 	private boolean isAreaOfOperartinPostcodes;
 	private boolean isAllMakes;
+	
+	
+	
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
+	public String getDealerGroupName() {
+		return dealerGroupName;
+	}
+
+	public void setDealerGroupName(String dealerGroupName) {
+		this.dealerGroupName = dealerGroupName;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
+	public String getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(String subscription) {
+		this.subscription = subscription;
+	}
+
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<FinanceEntity> getFinanceEntity() {
