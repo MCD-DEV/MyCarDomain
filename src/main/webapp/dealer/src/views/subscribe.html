@@ -1,4 +1,4 @@
-﻿<!-- *** Body Container starts here -->
+<!-- *** Body Container starts here -->
 <div class="container-fluid" [ngClass]="{'Open':shareservice.isOpen==true}">
 
     <!-- *** Leads Panel -->
@@ -53,7 +53,7 @@
                                 <div class="clearfix"></div>
                                 <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob">
 
-                                    <input type="text" class="form-control" placeholder="ABN Number" formControlName="licenceABNNumber">
+                                    <input type="text" class="form-control" placeholder="ABN Number" formControlName="abnnumber">
                                     <!--<div class="error" *ngIf="basicGroup.get('basicInfo').get('licenceABNNumber').touched && basicGroup.get('basicInfo').get('licenceABNNumber').invalid">
                                         License ABN number is mandatory
                                     </div>-->
@@ -108,41 +108,41 @@
                             <div class="form-group">
                                 <label>Enter Contact Details</label>
                                 <div class="clearfix"></div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob" formGroupName="contactDetails">
-                                    <input type="text" class="form-control" placeholder="Contact Person Name" formControlName="contactPerson">
+                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob" formGroupName="basicInfo">
+                                    <input type="text" class="form-control" placeholder="Contact Person Name" formControlName="dealername">
                                     <!--<div class="error" *ngIf="basicGroup.get('contactDetails').get('contactPerson').touched && basicGroup.get('contactDetails').get('contactPerson').invalid">
                                         Name is mandatory
                                     </div>-->
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob" formGroupName="contactDetails">
+                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob" formGroupName="basicInfo">
                                     <input type="text" class="form-control" placeholder="Designation" formControlName="designation">
                                     <!--<div class="error" *ngIf="basicGroup.get('contactDetails').get('designation').touched && basicGroup.get('contactDetails').get('designation').invalid">
                                         Designation is mandatory
                                     </div>-->
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT5" formGroupName="contactDetails">
-                                    <input type="tel" class="form-control" placeholder="Contact Number 1" formControlName="contactNumber1">
+                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT5" formGroupName="basicInfo">
+                                    <input type="tel" class="form-control" placeholder="Contact Number 1" formControlName="delmobile">
                                     <!--<div class="error" *ngIf="basicGroup.get('contactDetails').get('contactNumber1').touched && basicGroup.get('contactDetails').get('contactNumber1').invalid">
                                         Contact Number is mandatory
                                     </div>-->
                                 </div>
-                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="contactDetails">
-                                    <input type="tel" class="form-control" placeholder="Contact Number 2" formControlName="contactNumber2">
+                                <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="basicInfo">
+                                    <input type="tel" class="form-control" placeholder="Contact Number 2" formControlName="landLine1">
                                 </div>
-                                <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="contactDetails">
+                                <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="basicInfo">
                                     <input type="email" class="form-control" placeholder="Enter Email ID" formControlName="email">
                                     <!--<div class="error" *ngIf="basicGroup.get('contactDetails').get('email').touched && basicGroup.get('contactDetails').get('email').invalid">
                                         Email is mandatory
                                     </div>-->
                                 </div>
                                 <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="basicInfo">
-                                    <textarea type="email" class="form-control" placeholder="Address / Level / Street" formControlName="address"></textarea>
+                                    <textarea type="email" class="form-control" placeholder="Address / Level / Street" formControlName="streetName"></textarea>
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5" formGroupName="basicInfo">
-                                    <input type="text" class="form-control" placeholder="Subrb Name" formControlName="suburb">
+                                    <input type="text" class="form-control" placeholder="Subrb Name" formControlName="suborb">
                                 </div>
                                 <div class="col-md-4 col-sm-4e col-xs-12 PL0 PR0Mob MT5Mob MT5" formGroupName="basicInfo">
-                                    <input type="text" class="form-control" placeholder="Post Code" formControlName="postCode">
+                                    <input type="text" class="form-control" placeholder="Post Code" formControlName="postcode">
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0 MT5Mob MT5" formGroupName="basicInfo">
                                     <select class="form-control" formControlName="state">
@@ -438,7 +438,7 @@
 
                 <div class="row" *ngIf="isTransport">
                     <div class="col-md-12">
-                        <h3 class="heading" [ngClass]="{'active':isAreaOperation}"><span>4</span>Area of Operation</h3>
+                        <h3 class="heading" [ngClass]="{'active':isAreaOperation}"><span>3</span>Area of Operation</h3>
                     </div>
                     <div [ngbCollapse]="!isRoutes" class="col-xs-11 col-sm-11 col-md-6 Registration MT10">
                         <div class="MakeWrapper form-group">
@@ -562,7 +562,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="heading" [ngClass]="{'active':isSubscription}"><span>4</span>Payment Subscription</h3>
+                        <h3 class="heading" [ngClass]="{'active':isSubscription}"><span>{{getheaderno('sub')}}</span>Payment Subscription</h3>
                     </div>
                     <div [ngbCollapse]="!isSubscription" class="col-xs-11 col-sm-11 col-md-5 Registration MT10">
                         <div class="form-group">
@@ -584,7 +584,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        <h3 class="heading"><span>5</span>Payment</h3>
+                        <h3 class="heading"><span>{{getheaderno('payment')}}</span>Payment</h3>
                     </div>
                     <div [ngbCollapse]="!isPayment" class="col-xs-11 col-sm-11 col-md-5 Registration MT10">
                         <div class="form-group">
@@ -655,7 +655,7 @@
         <!-- *** footer -->
         <div class="row">
             <div class="col-md-12 footer">
-                <p class="Txt999">Copyright 2017 © By AUTOSCOOP All Rights Reserved.</p>
+                <p class="Txt999">Copyright 2017 � By AUTOSCOOP All Rights Reserved.</p>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <h2>AUTOSCOOP</h2>
