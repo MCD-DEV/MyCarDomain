@@ -1,4 +1,4 @@
-﻿<div class="container-fluid">
+<div class="container-fluid">
 
     <!-- carousel Starts here -->
     <div class="ContentPanel">
@@ -6,21 +6,21 @@
 
             <ngb-carousel>
                 <ng-template ngbSlide>
-                    <img src="images/image1.jpg" alt="">
+                    <img src="/MyCarDomain/dealer/src/images/image1.jpg" alt="">
                     <div class="carousel-caption">
                         <h3>Slide 1</h3>
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img src="images/image2.jpg" alt="">
+                    <img src="/MyCarDomain/dealer/src/images/image2.jpg" alt="">
                     <div class="carousel-caption">
                         <h3>Slide 2</h3>
                         <p>vel scelerisque nisl consectetur et.</p>
                     </div>
                 </ng-template>
                 <ng-template ngbSlide>
-                    <img src="images/image3.jpg" alt="">
+                    <img src="/MyCarDomain/dealer/src/images/image3.jpg" alt="">
                     <div class="carousel-caption">
                         <h3>Slide 3</h3>
                         <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
@@ -64,7 +64,7 @@
             </div>
             <div class="col-xs-12 col-sm-6 col-md-3 one" *ngFor="let item of offerings" [ngClass]="{'Subscribe': item.isSubscribed == false}">
                 <a class="thumbnail" [ngClass]="{'open': item.isSubShow}">
-                    <img src="{{item.url}}" alt="{{item.displayName}}">
+                    <img src="/MyCarDomain/dealer/src/{{item.url}}" alt="{{item.displayName}}">
                     <figcaption *ngIf="item.isSubscribed" (click)="showSubscription(item)">
                         {{item.displayName}}
                         <p><label>{{item.leadName}} <font>{{item.count}}</font></label></p>
@@ -149,7 +149,7 @@
         <!-- *** footer -->
         <div class="row">
             <div class="col-md-12 footer">
-                <p class="Txt999">Copyright 2017 © By AUTOSCOOP All Rights Reserved.</p>
+                <p class="Txt999">Copyright 2017 � By AUTOSCOOP All Rights Reserved.</p>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <h2>AUTOSCOOP</h2>

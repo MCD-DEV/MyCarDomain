@@ -1720,7 +1720,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
 							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
-							"vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
 			List<Inventory> inventorys = new ArrayList<>();
 			if(dealerVO.getInventory()!= null){
 			for (InventoryVO inventoryVO : dealerVO.getInventory()) {
@@ -1757,14 +1757,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			dealer.setDealSearchFinance(searchFinances);
 			}
+			if( dealerVO.getVehicleDealerDetails() != null){
 			List<VehicleDealerDetails> vehicleDealerDetails = new ArrayList<>();
+			
 			for (VehicleDealerDetailsVO vehicleDealerDetailVO : dealerVO.getVehicleDealerDetails()) {
 				VehicleDealerDetails vehicleDealerDetail = new VehicleDealerDetails();
 				BeanUtils.copyProperties(vehicleDealerDetail, vehicleDealerDetailVO);
 				vehicleDealerDetails.add(vehicleDealerDetail);
 			}
 			dealer.setVehicleDealerDetails(vehicleDealerDetails);
-			
+			}
+			if( dealerVO.getVehicleDealerFinanceDetails() != null){
 			List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails = new ArrayList<>();
 			for (VehicleDealerFinanceDetailsVO vehicleDealerFinanceDetailVO : dealerVO.getVehicleDealerFinanceDetails()) {
 				VehicleDealerFinanceDetails vehicleDealerFinanceDetail = new VehicleDealerFinanceDetails();
@@ -1772,7 +1775,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerFinanceDetails.add(vehicleDealerFinanceDetail);
 			}
 			dealer.setVehicleDealerFinanceDetails(vehicleDealerFinanceDetails);
-			
+			}
+			if( dealerVO.getVehicleDealerInsuranceDetails() != null){
 			List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails = new ArrayList<>();
 			for (VehicleDealerInsuranceDetailsVO vehicleDealerInsuranceDetailVO : dealerVO.getVehicleDealerInsuranceDetails()) {
 				VehicleDealerInsuranceDetails vehicleDealerInsuranceDetail = new VehicleDealerInsuranceDetails();
@@ -1780,7 +1784,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerInsuranceDetails.add(vehicleDealerInsuranceDetail);
 			}
 			dealer.setVehicleDealerInsuranceDetails(vehicleDealerInsuranceDetails);
-			
+			}
+			if( dealerVO.getVehicleDealerServMaintDetails() != null){
 			List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails = new ArrayList<>();
 			for (VehicleDealerServMaintDetailsVO vehicleDealerServMaintDetailVO : dealerVO.getVehicleDealerServMaintDetails()) {
 				VehicleDealerServMaintDetails vehicleDealerServMaintDetail = new VehicleDealerServMaintDetails();
@@ -1788,7 +1793,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerServMaintDetails.add(vehicleDealerServMaintDetail);
 			}
 			dealer.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetails);
-			
+			}
 			
 			if(dealerVO.getDealSearchServMaint() != null){
 			List<DealerSearchServMaint> dealerSearchServMaints = new ArrayList<>();
@@ -1813,7 +1818,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			
 			
-			
+			if( dealerVO.getVehicleDealerMakeList() != null){
 			List<VehicleDealerMakeList> vehicleDealerMakeLists = new ArrayList<>();
 			for (VehicleDealerMakeListhVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
 				VehicleDealerMakeList vehicleDealerMakeList = new VehicleDealerMakeList();
@@ -1821,7 +1826,8 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerMakeLists.add(vehicleDealerMakeList);
 			}
 			dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
-			
+			}
+			if( dealerVO.getVehicleDealerAreaOfOperState() != null){
 			List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
 			for (VehicleDealerAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerAreaOfOperState()) {
 				VehicleDealerAreaOfOperState vehicleDealerAreaOfOperState = new VehicleDealerAreaOfOperState();
@@ -1829,7 +1835,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
 			}
 			dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
+			}
 			
+			if( dealerVO.getVehicleDealerRegion() != null){
 			List<VehicleDealerAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
 			for (VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO.getVehicleDealerRegion()) {
 				VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleDealerAreaOfOperRegion();
@@ -1837,10 +1845,10 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
 			}
 			dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
+			}
 			
 			
-			
-			
+			if( dealerVO.getVehicleDealerPostCode() != null){
 			List<VehicleDealerAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
 			for (VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerPostCode()) {
 				VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleDealerAreaOfOperPostCode();
@@ -1848,7 +1856,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
 			}
 			dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
-
+			}
 		
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block

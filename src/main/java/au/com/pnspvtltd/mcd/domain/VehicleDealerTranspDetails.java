@@ -50,6 +50,7 @@ import javax.persistence.Table;
 	private boolean isStateRoute;
 	private boolean isRegionRoute;
 	private boolean isPostRoute;
+	private boolean postRoute;
 	
 	
 	
