@@ -32,6 +32,90 @@ public class VehicleDealerInsuranceDetailsVO {
 	private boolean isUsedCar;
 	private boolean isBoth;
 	
+	
+	private String contactPerson;
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getContactNumber1() {
+		return contactNumber1;
+	}
+
+	public void setContactNumber1(String contactNumber1) {
+		this.contactNumber1 = contactNumber1;
+	}
+
+	public String getContactNumber2() {
+		return contactNumber2;
+	}
+
+	public void setContactNumber2(String contactNumber2) {
+		this.contactNumber2 = contactNumber2;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
+	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	private String designation;
+	private String contactNumber1;
+	private String contactNumber2;
+	private String email;
+	private String additionalInfo;
+	private Date dob;
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	private String lastName;
+	private String title;
+	
 /*start */
 	List<VehicleDealerInsInsDetailsVO> vehicleDealerInsInsDetails;
 	

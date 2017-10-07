@@ -57,6 +57,17 @@ import javax.persistence.Table;
 	private boolean isUsedCar;
 	private boolean isBoth;
 	
+	
+	private String contactPerson;
+	private String designation;
+	private String contactNumber1;
+	private String contactNumber2;
+	private String email;
+	private String additionalInfo;
+	private Date dob;
+	private String lastName;
+	private String title;
+	
 /*start */
 	
 	List<VehicleDealerInsInsDetails> vehicleDealerInsInsDetails;
