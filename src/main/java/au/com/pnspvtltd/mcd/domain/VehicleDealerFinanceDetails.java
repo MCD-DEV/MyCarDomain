@@ -45,6 +45,9 @@ import javax.persistence.Table;
 	private boolean isLoanNewVeh;
 	private boolean isLoanUsedVeh;
 	
+	private boolean loanNewVeh;
+	private boolean loanUsedVeh;
+	
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isFinancialInstitute;

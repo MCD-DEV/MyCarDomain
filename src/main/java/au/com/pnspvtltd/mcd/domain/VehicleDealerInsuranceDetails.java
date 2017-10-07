@@ -46,6 +46,10 @@ import javax.persistence.Table;
 	private boolean isThirdParty;
 	private boolean isThirdProperty;
 	
+	private boolean comprehensive;
+	private boolean thirdParty;
+	private boolean thirdProperty;
+	
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isInsuranceInstitute;
