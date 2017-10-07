@@ -101,6 +101,7 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
+import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerQuotationHistoryVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
@@ -1456,6 +1457,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			return dealerSearchInsurance;
 		}
 
+// start of login
+		public DealerVO fromLoginDealer(final Dealer dealer, boolean isMinified) {
+
+			if (dealer == null) {
+				return null;
+			}
+
+			DealerVO dealerVO = new DealerVO();
+			dealerVO.setDealerId(dealer.getDealerId());
+			dealerVO.setDealername(dealer.getDealername());
+			dealerVO.setEmail(dealerVO.getEmail());
+			
+			return dealerVO;
+		}
+		
+		// end of login
+		
+		
 	public DealerVO fromDealer(final Dealer dealer, boolean isMinified) {
 
 		if (dealer == null) {
@@ -1749,6 +1768,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealerSearchFinanceVO;
 	}
 
+	// start login dealer
+	public Dealer toLoginDealer(final DealerLoginVO dealerVO) {
+		Dealer dealer = new Dealer();
+		
+
+			dealer.setEmail(dealerVO.getEmail());
+			dealer.setPassword(dealerVO.getPassword());
+			dealer.setDealername(dealerVO.getFirstName()+dealerVO.getLastName());
+
+		
+		return dealer;
+	}
+	// end login dealer
+	
+	
+	
+	
+	
 	public Dealer toDealer(final DealerVO dealerVO) {
 		Dealer dealer = new Dealer();
 		try {

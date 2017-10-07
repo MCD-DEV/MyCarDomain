@@ -54,6 +54,7 @@ import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
+import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -157,6 +158,14 @@ public class DealerServiceImpl implements DealerService {
 			
 		}
 		return dealerVO;
+	}
+	
+	@Override
+	@Transactional
+	public DealerVO createDealerLogin(DealerLoginVO dealerLoginVO) {
+		DealerVO dealerVO = new DealerVO();
+		dealerVO.setDealerId(null);
+		return domainModelUtil.fromLoginDealer(dealerRepository.save(domainModelUtil.toLoginDealer(dealerLoginVO)), true);
 	}
 
 	@Override
@@ -687,5 +696,12 @@ public class DealerServiceImpl implements DealerService {
 			}*/
 		}	
 		return dealerVO;
+	}
+
+	@Override
+	public DealerVO findByEmailIgnoreCase(String email) {
+		// TODO Auto-generated method stub
+		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email), true);
+		
 	}
 }

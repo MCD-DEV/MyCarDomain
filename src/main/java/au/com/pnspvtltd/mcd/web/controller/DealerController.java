@@ -55,8 +55,10 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
+import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -144,6 +146,39 @@ public class DealerController {
 	
 	@Autowired
 	DomainModelUtil domainModelUtil;
+	
+	@PostMapping(value = "interDeal/login", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<DealerVO> login(@RequestBody DealerLoginVO adminAutoVO, HttpServletResponse response) {
+		LOGGER.debug("Dealer tries to register", adminAutoVO.getEmail());
+		HttpStatus status = HttpStatus.OK;
+		DealerVO createdDealer;
+		createdDealer = dealerService.findByEmailIgnoreCase(adminAutoVO.getEmail());
+		if(createdDealer.getEmail() == null){
+			createdDealer = dealerService.createDealerLogin(adminAutoVO);
+		}
+		else{
+			status = HttpStatus.NO_CONTENT;
+		}
+		response.setStatus(HttpStatus.CREATED.value());
+		return new ResponseEntity<>(createdDealer,status);
+		
+	}
+	
+	@PostMapping(value = "interDeal/verify", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<DealerVO> verify(@RequestBody DealerLoginVO adminAutoVO, HttpServletResponse response) {
+		LOGGER.debug("Dealer tries to login", adminAutoVO.getEmail());
+		DealerVO user = dealerService.findByEmailIgnoreCase(adminAutoVO.getEmail());
+		HttpStatus status = HttpStatus.OK;
+		if (user == null) {
+			status = HttpStatus.NO_CONTENT;
+		} else if (!user.getPassword().equals(adminAutoVO.getPassword())) {
+			status = HttpStatus.UNAUTHORIZED;
+			user = null;
+		} else {
+			user.setPassword(null);
+		}
+		return new ResponseEntity<>(user, status);
+	}
 	
 	@GetMapping(value = "dealer/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public DealerVO getDealer(@PathVariable Long id, HttpServletResponse response) {
