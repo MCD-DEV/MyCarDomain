@@ -14386,55 +14386,6 @@ exports.Observable = Observable;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["h"] = toInteger;
-/* harmony export (immutable) */ __webpack_exports__["i"] = toString;
-/* harmony export (immutable) */ __webpack_exports__["a"] = getValueInRange;
-/* harmony export (immutable) */ __webpack_exports__["e"] = isString;
-/* harmony export (immutable) */ __webpack_exports__["d"] = isNumber;
-/* harmony export (immutable) */ __webpack_exports__["c"] = isInteger;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isDefined;
-/* harmony export (immutable) */ __webpack_exports__["f"] = padNumber;
-/* harmony export (immutable) */ __webpack_exports__["g"] = regExpEscape;
-function toInteger(value) {
-    return parseInt("" + value, 10);
-}
-function toString(value) {
-    return (value !== undefined && value !== null) ? "" + value : '';
-}
-function getValueInRange(value, max, min) {
-    if (min === void 0) { min = 0; }
-    return Math.max(Math.min(value, max), min);
-}
-function isString(value) {
-    return typeof value === 'string';
-}
-function isNumber(value) {
-    return !isNaN(toInteger(value));
-}
-function isInteger(value) {
-    return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
-}
-function isDefined(value) {
-    return value !== undefined && value !== null;
-}
-function padNumber(value) {
-    if (isNumber(value)) {
-        return ("0" + value).slice(-2);
-    }
-    else {
-        return '';
-    }
-}
-function regExpEscape(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-}
-//# sourceMappingURL=util.js.map
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractControlDirective", function() { return AbstractControlDirective; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AbstractFormGroupDirective", function() { return AbstractFormGroupDirective; });
@@ -20523,7 +20474,422 @@ ReactiveFormsModule.ctorParameters = function () { return []; };
 
 
 /***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["h"] = toInteger;
+/* harmony export (immutable) */ __webpack_exports__["i"] = toString;
+/* harmony export (immutable) */ __webpack_exports__["a"] = getValueInRange;
+/* harmony export (immutable) */ __webpack_exports__["e"] = isString;
+/* harmony export (immutable) */ __webpack_exports__["d"] = isNumber;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isInteger;
+/* harmony export (immutable) */ __webpack_exports__["b"] = isDefined;
+/* harmony export (immutable) */ __webpack_exports__["f"] = padNumber;
+/* harmony export (immutable) */ __webpack_exports__["g"] = regExpEscape;
+function toInteger(value) {
+    return parseInt("" + value, 10);
+}
+function toString(value) {
+    return (value !== undefined && value !== null) ? "" + value : '';
+}
+function getValueInRange(value, max, min) {
+    if (min === void 0) { min = 0; }
+    return Math.max(Math.min(value, max), min);
+}
+function isString(value) {
+    return typeof value === 'string';
+}
+function isNumber(value) {
+    return !isNaN(toInteger(value));
+}
+function isInteger(value) {
+    return typeof value === 'number' && isFinite(value) && Math.floor(value) === value;
+}
+function isDefined(value) {
+    return value !== undefined && value !== null;
+}
+function padNumber(value) {
+    if (isNumber(value)) {
+        return ("0" + value).slice(-2);
+    }
+    else {
+        return '';
+    }
+}
+function regExpEscape(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+}
+//# sourceMappingURL=util.js.map
+
+/***/ }),
 /* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var dealerLeads = (function () {
+    function dealerLeads() {
+    }
+    return dealerLeads;
+}());
+exports.dealerLeads = dealerLeads;
+var offering = (function () {
+    function offering() {
+    }
+    return offering;
+}());
+exports.offering = offering;
+var dealer = (function () {
+    function dealer() {
+        this.basicInfo = new basicInfo();
+        this.contactDetails = new contactDetails();
+        this.make = [];
+        this.model = [];
+        this.areaofOperation = new areaOperation();
+    }
+    return dealer;
+}());
+exports.dealer = dealer;
+var dealerBasicInfo = (function () {
+    function dealerBasicInfo() {
+    }
+    return dealerBasicInfo;
+}());
+exports.dealerBasicInfo = dealerBasicInfo;
+var basicInfo = (function () {
+    function basicInfo() {
+        this.make = [];
+        this.model = [];
+    }
+    return basicInfo;
+}());
+exports.basicInfo = basicInfo;
+var Service = (function () {
+    function Service() {
+    }
+    return Service;
+}());
+exports.Service = Service;
+var Transport = (function () {
+    function Transport() {
+    }
+    return Transport;
+}());
+exports.Transport = Transport;
+var Finance = (function () {
+    function Finance() {
+        this.insVehicles = [];
+    }
+    return Finance;
+}());
+exports.Finance = Finance;
+var Insurance = (function () {
+    function Insurance() {
+    }
+    return Insurance;
+}());
+exports.Insurance = Insurance;
+var contactDetails = (function () {
+    function contactDetails() {
+    }
+    return contactDetails;
+}());
+exports.contactDetails = contactDetails;
+var areaOperation = (function () {
+    function areaOperation() {
+        this.postCode = [];
+        this.state = [];
+        this.area = [];
+    }
+    return areaOperation;
+}());
+exports.areaOperation = areaOperation;
+var resource = (function () {
+    function resource() {
+        this.contactDetails = new contactDetails();
+        this.socialMedia = [];
+    }
+    return resource;
+}());
+exports.resource = resource;
+var socialMedia = (function () {
+    function socialMedia() {
+    }
+    return socialMedia;
+}());
+exports.socialMedia = socialMedia;
+var inventory = (function () {
+    function inventory() {
+        this.features = [];
+        this.banners = [];
+        this.photos = [];
+    }
+    return inventory;
+}());
+exports.inventory = inventory;
+var SellVehicle = (function () {
+    function SellVehicle() {
+        this.features = [];
+        this.extras = [];
+        this.photos = [];
+    }
+    return SellVehicle;
+}());
+exports.SellVehicle = SellVehicle;
+var feature = (function () {
+    function feature() {
+    }
+    return feature;
+}());
+exports.feature = feature;
+var subscription = (function () {
+    function subscription() {
+        this.isNew = false;
+        this.isPreOwned = false;
+        this.isLease = false;
+        this.isFinance = false;
+        this.isInsurance = false;
+        this.isSM = false;
+        this.isTranssport = false;
+        this.isSpares = false;
+        this.isParking = false;
+        this.isFuel = false;
+        this.isOthers = false;
+    }
+    return subscription;
+}());
+exports.subscription = subscription;
+var LeadDetails = (function () {
+    function LeadDetails() {
+        //public isNewCar: boolean;
+        //public isUsedCar: boolean;
+        this.makemodel = new MakeModel();
+        this.userinfocheck = new UserInfoCheck();
+        this.usercontext = new userContext();
+        this.quotes = [];
+    }
+    return LeadDetails;
+}());
+exports.LeadDetails = LeadDetails;
+var Quote = (function () {
+    function Quote() {
+        this.additions = [];
+        this.documents = [];
+        this.termsConditions = [];
+        this.appointments = [];
+    }
+    return Quote;
+}());
+exports.Quote = Quote;
+var dealerInfo = (function () {
+    function dealerInfo() {
+    }
+    return dealerInfo;
+}());
+exports.dealerInfo = dealerInfo;
+var UserInfoCheck = (function () {
+    function UserInfoCheck() {
+    }
+    return UserInfoCheck;
+}());
+exports.UserInfoCheck = UserInfoCheck;
+var MakeModel = (function () {
+    function MakeModel() {
+    }
+    return MakeModel;
+}());
+exports.MakeModel = MakeModel;
+var userContext = (function () {
+    function userContext() {
+    }
+    return userContext;
+}());
+exports.userContext = userContext;
+var shareService = (function () {
+    function shareService() {
+        this.isOpen = false;
+        this.defaultSubs = new subscription();
+        this.isLoggedIn = false;
+        this.states = [
+            "ACT",
+            "NSW",
+            "NT",
+            "QLD",
+            "SA",
+            "TAS",
+            "VIC",
+            "WA"
+        ];
+    }
+    shareService.prototype.nav = function () {
+    };
+    return shareService;
+}());
+shareService.resources = [];
+shareService.subscriptions = [];
+shareService.inventories = [];
+shareService.makes = [
+    "Abarth", "Audi",
+    "BMW",
+    "Ford",
+    "Holden",
+    "Holden SPV",
+    "Honda",
+    "Hyundai",
+    "Infiniti",
+    "Isuzu",
+    "Jaguar",
+    "Jeep",
+    "Kia",
+    "Lamborghini",
+    "Land Rover",
+    "LDV",
+    "Lexus",
+    "Maserati",
+    "Mazda",
+    "Mercedes-Benz",
+    "MINI",
+    "Mitsubishi",
+    "Nissan",
+    "Tesla",
+    "Toyota",
+    "Volkswagen",
+    "Volvo"
+];
+shareService.models = [
+    "A1",
+    "A3",
+    "A4",
+    "A6",
+    "A7",
+    "A8",
+    "Q2",
+    "Q3",
+    "Q7",
+    "R8",
+    "RS",
+    "RS6",
+    "RS7",
+    "S1",
+    "S3",
+    "S4",
+    "S6",
+    "S7",
+    "S8",
+    "SQ7",
+    "TT"
+];
+shareService.regions = [
+    "CANBERRA",
+    "SOUTH CANBERRA",
+    "NORTH CANBERRA",
+    "WODEN VALLEY",
+    "WESTON CREEK",
+    "COREE",
+    "BELCONNEN",
+    "TUGGERANONG",
+    "GUNGAHLIN"
+];
+shareService.postcodes = [
+    221,
+    2600,
+    2603,
+    2604,
+    2609
+];
+exports.shareService = shareService;
+var UIStorage = (function () {
+    function UIStorage() {
+    }
+    /**
+     * Gets a single cookie by it's key
+     *
+     * @param  {string} name key of the Cookie
+     * @returns The Cookie's value
+     */
+    UIStorage.getCookie = function (cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ')
+                c = c.substring(1);
+            if (c.indexOf(name) == 0)
+                return decodeURI(c.substring(name.length, c.length));
+        }
+        return undefined;
+    };
+    /**
+     * Save the Cookie
+     *
+     * @param  {string} name key
+     * @param  {string} value Cookie's value
+     * @param  {number} expires Cookie's expiration date in days from now. If it's undefined the cookie is a session Cookie
+     * @param  {string} path Path relative to the domain where the cookie should be avaiable. Default / root folder
+     * @param  {string} domain Domain where the cookie should be avaiable. Default current domain
+     */
+    UIStorage.setCookie = function (name, value, expires, path, domain) {
+        if (path === void 0) { path = '/'; }
+        var cookieStr = encodeURI(name) + '=' + encodeURI(value) + ';';
+        if (expires) {
+            var dtExpires = new Date(new Date().getTime() + expires * 1000 * 60 * 60 * 24);
+            cookieStr += 'expires=' + dtExpires.toUTCString() + ';';
+        }
+        if (path) {
+            cookieStr += 'path=' + path + ';';
+        }
+        if (domain) {
+            cookieStr += 'domain=' + domain + ';';
+        }
+        document.cookie = cookieStr;
+    };
+    /**
+    * Save the Cookie without any encoding
+    *
+    * @param  {string} name key
+    * @param  {string} value Cookie's value
+    * @param  {number} expires Cookie's expiration date in days from now. If it's undefined the cookie is a session Cookie
+    * @param  {string} path Path relative to the domain where the cookie should be avaiable. Default / root folder
+    * @param  {string} domain Domain where the cookie should be avaiable. Default current domain
+    */
+    UIStorage.setCookieWithoutEncoding = function (name, value, expires, path, domain) {
+        if (path === void 0) { path = '/'; }
+        var cookieStr = name + '=' + value + ';';
+        if (expires) {
+            var dtExpires = new Date(new Date().getTime() + expires * 1000 * 60 * 60 * 24);
+            cookieStr += 'expires=' + dtExpires.toUTCString() + ';';
+        }
+        if (path) {
+            cookieStr += 'path=' + path + ';';
+        }
+        if (domain) {
+            cookieStr += 'domain=' + domain + ';';
+        }
+        document.cookie = cookieStr;
+    };
+    /**
+ * Deletes specified Cookie based on the key
+ *
+ * @param  {string} name Cookie's key
+ * @param  {string} path Path relative to the domain where the cookie should be avaiable. Default /
+ * @param  {string} domain Domain where the cookie should be avaiable. Default current domain
+ */
+    UIStorage.deleteCookie = function (name, path, domain) {
+        if (path === void 0) { path = '/'; }
+        // If the cookie exists
+        if (this.getCookie(name)) {
+            this.setCookie(name, '', -1, path, domain);
+        }
+    };
+    return UIStorage;
+}());
+exports.UIStorage = UIStorage;
+//# sourceMappingURL=models.js.map
+
+/***/ }),
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20778,7 +21144,7 @@ var SafeSubscriber = (function (_super) {
 //# sourceMappingURL=Subscriber.js.map
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -24820,285 +25186,6 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["Version"]('4.0.3'
 
 
 /***/ }),
-/* 6 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var dealerLeads = (function () {
-    function dealerLeads() {
-    }
-    return dealerLeads;
-}());
-exports.dealerLeads = dealerLeads;
-var offering = (function () {
-    function offering() {
-    }
-    return offering;
-}());
-exports.offering = offering;
-var dealer = (function () {
-    function dealer() {
-        this.basicInfo = new basicInfo();
-        this.contactDetails = new contactDetails();
-        this.make = [];
-        this.model = [];
-        this.areaofOperation = new areaOperation();
-    }
-    return dealer;
-}());
-exports.dealer = dealer;
-var dealerBasicInfo = (function () {
-    function dealerBasicInfo() {
-    }
-    return dealerBasicInfo;
-}());
-exports.dealerBasicInfo = dealerBasicInfo;
-var basicInfo = (function () {
-    function basicInfo() {
-        this.make = [];
-        this.model = [];
-    }
-    return basicInfo;
-}());
-exports.basicInfo = basicInfo;
-var Service = (function () {
-    function Service() {
-    }
-    return Service;
-}());
-exports.Service = Service;
-var Transport = (function () {
-    function Transport() {
-    }
-    return Transport;
-}());
-exports.Transport = Transport;
-var Finance = (function () {
-    function Finance() {
-        this.insVehicles = [];
-    }
-    return Finance;
-}());
-exports.Finance = Finance;
-var Insurance = (function () {
-    function Insurance() {
-    }
-    return Insurance;
-}());
-exports.Insurance = Insurance;
-var contactDetails = (function () {
-    function contactDetails() {
-    }
-    return contactDetails;
-}());
-exports.contactDetails = contactDetails;
-var areaOperation = (function () {
-    function areaOperation() {
-        this.postCode = [];
-        this.state = [];
-        this.area = [];
-    }
-    return areaOperation;
-}());
-exports.areaOperation = areaOperation;
-var resource = (function () {
-    function resource() {
-        this.contactDetails = new contactDetails();
-        this.socialMedia = [];
-    }
-    return resource;
-}());
-exports.resource = resource;
-var socialMedia = (function () {
-    function socialMedia() {
-    }
-    return socialMedia;
-}());
-exports.socialMedia = socialMedia;
-var inventory = (function () {
-    function inventory() {
-        this.features = [];
-        this.banners = [];
-        this.photos = [];
-    }
-    return inventory;
-}());
-exports.inventory = inventory;
-var SellVehicle = (function () {
-    function SellVehicle() {
-        this.features = [];
-        this.extras = [];
-        this.photos = [];
-    }
-    return SellVehicle;
-}());
-exports.SellVehicle = SellVehicle;
-var feature = (function () {
-    function feature() {
-    }
-    return feature;
-}());
-exports.feature = feature;
-var subscription = (function () {
-    function subscription() {
-        this.isNew = false;
-        this.isPreOwned = false;
-        this.isLease = false;
-        this.isFinance = false;
-        this.isInsurance = false;
-        this.isSM = false;
-        this.isTranssport = false;
-        this.isSpares = false;
-        this.isParking = false;
-        this.isFuel = false;
-        this.isOthers = false;
-    }
-    return subscription;
-}());
-exports.subscription = subscription;
-var LeadDetails = (function () {
-    function LeadDetails() {
-        //public isNewCar: boolean;
-        //public isUsedCar: boolean;
-        this.makemodel = new MakeModel();
-        this.userinfocheck = new UserInfoCheck();
-        this.usercontext = new userContext();
-        this.quotes = [];
-    }
-    return LeadDetails;
-}());
-exports.LeadDetails = LeadDetails;
-var Quote = (function () {
-    function Quote() {
-        this.additions = [];
-        this.documents = [];
-        this.termsConditions = [];
-        this.appointments = [];
-    }
-    return Quote;
-}());
-exports.Quote = Quote;
-var dealerInfo = (function () {
-    function dealerInfo() {
-    }
-    return dealerInfo;
-}());
-exports.dealerInfo = dealerInfo;
-var UserInfoCheck = (function () {
-    function UserInfoCheck() {
-    }
-    return UserInfoCheck;
-}());
-exports.UserInfoCheck = UserInfoCheck;
-var MakeModel = (function () {
-    function MakeModel() {
-    }
-    return MakeModel;
-}());
-exports.MakeModel = MakeModel;
-var userContext = (function () {
-    function userContext() {
-    }
-    return userContext;
-}());
-exports.userContext = userContext;
-var shareService = (function () {
-    function shareService() {
-        this.isOpen = false;
-        this.defaultSubs = new subscription();
-        this.states = [
-            "ACT",
-            "NSW",
-            "NT",
-            "QLD",
-            "SA",
-            "TAS",
-            "VIC",
-            "WA"
-        ];
-    }
-    shareService.prototype.nav = function () {
-    };
-    return shareService;
-}());
-shareService.resources = [];
-shareService.subscriptions = [];
-shareService.inventories = [];
-shareService.makes = [
-    "Abarth", "Audi",
-    "BMW",
-    "Ford",
-    "Holden",
-    "Holden SPV",
-    "Honda",
-    "Hyundai",
-    "Infiniti",
-    "Isuzu",
-    "Jaguar",
-    "Jeep",
-    "Kia",
-    "Lamborghini",
-    "Land Rover",
-    "LDV",
-    "Lexus",
-    "Maserati",
-    "Mazda",
-    "Mercedes-Benz",
-    "MINI",
-    "Mitsubishi",
-    "Nissan",
-    "Tesla",
-    "Toyota",
-    "Volkswagen",
-    "Volvo"
-];
-shareService.models = [
-    "A1",
-    "A3",
-    "A4",
-    "A6",
-    "A7",
-    "A8",
-    "Q2",
-    "Q3",
-    "Q7",
-    "R8",
-    "RS",
-    "RS6",
-    "RS7",
-    "S1",
-    "S3",
-    "S4",
-    "S6",
-    "S7",
-    "S8",
-    "SQ7",
-    "TT"
-];
-shareService.regions = [
-    "CANBERRA",
-    "SOUTH CANBERRA",
-    "NORTH CANBERRA",
-    "WODEN VALLEY",
-    "WESTON CREEK",
-    "COREE",
-    "BELCONNEN",
-    "TUGGERANONG",
-    "GUNGAHLIN"
-];
-shareService.postcodes = [
-    221,
-    2600,
-    2603,
-    2604,
-    2609
-];
-exports.shareService = shareService;
-//# sourceMappingURL=models.js.map
-
-/***/ }),
 /* 7 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -25154,7 +25241,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵe", function() { return setupRouter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵk", function() { return Tree; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵl", function() { return TreeNode; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
@@ -31279,6 +31366,7 @@ var http_1 = __webpack_require__(30);
 var core_1 = __webpack_require__(0);
 var http_2 = __webpack_require__(30);
 var servermodels_1 = __webpack_require__(61);
+var models_1 = __webpack_require__(4);
 var dealerservice = (function () {
     function dealerservice(http) {
         this.http = http;
@@ -31316,7 +31404,7 @@ var dealerservice = (function () {
         return this.http.get(this._uri + 'postcodes?country=' + country + '&state=' + state + '&region=' + region, { headers: this.headers });
     };
     dealerservice.prototype.savesubscription = function (dealerbasicinfo) {
-        return this.http.post(this._uri + 'api/dealer', dealerbasicinfo, { headers: this.headers });
+        return this.http.post(this._uri + 'api/dealer/SubscribeSBL', dealerbasicinfo, { headers: this.headers });
     };
     dealerservice.prototype.save = function (statements) {
         var data = this.http.post(this._uri + 'api/user/Save', statements, { headers: this.headers });
@@ -31337,6 +31425,15 @@ var dealerservice = (function () {
     };
     dealerservice.prototype.saveinventory = function (dealerid) {
         return this.http.get(this._uri + 'api/resources?dealerid=1', { headers: this.headers });
+    };
+    dealerservice.prototype.validateDealerContext = function (dealer) {
+        return this.http.post(this._uri + 'api/interDeal/verify', dealer, { headers: this.headers });
+    };
+    dealerservice.prototype.sendContext = function (email) {
+        return this.http.post(this._uri + 'api/dealer', models_1.dealer, { headers: this.headers });
+    };
+    dealerservice.prototype.createDealerContext = function (dealer) {
+        return this.http.post(this._uri + 'api/interDeal/login', dealer, { headers: this.headers });
     };
     return dealerservice;
 }());
@@ -31387,7 +31484,7 @@ var uitoserver = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbCalendarGregorian; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngb_date__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -31736,7 +31833,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(1);
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var Subscription_1 = __webpack_require__(12);
 var ObjectUnsubscribedError_1 = __webpack_require__(56);
 var SubjectSubscription_1 = __webpack_require__(122);
@@ -31954,7 +32051,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -32114,7 +32211,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵc", function() { return _createNgProbe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵd", function() { return EventManagerPlugin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵe", function() { return DomSanitizerImpl; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -39661,13 +39758,13 @@ NgbCarouselConfig.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbDatepicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngb_calendar__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngb_date__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_service__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datepicker_keymap_service__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__datepicker_view_model__ = __webpack_require__(78);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__datepicker_config__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__datepicker_i18n__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__datepicker_tools__ = __webpack_require__(77);
@@ -39868,7 +39965,7 @@ NgbDatepicker.propDecorators = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngb_calendar__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngb_date__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datepicker_tools__ = __webpack_require__(77);
@@ -40112,7 +40209,7 @@ NgbDatepickerConfig.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbDateParserFormatter; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbDateISOParserFormatter; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(3);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -40407,7 +40504,7 @@ NgbTooltipConfig.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbTypeaheadWindow; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(3);
 
 
 var NgbTypeaheadWindow = (function () {
@@ -40880,7 +40977,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /**
  * Applies a given `project` function to each value emitted by the source
  * Observable, and emits the resulting values as an Observable.
@@ -41007,6 +41104,10 @@ var FinanceEntity = (function () {
 exports.FinanceEntity = FinanceEntity;
 var VehicleDealerDetails = (function () {
     function VehicleDealerDetails() {
+        this.vehicleDealerMakeList = [];
+        this.vehicleDealerAreaOfOperState = [];
+        this.vehicleDealerRegion = [];
+        this.vehicleDealerPostCode = [];
     }
     return VehicleDealerDetails;
 }());
@@ -41287,7 +41388,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /* tslint:disable:max-line-length */
 /**
  * Filter items emitted by the source Observable by only emitting those that
@@ -41382,7 +41483,7 @@ var FilterSubscriber = (function (_super) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbAccordionModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__accordion_config__ = __webpack_require__(32);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__accordion__["a"]; });
@@ -41421,7 +41522,7 @@ NgbAccordionModule.ctorParameters = function () { return []; };
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbPanel; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbAccordion; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__accordion_config__ = __webpack_require__(32);
 
 
@@ -41592,7 +41693,7 @@ NgbAccordion.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbAlertModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alert__ = __webpack_require__(68);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__alert_config__ = __webpack_require__(33);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__alert__["a"]; });
@@ -41704,7 +41805,7 @@ NgbButtonsModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbCheckBox; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__label__ = __webpack_require__(20);
 
 
@@ -41798,7 +41899,7 @@ NgbCheckBox.propDecorators = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return NgbRadioGroup; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbRadio; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__label__ = __webpack_require__(20);
 
 
@@ -41969,7 +42070,7 @@ NgbRadio.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbCarouselModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__carousel__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__carousel_config__ = __webpack_require__(34);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__carousel__["b"]; });
@@ -42256,12 +42357,12 @@ NgbCollapse.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return NgbDatepickerModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__datepicker__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datepicker_month_view__ = __webpack_require__(79);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__datepicker_navigation__ = __webpack_require__(80);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__datepicker_input__ = __webpack_require__(81);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__datepicker_day_view__ = __webpack_require__(82);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__datepicker_i18n__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngb_calendar__ = __webpack_require__(9);
@@ -42594,7 +42695,7 @@ NgbDatepickerNavigation.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbInputDatepicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngb_date__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datepicker__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngb_date_parser_formatter__ = __webpack_require__(38);
@@ -42878,7 +42979,7 @@ NgbDatepickerDayView.propDecorators = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbDatepickerNavigationSelect; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngb_date__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__datepicker_i18n__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngb_calendar__ = __webpack_require__(9);
 
@@ -43340,7 +43441,7 @@ var ModalDismissReasons;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbModalStack; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_popup__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modal_backdrop__ = __webpack_require__(87);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal_window__ = __webpack_require__(88);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modal_ref__ = __webpack_require__(91);
@@ -43573,7 +43674,7 @@ NgbModal.ctorParameters = function () { return [
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbPaginationModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pagination__ = __webpack_require__(94);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__pagination_config__ = __webpack_require__(40);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__pagination__["a"]; });
@@ -43605,7 +43706,7 @@ NgbPaginationModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbPagination; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__pagination_config__ = __webpack_require__(40);
 
 
@@ -44032,7 +44133,7 @@ function listenToTriggers(renderer, nativeElement, triggers, openFn, closeFn, to
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbProgressbarModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__progressbar__ = __webpack_require__(99);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__progressbar_config__ = __webpack_require__(42);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__progressbar__["a"]; });
@@ -44064,7 +44165,7 @@ NgbProgressbarModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbProgressbar; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__progressbar_config__ = __webpack_require__(42);
 
 
@@ -44117,7 +44218,7 @@ NgbProgressbar.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbRatingModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__rating_config__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__rating__ = __webpack_require__(101);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_3__rating__["a"]; });
@@ -44150,8 +44251,8 @@ NgbRatingModule.ctorParameters = function () { return []; };
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbRating; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__rating_config__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(2);
 
 
 
@@ -44324,7 +44425,7 @@ NgbRating.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return NgbTabsetModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabset__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tabset_config__ = __webpack_require__(44);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return __WEBPACK_IMPORTED_MODULE_2__tabset__["d"]; });
@@ -44519,7 +44620,7 @@ NgbTabset.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return NgbTimepickerModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__timepicker__ = __webpack_require__(105);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__timepicker_config__ = __webpack_require__(45);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__timepicker__["a"]; });
@@ -44551,8 +44652,8 @@ NgbTimepickerModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbTimepicker; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ngb_time__ = __webpack_require__(155);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__timepicker_config__ = __webpack_require__(45);
 
@@ -44906,7 +45007,7 @@ NgbTooltip.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return NgbTypeaheadModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__highlight__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__typeahead_window__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__typeahead__ = __webpack_require__(110);
@@ -44951,7 +45052,7 @@ NgbTypeaheadModule.ctorParameters = function () { return []; };
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbHighlight; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(3);
 
 
 var NgbHighlight = (function () {
@@ -45003,7 +45104,7 @@ NgbHighlight.propDecorators = {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbTypeahead; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_let__ = __webpack_require__(156);
@@ -45017,7 +45118,7 @@ NgbHighlight.propDecorators = {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__util_positioning__ = __webpack_require__(18);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__typeahead_window__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__util_popup__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__util_util__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__typeahead_config__ = __webpack_require__(48);
 
 
@@ -45308,7 +45409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵResourceLoaderImpl", function() { return ResourceLoaderImpl; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_compiler__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(17);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -72010,7 +72111,7 @@ var ImportResolver = (function () {
 
 "use strict";
 
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var rxSubscriber_1 = __webpack_require__(24);
 var Observer_1 = __webpack_require__(52);
 function toSubscriber(nextOrObserver, error, complete) {
@@ -72232,7 +72333,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @ignore
@@ -72369,7 +72470,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Subject_1 = __webpack_require__(13);
 var Observable_1 = __webpack_require__(1);
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var Subscription_1 = __webpack_require__(12);
 /**
  * @class ConnectableObservable<T>
@@ -72584,12 +72685,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var platform_browser_1 = __webpack_require__(17);
 var http_1 = __webpack_require__(30);
 __webpack_require__(126);
 var app_1 = __webpack_require__(133);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var navigation_1 = __webpack_require__(134);
 var subscribecomponent_1 = __webpack_require__(135);
 var router_1 = __webpack_require__(7);
@@ -72605,6 +72706,7 @@ var sellvehicle_1 = __webpack_require__(166);
 var leadview_1 = __webpack_require__(167);
 var leaddetails_1 = __webpack_require__(168);
 var leadinfo_1 = __webpack_require__(169);
+var dealercontext_1 = __webpack_require__(170);
 var appRoutes = [
     //{path: '', redirectTo: 'home', pathMatch: 'full'},
     { path: 'home.html', component: homecomponent_1.HomeComponent },
@@ -72617,6 +72719,7 @@ var appRoutes = [
     { path: 'lead-view', component: leadview_1.LeadView },
     { path: 'leads', component: leadinfo_1.Leads },
     { path: 'lead-info', component: leaddetails_1.LeadInformation },
+    { path: 'login', component: dealercontext_1.DealerContext },
     { path: '**', component: homecomponent_1.HomeComponent }
 ];
 var AppModule = (function () {
@@ -72628,7 +72731,7 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, http_1.HttpModule, router_1.RouterModule.forRoot(appRoutes), ng_bootstrap_1.NgbModule.forRoot(), forms_1.ReactiveFormsModule],
         declarations: [app_1.AppComponent, navigation_1.navComponent, subscribecomponent_1.SubscribeComponent, homecomponent_1.HomeComponent, resources_1.ResourceComponent, addresource_1.AddResourceComponent, addinventory_1.AddInventoryComponent, inventory_1.InventoryComponent, leftpanel_1.leftPanelComponent,
-            sellvehicle_1.SellVehicleComponent, leadview_1.LeadView, leaddetails_1.LeadInformation, leadinfo_1.Leads
+            sellvehicle_1.SellVehicleComponent, leadview_1.LeadView, leaddetails_1.LeadInformation, leadinfo_1.Leads, dealercontext_1.DealerContext
         ],
         providers: [models_1.dealerLeads, dealerService_1.dealerservice, models_1.feature, models_1.shareService],
         bootstrap: [app_1.AppComponent]
@@ -72787,7 +72890,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var async_1 = __webpack_require__(128);
 /**
  * Emits a value from the source Observable only after a particular time span
@@ -73231,10 +73334,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
+var models_1 = __webpack_require__(4);
 var AppComponent = (function () {
-    function AppComponent() {
+    function AppComponent(shareservice) {
+        this.shareservice = shareservice;
+        this.shareservice = new models_1.shareService();
     }
     return AppComponent;
 }());
@@ -73242,7 +73351,8 @@ AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
         templateUrl: '/MyCarDomain/dealer/src/views/index.html'
-    })
+    }),
+    __metadata("design:paramtypes", [models_1.shareService])
 ], AppComponent);
 exports.AppComponent = AppComponent;
 //# sourceMappingURL=app.js.map
@@ -73300,11 +73410,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var servermodels_1 = __webpack_require__(61);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var SubscribeComponent = (function () {
     function SubscribeComponent(route, _service, formBuilder, router, shareservice) {
         //this.route
@@ -73345,7 +73455,6 @@ var SubscribeComponent = (function () {
         this.insVehicleList = [];
     }
     SubscribeComponent.prototype.ngOnInit = function () {
-        var _this = this;
         this.insVehicleList = [{ name: 'Cars', selected: false }, { name: 'Boats', selected: false }, { name: 'Bikes', selected: false }, { name: 'Caravan', selected: false }, { name: 'Commercial', selected: false }, { name: 'Agri', selected: false }];
         this.vehicleTypes = [{ name: 'Cars', selected: false }, { name: 'Bikes', selected: false }, { name: 'Boats', selected: false }, { name: 'Caravans', selected: false }, { name: 'Commercial Vehicle', selected: false }, { name: 'Sports Vehicle', selected: false }, { name: 'Agricultural Vehicle', selected: false }];
         this.basicInfoValidate();
@@ -73355,12 +73464,7 @@ var SubscribeComponent = (function () {
             this.setType(true);
             sessionStorage.removeItem('subscriptiontype');
         }
-        if (models_1.shareService.subscriptions.length) {
-            var l_subs = models_1.shareService.subscriptions.filter(function (p) { return p.subscriptionType == _this.subscriptionType; });
-            if (l_subs != undefined && l_subs.length > 0) {
-                this.setGroup(l_subs[0]);
-            }
-        }
+        this.setGroup();
         this.states = ["ACT", "NSW", "NT", "QLD", "SA", "TAS", "VIC", "WA"];
         this.getStates();
         this.getmakes();
@@ -73464,50 +73568,64 @@ var SubscribeComponent = (function () {
             })
         });
     };
-    SubscribeComponent.prototype.setGroup = function (dealer) {
-        this.basicGroup.patchValue({
-            basicInfo: dealer,
-            serviceM: dealer.vehicleDealerServMaintDetails != undefined ? dealer.vehicleDealerServMaintDetails : {},
-            transport: dealer.vehicleDealerTranspDetails != undefined ? dealer.vehicleDealerTranspDetails : {},
-            finance: dealer.vehicleDealerFinanceDetails != undefined ? dealer.vehicleDealerFinanceDetails : {},
-            insurance: dealer.vehicleDealerInsuranceDetails != undefined ? dealer.vehicleDealerInsuranceDetails : {}
-        });
-        this.dealerBasicInfo.subscription = dealer.subscription;
-        //this.selectedmodels = dealer.model;
-        if (dealer.vehicleDealerMakeList != undefined)
-            for (var i = 0; i < dealer.vehicleDealerMakeList.length; i++) {
-                this.selectedmakes.push(dealer.vehicleDealerMakeList[i].Make);
-            }
-        if (dealer.vehicleDealerRegion != undefined)
-            for (var i = 0; i < dealer.vehicleDealerRegion.length; i++) {
-                this.selectedregions.push(dealer.vehicleDealerRegion[i].region);
-            }
-        if (dealer.vehicleDealerPostCode != undefined)
-            for (var i = 0; i < dealer.vehicleDealerPostCode.length; i++) {
-                this.selectedpostcodes.push(dealer.vehicleDealerPostCode[i].postCode);
-            }
-        if (dealer.vehicleDealerAreaOfOperState != undefined)
-            for (var i = 0; i < dealer.vehicleDealerAreaOfOperState.length; i++) {
-                this.selectedstates.push(dealer.vehicleDealerAreaOfOperState[i].state);
-            }
-        if ((dealer.vehicleDealerFinanceDetails != undefined && dealer.vehicleDealerFinanceDetails[0].insVehicles != undefined) || (dealer.vehicleDealerInsuranceDetails != undefined && dealer.vehicleDealerInsuranceDetails[0].insVehicles != undefined)) {
-            for (var i = 0; i < this.insVehicleList.length; i++) {
-                var l_vhList = void 0;
-                if (dealer.subscriptionType == 'Finance')
-                    l_vhList = dealer.vehicleDealerFinanceDetails[0].insVehicles;
-                else if (dealer.subscriptionType == 'Insurance')
-                    l_vhList = dealer.vehicleDealerInsuranceDetails[0].insVehicles;
-                if (l_vhList.indexOf(this.insVehicleList[i].name) != -1)
-                    this.insVehicleList[i].selected = true;
-            }
+    SubscribeComponent.prototype.setGroup = function () {
+        if (models_1.shareService.p_dealer != undefined) {
+            var dealer_1 = this.setdata();
+            this.basicGroup.patchValue({
+                basicInfo: dealer_1,
+            });
+            this.subscription = dealer_1.subscription;
+            if (dealer_1.vehicleDealerMakeList != undefined)
+                for (var i = 0; i < dealer_1.vehicleDealerMakeList.length; i++) {
+                    this.selectedmakes.push(dealer_1.vehicleDealerMakeList[i].Make);
+                }
+            if (dealer_1.vehicleDealerRegion != undefined)
+                for (var i = 0; i < dealer_1.vehicleDealerRegion.length; i++) {
+                    this.selectedregions.push(dealer_1.vehicleDealerRegion[i].region);
+                }
+            if (dealer_1.vehicleDealerPostCode != undefined)
+                for (var i = 0; i < dealer_1.vehicleDealerPostCode.length; i++) {
+                    this.selectedpostcodes.push(dealer_1.vehicleDealerPostCode[i].postCode);
+                }
+            if (dealer_1.vehicleDealerAreaOfOperState != undefined)
+                for (var i = 0; i < dealer_1.vehicleDealerAreaOfOperState.length; i++) {
+                    this.selectedstates.push(dealer_1.vehicleDealerAreaOfOperState[i].state);
+                }
         }
-        //for (var i = 0; i < l_makes.length; i++) {
-        //    let make = this.selectedmakes;
-        //    if (make.indexOf(l_makes[i]) != -1)
-        //        this.makes.push({ name: l_makes[i], selected: true });
-        //    else
-        //        this.makes.push({ name: l_makes[i], selected: false });
+        //for (var i = 0; i < this.insVehicleList.length; i++) {
+        //    let l_vhList;
+        //    if (dealer.vehicleDealerFinanceDetails != undefined && dealer.vehicleDealerFinanceDetails.length && dealer.vehicleDealerFinanceDetails[0].insVehicles != undefined) {
+        //        l_vhList = dealer.vehicleDealerFinanceDetails[0].insVehicles;
+        //    }
+        //    if (dealer.vehicleDealerInsuranceDetails != undefined && dealer.vehicleDealerInsuranceDetails.length && dealer.vehicleDealerInsuranceDetails[0].insVehicles != undefined) {
+        //        l_vhList = dealer.vehicleDealerInsuranceDetails[0].insVehicles;
+        //    }
+        //    if (l_vhList != undefined && l_vhList.indexOf(this.insVehicleList[i].name) != -1)
+        //        this.insVehicleList[i].selected = true;
         //}
+    };
+    SubscribeComponent.prototype.setdata = function () {
+        try {
+            //let subList: any = ['BuyVehicle', 'SellVehicle', 'LeaseVehicle', 'Insurance', 'Finance', 'Servicemaintenance', 'Fuel', 'Sparesaccessories', 'Transport', 'Others'];
+            if (models_1.shareService.p_dealer.vehicleDealerDetails != undefined && models_1.shareService.p_dealer.vehicleDealerDetails != null) {
+                var l_unselected = void 0;
+                switch (this.subscriptionType) {
+                    case 'BuyVehicle':
+                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'BuyVehicle'; });
+                        return l_unselected.length ? l_unselected[0] : {};
+                    case 'SellVehicle':
+                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'SellVehicle'; });
+                        return l_unselected.length ? l_unselected[0] : {};
+                    case 'LeaseVehicle':
+                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'LeaseVehicle'; });
+                        return l_unselected.length ? l_unselected[0] : {};
+                }
+            }
+            else
+                return {};
+        }
+        catch (err) {
+        }
     };
     SubscribeComponent.prototype.getheaderno = function (subtype) {
         if (subtype == 'sub')
@@ -73757,56 +73875,75 @@ var SubscribeComponent = (function () {
         }
     };
     SubscribeComponent.prototype.setGroupSubscribe = function () {
-        var l_subs = this.dealerBasicInfo.subscription;
-        this.dealerBasicInfo = this.basicGroup['_value'].basicInfo;
-        this.dealerBasicInfo.subscription = l_subs;
-        if (this.isSM)
-            this.dealerBasicInfo.vehicleDealerServMaintDetails = this.basicGroup['_value'].serviceM;
-        if (this.isFinance) {
-            this.dealerBasicInfo.vehicleDealerFinanceDetails = [];
-            this.dealerBasicInfo.vehicleDealerFinanceDetails.push(this.basicGroup['_value'].finance);
-            this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles = [];
-            for (var i_1 = 0; i_1 < this.insVehicleList.length; i_1++) {
-                this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles.push(this.insVehicleList[i_1].name);
-            }
-        }
-        if (this.isInsurance) {
-            this.dealerBasicInfo.vehicleDealerInsuranceDetails = [];
-            this.dealerBasicInfo.vehicleDealerInsuranceDetails.push(this.basicGroup['_value'].insurance);
-            this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles = [];
-            for (var i_2 = 0; i_2 < this.insVehicleList.length; i_2++) {
-                this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles.push(this.insVehicleList[i_2].name);
-            }
-        }
-        //if (this.isTransport)
-        //    this.dealerBasicInfo.transport = this.transportGroup['_value'].transport;
+        if (models_1.shareService.p_dealer == undefined)
+            models_1.shareService.p_dealer = new servermodels_1.Dealer();
+        if (models_1.shareService.p_dealer.vehicleDealerDetails == undefined)
+            models_1.shareService.p_dealer.vehicleDealerDetails = [];
+        var l_subs = this.basicGroup['_value'].basicInfo;
+        l_subs.subscription = this.subscription;
+        l_subs.subscriptionType = this.subscriptionType;
         var l_postcodes = this.selectedpostcodes;
-        if (this.dealerBasicInfo.vehicleDealerPostCode == undefined)
-            this.dealerBasicInfo.vehicleDealerPostCode = [];
-        if (this.dealerBasicInfo.vehicleDealerAreaOfOperState == undefined)
-            this.dealerBasicInfo.vehicleDealerAreaOfOperState = [];
-        if (this.dealerBasicInfo.vehicleDealerRegion == undefined)
-            this.dealerBasicInfo.vehicleDealerRegion = [];
-        if (this.dealerBasicInfo.vehicleDealerMakeList == undefined)
-            this.dealerBasicInfo.vehicleDealerMakeList = [];
+        if (l_subs.vehicleDealerPostCode == undefined)
+            l_subs.vehicleDealerPostCode = [];
+        if (l_subs.vehicleDealerAreaOfOperState == undefined)
+            l_subs.vehicleDealerAreaOfOperState = [];
+        if (l_subs.vehicleDealerRegion == undefined)
+            l_subs.vehicleDealerRegion = [];
+        if (l_subs.vehicleDealerMakeList == undefined)
+            l_subs.vehicleDealerMakeList = [];
         for (var i = 0; i < l_postcodes.length; i++) {
-            this.dealerBasicInfo.vehicleDealerPostCode.push({ postCode: l_postcodes[i] });
+            l_subs.vehicleDealerPostCode.push({ postCode: l_postcodes[i] });
         }
         for (var i = 0; i < this.selectedstates.length; i++) {
-            this.dealerBasicInfo.vehicleDealerAreaOfOperState.push({ state: this.selectedstates[i] });
+            l_subs.vehicleDealerAreaOfOperState.push({ state: this.selectedstates[i] });
         }
         for (var i = 0; i < this.selectedregions.length; i++) {
-            this.dealerBasicInfo.vehicleDealerRegion.push({ region: this.selectedregions[i] });
+            l_subs.vehicleDealerRegion.push({ region: this.selectedregions[i] });
         }
         for (var i = 0; i < this.selectedmakes.length; i++) {
-            this.dealerBasicInfo.vehicleDealerMakeList.push({ Make: this.selectedmakes[i] });
+            l_subs.vehicleDealerMakeList.push({ Make: this.selectedmakes[i] });
         }
         //for (var i = 0; i < this.selectedmodels.length; i++) {
-        //    this.dealerBasicInfo.model.push(this.selectedmodels[i]);
+        //    l_subs.model.push(this.selectedmodels[i]);
         //}
-        this.dealerBasicInfo.subscriptionType = this.subscriptionType;
         this.setType(false);
-        this.dealerBasicInfo.financeEntity = null;
+        if (models_1.shareService.p_dealer.vehicleDealerDetails.length) {
+            var l_indx = void 0;
+            for (var i = 0; i < models_1.shareService.p_dealer.vehicleDealerDetails.length; i++) {
+                if (models_1.shareService.p_dealer.vehicleDealerDetails[i].subscriptionType == this.subscriptionType) {
+                    l_indx = i;
+                    break;
+                }
+            }
+            if (l_indx != undefined) {
+                models_1.shareService.p_dealer.vehicleDealerDetails.splice(l_indx, 1, l_subs);
+            }
+            else {
+                models_1.shareService.p_dealer.vehicleDealerDetails.push(l_subs);
+            }
+        }
+        else
+            models_1.shareService.p_dealer.vehicleDealerDetails.push(l_subs);
+        //if (this.isSM)
+        //    this.dealerBasicInfo.vehicleDealerServMaintDetails = this.basicGroup['_value'].serviceM;
+        //if (this.isFinance) {
+        //    this.dealerBasicInfo.vehicleDealerFinanceDetails = [];
+        //    this.dealerBasicInfo.vehicleDealerFinanceDetails.push(this.basicGroup['_value'].finance);
+        //    this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles = [];
+        //    for (let i = 0; i < this.insVehicleList.length; i++) {
+        //        this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles.push(this.insVehicleList[i].name);
+        //    }
+        //}
+        //if (this.isInsurance) {
+        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails = [];
+        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails.push(this.basicGroup['_value'].insurance);
+        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles = [];
+        //    for (let i = 0; i < this.insVehicleList.length; i++) {
+        //        this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles.push(this.insVehicleList[i].name);
+        //    }
+        //}
+        //if (this.isTransport)
+        //    this.dealerBasicInfo.transport = this.transportGroup['_value'].transport;
     };
     SubscribeComponent.prototype.setType = function (isLoad) {
         var type = this.subscriptionType;
@@ -73873,28 +74010,9 @@ var SubscribeComponent = (function () {
         var _this = this;
         try {
             this.setGroupSubscribe();
-            //if (shareService.subscriptions != undefined && shareService.subscriptions.length) {
-            //    let l_indx: any;
-            //    for (var i = 0; i < shareService.subscriptions.length; i++) {
-            //        if (shareService.subscriptions[i].subscriptionType == this.subscriptionType) {
-            //            l_indx = i;
-            //            break;
-            //        }
-            //    }
-            //    if (l_indx != undefined) {
-            //        shareService.subscriptions.splice(l_indx, 1, this.dealerBasicInfo);
-            //    }
-            //    else {
-            //        shareService.subscriptions.push(this.dealerBasicInfo);
-            //    }
-            //}
-            //else
-            //    shareService.subscriptions.push(this.dealerBasicInfo);
-            //return;
-            this._service.savesubscription(this.dealerBasicInfo).subscribe(function (data) {
+            this._service.savesubscription(models_1.shareService.p_dealer).subscribe(function (data) {
                 if (data != undefined) {
                     var l_response = JSON.parse(data['_body']);
-                    models_1.shareService.subscriptions.push(l_response);
                     _this.router.navigate(['/home']);
                 }
             }, function (err) {
@@ -74379,7 +74497,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var Notification_1 = __webpack_require__(141);
 /**
  * @see {@link Notification}
@@ -74679,7 +74797,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /**
  * Returns an Observable that emits whether or not every item of the source satisfies the condition specified.
  * @param {function} predicate a function for determining if an item meets a specified condition.
@@ -74753,7 +74871,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var EmptyError_1 = __webpack_require__(31);
 /**
  * Emits only the first value (or the first value that meets some condition)
@@ -74911,7 +75029,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /* tslint:disable:max-line-length */
 /**
  * Applies an accumulator function over the source Observable, and returns the
@@ -75174,7 +75292,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 var EmptyError_1 = __webpack_require__(31);
 /* tslint:disable:max-line-length */
 /**
@@ -75305,7 +75423,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var router_1 = __webpack_require__(7);
 var HomeComponent = (function () {
     function HomeComponent(router, shareservice) {
@@ -75313,24 +75431,45 @@ var HomeComponent = (function () {
         this.shareservice = shareservice;
         this.offerings = [];
         this.leads = [];
-        this.shareservice = new models_1.shareService();
+        this.isLoggedIn = false;
+        //this.shareservice = new shareService();
         this.shareservice.defaultSubs = new models_1.subscription();
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.setOfferings();
         this.setLeads();
-        //let indx = this.selectedpostcodes.findIndex(p => p.name === postcode.name);
-        for (var i = 0; i < this.offerings.length; i++) {
-            var l_vehicles = models_1.shareService.subscriptions.filter(function (p) { return p.subscriptionType == _this.offerings[i].type; });
-            if (l_vehicles != undefined && l_vehicles.length > 0)
-                this.offerings[i].isSubscribed = true;
-            //this.offerings[i].count = 
+        var l_dealerId = models_1.UIStorage.getCookie('dealerId');
+        if (l_dealerId != undefined && l_dealerId != null) {
+            this.isLoggedIn = true;
+            if (models_1.shareService.p_dealer != undefined && models_1.shareService.p_dealer != null && models_1.shareService.p_dealer.vehicleDealerDetails != undefined && models_1.shareService.p_dealer.vehicleDealerDetails != null) {
+                for (var i = 0; i < this.offerings.length; i++) {
+                    var l_vehicles = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == _this.offerings[i].type; });
+                    if (l_vehicles != undefined && l_vehicles.length > 0)
+                        this.offerings[i].isSubscribed = true;
+                    //if (shareService.p_dealer.vehicleDealerFinanceDetails != null && shareService.p_dealer.vehicleDealerFinanceDetails != undefined && shareService.p_dealer.vehicleDealerFinanceDetails.length && this.offerings[i].type == 'Finance')
+                    //    this.offerings[i].isSubscribed = true;
+                    //if (shareService.p_dealer.vehicleDealerInsuranceDetails != null && shareService.p_dealer.vehicleDealerInsuranceDetails != undefined && shareService.p_dealer.vehicleDealerInsuranceDetails.length && this.offerings[i].type == 'Insurance')
+                    //    this.offerings[i].isSubscribed = true;
+                    //if (shareService.p_dealer.vehicleDealerServMaintDetails != null && shareService.p_dealer.vehicleDealerServMaintDetails != undefined && shareService.p_dealer.vehicleDealerServMaintDetails.length && this.offerings[i].type == 'Servicemaintenance')
+                    //    this.offerings[i].isSubscribed = true;
+                    //if (shareService.p_dealer.vehicleDealerTranspDetails != null && shareService.p_dealer.vehicleDealerTranspDetails != undefined && shareService.p_dealer.vehicleDealerTranspDetails.length && this.offerings[i].type == 'v')
+                    //    this.offerings[i].isSubscribed = true;
+                }
+            }
+            else {
+                this.isLoggedIn = false;
+            }
         }
+        //let indx = this.selectedpostcodes.findIndex(p => p.name === postcode.name);
     };
     HomeComponent.prototype.subscribe = function (item) {
         sessionStorage.setItem('subscriptiontype', item.type);
-        this.router.navigate(['/subscribe']);
+        var l_dealerId = models_1.UIStorage.getCookie('dealerId');
+        if (l_dealerId != undefined && l_dealerId != null)
+            this.router.navigate(['/subscribe']);
+        else
+            this.router.navigate(['/login']);
     };
     HomeComponent.prototype.setOfferings = function () {
         this.offerings.push(this.offering('SellVehicle', 'Sell Vehicle', false, 0, 0, 'Total Leads', 'Value', false, 'images/sell_vehicle.jpg', 'flaticon-car-steering-wheel', true));
@@ -75339,7 +75478,7 @@ var HomeComponent = (function () {
         this.offerings.push(this.offering('Insurance', 'Insurance', false, 0, 0, 'Total Leads', 'Value', false, 'images/car_insurance.jpg', 'flaticon-umbrella', true));
         this.offerings.push(this.offering('Finance', 'Finance', false, 0, 0, 'Total Leads', 'Value', false, 'images/car-finance.jpg', 'flaticon-money-bag-with-dollar-symbol', true));
         this.offerings.push(this.offering('Servicemaintenance', 'Service & Maintenance', false, 0, 0, 'Total Leads', 'Value', false, 'images/service_maintenance.jpg', 'flaticon-work-tools-cross', true));
-        this.offerings.push(this.offering('Transport', 'Transport', false, 0, 0, 'Total Leads', 'Value', false, 'images/service_maintenance.jpg', 'flaticon-work-tools-cross', true));
+        this.offerings.push(this.offering('c', 'Transport', false, 0, 0, 'Total Leads', 'Value', false, 'images/service_maintenance.jpg', 'flaticon-work-tools-cross', true));
         this.offerings.push(this.offering('Fuel', 'Fuel', false, 0, 0, 'Total Leads', 'Value', false, 'images/fuel_cards.jpg', 'flaticon-money-bag-with-dollar-symbol', false));
         this.offerings.push(this.offering('Sparesaccessories', 'Spares & Accessories', false, 0, 0, 'Total Leads', 'Value', false, 'images/spares.jpg', 'flaticon-money-bag-with-dollar-symbol', false));
         //this.offerings.push(this.offering('Others', 'Others', false, 0, 0, 'Total Leads', 'Value', false, 'images/miscellaneous.jpg', 'flaticon-money-bag-with-dollar-symbol'));
@@ -75554,7 +75693,7 @@ NgbModule.ctorParameters = function () { return []; };
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__datepicker_service__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngb_calendar__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_util__ = __webpack_require__(3);
 
 
 
@@ -75796,7 +75935,7 @@ NgbCalendarIslamicCivil.ctorParameters = function () { return []; };
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbCalendarHijri; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ngb_calendar__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(3);
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -75877,7 +76016,7 @@ NgbCalendarHijri.ctorParameters = function () { return []; };
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return NgbTime; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(3);
 
 var NgbTime = (function () {
     function NgbTime(hour, minute, second) {
@@ -75962,7 +76101,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var Subscriber_1 = __webpack_require__(4);
+var Subscriber_1 = __webpack_require__(5);
 /* tslint:disable:max-line-length */
 /**
  * Perform a side effect for every emission on the source Observable, but return
@@ -76389,7 +76528,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
 var ResourceComponent = (function () {
@@ -76485,10 +76624,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var AddResourceComponent = (function () {
     function AddResourceComponent(route, _service, formBuilder, router, shareservice) {
         this.route = route;
@@ -76665,10 +76804,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var AddInventoryComponent = (function () {
     function AddInventoryComponent(route, _service, formBuilder, router, shareservice) {
         this.route = route;
@@ -76928,7 +77067,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
 var InventoryComponent = (function () {
@@ -77038,7 +77177,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
 var leftPanelComponent = (function () {
@@ -77088,10 +77227,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var SellVehicleComponent = (function () {
     function SellVehicleComponent(route, _service, formBuilder, router, shareservice) {
         this.route = route;
@@ -77337,7 +77476,7 @@ var SellVehicleComponent = (function () {
 SellVehicleComponent = __decorate([
     core_1.Component({
         selector: 'add-inventory',
-        templateUrl: '/MyCarDomain/dealer/src/views/sellInventory.html'
+        templateUrl: '/MyCarDomain/dealer/src/views/sellinventory.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], SellVehicleComponent);
@@ -77361,10 +77500,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var LeadView = (function () {
     function LeadView(route, _service, formBuilder, router, shareservice) {
         //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
@@ -77444,10 +77583,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var LeadInformation = (function () {
     function LeadInformation(route, _service, formBuilder, router, shareservice) {
         //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
@@ -77504,10 +77643,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
-var models_1 = __webpack_require__(6);
+var models_1 = __webpack_require__(4);
 var dealerService_1 = __webpack_require__(8);
 var router_1 = __webpack_require__(7);
-var forms_1 = __webpack_require__(3);
+var forms_1 = __webpack_require__(2);
 var Leads = (function () {
     function Leads(route, _service, formBuilder, router, shareservice) {
         //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
@@ -77583,6 +77722,156 @@ Leads = __decorate([
 ], Leads);
 exports.Leads = Leads;
 //# sourceMappingURL=leadinfo.js.map
+
+/***/ }),
+/* 170 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__(0);
+var models_1 = __webpack_require__(4);
+var dealerService_1 = __webpack_require__(8);
+var router_1 = __webpack_require__(7);
+var forms_1 = __webpack_require__(2);
+var DealerContext = (function () {
+    function DealerContext(route, _service, formBuilder, router, shareservice) {
+        //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
+        this.route = route;
+        this._service = _service;
+        this.formBuilder = formBuilder;
+        this.router = router;
+        this.shareservice = shareservice;
+        this.isinsign = true;
+    }
+    DealerContext.prototype.ngOnInit = function () {
+        this.formValidation();
+    };
+    DealerContext.prototype.formValidation = function () {
+        this.loginGroup = this.formBuilder.group({
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]]
+        }); //, { validator: this.validatePriceRange }   Validators.compose([Validators.required, this.checkIfA])
+        this.registerGroup = this.formBuilder.group({
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]],
+            password: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]],
+            confmPassword: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]],
+            firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
+            lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]]
+        }), { validator: this.pwdcheck };
+        this.forgotGroup = this.formBuilder.group({
+            email: ['', [forms_1.Validators.required, forms_1.Validators.email]]
+        });
+    };
+    DealerContext.prototype.pwdcheck = function (formgroup) {
+        return (formgroup.controls["password"].value !== formgroup.controls["confmPassword"].value)
+            ? true : null;
+    };
+    DealerContext.prototype.showforgot = function () {
+        this.forgotGroup.enable();
+        this.registerGroup.disable();
+        this.loginGroup.disable();
+        this.isforgot = true;
+    };
+    DealerContext.prototype.showlogin = function () {
+        this.forgotGroup.disable();
+        this.registerGroup.disable();
+        this.loginGroup.enable();
+        this.isinsign = true;
+        this.isforgot = false;
+    };
+    DealerContext.prototype.showsignup = function () {
+        this.forgotGroup.disable();
+        this.registerGroup.enable();
+        this.loginGroup.disable();
+        this.isinsign = false;
+        this.isforgot = false;
+    };
+    DealerContext.prototype.createDealerContext = function () {
+        var _this = this;
+        try {
+            var l_dealer = this.registerGroup.value;
+            this._service.createDealerContext(l_dealer).subscribe(function (data) {
+                if (data != undefined) {
+                    var l_response = JSON.parse(data['_body']);
+                    models_1.shareService.p_dealer = l_response;
+                    models_1.UIStorage.setCookie('dealerId', l_response.dealerId);
+                    var type = sessionStorage.getItem('subscriptiontype');
+                    _this.shareservice.isLoggedIn = true;
+                    if (type != undefined && type != null)
+                        _this.router.navigate(['/subscribe']);
+                    else
+                        _this.router.navigate(['/home']);
+                }
+            }, function (err) {
+                console.log(err);
+            });
+        }
+        catch (err) {
+            this.message = err;
+        }
+    };
+    DealerContext.prototype.validateDealerContext = function () {
+        var _this = this;
+        try {
+            var l_dealer = this.loginGroup.value;
+            this._service.validateDealerContext(l_dealer).subscribe(function (data) {
+                if (data != undefined) {
+                    var l_response = JSON.parse(data['_body']);
+                    models_1.shareService.p_dealer = l_response;
+                    models_1.UIStorage.setCookie('dealerId', l_response.dealerId);
+                    var type = sessionStorage.getItem('subscriptiontype');
+                    _this.shareservice.isLoggedIn = true;
+                    if (type != undefined && type != null)
+                        _this.router.navigate(['/subscribe']);
+                    else
+                        _this.router.navigate(['/home']);
+                }
+            }, function (err) {
+                _this.message = err;
+            });
+        }
+        catch (err) {
+            this.message = err;
+        }
+    };
+    DealerContext.prototype.sendContext = function () {
+        var _this = this;
+        try {
+            this._service.sendContext('dealerId').subscribe(function (data) {
+                if (data != undefined) {
+                    var l_response = JSON.parse(data['_body']);
+                    _this.message = 'Password is sent to your registered email';
+                }
+            }, function (err) {
+                _this.message = err;
+            });
+        }
+        catch (err) {
+            this.message = err;
+        }
+    };
+    return DealerContext;
+}());
+DealerContext = __decorate([
+    core_1.Component({
+        selector: 'login',
+        templateUrl: '/MyCarDomain/dealer/src/views/login.html'
+    }),
+    __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
+], DealerContext);
+exports.DealerContext = DealerContext;
+//# sourceMappingURL=dealercontext.js.map
 
 /***/ })
 /******/ ]);

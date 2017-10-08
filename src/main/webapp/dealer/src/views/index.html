@@ -3,10 +3,10 @@
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <a class="navbar-brand" href="/MyCarDomain/dealer/src/home.html">AutoScoop</a>
+                <a class="navbar-brand" routerLink="/home" routerLinkActive="active"></a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                <div class="profile">
-                    <img src="images/profile.jpg"> <span>hi! Jackson</span><span class="caret"></span>
+                <div class="profile" *ngIf="isLoggedIn">
+                    <img src="images/profile.jpg"> <span>hi! {{shareservice.userName}}</span><span class="caret"></span>
                     <ul class="Dropdown" *ngIf="isProfile">
                         <li><a href="javascript:void()">Subscription Details</a></li>
                         <li><a href="javascript:void()">Area of Operations</a></li>
@@ -16,6 +16,9 @@
                         <li><a href="javascript:void()">Loyal Details</a></li>
                         <li><a href="javascript:void()">Logout</a></li>
                     </ul>
+                </div>
+                <div class="profile" *ngIf="isLoggedIn">
+                    <span><a routerLink="/login" routerLinkActive="active" class="btn btn-primary Login" style="background-color:#ff4e00;">Sign In/Sign Up</a></span>
                 </div>
                 <div class="collapse navbar-collapse" id="defaultNavbar1">
                     <ul class="nav navbar-nav navbar-right">
