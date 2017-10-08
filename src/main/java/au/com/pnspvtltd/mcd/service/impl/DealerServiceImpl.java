@@ -35,6 +35,7 @@ import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
@@ -59,6 +60,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
@@ -70,6 +72,7 @@ import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSvLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerTpLdAdminVO;
+import au.com.pnspvtltd.mcd.web.model.ExternalDealerFinVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -77,6 +80,7 @@ import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 @Service
@@ -703,5 +707,20 @@ public class DealerServiceImpl implements DealerService {
 		// TODO Auto-generated method stub
 		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email), true);
 		
+	}
+
+	@Override
+	public DealerSubscriptionSBLVO createVehicleDealerSBL(DealerSubscriptionSBLVO dealerVO) {
+		// TODO Auto-generated method stub
+		Dealer dealer = dealerRepository.getDealerForID(dealerVO.getDealerId());
+		List<VehicleDealerDetailsVO> vehicleDealerDetailsVO = dealerVO.getVehicleDealerDetails();
+		List<VehicleDealerDetails> vehicleDealerDetailsList = new ArrayList<VehicleDealerDetails>();
+		for (VehicleDealerDetailsVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			VehicleDealerDetails vehicleDealerDetails = domainModelUtil.toDealerSBL(vehicleDealerDetailsVO1);
+			vehicleDealerDetailsList.add(vehicleDealerDetails);
+		}
+		dealer.setVehicleDealerDetails(vehicleDealerDetailsList);
+		dealerRepository.saveAndFlush(dealer);
+		return dealerVO;
 	}
 }

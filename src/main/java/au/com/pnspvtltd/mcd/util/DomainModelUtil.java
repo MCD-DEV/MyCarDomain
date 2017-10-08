@@ -83,6 +83,9 @@ import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
 import au.com.pnspvtltd.mcd.domain.ValTransPoints;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperPostCode;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperRegion;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperState;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
@@ -92,6 +95,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -170,6 +174,9 @@ import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperPostCodeVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperRegionVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperStateVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperPostCodeVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperRegionVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperStateVO;
@@ -179,6 +186,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerMakeListhVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleMakeListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
 
@@ -1783,7 +1791,65 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	// end login dealer
 	
 	
-	
+	// start of SBL
+	public VehicleDealerDetails toDealerSBL(final VehicleDealerDetailsVO dealerVO) {
+		VehicleDealerDetails dealer = new VehicleDealerDetails();
+		try {
+
+
+			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+					new String[] { "vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+			
+			if( dealerVO.getVehicleDealerMakeList() != null){
+			List<VehicleMakeList> vehicleDealerMakeLists = new ArrayList<>();
+			for (VehicleMakeListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
+				VehicleMakeList vehicleDealerMakeList = new VehicleMakeList();
+				BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+				vehicleDealerMakeLists.add(vehicleDealerMakeList);
+			}
+			dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
+			}
+			if( dealerVO.getVehicleDealerAreaOfOperState() != null){
+			List<VehicleAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
+			for (VehicleAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerAreaOfOperState()) {
+				VehicleAreaOfOperState vehicleDealerAreaOfOperState = new VehicleAreaOfOperState();
+				BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
+				vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+			}
+			dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
+			}
+			
+			if( dealerVO.getVehicleDealerRegion() != null){
+			List<VehicleAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
+			for (VehicleAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO.getVehicleDealerRegion()) {
+				VehicleAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleAreaOfOperRegion();
+				BeanUtils.copyProperties(vehicleDealerAreaOfOperRegion, vehicleDealerAreaOfOperRegionVO);
+				vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
+			}
+			dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
+			}
+			
+			
+			if( dealerVO.getVehicleDealerPostCode() != null){
+			List<VehicleAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
+			for (VehicleAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerPostCode()) {
+				VehicleAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleAreaOfOperPostCode();
+				BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
+				vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
+			}
+			dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
+			}
+		
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealer;
+	}
+	// end of SBL
 	
 	
 	public Dealer toDealer(final DealerVO dealerVO) {

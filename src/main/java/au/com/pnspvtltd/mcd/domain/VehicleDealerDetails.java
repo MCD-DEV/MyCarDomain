@@ -62,6 +62,217 @@ import javax.persistence.Table;
 	private boolean isFlex14;
 		
 	
+	private String licenceNumber;
+	 private String dealerGroupName;
+	 private String designation;
+	 private String additionalInfo;
+	 private String subscription;
+	 private String subscriptionType;
+	private String ABNNumber;
+	 private String dealername;
+	 private String website;
+	 private String delmobile;
+	 private String landLine1;
+	 private String contactNumber2;
+	 private String streetNumber;
+	 private String streetName;
+	 private String areaName;
+	 private String suborb;
+	 private String state;
+	 private int postcode;
+	
+	 List<VehicleMakeList> vehicleDealerMakeList;
+	 List<VehicleAreaOfOperState> vehicleDealerAreaOfOperState;
+	 List<VehicleAreaOfOperRegion> vehicleDealerRegion;
+	 List<VehicleAreaOfOperPostCode> vehicleDealerPostCode;
+	 
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
+	public String getDealerGroupName() {
+		return dealerGroupName;
+	}
+
+	public void setDealerGroupName(String dealerGroupName) {
+		this.dealerGroupName = dealerGroupName;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
+	public String getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(String subscription) {
+		this.subscription = subscription;
+	}
+
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
+	}
+
+	public String getABNNumber() {
+		return ABNNumber;
+	}
+
+	public void setABNNumber(String aBNNumber) {
+		ABNNumber = aBNNumber;
+	}
+
+	public String getDealername() {
+		return dealername;
+	}
+
+	public void setDealername(String dealername) {
+		this.dealername = dealername;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	
+
+	public String getDelmobile() {
+		return delmobile;
+	}
+
+	public void setDelmobile(String delmobile) {
+		this.delmobile = delmobile;
+	}
+
+	public String getLandLine1() {
+		return landLine1;
+	}
+
+	public void setLandLine1(String landLine1) {
+		this.landLine1 = landLine1;
+	}
+
+	public String getContactNumber2() {
+		return contactNumber2;
+	}
+
+	public void setContactNumber2(String contactNumber2) {
+		this.contactNumber2 = contactNumber2;
+	}
+
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+	public String getSuborb() {
+		return suborb;
+	}
+
+	public void setSuborb(String suborb) {
+		this.suborb = suborb;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(int postcode) {
+		this.postcode = postcode;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerDetailId")
+	public List<VehicleMakeList> getVehicleDealerMakeList() {
+		return vehicleDealerMakeList;
+	}
+
+	public void setVehicleDealerMakeList(
+			List<VehicleMakeList> vehicleDealerMakeList) {
+		this.vehicleDealerMakeList = vehicleDealerMakeList;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerDetailId")
+	public List<VehicleAreaOfOperState> getVehicleDealerAreaOfOperState() {
+		return vehicleDealerAreaOfOperState;
+	}
+
+	public void setVehicleDealerAreaOfOperState(
+			List<VehicleAreaOfOperState> vehicleDealerAreaOfOperState) {
+		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerDetailId")
+	public List<VehicleAreaOfOperRegion> getVehicleDealerRegion() {
+		return vehicleDealerRegion;
+	}
+
+	public void setVehicleDealerRegion(
+			List<VehicleAreaOfOperRegion> vehicleDealerRegion) {
+		this.vehicleDealerRegion = vehicleDealerRegion;
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerDetailId")
+	public List<VehicleAreaOfOperPostCode> getVehicleDealerPostCode() {
+		return vehicleDealerPostCode;
+	}
+
+	public void setVehicleDealerPostCode(
+			List<VehicleAreaOfOperPostCode> vehicleDealerPostCode) {
+		this.vehicleDealerPostCode = vehicleDealerPostCode;
+	}
+
 	@Column(name = "FLEX1") public String getFlex1() {
 		return flex1;
 	}

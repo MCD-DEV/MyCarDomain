@@ -64,6 +64,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
@@ -762,5 +763,17 @@ public class DealerController {
 		return new ResponseEntity<>(externalDealerVO, status);
 		
 	}
+	
+	/*Subscription Starts*/
+	@PostMapping(value = "dealer/SubscribeSBL", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerSubscriptionSBLVO createVehicleDealerSBL(@RequestBody DealerSubscriptionSBLVO dealerSubscriptionSBLVO, HttpServletResponse response) {
+		LOGGER.debug("External Dealer Creation for Sv", dealerSubscriptionSBLVO.getDealerId());
+		DealerSubscriptionSBLVO createdDealer = dealerService.createVehicleDealerSBL(dealerSubscriptionSBLVO);
+		response.setStatus(HttpStatus.CREATED.value());
+		return createdDealer;
+		//createdDealer   dealerService.findById(createdDealer.getDealerId());
+	}
+	
+	
 	
 }

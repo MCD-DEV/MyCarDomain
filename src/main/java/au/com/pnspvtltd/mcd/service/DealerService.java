@@ -14,6 +14,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerInsLdAdminVO;
@@ -74,4 +75,6 @@ public interface DealerService {
 	AdminVerifyVO getExistStatus(Long eBidId);
 
 	DealerVO findByEmailIgnoreCase(String email);
+
+	DealerSubscriptionSBLVO createVehicleDealerSBL(DealerSubscriptionSBLVO dealerVO);
 }

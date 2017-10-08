@@ -1,11 +1,16 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperPostCode;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperRegion;
+import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperState;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
+import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 
 public class VehicleDealerDetailsVO {
 
@@ -39,6 +44,213 @@ public class VehicleDealerDetailsVO {
 	private boolean isFlex14;
 		
 	
+	private String licenceNumber;
+	 private String dealerGroupName;
+	 private String designation;
+	 private String additionalInfo;
+	 private String subscription;
+	 private String subscriptionType;
+	private String ABNNumber;
+	 private String dealername;
+	 private String website;
+	 private String delmobile;
+	 private String landLine1;
+	 private String contactNumber2;
+	 private String streetNumber;
+	 private String streetName;
+	 private String areaName;
+	 private String suborb;
+	 private String state;
+	 private int postcode;
+	
+	 List<VehicleMakeListVO> vehicleDealerMakeList;
+	 List<VehicleAreaOfOperStateVO> vehicleDealerAreaOfOperState;
+	 List<VehicleAreaOfOperRegionVO> vehicleDealerRegion;
+	 List<VehicleAreaOfOperPostCodeVO> vehicleDealerPostCode;
+	
+	 
+	 
+	
+
+	public List<VehicleMakeListVO> getVehicleDealerMakeList() {
+		return vehicleDealerMakeList;
+	}
+
+	public void setVehicleDealerMakeList(List<VehicleMakeListVO> vehicleDealerMakeList) {
+		this.vehicleDealerMakeList = vehicleDealerMakeList;
+	}
+
+	public List<VehicleAreaOfOperStateVO> getVehicleDealerAreaOfOperState() {
+		return vehicleDealerAreaOfOperState;
+	}
+
+	public void setVehicleDealerAreaOfOperState(List<VehicleAreaOfOperStateVO> vehicleDealerAreaOfOperState) {
+		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
+	}
+
+	public List<VehicleAreaOfOperRegionVO> getVehicleDealerRegion() {
+		return vehicleDealerRegion;
+	}
+
+	public void setVehicleDealerRegion(List<VehicleAreaOfOperRegionVO> vehicleDealerRegion) {
+		this.vehicleDealerRegion = vehicleDealerRegion;
+	}
+
+	public List<VehicleAreaOfOperPostCodeVO> getVehicleDealerPostCode() {
+		return vehicleDealerPostCode;
+	}
+
+	public void setVehicleDealerPostCode(List<VehicleAreaOfOperPostCodeVO> vehicleDealerPostCode) {
+		this.vehicleDealerPostCode = vehicleDealerPostCode;
+	}
+
+	public String getLicenceNumber() {
+		return licenceNumber;
+	}
+
+	public void setLicenceNumber(String licenceNumber) {
+		this.licenceNumber = licenceNumber;
+	}
+
+	public String getDealerGroupName() {
+		return dealerGroupName;
+	}
+
+	public void setDealerGroupName(String dealerGroupName) {
+		this.dealerGroupName = dealerGroupName;
+	}
+
+	public String getDesignation() {
+		return designation;
+	}
+
+	public void setDesignation(String designation) {
+		this.designation = designation;
+	}
+
+	public String getAdditionalInfo() {
+		return additionalInfo;
+	}
+
+	public void setAdditionalInfo(String additionalInfo) {
+		this.additionalInfo = additionalInfo;
+	}
+
+	public String getSubscription() {
+		return subscription;
+	}
+
+	public void setSubscription(String subscription) {
+		this.subscription = subscription;
+	}
+
+	public String getSubscriptionType() {
+		return subscriptionType;
+	}
+
+	public void setSubscriptionType(String subscriptionType) {
+		this.subscriptionType = subscriptionType;
+	}
+
+	public String getABNNumber() {
+		return ABNNumber;
+	}
+
+	public void setABNNumber(String aBNNumber) {
+		ABNNumber = aBNNumber;
+	}
+
+	public String getDealername() {
+		return dealername;
+	}
+
+	public void setDealername(String dealername) {
+		this.dealername = dealername;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+
+	public String getDelmobile() {
+		return delmobile;
+	}
+
+	public void setDelmobile(String delmobile) {
+		this.delmobile = delmobile;
+	}
+
+	public String getLandLine1() {
+		return landLine1;
+	}
+
+	public void setLandLine1(String landLine1) {
+		this.landLine1 = landLine1;
+	}
+
+	public String getContactNumber2() {
+		return contactNumber2;
+	}
+
+	public void setContactNumber2(String contactNumber2) {
+		this.contactNumber2 = contactNumber2;
+	}
+
+	public String getStreetNumber() {
+		return streetNumber;
+	}
+
+	public void setStreetNumber(String streetNumber) {
+		this.streetNumber = streetNumber;
+	}
+
+	public String getStreetName() {
+		return streetName;
+	}
+
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+
+	public String getSuborb() {
+		return suborb;
+	}
+
+	public void setSuborb(String suborb) {
+		this.suborb = suborb;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public int getPostcode() {
+		return postcode;
+	}
+
+	public void setPostcode(int postcode) {
+		this.postcode = postcode;
+	}
+
+	
+
 	public String getFlex1() {
 		return flex1;
 	}
