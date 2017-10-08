@@ -154,7 +154,7 @@ public class DealerController {
 		HttpStatus status = HttpStatus.OK;
 		DealerVO createdDealer;
 		createdDealer = dealerService.findByEmailIgnoreCase(adminAutoVO.getEmail());
-		if(createdDealer.getEmail() == null){
+		if(createdDealer == null){
 			createdDealer = dealerService.createDealerLogin(adminAutoVO);
 		}
 		else{
