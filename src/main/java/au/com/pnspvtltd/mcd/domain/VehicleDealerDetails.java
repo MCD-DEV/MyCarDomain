@@ -80,12 +80,170 @@ import javax.persistence.Table;
 	 private String suborb;
 	 private String state;
 	 private int postcode;
+	 
+	 // finance and insurance
+	 private String afslNo;
+		private String authRepNo;
+		private String aclNo;
+		private String brokerLicenceNo;
+		
+		private String contactPerson;
+		private String email;
+		private Date dob;
+		private String lastName;
+		private String title;
+		private boolean comprehensive;
+		private boolean thirdParty;
+		private boolean thirdProperty;
+		private boolean individual;
+		private boolean licensedBroker;
+		private boolean insuranceInstitute;
+		private boolean loanNewVeh;
+		private boolean loanUsedVeh;
+	 // end of finance and insurance
 	
 	 List<VehicleMakeList> vehicleDealerMakeList;
 	 List<VehicleAreaOfOperState> vehicleDealerAreaOfOperState;
 	 List<VehicleAreaOfOperRegion> vehicleDealerRegion;
 	 List<VehicleAreaOfOperPostCode> vehicleDealerPostCode;
 	 
+	public boolean isComprehensive() {
+		return comprehensive;
+	}
+
+	public void setComprehensive(boolean comprehensive) {
+		this.comprehensive = comprehensive;
+	}
+
+	public boolean isThirdParty() {
+		return thirdParty;
+	}
+
+	public void setThirdParty(boolean thirdParty) {
+		this.thirdParty = thirdParty;
+	}
+
+	public boolean isThirdProperty() {
+		return thirdProperty;
+	}
+
+	public void setThirdProperty(boolean thirdProperty) {
+		this.thirdProperty = thirdProperty;
+	}
+
+	public boolean isIndividual() {
+		return individual;
+	}
+
+	public void setIndividual(boolean individual) {
+		this.individual = individual;
+	}
+
+	public boolean isLicensedBroker() {
+		return licensedBroker;
+	}
+
+	public void setLicensedBroker(boolean licensedBroker) {
+		this.licensedBroker = licensedBroker;
+	}
+
+	public boolean isInsuranceInstitute() {
+		return insuranceInstitute;
+	}
+
+	public void setInsuranceInstitute(boolean insuranceInstitute) {
+		this.insuranceInstitute = insuranceInstitute;
+	}
+
+	public boolean isLoanNewVeh() {
+		return loanNewVeh;
+	}
+
+	public void setLoanNewVeh(boolean loanNewVeh) {
+		this.loanNewVeh = loanNewVeh;
+	}
+
+	public boolean isLoanUsedVeh() {
+		return loanUsedVeh;
+	}
+
+	public void setLoanUsedVeh(boolean loanUsedVeh) {
+		this.loanUsedVeh = loanUsedVeh;
+	}
+
+	public String getAfslNo() {
+		return afslNo;
+	}
+
+	public void setAfslNo(String afslNo) {
+		this.afslNo = afslNo;
+	}
+
+	public String getAuthRepNo() {
+		return authRepNo;
+	}
+
+	public void setAuthRepNo(String authRepNo) {
+		this.authRepNo = authRepNo;
+	}
+
+	public String getAclNo() {
+		return aclNo;
+	}
+
+	public void setAclNo(String aclNo) {
+		this.aclNo = aclNo;
+	}
+
+	public String getBrokerLicenceNo() {
+		return brokerLicenceNo;
+	}
+
+	public void setBrokerLicenceNo(String brokerLicenceNo) {
+		this.brokerLicenceNo = brokerLicenceNo;
+	}
+
+
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Date getDob() {
+		return dob;
+	}
+
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
 	public String getLicenceNumber() {
 		return licenceNumber;
 	}

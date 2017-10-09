@@ -178,6 +178,7 @@ public class DealerController {
 		} else {
 			user.setPassword(null);
 		}
+		user= dealerService.findById(user.getDealerId());
 		return new ResponseEntity<>(user, status);
 	}
 	
