@@ -1,4 +1,4 @@
-﻿<!-- *** Body Container starts here -->
+<!-- *** Body Container starts here -->
 <div class="container-fluid" [ngClass]="{'Open':shareservice.isOpen==true}">
 
     <!-- *** Leads Panel -->
@@ -34,7 +34,7 @@
                                 <label>I/We are</label>
                                 <div class="clearfix"></div>
                                 <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob">
-                                    <select class="form-control" formControlName="vehicleType">
+                                    <select class="form-control" formControlName="dealerType">
                                         <option>Individual</option>
                                         <option>Dealer</option>
                                         <option>Franchise</option>
@@ -217,11 +217,11 @@
                                 <label>We Deals In</label>
                                 <div class="clearfix"></div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isNew" value="None" id="NewCars" name="check" />
+                                    <input type="checkbox" formControlName="newCar" value="None" id="NewCars" name="check" />
                                     <label for="NewCars">New Cars</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isUsed" id="UsedCars" name="check" />
+                                    <input type="checkbox" formControlName="usedCar" id="UsedCars" name="check" />
                                     <label for="UsedCars">Used Cars</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -655,7 +655,7 @@
         <!-- *** footer -->
         <div class="row">
             <div class="col-md-12 footer">
-                <p class="Txt999">Copyright 2017 © By AUTOSCOOP All Rights Reserved.</p>
+                <p class="Txt999">Copyright 2017 � By AUTOSCOOP All Rights Reserved.</p>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <h2>AUTOSCOOP</h2>
