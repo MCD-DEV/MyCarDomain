@@ -41104,6 +41104,7 @@ var FinanceEntity = (function () {
 exports.FinanceEntity = FinanceEntity;
 var VehicleDealerDetails = (function () {
     function VehicleDealerDetails() {
+        this.insVehicles = []; //type of vehicles (car,boat,...)
         this.vehicleDealerMakeList = [];
         this.vehicleDealerAreaOfOperState = [];
         this.vehicleDealerRegion = [];
@@ -45390,7 +45391,7 @@ NgbTypeahead.propDecorators = {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
+/// <reference path="app/appmodule.ts" />
 var platform_browser_dynamic_1 = __webpack_require__(112);
 var appmodule_1 = __webpack_require__(123);
 platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(appmodule_1.AppModule);
@@ -73372,7 +73373,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(0);
 var navComponent = (function () {
     function navComponent() {
@@ -73381,15 +73381,15 @@ var navComponent = (function () {
     };
     navComponent.prototype.getLeads = function () {
     };
+    navComponent = __decorate([
+        core_1.Component({
+            selector: 'nav-bar',
+            templateUrl: '/MyCarDomain/dealer/src/views/nav.html'
+        }), 
+        __metadata('design:paramtypes', [])
+    ], navComponent);
     return navComponent;
 }());
-navComponent = __decorate([
-    core_1.Component({
-        selector: 'nav-bar',
-        templateUrl: '/MyCarDomain/dealer/src/views/nav.html'
-    }),
-    __metadata("design:paramtypes", [])
-], navComponent);
 exports.navComponent = navComponent;
 //# sourceMappingURL=navigation.js.map
 
@@ -73523,9 +73523,10 @@ var SubscribeComponent = (function () {
                 postcode: [''],
                 state: [null],
                 website: [''],
-                isNew: [''],
-                isUsed: [''],
+                newCar: [''],
+                usedCar: [''],
                 dealerGroupName: [''],
+                dealerType: [],
                 contactNumber2: [''],
                 dealername: [''],
                 designation: [''],
@@ -73571,13 +73572,18 @@ var SubscribeComponent = (function () {
     SubscribeComponent.prototype.setGroup = function () {
         if (models_1.shareService.p_dealer != undefined) {
             var dealer_1 = this.setdata();
+            if(dealer_1 != undefined){
             this.basicGroup.patchValue({
-                basicInfo: dealer_1,
+                basicInfo: dealer_1
+                //serviceM: dealer.vehicleDealerServMaintDetails != undefined ? dealer.vehicleDealerServMaintDetails : {},
+                //transport: dealer.vehicleDealerTranspDetails != undefined ? dealer.vehicleDealerTranspDetails : {},
+                //finance: dealer_1,
+                //insurance: dealer_1
             });
             this.subscription = dealer_1.subscription;
             if (dealer_1.vehicleDealerMakeList != undefined)
                 for (var i = 0; i < dealer_1.vehicleDealerMakeList.length; i++) {
-                    this.selectedmakes.push(dealer_1.vehicleDealerMakeList[i].Make);
+                    this.selectedmakes.push(dealer_1.vehicleDealerMakeList[i].make);
                 }
             if (dealer_1.vehicleDealerRegion != undefined)
                 for (var i = 0; i < dealer_1.vehicleDealerRegion.length; i++) {
@@ -73591,6 +73597,7 @@ var SubscribeComponent = (function () {
                 for (var i = 0; i < dealer_1.vehicleDealerAreaOfOperState.length; i++) {
                     this.selectedstates.push(dealer_1.vehicleDealerAreaOfOperState[i].state);
                 }
+        }
         }
         //for (var i = 0; i < this.insVehicleList.length; i++) {
         //    let l_vhList;
@@ -73606,21 +73613,12 @@ var SubscribeComponent = (function () {
     };
     SubscribeComponent.prototype.setdata = function () {
         try {
-            //let subList: any = ['BuyVehicle', 'SellVehicle', 'LeaseVehicle', 'Insurance', 'Finance', 'Servicemaintenance', 'Fuel', 'Sparesaccessories', 'Transport', 'Others'];
-            if (models_1.shareService.p_dealer.vehicleDealerDetails != undefined && models_1.shareService.p_dealer.vehicleDealerDetails != null) {
-                var l_unselected = void 0;
-                switch (this.subscriptionType) {
-                    case 'BuyVehicle':
-                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'BuyVehicle'; });
-                        return l_unselected.length ? l_unselected[0] : {};
-                    case 'SellVehicle':
-                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'SellVehicle'; });
-                        return l_unselected.length ? l_unselected[0] : {};
-                    case 'LeaseVehicle':
-                        l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == 'LeaseVehicle'; });
-                        return l_unselected.length ? l_unselected[0] : {};
-                }
-            }
+            var subList = ['BuyVehicle', 'SellVehicle', 'LeaseVehicle', 'Insurance', 'Finance', 'Servicemaintenance', 'Fuel', 'Sparesaccessories', 'Transport', 'Others'];
+            var l_unselected = void 0;
+            var l_subtype_1 = this.subscriptionType;
+            l_unselected = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == l_subtype_1; });
+            if (l_unselected != undefined)
+                return l_unselected[0];
             else
                 return {};
         }
@@ -73726,6 +73724,13 @@ var SubscribeComponent = (function () {
     SubscribeComponent.prototype.getStates = function () {
         var _this = this;
         this.aostates = [{ name: "ACT", selected: false }, { name: "NSW", selected: false }, { name: "NT", selected: false }, { name: "QLD", selected: false }, { name: "SA", selected: false }, { name: "TAS", selected: false }, { name: "VIC", selected: false }, { name: "WA", selected: false }];
+        for (var i = 0; i < this.aostates.length; i++) {
+            var make = this.selectedstates;
+            if (make.indexOf(this.aostates[i].name) != -1)
+                this.aostates[i].selected = true;
+            else
+                this.aostates[i].selected = false;
+        }
         return;
         try {
             if (this.states == undefined || !this.states.length)
@@ -73874,12 +73879,30 @@ var SubscribeComponent = (function () {
             console.log(_err);
         }
     };
+    SubscribeComponent.prototype.setFinanceInsTransport = function (l_grp, l_sub) {
+        if (this.subscriptionType == 'Finance' || this.subscriptionType == 'Insurance') {
+            var l_type = this.subscriptionType == 'Finance' ? 'finance' : 'insurance';
+            l_sub.afslNo = forms_1.l_grp[l_type].Controls['afslNo'];
+            l_sub.authRepNo = forms_1.l_grp[l_type].Controls['authRepNo'];
+            l_sub.aclNo = forms_1.l_grp[l_type].Controls['aclNo'];
+            l_sub.brokerLicenceNo = forms_1.l_grp[l_type].Controls['brokerLicenceNo'];
+            l_sub.insVehicles = forms_1.l_grp[l_type].Controls['insVehicles'];
+            l_sub.isLoanNewVeh = forms_1.l_grp[l_type].Controls['isLoanNewVeh'];
+            l_sub.isLoanUsedVeh = forms_1.l_grp[l_type].Controls['isLoanUsedVeh'];
+            if (this.subscriptionType == 'Insurance') {
+                l_sub.isComprehensive = forms_1.l_grp['insurance'].Controls['isComprehensive'];
+                l_sub.isThirdParty = forms_1.l_grp['insurance'].Controls['isThirdParty'];
+                l_sub.isThirdProperty = forms_1.l_grp['insurance'].Controls['isThirdProperty'];
+            }
+        }
+    };
     SubscribeComponent.prototype.setGroupSubscribe = function () {
         if (models_1.shareService.p_dealer == undefined)
             models_1.shareService.p_dealer = new servermodels_1.Dealer();
         if (models_1.shareService.p_dealer.vehicleDealerDetails == undefined)
             models_1.shareService.p_dealer.vehicleDealerDetails = [];
         var l_subs = this.basicGroup['_value'].basicInfo;
+        this.setFinanceInsTransport(this.basicGroup['_value'], l_subs);
         l_subs.subscription = this.subscription;
         l_subs.subscriptionType = this.subscriptionType;
         var l_postcodes = this.selectedpostcodes;
@@ -73901,7 +73924,7 @@ var SubscribeComponent = (function () {
             l_subs.vehicleDealerRegion.push({ region: this.selectedregions[i] });
         }
         for (var i = 0; i < this.selectedmakes.length; i++) {
-            l_subs.vehicleDealerMakeList.push({ Make: this.selectedmakes[i] });
+            l_subs.vehicleDealerMakeList.push({ make: this.selectedmakes[i] });
         }
         //for (var i = 0; i < this.selectedmodels.length; i++) {
         //    l_subs.model.push(this.selectedmodels[i]);
@@ -73924,26 +73947,6 @@ var SubscribeComponent = (function () {
         }
         else
             models_1.shareService.p_dealer.vehicleDealerDetails.push(l_subs);
-        //if (this.isSM)
-        //    this.dealerBasicInfo.vehicleDealerServMaintDetails = this.basicGroup['_value'].serviceM;
-        //if (this.isFinance) {
-        //    this.dealerBasicInfo.vehicleDealerFinanceDetails = [];
-        //    this.dealerBasicInfo.vehicleDealerFinanceDetails.push(this.basicGroup['_value'].finance);
-        //    this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles = [];
-        //    for (let i = 0; i < this.insVehicleList.length; i++) {
-        //        this.dealerBasicInfo.vehicleDealerFinanceDetails[0].insVehicles.push(this.insVehicleList[i].name);
-        //    }
-        //}
-        //if (this.isInsurance) {
-        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails = [];
-        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails.push(this.basicGroup['_value'].insurance);
-        //    this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles = [];
-        //    for (let i = 0; i < this.insVehicleList.length; i++) {
-        //        this.dealerBasicInfo.vehicleDealerInsuranceDetails[0].insVehicles.push(this.insVehicleList[i].name);
-        //    }
-        //}
-        //if (this.isTransport)
-        //    this.dealerBasicInfo.transport = this.transportGroup['_value'].transport;
     };
     SubscribeComponent.prototype.setType = function (isLoad) {
         var type = this.subscriptionType;
@@ -74013,6 +74016,7 @@ var SubscribeComponent = (function () {
             this._service.savesubscription(models_1.shareService.p_dealer).subscribe(function (data) {
                 if (data != undefined) {
                     var l_response = JSON.parse(data['_body']);
+                    models_1.shareService.p_dealer = l_response;
                     _this.router.navigate(['/home']);
                 }
             }, function (err) {
@@ -75441,7 +75445,6 @@ var HomeComponent = (function () {
         this.setLeads();
         var l_dealerId = models_1.UIStorage.getCookie('dealerId');
         if (l_dealerId != undefined && l_dealerId != null) {
-            this.isLoggedIn = true;
             if (models_1.shareService.p_dealer != undefined && models_1.shareService.p_dealer != null && models_1.shareService.p_dealer.vehicleDealerDetails != undefined && models_1.shareService.p_dealer.vehicleDealerDetails != null) {
                 for (var i = 0; i < this.offerings.length; i++) {
                     var l_vehicles = models_1.shareService.p_dealer.vehicleDealerDetails.filter(function (p) { return p.subscriptionType == _this.offerings[i].type; });
@@ -77554,6 +77557,262 @@ var LeadView = (function () {
         this.leaddetails.userinfocheck.finance = 'Yes';
         this.leaddetails.userinfocheck.vehicleSellSwap = 'No';
     };
+    LeadView.prototype.tempjson = function () {
+        this.json = {
+            "providerBatch": [
+                {
+                    "batchId": "PB1",
+                    "totalProviders": 0,
+                    "successCount": 0,
+                    "failureCount": 11,
+                    "providerDetail": [
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "113": "Provider Practice TIN is incorrect (It may be Practice TIN is not numeric or length is not equals to 9)",
+                                "114": "Practice Name is blank",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275613226",
+                            "firstname": "James",
+                            "middlename": "A",
+                            "lastname": "Parisi"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275615825",
+                            "firstname": "Martha",
+                            "middlename": "S",
+                            "lastname": "Matthews"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "114": "Practice Name is blank",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275616062",
+                            "firstname": "Michael",
+                            "middlename": "NULL",
+                            "lastname": "Corey"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275617961",
+                            "firstname": "John",
+                            "middlename": "B",
+                            "lastname": "Kostis"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275619611",
+                            "firstname": "Abraham",
+                            "middlename": "S",
+                            "lastname": "Thomas"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275620650",
+                            "firstname": "Smitha",
+                            "middlename": "S",
+                            "lastname": "Gubbi"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275624256",
+                            "firstname": "Frank",
+                            "middlename": "C",
+                            "lastname": "Victor"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275625022",
+                            "firstname": "Charles",
+                            "middlename": "D",
+                            "lastname": "Levine"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275625410",
+                            "firstname": "Kathryn",
+                            "middlename": "R",
+                            "lastname": "Suarez"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275628232",
+                            "firstname": "Kathleen",
+                            "middlename": "E",
+                            "lastname": "Nordman"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275629297",
+                            "firstname": "Arnaldo",
+                            "middlename": "J",
+                            "lastname": "Abreu"
+                        }
+                    ]
+                },
+                {
+                    "batchId": "PB2",
+                    "totalProviders": 10,
+                    "successCount": 2,
+                    "failureCount": 8,
+                    "providerDetail": [
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "113": "Provider Practice TIN is incorrect (It may be Practice TIN is not numeric or length is not equals to 9)",
+                                "114": "Practice Name is blank",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275613226",
+                            "firstname": "James",
+                            "middlename": "A",
+                            "lastname": "Parisi"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275615825",
+                            "firstname": "Martha",
+                            "middlename": "S",
+                            "lastname": "Matthews"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "114": "Practice Name is blank",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275616062",
+                            "firstname": "Michael",
+                            "middlename": "NULL",
+                            "lastname": "Corey"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275617961",
+                            "firstname": "John",
+                            "middlename": "B",
+                            "lastname": "Kostis"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275619611",
+                            "firstname": "Abraham",
+                            "middlename": "S",
+                            "lastname": "Thomas"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275620650",
+                            "firstname": "Smitha",
+                            "middlename": "S",
+                            "lastname": "Gubbi"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275624256",
+                            "firstname": "Frank",
+                            "middlename": "C",
+                            "lastname": "Victor"
+                        },
+                        {
+                            "status": "INELIGIBLE",
+                            "errors": {
+                                "111": "ZIP Code is incorrect",
+                                "115": "Provider ACO Participation is blank",
+                                "120": "Provider Network End Date is blank"
+                            },
+                            "npi": "1275625022",
+                            "firstname": "Charles",
+                            "middlename": "D",
+                            "lastname": "Levine"
+                        }
+                    ]
+                }
+            ]
+        };
+    };
     return LeadView;
 }());
 LeadView = __decorate([
@@ -77768,20 +78027,31 @@ var DealerContext = (function () {
             confmPassword: ['', [forms_1.Validators.required, forms_1.Validators.minLength(6)]],
             firstName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]],
             lastName: ['', [forms_1.Validators.required, forms_1.Validators.minLength(2)]]
-        }), { validator: this.pwdcheck };
+        }, { validator: this.pwdcheck });
         this.forgotGroup = this.formBuilder.group({
             email: ['', [forms_1.Validators.required, forms_1.Validators.email]]
         });
     };
     DealerContext.prototype.pwdcheck = function (formgroup) {
-        return (formgroup.controls["password"].value !== formgroup.controls["confmPassword"].value)
-            ? true : null;
+        if (formgroup.controls["password"].value != formgroup.controls["confmPassword"].value) {
+            formgroup.controls["confmPassword"].setErrors({ 'mismatch': true });
+            return { 'mismatch': true };
+        }
+        else {
+            return null;
+        }
+    };
+    DealerContext.prototype.resetforms = function () {
+        this.forgotGroup.reset();
+        this.registerGroup.reset();
+        this.loginGroup.reset();
     };
     DealerContext.prototype.showforgot = function () {
         this.forgotGroup.enable();
         this.registerGroup.disable();
         this.loginGroup.disable();
         this.isforgot = true;
+        this.resetforms();
     };
     DealerContext.prototype.showlogin = function () {
         this.forgotGroup.disable();
@@ -77789,6 +78059,7 @@ var DealerContext = (function () {
         this.loginGroup.enable();
         this.isinsign = true;
         this.isforgot = false;
+        this.resetforms();
     };
     DealerContext.prototype.showsignup = function () {
         this.forgotGroup.disable();
@@ -77796,6 +78067,7 @@ var DealerContext = (function () {
         this.loginGroup.disable();
         this.isinsign = false;
         this.isforgot = false;
+        this.resetforms();
     };
     DealerContext.prototype.createDealerContext = function () {
         var _this = this;
@@ -77825,6 +78097,7 @@ var DealerContext = (function () {
         var _this = this;
         try {
             var l_dealer = this.loginGroup.value;
+            
             this._service.validateDealerContext(l_dealer).subscribe(function (data) {
                 if (data != undefined) {
                     var l_response = JSON.parse(data['_body']);
