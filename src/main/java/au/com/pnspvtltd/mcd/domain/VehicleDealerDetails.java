@@ -101,12 +101,213 @@ import javax.persistence.Table;
 		private boolean loanNewVeh;
 		private boolean loanUsedVeh;
 	 // end of finance and insurance
+		
+		// start of service maint
+		private boolean petrol;
+		private boolean diesel;
+		private boolean electric;
+		private boolean all1;
+		private boolean clientPlaceDriveYes;
+		private boolean clientPlaceDriveMaybe;
+		private boolean clientPlaceDriveNo;
+		private boolean roadAssistance;
+		private boolean servMaintInstitute;
+		
+		// end of service maint
+		
+		
+		// start of transport
+		private String fromState;
+		private String toState;
+		private String fromRegion;
+		private String toRegion;
+		private String fromPost;
+		private String toPost;
+		private String stateRate;
+		private String regionRate;
+		private String postRate;
+		private boolean stateRoute;
+		private boolean regionRoute;
+		private boolean postRoute;
+		
+		// end of transport
 	
 	 List<VehicleMakeList> vehicleDealerMakeList;
 	 List<VehicleAreaOfOperState> vehicleDealerAreaOfOperState;
 	 List<VehicleAreaOfOperRegion> vehicleDealerRegion;
 	 List<VehicleAreaOfOperPostCode> vehicleDealerPostCode;
 	 
+	 
+	 
+	 
+	public boolean isPetrol() {
+		return petrol;
+	}
+
+	public void setPetrol(boolean petrol) {
+		this.petrol = petrol;
+	}
+
+	public boolean isDiesel() {
+		return diesel;
+	}
+
+	public void setDiesel(boolean diesel) {
+		this.diesel = diesel;
+	}
+
+	public boolean isElectric() {
+		return electric;
+	}
+
+	public void setElectric(boolean electric) {
+		this.electric = electric;
+	}
+
+	public boolean isAll1() {
+		return all1;
+	}
+
+	public void setAll1(boolean all1) {
+		this.all1 = all1;
+	}
+
+	public boolean isClientPlaceDriveYes() {
+		return clientPlaceDriveYes;
+	}
+
+	public void setClientPlaceDriveYes(boolean clientPlaceDriveYes) {
+		this.clientPlaceDriveYes = clientPlaceDriveYes;
+	}
+
+	public boolean isClientPlaceDriveMaybe() {
+		return clientPlaceDriveMaybe;
+	}
+
+	public void setClientPlaceDriveMaybe(boolean clientPlaceDriveMaybe) {
+		this.clientPlaceDriveMaybe = clientPlaceDriveMaybe;
+	}
+
+	public boolean isClientPlaceDriveNo() {
+		return clientPlaceDriveNo;
+	}
+
+	public void setClientPlaceDriveNo(boolean clientPlaceDriveNo) {
+		this.clientPlaceDriveNo = clientPlaceDriveNo;
+	}
+
+	public boolean isRoadAssistance() {
+		return roadAssistance;
+	}
+
+	public void setRoadAssistance(boolean roadAssistance) {
+		this.roadAssistance = roadAssistance;
+	}
+
+	public boolean isServMaintInstitute() {
+		return servMaintInstitute;
+	}
+
+	public void setServMaintInstitute(boolean servMaintInstitute) {
+		this.servMaintInstitute = servMaintInstitute;
+	}
+
+	public String getFromState() {
+		return fromState;
+	}
+
+	public void setFromState(String fromState) {
+		this.fromState = fromState;
+	}
+
+	public String getToState() {
+		return toState;
+	}
+
+	public void setToState(String toState) {
+		this.toState = toState;
+	}
+
+	public String getFromRegion() {
+		return fromRegion;
+	}
+
+	public void setFromRegion(String fromRegion) {
+		this.fromRegion = fromRegion;
+	}
+
+	public String getToRegion() {
+		return toRegion;
+	}
+
+	public void setToRegion(String toRegion) {
+		this.toRegion = toRegion;
+	}
+
+	public String getFromPost() {
+		return fromPost;
+	}
+
+	public void setFromPost(String fromPost) {
+		this.fromPost = fromPost;
+	}
+
+	public String getToPost() {
+		return toPost;
+	}
+
+	public void setToPost(String toPost) {
+		this.toPost = toPost;
+	}
+
+	public String getStateRate() {
+		return stateRate;
+	}
+
+	public void setStateRate(String stateRate) {
+		this.stateRate = stateRate;
+	}
+
+	public String getRegionRate() {
+		return regionRate;
+	}
+
+	public void setRegionRate(String regionRate) {
+		this.regionRate = regionRate;
+	}
+
+	public String getPostRate() {
+		return postRate;
+	}
+
+	public void setPostRate(String postRate) {
+		this.postRate = postRate;
+	}
+
+	public boolean isStateRoute() {
+		return stateRoute;
+	}
+
+	public void setStateRoute(boolean stateRoute) {
+		this.stateRoute = stateRoute;
+	}
+
+	public boolean isRegionRoute() {
+		return regionRoute;
+	}
+
+	public void setRegionRoute(boolean regionRoute) {
+		this.regionRoute = regionRoute;
+	}
+
+	public boolean isPostRoute() {
+		return postRoute;
+	}
+
+	public void setPostRoute(boolean postRoute) {
+		this.postRoute = postRoute;
+	}
+
 	public boolean isComprehensive() {
 		return comprehensive;
 	}
