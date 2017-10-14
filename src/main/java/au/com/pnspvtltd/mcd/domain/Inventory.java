@@ -37,7 +37,7 @@ public class Inventory implements Serializable {
 	private boolean registrationIncluded;
 	private boolean autoQuote;
 	private boolean classified;
-	private double negotiablePercent;
+	//private double negotiablePercent;
 	
 	
 	// New car or old car
@@ -67,7 +67,7 @@ public class Inventory implements Serializable {
 		private String vinNumber;
 		private int vendorStockNo;
 		private boolean isStockItem;
-		private int noOfDoors;
+		//private int noOfDoors;
 		private String intColor;
 		private String wheelSize;
 		private String seatMake;
@@ -100,13 +100,13 @@ public class Inventory implements Serializable {
 		private String salePersonLooking;
 
 		private String contName;
-		private int contPhone;
+		//private int contPhone;
 		private String contEmail;
 
 		private boolean logBookService;
 		private Date cameIntoInv;
-		private int counterOfViewingCar;
-		private int counterOfEnquiryCar;
+		/*private int counterOfViewingCar;
+		private int counterOfEnquiryCar;*/
 		private Date saleDate;
 
 		List<Feature> features;
@@ -121,7 +121,7 @@ public class Inventory implements Serializable {
 		// melbourne
 		private String region;
 		// 7899
-		private int postCode;
+		//private int postCode;
 
 		private Date yearOfMake;
 
@@ -202,14 +202,14 @@ public class Inventory implements Serializable {
 			this.classified = classified;
 		}
 
-		public double getNegotiablePercent() {
+		/*public double getNegotiablePercent() {
 			return negotiablePercent;
 		}
 
 		public void setNegotiablePercent(double negotiablePercent) {
 			this.negotiablePercent = negotiablePercent;
 		}
-
+*/
 	public Long getRefId() {
 		return refId;
 	}
@@ -417,14 +417,14 @@ public class Inventory implements Serializable {
 		this.isStockItem = isStockItem;
 	}
 
-	@Column(name = "NOOFDOORS")
+	/*@Column(name = "NOOFDOORS")
 	public int getNoOfDoors() {
 		return noOfDoors;
 	}
 
 	public void setNoOfDoors(int noOfDoors) {
 		this.noOfDoors = noOfDoors;
-	}
+	}*/
 
 	@Column(name = "INTCOLOR")
 	public String getIntColor() {
@@ -651,14 +651,14 @@ public class Inventory implements Serializable {
 		this.contName = contName;
 	}
 
-	@Column(name = "CONTPHONE")
+	/*@Column(name = "CONTPHONE")
 	public int getContPhone() {
 		return contPhone;
 	}
 
 	public void setContPhone(int contPhone) {
 		this.contPhone = contPhone;
-	}
+	}*/
 
 	@Column(name = "CONTEMAIL")
 	public String getContEmail() {
@@ -687,7 +687,7 @@ public class Inventory implements Serializable {
 		this.cameIntoInv = cameIntoInv;
 	}
 
-	@Column(name = "COUNTVIEW")
+	/*@Column(name = "COUNTVIEW")
 	public int getCounterOfViewingCar() {
 		return counterOfViewingCar;
 	}
@@ -703,7 +703,7 @@ public class Inventory implements Serializable {
 
 	public void setCounterOfEnquiryCar(int counterOfEnquiryCar) {
 		this.counterOfEnquiryCar = counterOfEnquiryCar;
-	}
+	}*/
 
 	@Column(name = "SALEDATE")
 	public Date getSaleDate() {
@@ -800,14 +800,14 @@ public class Inventory implements Serializable {
 		this.region = region;
 	}
 
-	@Column(name = "POSTCODE")
+	/*@Column(name = "POSTCODE")
 	public int getPostCode() {
 		return postCode;
 	}
 
 	public void setPostCode(int postCode) {
 		this.postCode = postCode;
-	}
+	}*/
 
 	@Column(name = "YEAROFMAKE")
 	public Date getYearOfMake() {

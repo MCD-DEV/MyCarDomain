@@ -31,7 +31,7 @@ public class InventoryVO {
 		private boolean registrationIncluded;
 		private boolean autoQuote;
 		private boolean classified;
-		private double negotiablePercent;
+		//private double negotiablePercent;
 		
 	// New car or old car
 		private boolean isNewCar;
@@ -60,7 +60,7 @@ public class InventoryVO {
 		private String vinNumber;
 		private int vendorStockNo;
 		private boolean isStockItem;
-		private int noOfDoors;
+		//private int noOfDoors;
 		private String intColor;
 		private String wheelSize;
 		private String seatMake;
@@ -93,13 +93,13 @@ public class InventoryVO {
 		private String salePersonLooking;
 
 		private String contName;
-		private int contPhone;
+		//private int contPhone;
 		private String contEmail;
 
 		private boolean logBookService;
 		private Date cameIntoInv;
-		private int counterOfViewingCar;
-		private int counterOfEnquiryCar;
+		//private int counterOfViewingCar;
+		//private int counterOfEnquiryCar;
 		private Date saleDate;
 
 		List<FeatureVO> features;
@@ -114,7 +114,7 @@ public class InventoryVO {
 		// melbourne
 		private String region;
 		// 7899
-		private int postCode;
+		//private int postCode;
 
 		private Date yearOfMake;
 
@@ -201,13 +201,13 @@ public class InventoryVO {
 		this.classified = classified;
 	}
 
-	public double getNegotiablePercent() {
+	/*public double getNegotiablePercent() {
 		return negotiablePercent;
 	}
 
 	public void setNegotiablePercent(double negotiablePercent) {
 		this.negotiablePercent = negotiablePercent;
-	}
+	}*/
 
 	public Long getUserId() {
 		return userId;
@@ -410,13 +410,13 @@ public class InventoryVO {
 	}
 
 	
-	public int getNoOfDoors() {
+	/*public int getNoOfDoors() {
 		return noOfDoors;
 	}
 
 	public void setNoOfDoors(int noOfDoors) {
 		this.noOfDoors = noOfDoors;
-	}
+	}*/
 
 	
 	public String getIntColor() {
@@ -644,14 +644,14 @@ public class InventoryVO {
 	}
 
 	
-	public int getContPhone() {
+	/*public int getContPhone() {
 		return contPhone;
 	}
 
 	public void setContPhone(int contPhone) {
 		this.contPhone = contPhone;
 	}
-
+*/
 	
 	public String getContEmail() {
 		return contEmail;
@@ -680,7 +680,7 @@ public class InventoryVO {
 	}
 
 	
-	public int getCounterOfViewingCar() {
+	/*public int getCounterOfViewingCar() {
 		return counterOfViewingCar;
 	}
 
@@ -695,7 +695,7 @@ public class InventoryVO {
 
 	public void setCounterOfEnquiryCar(int counterOfEnquiryCar) {
 		this.counterOfEnquiryCar = counterOfEnquiryCar;
-	}
+	}*/
 
 	
 	public Date getSaleDate() {
@@ -792,13 +792,13 @@ public class InventoryVO {
 	}
 
 	
-	public int getPostCode() {
+	/*public int getPostCode() {
 		return postCode;
 	}
 
 	public void setPostCode(int postCode) {
 		this.postCode = postCode;
-	}
+	}*/
 
 	
 	public Date getYearOfMake() {
