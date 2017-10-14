@@ -59,6 +59,7 @@ import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
+import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -775,6 +776,20 @@ public class DealerController {
 		//createdDealer   dealerService.findById(createdDealer.getDealerId());
 	}
 	
+	/**
+	 * 
+	 * @param dealer Resource
+	 * @param response
+	 * @return
+	 */
+	@PostMapping(value = "dealer/Resource", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerResourceVO createVehicleResource(@RequestBody DealerResourceVO dealerSubscriptionSBLVO, HttpServletResponse response) {
+		LOGGER.debug("Dealer Creation for Resource", dealerSubscriptionSBLVO.getDealerId());
+		DealerResourceVO createdDealer = dealerService.createDealerResource(dealerSubscriptionSBLVO);
+		response.setStatus(HttpStatus.CREATED.value());
+		return createdDealer;
+		//createdDealer   dealerService.findById(createdDealer.getDealerId());
+	}
 	
 	
 }

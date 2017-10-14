@@ -3,6 +3,7 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.util.List;
 
 import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 
 public class DealerVO {
 
@@ -129,11 +130,20 @@ public class DealerVO {
 	List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState;
 	List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion;
 	List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode;
+	List<VehicleResourceDetails> vehicleResourcDetails;
 	
 	// start
 	
 	
 	private boolean isServMaint;
+	public List<VehicleResourceDetails> getVehicleResourcDetails() {
+		return vehicleResourcDetails;
+	}
+
+	public void setVehicleResourcDetails(List<VehicleResourceDetails> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
+	}
+
 	private boolean isSparesAccess;
 	private boolean isVehTransProv;
 	private boolean isAreaOfOperartinAllAus;

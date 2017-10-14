@@ -37,6 +37,7 @@ import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
@@ -56,6 +57,7 @@ import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
+import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
@@ -82,6 +84,7 @@ import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 
 @Service
 public class DealerServiceImpl implements DealerService {
@@ -720,6 +723,21 @@ public class DealerServiceImpl implements DealerService {
 			vehicleDealerDetailsList.add(vehicleDealerDetails);
 		}
 		dealer.setVehicleDealerDetails(vehicleDealerDetailsList);
+		dealerRepository.saveAndFlush(dealer);
+		return dealerVO;
+	}
+	
+	@Override
+	public DealerResourceVO createDealerResource(DealerResourceVO dealerVO) {
+		// TODO Auto-generated method stub
+		Dealer dealer = dealerRepository.getDealerForID(dealerVO.getDealerId());
+		List<VehicleResourceDetailsVO> vehicleDealerDetailsVO = dealerVO.getVehicleResourceDetails();
+		List<VehicleResourceDetails> vehicleDealerDetailsList = new ArrayList<VehicleResourceDetails>();
+		for (VehicleResourceDetailsVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			VehicleResourceDetails vehicleDealerDetails = domainModelUtil.toDealerResource(vehicleDealerDetailsVO1);
+			vehicleDealerDetailsList.add(vehicleDealerDetails);
+		}
+		dealer.setVehicleResourceDetails(vehicleDealerDetailsList);
 		dealerRepository.saveAndFlush(dealer);
 		return dealerVO;
 	}

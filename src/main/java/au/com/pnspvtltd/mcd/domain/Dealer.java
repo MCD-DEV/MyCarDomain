@@ -84,6 +84,7 @@ public class Dealer implements Serializable {
 	List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion;
 	List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode;
 	List<FinanceEntity> financeEntity;
+	List<VehicleResourceDetails> vehicleResourcDetails;
 	
 	// start
 	
@@ -174,6 +175,18 @@ public class Dealer implements Serializable {
 			List<VehicleDealerDetails> vehicleDealerDetails) {
 		this.vehicleDealerDetails = vehicleDealerDetails;
 	}
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public List<VehicleResourceDetails> getVehicleResourceDetails() {
+		return vehicleResourcDetails;
+	}
+
+	public void setVehicleResourceDetails(
+			List<VehicleResourceDetails> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
+	}
+	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerFinanceDetails> getVehicleDealerFinanceDetails() {

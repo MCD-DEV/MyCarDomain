@@ -97,6 +97,8 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
@@ -188,6 +190,8 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleMakeListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
 
 @Component
@@ -1851,6 +1855,37 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	}
 	// end of SBL
 	
+	
+	// start of Resource
+		public VehicleResourceDetails toDealerResource(final VehicleResourceDetailsVO dealerVO) {
+			VehicleResourceDetails dealer = new VehicleResourceDetails();
+			try {
+
+
+				org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+						new String[] { "vehicleSocialList"});
+				
+				if( dealerVO.getVehicleSocialList() != null){
+				List<VehicleSocialList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleSocialListVO vehicleDealerMakeListVO : dealerVO.getVehicleSocialList()) {
+					VehicleSocialList vehicleDealerMakeList = new VehicleSocialList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
+				}
+				dealer.setVehicleSocialList(vehicleDealerMakeLists);
+				}
+				
+			
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return dealer;
+		}
+		// end of Resource
 	
 	public Dealer toDealer(final DealerVO dealerVO) {
 		Dealer dealer = new Dealer();
