@@ -38,15 +38,60 @@ import javax.persistence.Table;
 	private Long vehicleDealerDetailId;
 	
 	private String vehicleType;
-	private boolean isNewCar;
-	private boolean isUsedCar;
+	private String dealerType;
+	/*private boolean isNewCar;
+	private boolean isUsedCar;*/
 	private boolean isBoth;
+	
+	private boolean newCar;
+	private boolean usedCar;
 	
 /*start */
 	
 	
 	// Flex start
 	private String flex1;	
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getDealerType() {
+		return dealerType;
+	}
+
+	public void setDealerType(String dealerType) {
+		this.dealerType = dealerType;
+	}
+
+	public boolean isNewCar() {
+		return newCar;
+	}
+
+	public void setNewCar(boolean newCar) {
+		this.newCar = newCar;
+	}
+
+	public boolean isUsedCar() {
+		return usedCar;
+	}
+
+	public void setUsedCar(boolean usedCar) {
+		this.usedCar = usedCar;
+	}
+
+
+
+
+
+
+
+
+
+
 	private String flex2;	
 	private String flex3;	
 	private String flex4;
@@ -136,6 +181,7 @@ import javax.persistence.Table;
 	 List<VehicleAreaOfOperState> vehicleDealerAreaOfOperState;
 	 List<VehicleAreaOfOperRegion> vehicleDealerRegion;
 	 List<VehicleAreaOfOperPostCode> vehicleDealerPostCode;
+	 List<VehicleDealerInsDetails> vehicleDealerInsDetails;
 	 
 	 
 	 
@@ -590,7 +636,16 @@ import javax.persistence.Table;
 	public void setPostcode(int postcode) {
 		this.postcode = postcode;
 	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerDetailId")
+	public List<VehicleDealerInsDetails> getVehicleDealerInsDetails() {
+		return vehicleDealerInsDetails;
+	}
 
+	public void setVehicleDealerInsDetails(
+			List<VehicleDealerInsDetails> vehicleDealerInsDetails) {
+		this.vehicleDealerInsDetails = vehicleDealerInsDetails;
+	}
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "vehicleDealerDetailId")
 	public List<VehicleMakeList> getVehicleDealerMakeList() {
@@ -644,15 +699,15 @@ import javax.persistence.Table;
 		this.vehicleDealerDetailId = vehicleDealerDetailId;
 	}
 
-	@Column(name = "VEHICLETYPE") public String getVehicleType() {
+	/*@Column(name = "VEHICLETYPE") public String getVehicleType() {
 		return vehicleType;
 	}
 
 	public void setVehicleType(String vehicleType) {
 		this.vehicleType = vehicleType;
-	}
+	}*/
 
-	@Column(name = "ISNEWCAR") public boolean isNewCar() {
+	/*@Column(name = "ISNEWCAR") public boolean isNewCar() {
 		return isNewCar;
 	}
 
@@ -666,7 +721,7 @@ import javax.persistence.Table;
 
 	public void setUsedCar(boolean isUsedCar) {
 		this.isUsedCar = isUsedCar;
-	}
+	}*/
 
 	@Column(name = "ISBOTH") public boolean isBoth() {
 		return isBoth;

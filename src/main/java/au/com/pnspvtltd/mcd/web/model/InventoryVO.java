@@ -22,6 +22,17 @@ public class InventoryVO {
 	private String modelName;
 	private String modelTrim;
 	
+	
+	// newfields for wireframe
+		private String extColour;
+		private String intColour;
+		private boolean demo;
+		private boolean roadWorthIncluded;
+		private boolean registrationIncluded;
+		private boolean autoQuote;
+		private boolean classified;
+		private double negotiablePercent;
+		
 	// New car or old car
 		private boolean isNewCar;
 		private String typeOfCar;
@@ -132,6 +143,70 @@ public class InventoryVO {
 
 	public long getRefId() {
 		return refId;
+	}
+
+	public String getExtColour() {
+		return extColour;
+	}
+
+	public void setExtColour(String extColour) {
+		this.extColour = extColour;
+	}
+
+	public String getIntColour() {
+		return intColour;
+	}
+
+	public void setIntColour(String intColour) {
+		this.intColour = intColour;
+	}
+
+	public boolean isDemo() {
+		return demo;
+	}
+
+	public void setDemo(boolean demo) {
+		this.demo = demo;
+	}
+
+	public boolean isRoadWorthIncluded() {
+		return roadWorthIncluded;
+	}
+
+	public void setRoadWorthIncluded(boolean roadWorthIncluded) {
+		this.roadWorthIncluded = roadWorthIncluded;
+	}
+
+	public boolean isRegistrationIncluded() {
+		return registrationIncluded;
+	}
+
+	public void setRegistrationIncluded(boolean registrationIncluded) {
+		this.registrationIncluded = registrationIncluded;
+	}
+
+	public boolean isAutoQuote() {
+		return autoQuote;
+	}
+
+	public void setAutoQuote(boolean autoQuote) {
+		this.autoQuote = autoQuote;
+	}
+
+	public boolean isClassified() {
+		return classified;
+	}
+
+	public void setClassified(boolean classified) {
+		this.classified = classified;
+	}
+
+	public double getNegotiablePercent() {
+		return negotiablePercent;
+	}
+
+	public void setNegotiablePercent(double negotiablePercent) {
+		this.negotiablePercent = negotiablePercent;
 	}
 
 	public Long getUserId() {

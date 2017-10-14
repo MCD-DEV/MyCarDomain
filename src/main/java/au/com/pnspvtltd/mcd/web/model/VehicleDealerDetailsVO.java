@@ -9,6 +9,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperState;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerInsDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 
@@ -20,10 +21,12 @@ public class VehicleDealerDetailsVO {
 	private Long vehicleDealerDetailId;
 	
 	private String vehicleType;
-	private boolean isNewCar;
-	private boolean isUsedCar;
+	private String dealerType;
+	/*private boolean isNewCar;
+	private boolean isUsedCar;*/
 	private boolean isBoth;
-	
+	private boolean newCar;
+	private boolean usedCar;
 /*start */
 	
 	
@@ -118,10 +121,43 @@ public class VehicleDealerDetailsVO {
 	 List<VehicleAreaOfOperStateVO> vehicleDealerAreaOfOperState;
 	 List<VehicleAreaOfOperRegionVO> vehicleDealerRegion;
 	 List<VehicleAreaOfOperPostCodeVO> vehicleDealerPostCode;
+	 List<VehicleDealerInsDetailsVO> vehicleDealerInsDetails;
 	
 	 
 	 
 	
+
+	public List<VehicleDealerInsDetailsVO> getVehicleDealerInsDetails() {
+		return vehicleDealerInsDetails;
+	}
+
+	public void setVehicleDealerInsDetails(List<VehicleDealerInsDetailsVO> vehicleDealerInsDetails) {
+		this.vehicleDealerInsDetails = vehicleDealerInsDetails;
+	}
+
+	public String getDealerType() {
+		return dealerType;
+	}
+
+	public void setDealerType(String dealerType) {
+		this.dealerType = dealerType;
+	}
+
+	public boolean isNewCar() {
+		return newCar;
+	}
+
+	public void setNewCar(boolean newCar) {
+		this.newCar = newCar;
+	}
+
+	public boolean isUsedCar() {
+		return usedCar;
+	}
+
+	public void setUsedCar(boolean usedCar) {
+		this.usedCar = usedCar;
+	}
 
 	public boolean isPetrol() {
 		return petrol;
@@ -627,7 +663,7 @@ public class VehicleDealerDetailsVO {
 		this.vehicleType = vehicleType;
 	}
 
-	public boolean isNewCar() {
+	/*public boolean isNewCar() {
 		return isNewCar;
 	}
 
@@ -641,7 +677,7 @@ public class VehicleDealerDetailsVO {
 
 	public void setUsedCar(boolean isUsedCar) {
 		this.isUsedCar = isUsedCar;
-	}
+	}*/
 
 	public boolean isBoth() {
 		return isBoth;

@@ -91,6 +91,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerFinanceDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerInsDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
@@ -184,6 +185,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperRegionVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperStateVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerFinanceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerMakeListhVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
@@ -1802,7 +1804,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-					new String[] { "vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+					new String[] { "vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode","vehicleDealerInsDetails"});
 			
 			if( dealerVO.getVehicleDealerMakeList() != null){
 			List<VehicleMakeList> vehicleDealerMakeLists = new ArrayList<>();
@@ -1843,6 +1845,16 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
 			}
+			
+			if( dealerVO.getVehicleDealerInsDetails() != null){
+				List<VehicleDealerInsDetails> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
+				for (VehicleDealerInsDetailsVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerInsDetails()) {
+					VehicleDealerInsDetails vehicleDealerAreaOfOperPostCode = new VehicleDealerInsDetails();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
+					vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
+				}
+				dealer.setVehicleDealerInsDetails(vehicleDealerAreaOfOperPostCodes);
+				}
 		
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
