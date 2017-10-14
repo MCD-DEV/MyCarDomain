@@ -1,4 +1,4 @@
-<!-- *** Body Container starts here -->
+﻿<!-- *** Body Container starts here -->
 <div class="container-fluid" [ngClass]="{'Open':shareservice.isOpen==true}">
 
     <!-- *** Leads Panel -->
@@ -187,15 +187,15 @@
                                 <label>Type of Insurance</label>
                                 <div class="clearfix"></div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isComprehensive" value="None" id="isComprehensive" name="check" />
+                                    <input type="checkbox" formControlName="comprehensive" value="None" id="isComprehensive" name="check" />
                                     <label for="isComprehensive">Comprehensive</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isThirdParty" id="isThirdParty" name="check" />
+                                    <input type="checkbox" formControlName="thirdParty" id="isThirdParty" name="check" />
                                     <label for="isThirdParty">Third Party</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isThirdProperty" id="isThirdProperty" name="check" />
+                                    <input type="checkbox" formControlName="thirdProperty" id="isThirdProperty" name="check" />
                                     <label for="isThirdProperty">Third Party Property</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -204,11 +204,11 @@
                                 <label>We provide loan to</label>
                                 <div class="clearfix"></div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isLoanNewVeh" value="None" id="isLoanNewVeh" name="check" />
+                                    <input type="checkbox" formControlName="loanNewVeh" value="None" id="isLoanNewVeh" name="check" />
                                     <label for="isLoanNewVeh">New</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isLoanUsedVeh" id="isLoanUsedVeh" name="check" />
+                                    <input type="checkbox" formControlName="loanUsedVeh" id="isLoanUsedVeh" name="check" />
                                     <label for="isLoanUsedVeh">Used</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -230,20 +230,20 @@
                                 <label>We Deals In</label>
                                 <div class="clearfix"></div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isPetrol" value="isPetrol" id="petrol" name="check" />
+                                    <input type="checkbox" formControlName="petrol" value="isPetrol" id="petrol" name="check" />
                                     <label for="petrol">Petrol Vehicles</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isElectric" id="electric" name="check" />
+                                    <input type="checkbox" formControlName="electric" id="electric" name="check" />
                                     <label for="electric">Electric Vehicles</label>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isDiesel" value="None" id="diesel" name="check" />
+                                    <input type="checkbox" formControlName="diesel" value="None" id="diesel" name="check" />
                                     <label for="diesel">Diesel Vehicles</label>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="All" id="All" name="check" />
+                                    <input type="checkbox" formControlName="all1" id="All" name="check" />
                                     <label for="All">All</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -491,7 +491,7 @@
                                     </select>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isStateRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isStateRoute" name="check" />
+                                    <input type="checkbox" formControlName="stateRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isStateRoute" name="check" />
                                     <label for="isStateRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -516,7 +516,7 @@
                                     </select>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isRegionRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isRegionRoute" name="check" />
+                                    <input type="checkbox" formControlName="regionRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isRegionRoute" name="check" />
                                     <label for="isRegionRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -541,7 +541,7 @@
                                     </select>
                                 </div>
                                 <div class="squaredOne">
-                                    <input type="checkbox" formControlName="isPostRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isPostRoute" name="check" />
+                                    <input type="checkbox" formControlName="postRoute" (change)="onvehicleSelect('vhtype')" value="vhtype" id="isPostRoute" name="check" />
                                     <label for="isPostRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
@@ -655,7 +655,7 @@
         <!-- *** footer -->
         <div class="row">
             <div class="col-md-12 footer">
-                <p class="Txt999">Copyright 2017 � By AUTOSCOOP All Rights Reserved.</p>
+                <p class="Txt999">Copyright 2017 © By AUTOSCOOP All Rights Reserved.</p>
                 <div class="row">
                     <div class="col-md-6 col-sm-6 col-xs-12">
                         <h2>AUTOSCOOP</h2>

@@ -1,5 +1,4 @@
 ﻿<div class="container-fluid" [ngClass]="{'Open':shareservice.isOpen==true}">
-
     <!-- *** Leads Panel -->
     <l-panel></l-panel>    <!-- Leads Panel *** -->
     <!-- *** Manage Resource Starts here -->
@@ -12,29 +11,20 @@
                 <form novalidate (ngSubmit)="saveinventory()" [formGroup]="inventoryGroup">
                     <div class="col-xs-12 col-sm-11 col-md-8 col-lg-6 Registration MT10">
                         <div class="form-group">
-                            <label>Advertisement Header Text</label>
-                            <input autofocus type="text" class="form-control" placeholder="Enter Your Header Here..." formControlName="headerText">
-                            <div class="error" *ngIf="inventoryGroup.get('headerText').touched && inventoryGroup.get('headerText').invalid">
-                                Advertisement Header Text is mandatory
+                            <input type="file" class="btn btn-primary Details AddNew NoArrow" (change)="getImage($event)"><span>Add Photos</span>
+                            <div class="clearfix"></div>
+                            <div class="AddPhotos MT10">
+                                <span *ngFor="let imge of images"><img style="width:300px" [src]="imge.url"><a><i class="glyphicon glyphicon-remove"></i></a></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Identification</label>
-                            <div class="clearfix"></div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob">
-                                <input type="text" class="form-control" placeholder="VIN Number" formControlName="vinNumber">
-                                <div class="error" *ngIf="inventoryGroup.get('vinNumber').touched && inventoryGroup.get('vinNumber').invalid">
-                                    VIN Number is mandatory
-                                </div>
+                            <label>Advertisement Header Text</label>
+                            <input autofocus type="text" class="form-control" placeholder="Enter Your Header Here..." formControlName="vehicleDescriptin">
+                            <div class="error" *ngIf="inventoryGroup.get('vehicleDescriptin').touched && inventoryGroup.get('vehicleDescriptin').invalid">
+                                Advertisement Header Text is mandatory
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob">
-                                <input type="text" class="form-control" placeholder="Delear Stock Number" formControlName="dealerStockNumber">
-                                <div class="error" *ngIf="inventoryGroup.get('dealerStockNumber').touched && inventoryGroup.get('dealerStockNumber').invalid">
-                                    Delear Stock Number is mandatory
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
                         </div>
+
                         <div class="form-group">
                             <label>Condition</label>
                             <div class="clearfix"></div>
@@ -47,27 +37,43 @@
                                 <label for="UsedCars">Used</label>
                             </div>
                             <div class="squaredOne">
-                                <input type="checkbox" value="None" id="New_UsedCars" name="check" formControlName="inStock" />
-                                <label for="New_UsedCars">Vehicle In Stock</label>
+                                <input type="checkbox" value="None" id="New_UsedCars" name="check" formControlName="isDemo" />
+                                <label for="New_UsedCars">Demo</label>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="clearfix"></div>
+                            <div class="squaredOne">
+                                <label>Vehicle In Stock</label>
+                                <input type="checkbox" value="None" id="instock" name="check" formControlName="isStockItem" />
+                                <label for="instock">Yes</label>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Identification</label>
+                            <div class="clearfix"></div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob">
+                                <input type="text" class="form-control" placeholder="VIN Number" formControlName="vinNumber">
+                                <div class="error" *ngIf="inventoryGroup.get('vinNumber').touched && inventoryGroup.get('vinNumber').invalid">
+                                    VIN Number is mandatory
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob">
+                                <input type="text" class="form-control" placeholder="Delear Stock Number" formControlName="vendorStockNo">
+                                <div class="error" *ngIf="inventoryGroup.get('vendorStockNo').touched && inventoryGroup.get('vendorStockNo').invalid">
+                                    Delear Stock Number is mandatory
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
                         <div class="form-group">
                             <label>Registration</label>
                             <div class="clearfix"></div>
-                            <div class="squaredOne">
-                                <input type="checkbox" value="None" id="RegCars" name="Registration" [(ngModel)]="isRego" [ngModelOptions]="{standalone: true}" />
-                                <label for="RegCars">Yes</label>
-                            </div>
-                            <!--<div class="squaredOne">
-                                <input type="radio" value="None" id="RegCars1" name="Registration" />
-                                <label for="RegCars1">No</label>
-                            </div>-->
-                            <div class="clearfix"></div>
-                            <div *ngIf="isRego">
-                                <div regNumberclass="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
-                                    <input type="text" class="form-control" placeholder="Reg Number" formControlName="regNumber">
+                            <div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                    <input type="text" class="form-control" placeholder="Reg Number" formControlName="regNo">
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
                                     <select class="form-control" formControlName="state">
@@ -77,7 +83,7 @@
                                 </div>
                                 <div class="col-md-4 col-sm-4 col-xs-12 PR0Mob PL0 MT5Mob MT5">
                                     <div class="input-group date" id="datetimepicker1">
-                                        <input class="form-control" type="date" placeholder="MM-DD-YY" formControlName="regEndDate">
+                                        <input class="form-control" type="date" placeholder="MM-DD-YY" formControlName="regExpiryDate">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
@@ -87,27 +93,62 @@
 
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="form-group">
-                            <label>Pricing</label>
+                            <label>Make Details</label>
                             <div class="clearfix"></div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
-                                <input type="number" class="form-control" (blur)="pricingCheck('drive')" placeholder="Drive Away Price" formControlName="Price" min="0">
+                            <div class="form-group">
+                                <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                    <select class="form-control" formControlName="modelYear" (change)="onyearselect($event.target.value)">
+                                        <option [ngValue]="null">Year</option>
+                                        <option [value]="2017">2017</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                    <select class="form-control" formControlName="modelDisplay" (change)="onmakeselect($event.target.value)">
+                                        <option [ngValue]="null">Make</option>
+                                        <option *ngFor="let state of makes" [value]="state">{{state}}</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 col-sm-4 col-xs-12 PR0Mob PL0 MT5Mob MT5" (change)="onmodelselect($event.target.value)">
+                                    <div class="input-group date" id="model">
+                                        <select class="form-control" formControlName="modelName">
+                                            <option [ngValue]="null">Model</option>
+                                            <option *ngFor="let state of models" [value]="state">{{state}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
                             </div>
-                            <div class="clearfix"></div>
-                            <h5>or</h5>
-
-                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
-                                <input type="number" class="form-control"  (blur)="pricingCheck('range')" placeholder="Min" formControlName="minPrice" min="0">
+                            <div class="form-group">
+                                <select class="form-control MT5" formControlName="modelTrim" (change)="onvariantselect($event.target.value)">
+                                    <option [ngValue]="null">Vehicle Trim</option>
+                                    <option *ngFor="let state of variants" [value]="state">{{state}}</option>
+                                </select>
+                                <!--<div class="error" *ngIf="inventoryGroup.get('headerText').touched && inventoryGroup.get('headerText').invalid">
+                                    Advertisement Header Text is mandatory
+                                </div>-->
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
-                                <input type="number" class="form-control"  (blur)="pricingCheck('range')" placeholder="Max" formControlName="maxPrice" min="0">
+                            <div class="form-group">
+                                <select class="form-control MT5" formControlName="variant">
+                                    <option [ngValue]="null">Autoscoop Trim</option>
+                                    <option *ngFor="let state of autotrims" [value]="state">{{state}}</option>
+                                </select>
+                                <!--<div class="error" *ngIf="inventoryGroup.get('headerText').touched && inventoryGroup.get('headerText').invalid">
+                                    Advertisement Header Text is mandatory
+                                </div>-->
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="form-group">
-                            <label>Specific</label>
+                            <label>Odometer Reading</label>
+                            <div class="clearfix"></div>
+                            <div  class="col-md-6 col-sm-6 col-xs-12 PL0 PR0 MT5Mob">
+                                <input type="text" formControlName="kilometer" />
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Colour</label>
                             <div class="clearfix"></div>
                             <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
                                 <select class="form-control" formControlName="extColour">
@@ -123,21 +164,19 @@
                                     <option>Black</option>
                                 </select>
                             </div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 PR0Mob PL0 MT5Mob MT5">
-                                <input type="text" class="form-control" placeholder="Odometer Reading">
-                            </div>
+                            <!--<div class="col-md-4 col-sm-4 col-xs-12 PR0Mob PL0 MT5Mob MT5">
+                                <input type="text" class="form-control" placeholder="Odo Meter">
+                            </div>-->
 
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="form-group">
                             <label>Specific</label>
                             <div class="clearfix"></div>
-                            <div class="squaredOne">
+                            <!--<div class="squaredOne">
                                 <input type="checkbox" value="None" id="isRegistrationIncluded" name="check" formControlName="isRegistrationIncluded" />
-                                <!--<input type="checkbox" id="UsedCars" name="check" [ngModelOptions]="{standalone: true}" [(ngModel)]="inventory.isRegistrationIncluded" />-->
                                 <label for="isRegistrationIncluded">Registration Included</label>
-                            </div>
+                            </div>-->
                             <div class="squaredOne">
                                 <input type="checkbox" value="None" id="isRoadWorthIncluded" name="check" formControlName="isRoadWorthIncluded" />
                                 <!--<input type="checkbox" id="New_UsedCars" name="check" [ngModelOptions]="{standalone: true}" [(ngModel)]="inventory.isRoadWorthIncluded" />-->
@@ -145,11 +184,10 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="form-group">
-                            <label>Extras</label>
+                            <label>Car Extras</label>
                             <div class="clearfix"></div>
-                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob" *ngFor="let banner of bannerList">
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob" *ngFor="let banner of carExtraList">
                                 <div class="squaredOne">
                                     <input type="checkbox" value="None" id="{{banner.name}}" name="check" (change)="onbannerselect(banner)" [ngModelOptions]="{standalone: true}" [(ngModel)]="banner.isChecked" />
                                     <label for="{{banner.name}}">{{banner.name}}</label>
@@ -157,27 +195,76 @@
                             </div>
 
                             <div class="clearfix"></div>
+                            <div class="squaredOne">
+                                <textarea rows="4" cols="50" class="form-control" placeholder="Additional Details" formControlName="details"></textarea>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <label>Pricing Type</label>
+
+                            <div>
+                                <div class="squaredOne" *ngFor="let item of pricingTypes; let indx= index">
+                                    <input type="radio" value="None" id="{{item.name}}" [checked]="indx == 0" (change)="pricingCheck(item.name)" name="details" [value]="item.name" />
+                                    <label for="{{item.name}}">{{item.displayName}}</label>
+                                </div>
+                                <!--<div class="squaredOne">
+                                    <input type="radio" value="None" id="negotiable" (change)="pricingCheck('negotiable')" name="negotiable" [(ngModel)]="negotiable" [ngModelOptions]="{standalone: true}" />
+                                    <label for="negotiable">Negotiable</label>
+                                </div>
+                                <div class="squaredOne">
+                                        <input type="radio" value="None" id="range" (change)="pricingCheck('range')" name="range" [(ngModel)]="range" [ngModelOptions]="{standalone: true}" />
+                                        <label for="range">Price Range</label>
+                                </div>-->
+                            </div>
+
+                            <div class="clearfix"></div>
                         </div>
 
+
                         <div class="form-group">
-                            <input type="file" class="btn btn-primary Details AddNew NoArrow" (change)="getImage($event)"><span>Add Photos</span>
+                            <label>Pricing</label>
                             <div class="clearfix"></div>
-                            <div class="AddPhotos MT10">
-                                <span *ngFor="let imge of images"><img [src]="imge.url"><a href="javascript:void()"><i class="glyphicon glyphicon-remove"></i></a></span>
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5" *ngIf="isFixed">
+                                <input type="number" class="form-control" placeholder="Drive Away Price" formControlName="price" min="0">
                             </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5" *ngIf="isNegotiable">
+                                <input type="number" class="form-control" placeholder="Negotiable %" formControlName="negotiablePercent" min="0">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5" *ngIf="isRange">
+                                <input type="number" class="form-control" placeholder="Min" formControlName="dealAmountMin" min="0">
+                            </div>
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5" *ngIf="isRange">
+                                <input type="number" class="form-control" placeholder="Max" formControlName="dealAmountMax" min="0">
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
+
+
+                        <div class="form-group">
+                            <label>Listing Type</label>
+                            <div class="clearfix"></div>
+                            <div class="squaredOne">
+                                <input type="checkbox" value="None" id="UsedCars" name="isAutoQuote" formControlName="isAutoQuote" />
+                                <label for="UsedCars">AutoQuote</label>
+                            </div>
+                            <div class="squaredOne">
+                                <input type="checkbox" value="None" id="listclassified" name="isClassified" formControlName="isClassified" />
+                                <label for="listclassified">List in classified & advertise</label>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+
+
 
                         <div class="form-group">
                             <label>Vehicle Used for Test Drive</label>
                             <div class="clearfix"></div>
                             <div class="squaredOne">
-                                <input type="radio" value="None" id="UsedCars" name="isVehicleUsed" formControlName="isVehicleUsed" />
-                                <label for="UsedCars">Yes</label>
+                                <input type="checkbox" value="None" id="newCar" name="newCar" formControlName="newCar" />
+                                <label for="newCar">Yes</label>
                             </div>
-                            <!--<div class="squaredOne">
-                                <input type="checkbox" value="None" id="New_UsedCars" name="check" />
-                                <label for="New_UsedCars">No</label>
-                            </div>-->
                             <div class="clearfix"></div>
                         </div>
 
@@ -234,5 +321,4 @@
 
     </div>
     <!-- *** Offerings Starts here -->
-
 </div>
