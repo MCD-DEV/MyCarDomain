@@ -20722,6 +20722,7 @@ var shareService = (function () {
     function shareService() {
         this.isOpen = false;
         this.defaultSubs = new subscription();
+        this.loader = { isLoading: false };
         this.subject = new Subject_1.Subject();
         this.states = [
             "ACT",
@@ -20734,6 +20735,12 @@ var shareService = (function () {
             "WA"
         ];
     }
+    shareService.prototype.showLoader = function () {
+        this.loader.isLoading = true;
+    };
+    shareService.prototype.hideLoader = function () {
+        this.loader.isLoading = false;
+    };
     shareService.prototype.setLogged = function (usrCtxt) {
         this.userontext = usrCtxt;
         this.subject.next(usrCtxt);
@@ -41143,6 +41150,12 @@ var VehicleDealerAreaOfOperRegion = (function () {
     return VehicleDealerAreaOfOperRegion;
 }());
 exports.VehicleDealerAreaOfOperRegion = VehicleDealerAreaOfOperRegion;
+var VehicleDealerInsDetails = (function () {
+    function VehicleDealerInsDetails() {
+    }
+    return VehicleDealerInsDetails;
+}());
+exports.VehicleDealerInsDetails = VehicleDealerInsDetails;
 var Dealer = (function () {
     function Dealer() {
         this.vehicleDealerDetails = [];
@@ -41168,6 +41181,7 @@ var VehicleDealerDetails = (function () {
         this.vehicleDealerAreaOfOperState = [];
         this.vehicleDealerRegion = [];
         this.vehicleDealerPostCode = [];
+        this.vehicleDealerInsDetails = [];
     }
     return VehicleDealerDetails;
 }());
@@ -73410,6 +73424,7 @@ var AppComponent = (function () {
         this.isProfile = false;
         this.userCtxt = {};
         this.shareservice = new models_1.shareService();
+        this.loader = shareservice.loader;
         //this.subscription = this.shareservice.getLogged().subscribe(p => { this.userontext = p; });
         this.subscription = this.messageService.getMessage().subscribe(function (p) { _this.userCtxt = p; });
     }
@@ -73434,7 +73449,7 @@ var AppComponent = (function () {
     AppComponent.prototype.showprofile = function () {
         this.userCtxt.showProfile = true;
         this.isProfile = true;
-    };s
+    };
     AppComponent.prototype.ngOnDestroy = function () {
         // unsubscribe to ensure no memory leaks
         this.subscription.unsubscribe();
@@ -73513,11 +73528,6 @@ var router_1 = __webpack_require__(7);
 var forms_1 = __webpack_require__(2);
 var SubscribeComponent = (function () {
     function SubscribeComponent(route, _service, formBuilder, router, shareservice) {
-        //this.route
-        //    .queryParams
-        //    .subscribe(params => {
-        //        this.subscriptionType = params['name'];
-        //    });
         this.route = route;
         this._service = _service;
         this.formBuilder = formBuilder;
@@ -73549,6 +73559,11 @@ var SubscribeComponent = (function () {
         this.dealerBasicInfo = new servermodels_1.Dealer();
         this.isOpen = false;
         this.insVehicleList = [];
+        //this.route
+        //    .queryParams
+        //    .subscribe(params => {
+        //        this.subscriptionType = params['name'];
+        //    });
     }
     SubscribeComponent.prototype.ngOnInit = function () {
         this.insVehicleList = [{ name: 'Cars', selected: false }, { name: 'Boats', selected: false }, { name: 'Bikes', selected: false }, { name: 'Caravan', selected: false }, { name: 'Commercial', selected: false }, { name: 'Agri', selected: false }];
@@ -73677,6 +73692,11 @@ var SubscribeComponent = (function () {
                         finance: dealer_1,
                         insurance: dealer_1
                     });
+                    if (this.subscriptionType == "Transport") {
+                        this.transportGroup.patchValue({
+                            transport: dealer_1
+                        });
+                    }
                     this.subscription = dealer_1.subscription;
                     if (dealer_1.vehicleDealerMakeList != undefined)
                         for (var i = 0; i < dealer_1.vehicleDealerMakeList.length; i++) {
@@ -73694,10 +73714,27 @@ var SubscribeComponent = (function () {
                         for (var i = 0; i < dealer_1.vehicleDealerAreaOfOperState.length; i++) {
                             this.selectedstates.push(dealer_1.vehicleDealerAreaOfOperState[i].state);
                         }
+                    if (dealer_1.vehicleDealerInsDetails != undefined) {
+                        var l_all = void 0;
+                        for (var i = 0; i < dealer_1.vehicleDealerInsDetails.length; i++) {
+                            var l_veh = this.insVehicleList.filter(function (p) { return p.name == dealer_1.vehicleDealerInsDetails[i].flex1; });
+                            if (l_veh != undefined && l_veh.length)
+                                l_veh[0].selected = true;
+                            else
+                                l_all = true;
+                        }
+                        if (l_all == undefined) {
+                            if (this.subscriptionType == "Insurance")
+                                this.basicGroup.insurance.controls['insVehicles'].setValue(true);
+                            if (this.subscriptionType == "Finance")
+                                this.basicGroup.finance.controls['allselected'].setValue(true);
+                        }
+                    }
                 }
             }
         }
         catch (err) {
+            console.log(err);
         }
         //for (var i = 0; i < this.insVehicleList.length; i++) {
         //    let l_vhList;
@@ -73860,9 +73897,11 @@ var SubscribeComponent = (function () {
         var _this = this;
         try {
             if (this.selectedstates) {
+                this.shareservice.showLoader();
                 this._service.getregions('australia', state).subscribe(function (data) {
                     if (data != undefined) {
                         var l_response = JSON.parse(data['_body']);
+                        _this.shareservice.hideLoader();
                         for (var i = 0; i < l_response.length; i++) {
                             var make = _this.selectedregions;
                             if (make.indexOf(l_response[i]) != -1)
@@ -73873,6 +73912,7 @@ var SubscribeComponent = (function () {
                         return l_response;
                     }
                 }, function (err) {
+                    _this.shareservice.hideLoader();
                     console.log(err);
                 });
             }
@@ -73885,8 +73925,10 @@ var SubscribeComponent = (function () {
         var _this = this;
         try {
             if (this.selectedstates) {
+                this.shareservice.showLoader();
                 this._service.getregions('australia', state).subscribe(function (data) {
                     if (data != undefined) {
+                        _this.shareservice.hideLoader();
                         var l_response = JSON.parse(data['_body']);
                         if (l_type == 'from')
                             _this.fromRegions = l_response;
@@ -73894,6 +73936,7 @@ var SubscribeComponent = (function () {
                             _this.toRegions = l_response;
                     }
                 }, function (err) {
+                    _this.shareservice.hideLoader();
                     console.log(err);
                 });
             }
@@ -73905,8 +73948,10 @@ var SubscribeComponent = (function () {
     SubscribeComponent.prototype.getfromtoPostCodes = function (state, region, l_type) {
         var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getpostalcode('australia', state, region).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     if (l_type == 'from')
                         _this.fromPostcodes = l_response;
@@ -73914,6 +73959,7 @@ var SubscribeComponent = (function () {
                         _this.toPostcodes = l_response;
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -73949,8 +73995,10 @@ var SubscribeComponent = (function () {
     SubscribeComponent.prototype.getFilteredPostCodes = function (state, region) {
         var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getpostalcode('australia', state, region).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     for (var i = 0; i < l_response.length; i++) {
                         var make = _this.selectedpostcodes;
@@ -73961,6 +74009,7 @@ var SubscribeComponent = (function () {
                     }
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -74105,6 +74154,8 @@ var SubscribeComponent = (function () {
             l_subs.vehicleDealerRegion = [];
         if (l_subs.vehicleDealerMakeList == undefined)
             l_subs.vehicleDealerMakeList = [];
+        if (l_subs.vehicleDealerInsDetails == undefined)
+            l_subs.vehicleDealerInsDetails = [];
         for (var i = 0; i < l_postcodes.length; i++) {
             l_subs.vehicleDealerPostCode.push({ postCode: l_postcodes[i] });
         }
@@ -74117,9 +74168,10 @@ var SubscribeComponent = (function () {
         for (var i = 0; i < this.selectedmakes.length; i++) {
             l_subs.vehicleDealerMakeList.push({ make: this.selectedmakes[i] });
         }
-        //for (var i = 0; i < this.selectedmodels.length; i++) {
-        //    l_subs.model.push(this.selectedmodels[i]);
-        //}
+        for (var i = 0; i < this.insVehicleList.length; i++) {
+            if (this.insVehicleList[i].selected)
+                l_subs.vehicleDealerInsDetails.push({ flex1: this.insVehicleList[i].name });
+        }
         this.setType(false);
         if (models_1.shareService.p_dealer.vehicleDealerDetails.length) {
             var l_indx = void 0;
@@ -74205,13 +74257,16 @@ var SubscribeComponent = (function () {
         try {
             this.setGroupSubscribe();
             //return;
+            this.shareservice.showLoader();
             this._service.savesubscription(models_1.shareService.p_dealer).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     models_1.shareService.p_dealer = l_response;
                     _this.router.navigate(['/home']);
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -77251,14 +77306,17 @@ var AddInventoryComponent = (function () {
         var _this = this;
         try {
             if (this.makes == undefined || !this.makes.length)
-                this._service.getmakes(2017).subscribe(function (data) {
-                    if (data != undefined) {
-                        var l_response = JSON.parse(data['_body']);
-                        _this.makes = l_response;
-                    }
-                }, function (err) {
-                    console.log(err);
-                });
+                this.shareservice.showLoader();
+            this._service.getmakes(2017).subscribe(function (data) {
+                if (data != undefined) {
+                    _this.shareservice.hideLoader();
+                    var l_response = JSON.parse(data['_body']);
+                    _this.makes = l_response;
+                }
+            }, function (err) {
+                _this.shareservice.hideLoader();
+                console.log(err);
+            });
         }
         catch (_err) {
             console.log(_err);
@@ -77267,12 +77325,15 @@ var AddInventoryComponent = (function () {
     AddInventoryComponent.prototype.getmodels = function () {
         var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getmodels(2017, this.selectedMake).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     _this.models = l_response;
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -77283,12 +77344,15 @@ var AddInventoryComponent = (function () {
     AddInventoryComponent.prototype.getvariants = function () {
         var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getvariants(2017, this.selectedMake, this.selectedModel).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     _this.variants = l_response;
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -77299,12 +77363,15 @@ var AddInventoryComponent = (function () {
     AddInventoryComponent.prototype.getautotrim = function () {
         var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getvariants(2017, this.selectedMake, this.selectedModel).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     _this.autotrims = l_response;
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -77313,12 +77380,16 @@ var AddInventoryComponent = (function () {
         }
     };
     AddInventoryComponent.prototype.getinventory = function () {
+        var _this = this;
         try {
+            this.shareservice.showLoader();
             this._service.getinventory(this.dealerId).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -77346,12 +77417,15 @@ var AddInventoryComponent = (function () {
             //}
             //this.router.navigate(['/inventory']);
             //return;
+            this.shareservice.showLoader();
             this._service.saveinventory(this.inventory).subscribe(function (data) {
+                _this.shareservice.hideLoader();
                 if (data != undefined) {
                     var l_response = JSON.parse(data['_body']);
                     _this.router.navigate(['/inventory']);
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -78082,7 +78156,6 @@ var router_1 = __webpack_require__(7);
 var forms_1 = __webpack_require__(2);
 var DealerContext = (function () {
     function DealerContext(dataService, route, _service, formBuilder, router, shareservice) {
-        //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
         this.dataService = dataService;
         this.route = route;
         this._service = _service;
@@ -78090,6 +78163,8 @@ var DealerContext = (function () {
         this.router = router;
         this.shareservice = shareservice;
         this.isinsign = true;
+        //private userinfocheck: UserInfoCheck, private usercontext: userContext, private makemodel: MakeModel, private leaddetails:
+        this.loader = shareservice.loader;
     }
     DealerContext.prototype.ngOnInit = function () {
         this.formValidation();
@@ -78151,8 +78226,10 @@ var DealerContext = (function () {
         var _this = this;
         try {
             var l_dealer_1 = this.registerGroup.value;
+            this.shareservice.showLoader();
             this._service.createDealerContext(l_dealer_1).subscribe(function (data) {
                 if (data != undefined) {
+                    _this.shareservice.hideLoader();
                     var l_response = JSON.parse(data['_body']);
                     models_1.shareService.p_dealer = l_response;
                     models_1.UIStorage.deleteCookie('dealerId');
@@ -78165,6 +78242,7 @@ var DealerContext = (function () {
                         _this.router.navigate(['/home']);
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 console.log(err);
             });
         }
@@ -78185,10 +78263,12 @@ var DealerContext = (function () {
             //UIStorage.setCookie('dealerId', '54');
             //this.router.navigate(['/home']);
             //return;
+            this.shareservice.showLoader();
             this._service.validateDealerContext(l_dealer_2).subscribe(function (data) {
                 if (data != undefined) {
                     var l_response = JSON.parse(data['_body']);
                     models_1.shareService.p_dealer = l_response;
+                    _this.shareservice.hideLoader();
                     _this.setUser(l_dealer_2.email);
                     models_1.UIStorage.setCookie('dealerId', l_response.dealerId);
                     var type = sessionStorage.getItem('subscriptiontype');
@@ -78198,6 +78278,7 @@ var DealerContext = (function () {
                         _this.router.navigate(['/home']);
                 }
             }, function (err) {
+                _this.shareservice.hideLoader();
                 _this.message = err;
             });
         }
