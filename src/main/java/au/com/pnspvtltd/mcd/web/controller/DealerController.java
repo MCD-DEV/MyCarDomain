@@ -14,7 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.CrossOrigin;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -107,7 +107,7 @@ import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
-@CrossOrigin(origins = "http://localhost:8018")
+
 @RestController
 public class DealerController {
 
@@ -372,6 +372,12 @@ public class DealerController {
 		return dealerService.getDealerSearch(id);
 	}
 	
+	@GetMapping(value = "dealer/search/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerSearchVO getDealerSearchId(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Search for unique with id {} ", id);
+		return dealerService.getDealerSearchUnique(id);
+		
+	}
 	@GetMapping(value = "dealer/{id}/searchInsurance", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<DealerSearchInsuranceVO> getDealerSearchInsurance(@PathVariable Long id) {
 		LOGGER.debug("Received request to get Dealer Search Insurance with id {} ", id);

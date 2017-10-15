@@ -40,6 +40,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
+import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerInsRepository;
@@ -94,7 +95,8 @@ public class DealerServiceImpl implements DealerService {
 
 	@Autowired
 	AdminRepository adminRepository;
-	
+	@Autowired
+	DealerSearchRepository dealerSearchRepository;
 	@Autowired
 	private DealerRepository dealerRepository;
 	@Autowired
@@ -627,6 +629,15 @@ public class DealerServiceImpl implements DealerService {
 		for(DealerSearch dealerSearch : dealerRepository.findOne(dealerId).getDealSearch()){
 			dealerSearchList.add(domainModelUtil.fromDealerSearch(dealerSearch));
 		}
+		return dealerSearchList;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public DealerSearchVO getDealerSearchUnique(Long dealerId) {
+		DealerSearchVO dealerSearchList = new DealerSearchVO(); 
+		DealerSearch dealerSearch= dealerSearchRepository.findOne(dealerId);
+		dealerSearchList = domainModelUtil.toDealerSearchVO(dealerSearch);
 		return dealerSearchList;
 	}
 
