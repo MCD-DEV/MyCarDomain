@@ -1672,7 +1672,33 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 		return dealerVO;
 	}
+	
+	
+	/*// start of inventory
+	public InventoryVO fromDealerInv(final Inventory dealer) {
 
+		if (dealer == null) {
+			return null;
+		}
+
+		InventoryVO dealerVO = new InventoryVO();
+		try {
+
+			BeanUtils.copyProperties(dealerVO, dealer);
+			
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return dealerVO;
+	}
+	// end of inventory
+*/
 	public DealerSearchVO fromDealerSearch(final DealerSearch dealerSearch) {
 		DealerSearchVO searchVO = new DealerSearchVO();
 		try {
