@@ -33,8 +33,42 @@ public class DealerSearchVO {
 	private Date ageOfAdditionalDriver;
 	private Long userId;
 	private Long carSearchId;
-	
-	
+	private boolean finApproved;
+	public boolean isFinApproved() {
+		return finApproved;
+	}
+
+	public void setFinApproved(boolean finApproved) {
+		this.finApproved = finApproved;
+	}
+
+	private boolean newer;
+	public boolean isNewer() {
+		return newer;
+	}
+
+	public void setNewer(boolean newer) {
+		this.newer = newer;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
+
+	public String getCarColor2() {
+		return carColor2;
+	}
+
+	public void setCarColor2(String carColor2) {
+		this.carColor2 = carColor2;
+	}
+
+	private boolean used;
+	private String carColor2;
 	public Long getCarSearchId() {
 		return carSearchId;
 	}

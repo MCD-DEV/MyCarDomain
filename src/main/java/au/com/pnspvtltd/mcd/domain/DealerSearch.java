@@ -351,7 +351,25 @@ public class DealerSearch implements Serializable {
 
 	private boolean newer;
 	private boolean used;
+	public boolean isFinApproved() {
+		return finApproved;
+	}
+
+	public void setFinApproved(boolean finApproved) {
+		this.finApproved = finApproved;
+	}
+
+	private String carColor2;
+	private boolean finApproved;
 	// finance
+
+	public String getCarColor2() {
+		return carColor2;
+	}
+
+	public void setCarColor2(String carColor2) {
+		this.carColor2 = carColor2;
+	}
 
 	public boolean isNewer() {
 		return newer;
