@@ -42,7 +42,7 @@ public class DealerSearch implements Serializable {
 	private int noOfAtFaultClaims;
 	private Date dateOfBirth;
 	private double indicativeExcessAmount;
-	private Date ageOfAdditionalDriver;
+	private Date ageOfAdditionalDriver;//Lead Creation Date
 	private Long userId;
 	private Long carSearchId;
 	
@@ -347,7 +347,27 @@ public class DealerSearch implements Serializable {
 
 	private Date sYearOfMake;
 
+	
+
+	private boolean newer;
+	private boolean used;
 	// finance
+
+	public boolean isNewer() {
+		return newer;
+	}
+
+	public void setNewer(boolean newer) {
+		this.newer = newer;
+	}
+
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
 
 	private double finAmountMin;
 	private double finAmountMax;
