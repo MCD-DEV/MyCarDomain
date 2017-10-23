@@ -216,6 +216,11 @@ public class DealerServiceImpl implements DealerService {
 
 		DealerSearch dealerSearch = null;
 			dealerSearch = domainModelUtil.toDealerSearchAdmin(dealerVO);
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
+		    dealerSearch.setDateOfBirth(ourJavaDateObject);
+		    dealerSearch.setAgeOfAdditionalDriver(ourJavaDateObject);
+		    dealerSearch.setsYearOfMake(ourJavaDateObject);
 			
 			dealerSearch.setUserId(dealerVO.getUserId());
 			if (dealer.getDealSearch() != null) {

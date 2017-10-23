@@ -93,7 +93,7 @@ public class InventoryServiceImpl implements InventoryService{
 		Inventory dealer = inventoryRepository.findOne(id);
 		InventoryVO dealerVO = null;
 		if(dealer != null){
-			dealerVO = domainModelUtil.fromInventory(dealer,true);
+			dealerVO = domainModelUtil.fromInventoryFull(dealer,false);
 			
 			
 

@@ -3,6 +3,8 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
+
 public class InventoryVO {
 
 	public InventoryVO(){
@@ -132,7 +134,17 @@ public class InventoryVO {
 		private double insthirdInsuanceMax;
 
 		// carMake
+		List<QuotationFeatListVO> quotationFeatList;
+		
+		
+		public List<QuotationFeatListVO> getQuotationFeatList() {
+			return quotationFeatList;
+		}
 
+
+		public void setQuotationFeatList(List<QuotationFeatListVO> quotationFeatList) {
+			this.quotationFeatList = quotationFeatList;
+		}
 		// Finance
 
 		private double finAmountMin;

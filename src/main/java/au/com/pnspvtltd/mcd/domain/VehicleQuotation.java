@@ -458,7 +458,20 @@ public class VehicleQuotation implements Serializable {
 			this.vehQuotTerm = vehQuotTerm;
 		}
 		
-		
+		 List<OfferDateList> offerDateList;
+		 @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+			@JoinColumn(name = "quotId")
+			
+			public List<OfferDateList> getOfferDateList() {
+				return offerDateList;
+			}
+
+
+			public void setOfferDateList(
+					List<OfferDateList> offerDateList) {
+				this.offerDateList = offerDateList;
+			}
+			
 		
 		List<UserQuotationHistory> userQuotationHistory;
 		

@@ -45,6 +45,7 @@ import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
 import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
 import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
+import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
 import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.RegoStateUrl;
 import au.com.pnspvtltd.mcd.domain.ReviewPoints;
@@ -139,6 +140,7 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.QuotationFeatListVO;
 import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
 import au.com.pnspvtltd.mcd.web.model.RegoStateUrlVO;
 import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
@@ -352,6 +354,49 @@ public class DomainModelUtil {
 		return user;
 	}
 
+	
+	// start to retrieve total data for inventory
+	
+	public InventoryVO fromInventoryFull(final Inventory user, boolean isMinified) {
+
+		if (user == null) {
+			return null;
+		}
+
+		InventoryVO userVO = new InventoryVO();
+		try {
+// search
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"quotationFeatList"  });
+
+			if (!isMinified) {
+				if (user.getQuotationFeatList() != null) {
+				List<QuotationFeatListVO> searchVOs = new ArrayList<>();
+				for (QuotationFeatList search : user.getQuotationFeatList()) {
+					QuotationFeatListVO searchVO = new QuotationFeatListVO();
+					BeanUtils.copyProperties(searchVO, search);
+					searchVOs.add(searchVO);
+				}
+				userVO.setQuotationFeatList(searchVOs);
+				}
+				
+
+			}
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+	
+	
+	// end to retrive total data 
+	
+	
+	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;
@@ -393,6 +438,28 @@ public class DomainModelUtil {
 		Inventory inventory = new Inventory();
 		try {
 			BeanUtils.copyProperties(inventory, inventoryVO);
+			
+			List <QuotationFeatListVO> qvo =inventoryVO.getQuotationFeatList();
+			List <QuotationFeatList> quoList = new ArrayList<QuotationFeatList>();
+			
+			Iterator<QuotationFeatListVO> it = qvo.iterator();
+			for(;it.hasNext();){
+				QuotationFeatListVO local = it.next();	
+				QuotationFeatList quo = new QuotationFeatList();
+			try {
+				BeanUtils.copyProperties(quo, local);
+				quoList.add(quo);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+			
+			inventory.setQuotationFeatList(quoList);
+			
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

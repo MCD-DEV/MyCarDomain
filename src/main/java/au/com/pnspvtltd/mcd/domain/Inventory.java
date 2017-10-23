@@ -111,7 +111,19 @@ public class Inventory implements Serializable {
 
 		List<Feature> features;
 		List<Photo> photos;
+		List<QuotationFeatList> quotationFeatList;
+		 @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+			@JoinColumn(name = "repoId")
+			
+			public List<QuotationFeatList> getQuotationFeatList() {
+				return quotationFeatList;
+			}
 
+
+			public void setQuotationFeatList(
+					List<QuotationFeatList> quotationFeatList) {
+				this.quotationFeatList = quotationFeatList;
+			}
 		
 
 		// kolor

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
+import au.com.pnspvtltd.mcd.domain.OfferDateList;
+import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehQuotDoc;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
@@ -124,7 +126,21 @@ public class VehicleQuotationVO {
 	List<VehQuotExtras> vehQuotExtras;
 	List<VehQuotDoc> vehQuotDoc;
 	List<VehQuotTerm> vehQuotTerm;
+	List<OfferDateList> offerDateList;
 	
+	
+
+
+	public List<OfferDateList> getOfferDateList() {
+		return offerDateList;
+	}
+
+
+	public void setOfferDateList(List<OfferDateList> offerDateList) {
+		this.offerDateList = offerDateList;
+	}
+
+
 	public List<VehQuotDoc> getVehQuotDoc() {
 		return vehQuotDoc;
 	}
