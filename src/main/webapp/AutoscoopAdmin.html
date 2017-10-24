@@ -1400,34 +1400,52 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 
 																<div class="row">
 																	<div class="col-sm-4 col-md-4">
-																		<div class="selector">
+																		<!-- <div class="selector">
 																			<select id="car-years-fin" name="caryearsfin"
 																				ng-model="caryearsfin" class="full-width" required>
 																				<option value="" selected disabled>Year</option>
 																			</select>
-																		</div>
+																		</div> -->
+																		<div class="selector">   
+                                                              <select id="car-years" name="caryears" ng-model="caryears" ng-options="x for x in yearsCar" ng-change="makeForYear(caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Which Year ?</option>
+                                                                        </select>        
+                                                          </div>
 																		<span style="color: red"
 																			ng-show="QuoteNewfrm.caryearsfin.$error.required &amp;&amp; (!QuoteNewfrm.caryearsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
 																				year is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		<div class="selector">
+																		<!-- <div class="selector">
 																			<select id="car-makes-fin" name="carmakesfin"
 																				ng-model="carmakesfin" class="full-width" required>
 																				<option value="" selected disabled>Make</option>
 																			</select>
-																		</div>
+																		</div> -->
+																		<div class="selector">
+                                                           		 <select id="car-makes" name="carmakes" ng-model="carmakes" ng-options="x for x in MakesCarYear" ng-change="modelForYearMake(carmakes,caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Make</option>
+                                                                        </select>
+                                                           </div>
 																		<span style="color: red"
 																			ng-show="QuoteNewfrm.carmakesfin.$error.required &amp;&amp; (!QuoteNewfrm.carmakesfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
 																				Make is Required</b></span>
 																	</div>
 																	<div class="col-sm-4 col-md-4">
-																		<div class="selector">
+																		<!-- <div class="selector">
 																			<select id="car-models-fin" name="carmodelsfin"
 																				ng-model="carmodelsfin" class="full-width" required>
 																				<option value="" selected disabled>Model</option>
 																			</select>
-																		</div>
+																		</div> -->
+																		<div class="selector">
+	                                                          <select id="car-models" name="carmodels" ng-model="carmodels" ng-options="x for x in ModelsCarYearMake" ng-change="varForYearMakeMod(carmodels,carmakes,caryears)"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>Model</option>
+                                                                        </select>
+	                                                      </div>
 																		<span style="color: red"
 																			ng-show="QuoteNewfrm.carmodelsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelsfin.$pristine || QuoteNewfrm.$submitted)"><b>Car
 																				model is Required</b></span>
@@ -1435,7 +1453,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																</div>
 																<div class="row">
 																	<div class="col-sm-12 col-md-12">
-																		<div class="selector">
+																		<!-- <div class="selector">
 																			<select id="car-model-auto-trims-fin"
 																				name="carmodelAutotrimsfin"
 																				ng-model="carmodelAutotrimsfin" class="full-width"
@@ -1443,7 +1461,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																				<option value="" selected disabled>Autoscoop
 																					Trim</option>
 																			</select>
-																		</div>
+																		</div> -->
+																		<div class="selector">
+	                                                         <select id="car-model-trims" name="car-model-trims" ng-model="carmodeltrims" ng-options="x for x in VarsCarYearMakeMod"
+                                                                        class="full-width" required>
+                                                                        <option value="" selected disabled>AutoScoop Trim</option>
+                                                                        </select>
+	                                                     </div>
 																		<span style="color: red"
 																			ng-show="QuoteNewfrm.carmodelAutotrimsfin.$error.required &amp;&amp; (!QuoteNewfrm.carmodelAutotrimsfin.$pristine || QuoteNewfrm.$submitted)"><b>Autoscoop
 																				Trim is Required</b></span>
