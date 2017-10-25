@@ -1,12 +1,15 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,9 @@ import au.com.pnspvtltd.mcd.domain.ExternalDealer;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerFin;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerIns;
 import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
+import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
+import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
@@ -53,6 +58,7 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerInsRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerRepositoryFin;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
+import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
@@ -100,9 +106,11 @@ import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.LoyalAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
+import au.com.pnspvtltd.mcd.web.model.QuotationFeatListVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
+import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -147,6 +155,8 @@ public class DealerController {
 	
 	@Autowired
 	ExternalDealerRepositoryFin externalDealerepositoryFin;
+	@Autowired
+	private InventoryRepository inventoryRepository;
 	
 	@Autowired
 	DomainModelUtil domainModelUtil;
@@ -325,6 +335,81 @@ public class DealerController {
 		LOGGER.debug("Received request to add inventory by the Dealer with Id {}", inventoryVO.getRefId());
 		response.setStatus(HttpStatus.CREATED.value());
 		return dealerService.addInventory(inventoryVO);
+	}
+	
+	/** 
+	 * Update Inventory
+	 * @param inventoryVO
+	 * @param response
+	 * @return
+	 */
+	
+	@PutMapping("dealer/updateInventory")
+	@Transactional
+	public Inventory updateInventory(@RequestBody InventoryVO inventoryVO,
+			HttpServletResponse response) {
+		Inventory user = new Inventory();
+		LOGGER.debug("Received request to update inventory {}", inventoryVO.getRepoId());
+	    //TODO: create a service for VehicleQutotation to update quotation details
+		if(inventoryVO != null){
+			user = inventoryRepository.findOne(inventoryVO.getRepoId());
+			
+			user.setModelYear(inventoryVO.getModelYear());
+			user.setModelDisplay(inventoryVO.getModelDisplay());
+			user.setModelName(inventoryVO.getModelName());
+			user.setModelTrim(inventoryVO.getModelTrim());
+			user.setExtColour(inventoryVO.getExtColour());
+			user.setIntColour(inventoryVO.getIntColour());
+			user.setDemo(inventoryVO.isDemo());
+			user.setRoadWorthIncluded(inventoryVO.isRoadWorthIncluded());
+			user.setRegistrationIncluded(inventoryVO.isRegistrationIncluded());
+			user.setAutoQuote(inventoryVO.isAutoQuote());
+			user.setClassified(inventoryVO.isClassified());
+			user.setTypeOfCar(inventoryVO.getTypeOfCar());
+			//user.setVehicleDescription(inventoryVO.getVehicleDescription());
+			user.setVariant(inventoryVO.getVariant());
+			
+			user.setPrice(inventoryVO.getPrice());
+			user.setRegNo(inventoryVO.getRegNo());
+			
+			user.setKilometer(inventoryVO.getKilometer());
+			user.setRegExpiryDate(inventoryVO.getRegExpiryDate());
+			user.setVinNumber(inventoryVO.getVinNumber());
+			user.setVendorStockNo(inventoryVO.getVendorStockNo());
+			user.setState(inventoryVO.getState());
+			user.setDealAmountMin(inventoryVO.getDealAmountMin());
+			user.setDealAmountMax(inventoryVO.getDealAmountMax());
+			user.setNewCar(inventoryVO.isNewCar());
+			//user.setStockItem(inventoryVO.getStockItem());
+			//user.setDealerId(inventoryVO.getDealerId());
+			user.setUserId(inventoryVO.getUserId());
+			//user.setQuotationFeatList(inventoryVO.getQuotationFeatList());
+			
+			List <QuotationFeatListVO> qvo =inventoryVO.getQuotationFeatList();
+			List <QuotationFeatList> quoList = new ArrayList<QuotationFeatList>();
+			
+			Iterator<QuotationFeatListVO> it = qvo.iterator();
+			for(;it.hasNext();){
+				QuotationFeatListVO local = it.next();	
+				QuotationFeatList quo = new QuotationFeatList();
+			try {
+				BeanUtils.copyProperties(quo, local);
+				quoList.add(quo);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			user.setQuotationFeatList(quoList);
+			inventoryRepository.flush();
+			
+			//user.setAreaName(userMyVehicleVO.); // phone number
+			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+		}
+		}
+		return user;
 	}
 	
 	@PostMapping("dealer/addInventoryUser")
