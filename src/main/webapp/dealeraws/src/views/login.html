@@ -1,0 +1,100 @@
+﻿
+	<div class="LoginWrapper">
+		<div class="LoginFormWrapper">
+			<div class="Logo">AutoScoop</div>
+			<div class="Tabs">
+				<a (click)="showlogin()" [ngClass]="{'active':isinsign}" class="active" data-rel="content1">Sign In</a>
+				<a (click)="showsignup()" [ngClass]="{'active':!isinsign}" data-rel="content2">Sign Up</a>
+			</div>
+            <div><label>{{message}}</label></div>
+            <div *ngIf="!isforgot">
+                <div class="form-group MT20" id="content1" *ngIf="isinsign">
+                    <form novalidate (ngSubmit)="validateDealerContext()" [formGroup]="loginGroup">
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT20">
+                            <input type="email" autofocus class="form-control" placeholder="Enter email" formControlName="email">
+                            <div class="white-err" *ngIf="loginGroup.get('email').touched && loginGroup.get('email').invalid">
+                                Email is required
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                            <input type="password" class="form-control" placeholder="Enter password" formControlName="password" min="6">
+                            <div class="white-err" *ngIf="loginGroup.get('password').touched && loginGroup.get('password').invalid">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <button class="btn btn-primary Login" [disabled]="loginGroup.invalid" type="submit">Sign In</button>
+                        <div class="footer">
+                            <a (click)="showforgot()">Forgot Password ?</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-group MT20" id="content2" *ngIf="!isinsign">
+                    <form novalidate (ngSubmit)="createDealerContext()" [formGroup]="registerGroup">
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT20">
+                            <input type="text" class="form-control" autofocus placeholder="Enter First Name" formControlName="firstName">
+                            <div class="white-err" *ngIf="registerGroup.get('firstName').touched && registerGroup.get('firstName').invalid">
+                                First Name is required
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                            <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="lastName">
+                            <div class="white-err" *ngIf="registerGroup.get('lastName').touched && registerGroup.get('lastName').invalid">
+                                Last Name is required
+                            </div>
+                        </div>
+                        <!--<div class="col-md-12 col-sm-12 col-xs-12 MT20">
+                    <input type="text" class="form-control" placeholder="Enter Last Name" formControlName="dealername" min="2">
+                </div>-->
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                            <input type="text" class="form-control" placeholder="Enter Email" formControlName="email">
+                            <div class="white-err" *ngIf="registerGroup.get('email').touched && registerGroup.get('email').invalid">
+                                Email is required
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                            <input type="password" class="form-control" placeholder="Enter Password" formControlName="password">
+                            <div class="white-err" *ngIf="registerGroup.get('password').touched && registerGroup.get('password').invalid">
+                                Password is required
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                            <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confmPassword">
+                            <div class="white-err" *ngIf="registerGroup.get('confmPassword').touched && registerGroup.get('confmPassword').hasError('mismatch')">
+                                Passwords mismatch
+                            </div>
+                           
+                        </div>
+                       
+                        <!--<div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                    <input type="text" class="form-control" placeholder="Enter Your Mobile Number...">
+                </div>-->
+                        <!--<div class="col-md-12 col-sm-12 col-xs-12 MT5">
+                    <select class="form-control">
+                        <option selected>Dealer</option>
+                        <option>User</option>
+                    </select>
+                </div>-->
+                        <div class="clearfix"></div>
+                        <button class="btn btn-primary Login" [disabled]="registerGroup.invalid" type="submit">Sign Up</button>
+                    </form>
+
+                </div>
+            </div>
+            <div class="form-group MT20" id="content1" *ngIf="isforgot">
+                <form novalidate (ngSubmit)="sendContext()" [formGroup]="forgotGroup">
+                    <div class="col-md-12 col-sm-12 col-xs-12 MT20">
+                        <input type="email" autofocus class="form-control" placeholder="Enter email" formControlName="email">
+                        <div class="white-err" *ngIf="forgotGroup.get('email').touched && forgotGroup.get('email').invalid">
+                            Email is required
+                        </div>
+                    </div>
+                   
+                    <div class="clearfix"></div>
+                    <button class="btn btn-primary Login" [disabled]="forgotGroup.invalid" type="submit">Submit</button>
+                </form>
+            </div>
+		</div>
+	</div>
+

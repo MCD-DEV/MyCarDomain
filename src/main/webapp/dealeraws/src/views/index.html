@@ -1,0 +1,62 @@
+﻿<div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!--<div class="jumbotron">
+                <div class="container">
+                    <div class="col-sm-8 col-sm-offset-2">
+                        <div *ngIf="userCtxt" class="alert alert-success">{{userCtxt.userName}}</div>
+                       
+                    </div>
+                </div>
+            </div>-->
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" routerLink="/home" routerLinkActive="active"></a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#defaultNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                <div class="profile" *ngIf="userCtxt.isLoggedIn">
+                    <a (click)="showprofile()"><img src="/images/profile.jpg" > <span>hi! {{userCtxt.userName}}</span><span class="caret"></span></a>
+                    <ul class="Dropdown" *ngIf="userCtxt.showProfile">
+                        <li><a >Subscription Details</a></li>
+                        <li><a >Area of Operations</a></li>
+                        <li><a >Vehicles & Brands</a></li>
+                        <li><a >Service Offered</a></li>
+                        <li><a >Operational Times</a></li>
+                        <li><a >Loyal Details</a></li>
+                        <li><a (click)="logout()">Logout</a></li>
+                    </ul>
+                </div>
+                <div class="profile" *ngIf="!userCtxt.isLoggedIn">
+                    <span><a routerLink="/login" routerLinkActive="active" class="btn btn-primary Login" style="background-color:#ff4e00;">Sign In/Sign Up</a></span>
+                </div>
+                <div class="collapse navbar-collapse" id="defaultNavbar1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a routerLink="/inventory" routerLinkActive="active" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Inventory Management</a><!--<span class="caret"></span>-->
+                        </li>
+                        <li><a routerLink="/leads" routerLinkActive="active">Lead Management</a></li>
+                        <li> <!--class="dropdown"-->
+                            <a routerLink="/resources" routerLinkActive="active">Resource Management</a>
+                            <!--<ul class="dropdown-menu" role="menu">
+                                <li><a href="resource-management.html">add / manage resource</a></li>
+                                <li><a href="#">another action</a></li>
+                                <li><a href="#">something else here</a></li>
+                            </ul>-->
+                        </li>
+                        <!--<li><a href="#">Test Drive</a></li>-->
+                        <li><a>Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <router-outlet></router-outlet>
+    <!-- *** Body Container starts here -->
+</div>
+<div id="mydiv" *ngIf="loader.isLoading">
+    test<img src="src/images/ajax_loader.gif" class="ajax-loader" />
+</div>
+
