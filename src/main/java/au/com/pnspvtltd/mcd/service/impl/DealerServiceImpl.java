@@ -216,13 +216,25 @@ public class DealerServiceImpl implements DealerService {
 
 		DealerSearch dealerSearch = null;
 			dealerSearch = domainModelUtil.toDealerSearchAdmin(dealerVO);
+			Search search = userSearchLeadRepository.findOne(dealerVO.getCarSearchId());
 			Calendar calendar = Calendar.getInstance();
 		    java.sql.Date ourJavaDateObject = new java.sql.Date(calendar.getTime().getTime());
 		    dealerSearch.setDateOfBirth(ourJavaDateObject);
 		    dealerSearch.setAgeOfAdditionalDriver(ourJavaDateObject);
 		    dealerSearch.setsYearOfMake(ourJavaDateObject);
+		    
+		    dealerSearch.setUserId(search.getUserid());
+		    dealerSearch.setAgeOfAdditionalDriver(search.getCreationDate()); // Ebid creation date
+		    
+		    
+		    dealerSearch.setNewer(search.isNewer());
+		    dealerSearch.setUsed(search.isUsed());
+		    dealerSearch.setsPostCode(search.getPostCode());
+		    dealerSearch.setsCarColor(search.getCarColor());
+		    dealerSearch.setCarColor2(search.getsModel());//carcolor2
+		    dealerSearch.setsState(search.getState());// tell me more about
 			
-			dealerSearch.setUserId(dealerVO.getUserId());
+			
 			if (dealer.getDealSearch() != null) {
 				dealer.getDealSearch().add(dealerSearch);
 			} else {
