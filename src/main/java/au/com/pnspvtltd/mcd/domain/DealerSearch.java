@@ -45,8 +45,16 @@ public class DealerSearch implements Serializable {
 	private Date ageOfAdditionalDriver;//Lead Creation Date
 	private Long userId;
 	private Long carSearchId;
+	private boolean status;
 	
-	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}

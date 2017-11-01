@@ -34,6 +34,15 @@ public class DealerSearchVO {
 	private Long userId;
 	private Long carSearchId;
 	private boolean finApproved;
+private boolean status;
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 	public boolean isFinApproved() {
 		return finApproved;
 	}

@@ -3310,7 +3310,7 @@ $scope.carCarQuotation = function(userId){
 		$scope.leadDealerName = response.data.dealername;
 		 $scope.leadDealerABN = response.data.abnnumber;
 		 $scope.leadDealerEmail = response.data.email;*/
-			console.log(JSON.stringify(new_obj));
+//			console.log(JSON.stringify(new_obj));
 		 
 		 
 		$body.addClass("loading");
@@ -3331,7 +3331,7 @@ $scope.carCarQuotation = function(userId){
 	$scope.submitMyLeadNewfrmext = function() {
 		//alert("Insisdsssssde");
 		//alert(JSON.stringify($scope.vehicleData));
-		//console.log(JSON.stringify($scope.vehicleData));
+		console.log(JSON.stringify($scope.vehicleData));
 		//jsonInput = JSON.stringify($scope.vehicleData);
 		jsonInput = $scope.vehicleData;
 		
@@ -10358,7 +10358,7 @@ this.model_data_id = model_data_id;
 														//alert("Before Call");
 														//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 														//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
-														var wsURL = 'api/dealerQuotCreation?_method=PUT';
+														var wsURL = 'api/dealerQuotCreationExt?_method=PUT';
 														//var wsURL = '';
 														$body.addClass("loading");
 															    $http({
