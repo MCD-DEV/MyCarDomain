@@ -35,9 +35,9 @@
                                     <td>{{item.ageOfAdditionalDriver}}</td>
                                     <td>Car</td>
                                     <td>{{item.dealerSearchId}}</td>
-                                    <td>{{item.dealerSearchId}}</td>
+                                    <td>{{item.finApproved==true?'Yes':'No'}}</td>
                                     <td>
-                                        <a (click)="goto(item, 'edit')" class="MR5"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <a (click)="goto(item, 'edit')" class="MR5">Get Quotes</a>
                                     </td>
                                 </tr>
                             </tbody>

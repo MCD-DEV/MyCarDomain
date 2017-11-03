@@ -296,36 +296,9 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 MT20 SelectedVehicles">
-                                    <div class="Badges" *ngFor="let make of selectedmakes"> <span>{{make}}</span> <a (click)="onMakeSelect(make)" class="glyphicon glyphicon-remove"></a> </div>
+                                    <div class="Badges" *ngFor="let make of dealerBasicInfo.vehicleDealerMakeList"> <span>{{make.make}}</span> <a (click)="onMakeSelect(make.make)" class="glyphicon glyphicon-remove"></a> </div>
                                 </div>
                             </div>
-                            <!--<div class="MakeWrapper">
-                                <div class="col-md-12">
-                                    <div class="table-responsive" style="max-height:200px">
-                                        <table class="table table-hover table-bordered results M0">
-                                            <thead>
-                                                <tr>
-                                                    <th class="col-md-5 col-xs-5">Select Your Model</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr *ngFor="let model of models">
-                                                    <td>
-                                                        <div class="squaredOne">
-                                                            <input type="checkbox" (change)="onModelSelect(model)" [(ngModel)]="model.selected" value="model" id="{{model.name}}" name="check" />
-
-                                                            <label for="{{model.name}}">{{model.name}}</label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 MT20 SelectedVehicles">
-                                    <div class="Badges" *ngFor="let model of selectedmodels"> <span>{{model}}</span> <a (click)="onModelSelect(model)" class="glyphicon glyphicon-remove"></a> </div>
-                                </div>
-                            </div>-->
                         </div>
                         <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0 MT20 MB20">
                             <button class="btn btn-primary Details previous" (click)="onPrevious('makemodel')">Previous</button>
@@ -353,7 +326,7 @@
                                                     <td>
                                                         <div class="squaredOne">
 
-                                                            <input type="checkbox" [(ngModel)]="state.selected" (change)="onstateSelect(state)" value="state" id="{{state.name}}" name="check" />
+                                                            <input type="checkbox" [(ngModel)]="state.selected" (change)="stateChanged(state)" value="state" id="{{state.name}}" name="state.name" />
                                                             <label for="{{state.name}}">{{state.name}}</label>
                                                         </div>
                                                     </td>
@@ -363,7 +336,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 MT20 SelectedVehicles">
-                                    <div class="Badges" *ngFor="let state of selectedstates"> <span>{{state}}</span> <a (click)="onstateSelect(state)" class="glyphicon glyphicon-remove"></a> </div>
+                                    <div class="Badges" *ngFor="let state of dealerBasicInfo.vehicleDealerAreaOfOperState"> <span>{{state.state}}</span> <a (click)="stateChanged(state.state, 'del')" class="glyphicon glyphicon-remove"></a> </div>
                                 </div>
                             </div>
                             <div class="MakeWrapper">
@@ -379,9 +352,8 @@
                                                 <tr *ngFor="let region of regions">
                                                     <td>
                                                         <div class="squaredOne">
-
-                                                            <input type="checkbox" [(ngModel)]="region.selected" (change)="onregionSelect(region)" value="region" id="{{region.name}}" name="check" />
-                                                            <label for="{{region.name}}">{{region.name}}</label>
+                                                            <input type="checkbox" [(ngModel)]="region.selected" (change)="regionChanged(region)" value="region" id="rg{{region.name}}" name="rg{{region.name}}" />
+                                                            <label for="rg{{region.name}}">{{region.name}}</label>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -390,19 +362,10 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 MT20 SelectedVehicles">
-                                    <div class="Badges" *ngFor="let region of selectedregions"> <span>{{region}}</span> <a (click)="onregionSelect(region)" class="glyphicon glyphicon-remove"></a> </div>
+                                    <div class="Badges" *ngFor="let region of dealerBasicInfo.vehicleDealerRegion"> <span>{{region.region}}</span> <a (click)="onregionSelect(region.region, 'del')" class="glyphicon glyphicon-remove"></a> </div>
                                 </div>
                             </div>
                             <div class="MakeWrapper">
-                                <div class="col-lg-12">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search for make...">
-                                        <span class="input-group-btn">
-                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button>
-                                        </span>
-                                    </div>
-                                    <!-- /input-group -->
-                                </div>
                                 <div class="col-md-12">
                                     <div class="table-responsive">
                                         <table class="table table-hover table-bordered results M0">
@@ -425,7 +388,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 MT20 SelectedVehicles">
-                                    <div class="Badges" *ngFor="let postcode of selectedpostcodes"> <span>{{postcode}}</span> <a (click)="onpostcodeSelect(postcode)" class="glyphicon glyphicon-remove"></a> </div>
+                                    <div class="Badges" *ngFor="let postcode of dealerBasicInfo.vehicleDealerPostCode"> <span>{{postcode.postCode}}</span> <a (click)="onpostcodeSelect(postcode.postCode, 'del')" class="glyphicon glyphicon-remove"></a> </div>
                                 </div>
                             </div>
                         </div>
@@ -495,8 +458,8 @@
                                     <label for="isStateRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
-                                <div class="squaredOne PT10">
-                                    <input type="text" class="form-control" placeholder="Rate Charged for one vehicle" formControlName="stateRate">
+                                <div class="squaredOne PT10 MT10">
+                                    <input type="text" class="form-control" title="Rate Charged for one vehicle" placeholder="Rate Charged for one vehicle" formControlName="stateRate">
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -520,8 +483,8 @@
                                     <label for="isRegionRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
-                                <div class="squaredOne PT10">
-                                    <input type="text" class="form-control" placeholder="Rate Charged for one vehicle" formControlName="regionRate">
+                                <div class="squaredOne PT10 MT10">
+                                    <input type="text" class="form-control" title="Rate Charged for one vehicle" placeholder="Rate Charged for one vehicle" formControlName="regionRate">
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
@@ -545,8 +508,8 @@
                                     <label for="isPostRoute">Return Route</label>
                                 </div>
                                 <div class="clearfix"></div>
-                                <div class="squaredOne PT10">
-                                    <input type="text" class="form-control" placeholder="Rate Charged for one vehicle" formControlName="postRate">
+                                <div class="squaredOne PT10 MT10">
+                                    <input type="text" class="form-control" title="Rate Charged for one vehicle" placeholder="Rate Charged for one vehicle" formControlName="postRate">
                                 </div>
                                 <div class="clearfix"></div>
                             </div>

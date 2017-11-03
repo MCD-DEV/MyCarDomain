@@ -13,64 +13,98 @@
                 <form novalidate (ngSubmit)="savequote()" [formGroup]="quGroup">
                     <div class="col-lg-8 col-xs-12 col-sm-12 col-md-9 MT10">
                         <div class="form-group">
-                            <label>User Info</label>
+                            <h4>User Info</h4>
                             <div class="clearfix"></div>
-                            <div class="col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob MT5Mob MT5">
-                                <label>ASUR{{quote.userId}}</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <label>AutoScoop User Id</label>
                             </div>
-
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <label>ASCUR{{quote.userId}}</label>
+                            </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group">
-                            <label>Lead Info</label>
+                            <h4>Lead Info</h4>
                             <div class="clearfix"></div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
-                                <label>{{quote.dealerSearchId}}</label>
+                                <label>Lead Id</label>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
-                                <label>{{quote.userCreationDate}}</label>
+                                <label>ASCLD{{quote.carSearchId}}</label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>Offer Details</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <label>Lead Generation Date</label>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
+                                <label>{{quote.creationDate}}</label>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group">
+                            <h4>Offer Details</h4>
                             <div class="clearfix"></div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
                                 <label>Quote Id</label>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
-                                <label>{{quote.quotId}}</label>
+                                <label>ASCQT{{quote.quotId}}</label>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group" formGroupName="quoteGroup">
-                            <div class="squaredOne">
-                                <input type="text" class="form-control" placeholder="Offer drive away price" formControlName="driveAwayPrice" title="Offer drive away price">
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                <input type="number" min="0" class="form-control" placeholder="Offer drive away price" formControlName="driveAwayPrice" title="Offer drive away price">
                             </div>
-                            <div class="squaredOne">
-                                <input type="text" class="form-control" placeholder="Actual value of offer" formControlName="offerPrice3" title="Actual value of offer">
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                <input type="number" min="0" class="form-control" placeholder="Actual value of offer" formControlName="offerPrice3" title="Actual value of offer">
                             </div>
-                            <div class="squaredOne">
-                                <input type="text" class="form-control" placeholder="Saving through AutoScoop" formControlName="offerPrice2" title="Saving through AutoScoop">
+                            <div class="col-md-4 col-sm-4 col-xs-12 PL0 PR0Mob MT5Mob MT5">
+                                <input type="number" min="0" class="form-control" placeholder="Saving through AutoScoop" formControlName="offerPrice2" title="Saving through AutoScoop">
                             </div>
                         </div>
                         <div class="form-group" formGroupName="quoteGroup">
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
-                                <label><input type="date" class="form-control" title="Offer End Date" formControlName="regoEndDate" /></label>
+                               <label>Offer End Date</label>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
-                                <label><input type="date" class="form-control" formControlName="offerValidDate" title="Quotation valid date" /></label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control" title="Offer End Date" formControlName="regoEndDate" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="form-group" formGroupName="quoteGroup">
-                            <label>Year</label>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <div class="input-group date" id="datetimepicker1">
+                                    <label>Quotation Valid Date</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
+                                <div class="input-group date" id="datetimepicker1">
+                                    <input type="date" class="form-control" formControlName="offerValidDate" title="Quotation valid date" />
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-calendar"></span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="form-group" formGroupName="quoteGroup">
+                            <h4>Make Details</h4>
                             <div class="clearfix"></div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 PR0Mob MT10">
                                 <input type="text" class="form-control" placeholder="AutoScoop stock number" formControlName="autoscpStockNo" title="AutoScoop stock number">
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
-                                <input type="checkbox" class="form-control" placeholder="AutoScoop stock " formControlName="stockTillAvail" title="AutoScoop stock">
+                                <input type="checkbox" placeholder="AutoScoop stock " formControlName="stockTillAvail" title="AutoScoop stock">
+                                <label for="newCar">Stock till Available</label>
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -98,25 +132,26 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="form-group">
-                            <select class="form-control" formControlName="modelName">
-                                <option [ngValue]="null">Model</option>
-                                <option *ngFor="let mdl of models" [value]="mdl">{{mdl}}</option>
-                            </select>
+                        <div class="form-group" formGroupName="quoteGroup">
                             <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
-                                <select class="form-control MT5" formControlName="modelTrim">
+                                <select class="form-control" formControlName="modelName">
+                                    <option [ngValue]="null">Model</option>
+                                    <option *ngFor="let mdl of models" [value]="mdl">{{mdl}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-sm-6 col-xs-12 PL0 MT5Mob MT10 PR0Mob">
+                                <select class="form-control" formControlName="modelTrim">
                                     <option [ngValue]="null">Autoscoop Trim</option>
                                     <option *ngFor="let trim of autotrims" [value]="trim">{{trim}}</option>
                                 </select>
                             </div>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="form-group">
-                            <label>Additions</label>
-                            <button class="btn btn-primary Details AddNew" (click)="adddetails('details')"><span></span>Add</button>
-                            <div class="clearfix"></div>
+                        <div class="col-md-12">
+                            <h4>Additions</h4>
+                            <a class="btn btn-primary Details AddNew" (click)="adddetails('details')"><span></span>Add</a>
                         </div>
-                        <div class="col-md-12 MT10">
+                        <div class="col-md-12 MT5">
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered M0 table-striped">
                                     <thead>
@@ -131,24 +166,24 @@
                                     <tbody>
                                         <tr *ngFor="let item of quote.vehQuotExtras let indx = index">
                                             <td>{{indx+1}}</td>
-                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [(ngModel)]="item.extras1" title="Quantity"></td>
-                                            <td><input type="text" name="qty{{indx}}" class="form-control" [(ngModel)]="item.extras2" title="Quantity"></td>
-                                            <td><input type="text" name="amt{{indx}}" class="form-control" [(ngModel)]="item.amount" title="Price"></td>
+                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.extras1" title="Quantity"></td>
+                                            <td><input type="text" name="qty{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.extras2" title="Quantity"></td>
+                                            <td><input type="text" name="amt{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.amount" title="Price"></td>
                                             <td>
                                                 <a (click)="deletedetails(indx, quote.vehQuotExtras)"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
                                         </tr>
-                                        <tr *ngIf="!quote.vehQuotTerm"><td>No records found.</td></tr>
+                                        <tr *ngIf="!quote.vehQuotExtras"><td>No records found.</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Appointment Dates</label>
-                            <button class="btn btn-primary Details AddNew" (click)="adddetails('dates')"><span></span>Add</button>
+                        <div class="col-md-12 MT10">
+                            <h4>Appointment Dates</h4>
+                            <a class="btn btn-primary Details AddNew" (click)="adddetails('dates')"><span></span>Add</a>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-12 MT10">
+                        <div class="col-md-12 MT5">
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered M0 table-striped">
                                     <thead>
@@ -161,22 +196,22 @@
                                     <tbody>
                                         <tr *ngFor="let item of quote.offerDateList let indx = index">
                                             <td>{{indx+1}}</td>
-                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [(ngModel)]="item.offerDate" title="Quantity"></td>
+                                            <td class="input-group date"><input type="date" name="dtls{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.offerDate" title="Quantity"></td>
                                             <td>
                                                 <a (click)="deletedetails(indx, quote.vehQuotExtras)"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
                                         </tr>
-                                        <tr *ngIf="!quote.vehQuotTerm"><td>No records found.</td></tr>
+                                        <tr *ngIf="!quote.offerDateList"><td>No records found.</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Documentation Required</label>
-                            <button class="btn btn-primary Details AddNew" (click)="adddetails('docs')"><span></span>Add</button>
+                        <div class="col-md-12 MT10">
+                            <h4>Documentation Required</h4>
+                            <a class="btn btn-primary Details AddNew" (click)="adddetails('docs')"><span></span>Add</a>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-12 MT10">
+                        <div class="col-md-12 MT5">
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered M0 table-striped">
                                     <thead>
@@ -190,24 +225,25 @@
                                     <tbody>
                                         <tr *ngFor="let item of quote.vehQuotDoc let indx = index">
                                             <td>{{indx+1}}</td>
-                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [(ngModel)]="item.extras1" title="Quantity"></td>
+                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.extras1" title="Quantity"></td>
                                             <!--<td><input type="text" name="qty{{indx}}" class="form-control" [(ngModel)]="{{item.quantity}}" title="Quantity"></td>
                                             <td><input type="text" name="amt{{indx}}" class="form-control" [(ngModel)]="{{item.amount}}" title="Price"></td>-->
                                             <td>
                                                 <a (click)="deletedetails(indx, quote.vehQuotExtras)"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
+
                                         </tr>
-                                        <tr *ngIf="!quote.vehQuotTerm"><td>No records found.</td></tr>
+                                        <tr *ngIf="!quote.vehQuotDoc"><td>No records found.</td></tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Terms & Conditions</label>
-                            <button class="btn btn-primary Details AddNew" (click)="adddetails('terms')"><span></span>Add</button>
+                        <div class="col-md-12 MT10">
+                            <h4>Terms & Conditions</h4>
+                            <a class="btn btn-primary Details AddNew" (click)="adddetails('terms')"><span></span>Add</a>
                             <div class="clearfix"></div>
                         </div>
-                        <div class="col-md-12 MT10">
+                        <div class="col-md-12 MT5">
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered M0 table-striped">
                                     <thead>
@@ -223,9 +259,9 @@
                                     <tbody>
                                         <tr *ngFor="let item of quote.vehQuotTerm let indx = index">
                                             <td>{{indx+1}}</td>
-                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [(ngModel)]="item.extras1" title="Quantity"></td>
-                                            <td><input type="text" name="qty{{indx}}" class="form-control" [(ngModel)]="item.extras2" title="Quantity"></td>
-                                            <td><input type="text" name="amt{{indx}}" class="form-control" [(ngModel)]="item.amount" title="Price"></td>
+                                            <td><input type="text" name="dtls{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.extras1" title="Quantity"></td>
+                                            <td><input type="text" name="qty{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.extras2" title="Quantity"></td>
+                                            <td><input type="text" name="amt{{indx}}" class="form-control" [ngModelOptions]="{standalone: true}" [(ngModel)]="item.amount" title="Price"></td>
                                             <td>
                                                 <a (click)="deletedetails(indx, quote.vehQuotExtras)"><span class="glyphicon glyphicon-trash"></span></a>
                                             </td>
@@ -238,7 +274,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 PL0 PR0Mob MT20 MB20">
 
-                            <button class="btn btn-primary Details" [disabled]="quoteGroup.invalid" type="submit">Save</button>
+                            <button class="btn btn-primary Details" [disabled]="quGroup.invalid" type="submit">Save</button>
                         </div>
                     </div>
                 </form>
@@ -267,6 +303,7 @@
             <!-- Recent Accounts Ends here *** -->
 
         </div>
+
         <!-- *** footer -->
         <div class="clearfix"></div>
         <div class="row">
