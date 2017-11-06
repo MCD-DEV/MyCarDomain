@@ -20,7 +20,11 @@ import au.com.pnspvtltd.mcd.service.CountyRegPostSubService;
 import au.com.pnspvtltd.mcd.service.impl.DealerServiceImpl;
 import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
 @RestController
 public class CountyRegPostSubController {
 
@@ -36,6 +40,8 @@ public class CountyRegPostSubController {
 		return countyRegPostSubService.getAllCountries();
 
 	}
+	
+	
 	
 	@GetMapping(value = "statePostcode", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public boolean existsPostcodeForState(@RequestParam("state") String state,@RequestParam("postcode") int postcode) {
@@ -68,6 +74,18 @@ public class CountyRegPostSubController {
 
 	}
 	
+	@GetMapping(value = "regions/CountryStates", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<String> getRegionForCountryStates(@RequestParam("country") String country,@RequestParam("states") List<String> states)
+	{
+		LOGGER.info("Received request to get All regions for Country & States");
+		return countyRegPostSubService.getRegionForCountryStates(country,states);
+	}
+	
+	@GetMapping(value = "postcodes/CountryStatesRegions", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Integer> getPostcodesForCountryStatesRegions(String country,List<String> states,List<String> regions){
+		LOGGER.info("Received request to get All regions for Country & States & Regions");
+		return countyRegPostSubService.getPostcodesForCountryStatesRegions(country,states,regions);
+	}
 	//String modelName,String modelDisplay,String modelYear
 	//Variant in Select Box
 		@GetMapping(value = "postcodes", produces = { MediaType.APPLICATION_JSON_VALUE })

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
+import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.repository.CarModelTemplateRepository;
 import au.com.pnspvtltd.mcd.repository.CountyRegPostSubRepository;
 import au.com.pnspvtltd.mcd.service.CarModelTemplateService;
@@ -77,6 +78,29 @@ public class CountyRegPostSubServiceImpl implements CountyRegPostSubService {
 	public List<String> getRegionForGivenPostCode(int postCode) {
 		// TODO Auto-generated method stub
 		return countyRegPostSubRepository.getRegionForGivenPostCode(postCode);
+	}
+
+	@Override
+	public List<String> getRegionForCountryStates(String country, List<String> states) {
+		// TODO Auto-generated method stub
+		return countyRegPostSubRepository.getRegionForCountryStates(country, states);
+	}
+
+	@Override
+	public List<Integer> getPostcodesForCountryStatesRegions(String country, List<String> states, List<String> regions) {
+		// TODO Auto-generated method stub
+		//return countyRegPostSubRepository.getPostcodesForCountryStatesRegions(country, states, regions);
+		
+		List<Integer> postcodes = countyRegPostSubRepository.getPostcodesForCountryStatesRegions(country, states, regions);
+		return postcodes;
+		/*List<Object> objects= countyRegPostSubRepository.getPostcodesForCountryStatesRegions(country, states, regions);
+		List<String> strings = new ArrayList<String>();
+		for (Object object : objects) {
+			String convertedToString = object.toString(); 
+			strings.add(convertedToString);
+		}*/
+		//return strings;
+		
 	}
 
 }

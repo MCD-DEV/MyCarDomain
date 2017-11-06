@@ -44,6 +44,14 @@ public interface CountyRegPostSubRepository extends JpaRepository<CountyRegPostS
 	@Query("select distinct countyRegPostSub.region from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.postCode=?1")
 	public List<String> getRegionForGivenPostCode(int postCode);
 	
+	
+	@Query("select distinct countyRegPostSub.region from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.country=?1 AND countyRegPostSub.state in ?2")
+	public List<String> getRegionForCountryStates(String country,List<String> states);
+	
+	
+	@Query("select distinct countyRegPostSub.postCode from CountyRegPostSub countyRegPostSub WHERE countyRegPostSub.country=?1 AND countyRegPostSub.state in ?2 AND countyRegPostSub.region in ?3")
+	public List<Integer> getPostcodesForCountryStatesRegions(String country,List<String> states,List<String> regions);
+	
 	//public List<CountyRegPostSub> findByPostCode	
 	
 	//public CarModelTemplate getCarModelYear();
