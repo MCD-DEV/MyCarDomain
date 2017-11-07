@@ -82,7 +82,7 @@ public class CountyRegPostSubController {
 	}
 	
 	@GetMapping(value = "postcodes/CountryStatesRegions", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<Integer> getPostcodesForCountryStatesRegions(String country,List<String> states,List<String> regions){
+	public List<Integer> getPostcodesForCountryStatesRegions(@RequestParam("country") String country,@RequestParam("states") List<String> states,@RequestParam("regions") List<String> regions){
 		LOGGER.info("Received request to get All regions for Country & States & Regions");
 		return countyRegPostSubService.getPostcodesForCountryStatesRegions(country,states,regions);
 	}
