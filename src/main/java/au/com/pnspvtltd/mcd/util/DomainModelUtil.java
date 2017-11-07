@@ -1992,6 +1992,37 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		// end of Resource
 	
+		// start of ResourceVO
+				public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {
+					VehicleResourceDetailsVO dealerVO = new VehicleResourceDetailsVO();
+					try {
+
+
+						org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+								new String[] { "vehicleSocialList"});
+						
+						if( dealerVO.getVehicleSocialList() != null){
+						List<VehicleSocialList> vehicleDealerMakeLists = new ArrayList<>();
+						for (VehicleSocialListVO vehicleDealerMakeListVO : dealerVO.getVehicleSocialList()) {
+							VehicleSocialList vehicleDealerMakeList = new VehicleSocialList();
+							BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+							vehicleDealerMakeLists.add(vehicleDealerMakeList);
+						}
+						dealer.setVehicleSocialList(vehicleDealerMakeLists);
+						}
+						
+					
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealerVO;
+				}
+				// end of ResourceVO	
+		
 	public Dealer toDealer(final DealerVO dealerVO) {
 		Dealer dealer = new Dealer();
 		try {

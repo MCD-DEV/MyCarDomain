@@ -769,4 +769,21 @@ public class DealerServiceImpl implements DealerService {
 		dealerRepository.saveAndFlush(dealer);
 		return dealerVO;
 	}
+
+	@Override
+	public DealerResourceVO getDealerResourcebyID(long id) {
+		// TODO Auto-generated method stub
+		//Dealer dealer = dealerRepository.getDealerForID(id);
+		Dealer dealer = dealerRepository.findOne(id);
+		DealerResourceVO dealerResourceVO = new DealerResourceVO();
+		dealerResourceVO.setDealerId(id);
+		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
+		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
+		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
+			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
+			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
+		}
+		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
+		return dealerResourceVO;
+	}
 }

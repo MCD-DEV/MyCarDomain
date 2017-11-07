@@ -80,4 +80,6 @@ public interface DealerService {
 	DealerSubscriptionSBLVO createVehicleDealerSBL(DealerSubscriptionSBLVO dealerVO);
 	DealerResourceVO createDealerResource(DealerResourceVO dealerVO);
 	DealerSearchVO getDealerSearchUnique(Long dealerId);
+
+	DealerResourceVO getDealerResourcebyID(long id);
 }

@@ -884,5 +884,11 @@ public class DealerController {
 		//createdDealer   dealerService.findById(createdDealer.getDealerId());
 	}
 	
+	@GetMapping(value = "dealer/getResource", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerResourceVO getDealerResourcebyID(@RequestParam("ID") long id){
+		return dealerService.getDealerResourcebyID(id);
+	}
+	
+	
 	
 }
