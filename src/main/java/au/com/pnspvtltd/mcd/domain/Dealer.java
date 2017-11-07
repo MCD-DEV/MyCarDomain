@@ -87,7 +87,13 @@ public class Dealer implements Serializable {
 	List<VehicleResourceDetails> vehicleResourcDetails;
 	
 	// start
-	
+	private int leaadSellCount;
+	private int leaadLeaseCount;
+	private int leaadBuyCount;
+	private int leadInsCount;
+	private int leadFinCount;
+	private int leadServCount;
+	private int leadTranspCount;
 	
 	private boolean isServMaint;
 	private boolean isSparesAccess;
@@ -99,6 +105,64 @@ public class Dealer implements Serializable {
 	
 	
 	
+	public int getLeadInsCount() {
+		return leadInsCount;
+	}
+
+	public void setLeadInsCount(int leadInsCount) {
+		this.leadInsCount = leadInsCount;
+	}
+
+	public int getLeadFinCount() {
+		return leadFinCount;
+	}
+
+	public void setLeadFinCount(int leadFinCount) {
+		this.leadFinCount = leadFinCount;
+	}
+
+	public int getLeadServCount() {
+		return leadServCount;
+	}
+
+	public void setLeadServCount(int leadServCount) {
+		this.leadServCount = leadServCount;
+	}
+
+	public int getLeadTranspCount() {
+		return leadTranspCount;
+	}
+
+	public void setLeadTranspCount(int leadTranspCount) {
+		this.leadTranspCount = leadTranspCount;
+	}
+
+	public int getLeaadSellCount() {
+		return leaadSellCount;
+	}
+
+	public void setLeaadSellCount(int leaadSellCount) {
+		this.leaadSellCount = leaadSellCount;
+	}
+
+	public int getLeaadLeaseCount() {
+		return leaadLeaseCount;
+	}
+
+	public void setLeaadLeaseCount(int leaadLeaseCount) {
+		this.leaadLeaseCount = leaadLeaseCount;
+	}
+
+	public int getLeaadBuyCount() {
+		return leaadBuyCount;
+	}
+
+	public void setLeaadBuyCount(int leaadBuyCount) {
+		this.leaadBuyCount = leaadBuyCount;
+	}
+
+	
+
 	public String getVehicleType() {
 		return vehicleType;
 	}
