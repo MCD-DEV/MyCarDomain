@@ -52,6 +52,7 @@ import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleResourceDetailsRepo;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -121,6 +122,8 @@ public class DealerServiceImpl implements DealerService {
 	private ExternalDealerInsRepository externalDealerInsRepository;
 	@Autowired
 	private UserSearchLeadRepository userSearchLeadRepository;
+	@Autowired
+	private VehicleResourceDetailsRepo vehicleResourceDetailsRepo;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -771,10 +774,10 @@ public class DealerServiceImpl implements DealerService {
 	}
 
 	@Override
-	public DealerResourceVO getDealerResourcebyID(long id) {
+	public VehicleResourceDetailsVO getDealerResourcebyID(long id) {
 		// TODO Auto-generated method stub
 		//Dealer dealer = dealerRepository.getDealerForID(id);
-		Dealer dealer = dealerRepository.findOne(id);
+		/*Dealer dealer = dealerRepository.findOne(id);
 		DealerResourceVO dealerResourceVO = new DealerResourceVO();
 		dealerResourceVO.setDealerId(id);
 		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
@@ -784,6 +787,21 @@ public class DealerServiceImpl implements DealerService {
 			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
 		}
 		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;
+		return dealerResourceVO;*/
+		
+		VehicleResourceDetailsVO dealerVO = null;
+		VehicleResourceDetails dealer = vehicleResourceDetailsRepo.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromDealerResource(dealer);
+			/*try {
+				BeanUtils.copyProperties(dealerVO, dealer);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}	
+		return dealerVO;
+		
+		
 	}
 }

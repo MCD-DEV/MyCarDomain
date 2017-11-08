@@ -28,6 +28,7 @@ import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 
 public interface DealerService {
 
@@ -81,5 +82,5 @@ public interface DealerService {
 	DealerResourceVO createDealerResource(DealerResourceVO dealerVO);
 	DealerSearchVO getDealerSearchUnique(Long dealerId);
 
-	DealerResourceVO getDealerResourcebyID(long id);
+	VehicleResourceDetailsVO getDealerResourcebyID(long id);
 }

@@ -1776,6 +1776,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
+	
+	public VehicleResourceDetailsVO fromDealerResource(final VehicleResourceDetails dealerSearch) {
+		VehicleResourceDetailsVO searchVO = new VehicleResourceDetailsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
 	public DealerSearch toDealerSearchAdmin(final DealerSearchAdminVO dealerSearch) {
 		DealerSearch searchVO = new DealerSearch();

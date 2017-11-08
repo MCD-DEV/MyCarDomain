@@ -46,6 +46,8 @@ import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerInsRepository;
@@ -60,6 +62,7 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerRepositoryFin;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleResourceDetailsRepo;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -114,8 +117,14 @@ import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
 @RestController
 public class DealerController {
 
@@ -157,6 +166,8 @@ public class DealerController {
 	ExternalDealerRepositoryFin externalDealerepositoryFin;
 	@Autowired
 	private InventoryRepository inventoryRepository;
+	@Autowired
+	private VehicleResourceDetailsRepo vehicleResourceDetailsRepo;
 	
 	@Autowired
 	DomainModelUtil domainModelUtil;
@@ -884,11 +895,65 @@ public class DealerController {
 		//createdDealer   dealerService.findById(createdDealer.getDealerId());
 	}
 	
-	@GetMapping(value = "dealer/getResource", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public DealerResourceVO getDealerResourcebyID(@RequestParam("ID") long id){
+	@GetMapping(value = "dealer/getResource/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public VehicleResourceDetailsVO getDealerResourcebyID(@PathVariable Long id, HttpServletResponse response){
 		return dealerService.getDealerResourcebyID(id);
 	}
 	
+	/** 
+	 * Update Resource
+	 * @param vehicleResourceVO
+	 * @param response
+	 * @return
+	 */
 	
+	@PutMapping("dealer/updateResource")
+	@Transactional
+	public VehicleResourceDetails updateInventory(@RequestBody VehicleResourceDetailsVO inventoryVO,
+			HttpServletResponse response) {
+		VehicleResourceDetails user = new VehicleResourceDetails();
+		LOGGER.debug("Received request to update resource {}", inventoryVO.getVehicleResourceDetailId());
+	    //TODO: create a service for VehicleQutotation to update quotation details
+		if(inventoryVO != null){
+			user = vehicleResourceDetailsRepo.findOne(inventoryVO.getVehicleResourceDetailId());
+			user.setContactPerson(inventoryVO.getContactPerson());
+			
+			user.setDesignation(inventoryVO.getDesignation());	
+			user.setContactNumber1(inventoryVO.getContactNumber1());	
+			user.setContactNumber2(inventoryVO.getContactNumber2());	
+			user.setEmail(inventoryVO.getEmail());
+			user.setAdditionalInfo(inventoryVO.getAdditionalInfo());	
+			user.setLastName(inventoryVO.getLastName());	
+			user.setTitle(inventoryVO.getTitle());
+			user.setEmployeeCode(inventoryVO.getEmployeeCode());	
+			user.setId(inventoryVO.getId());	
+			List<VehicleSocialListVO> qvo =inventoryVO.getVehicleSocialList();
+			List <VehicleSocialList> quoList = new ArrayList<VehicleSocialList>();
+			
+			Iterator<VehicleSocialListVO> it = qvo.iterator();
+			for(;it.hasNext();){
+				VehicleSocialListVO local = it.next();	
+				VehicleSocialList quo = new VehicleSocialList();
+			try {
+				BeanUtils.copyProperties(quo, local);
+				quoList.add(quo);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//user.setVehicleSocialList(quoList);
+			
+			
+			}
+			vehicleResourceDetailsRepo.flush();
+			//user.setAreaName(userMyVehicleVO.); // phone number
+			//vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+		}
+		
+		return user;
+	}
 	
 }
