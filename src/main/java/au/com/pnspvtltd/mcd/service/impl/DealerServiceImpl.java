@@ -764,11 +764,22 @@ public class DealerServiceImpl implements DealerService {
 		Dealer dealer = dealerRepository.getDealerForID(dealerVO.getDealerId());
 		List<VehicleResourceDetailsVO> vehicleDealerDetailsVO = dealerVO.getVehicleResourceDetails();
 		List<VehicleResourceDetails> vehicleDealerDetailsList = new ArrayList<VehicleResourceDetails>();
+		boolean saved = false;
 		for (VehicleResourceDetailsVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
 			VehicleResourceDetails vehicleDealerDetails = domainModelUtil.toDealerResource(vehicleDealerDetailsVO1);
-			vehicleDealerDetailsList.add(vehicleDealerDetails);
+			if (dealer.getVehicleResourceDetails() != null) {
+				dealer.getVehicleResourceDetails().add(vehicleDealerDetails);
+				saved=true;
+			}
+			else {
+				vehicleDealerDetailsList.add(vehicleDealerDetails);
+				}
+						
 		}
-		dealer.setVehicleResourceDetails(vehicleDealerDetailsList);
+		if(!saved){ // intialization
+			dealer.setVehicleResourceDetails(vehicleDealerDetailsList);
+		}
+		
 		dealerRepository.saveAndFlush(dealer);
 		return dealerVO;
 	}

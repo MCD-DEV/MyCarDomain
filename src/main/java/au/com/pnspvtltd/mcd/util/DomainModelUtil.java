@@ -1567,7 +1567,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 			org.springframework.beans.BeanUtils.copyProperties(dealer, dealerVO,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
-							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
+							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleResourcDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
 							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
 
 			if (!isMinified) {
@@ -1639,6 +1639,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				}
 				dealerVO.setVehicleDealerDetails(vehicleDealerDetailsVO);
 				}
+				
+				if(dealer.getVehicleResourceDetails() != null){
+					List<VehicleResourceDetailsVO> vehicleDealerDetailsVO = new ArrayList<>();
+					for (VehicleResourceDetails vehicleDealerDetail : dealer.getVehicleResourceDetails()) {
+						VehicleResourceDetailsVO searchFinanceVO = new VehicleResourceDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+						vehicleDealerDetailsVO.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
+					}
+				
 				if(dealer.getVehicleDealerTranspDetails() != null){
 				List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetailsVO= new ArrayList<>();
 				for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer.getVehicleDealerTranspDetails()) {
@@ -2041,7 +2052,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
-							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
+							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleResourceDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
 							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
 			List<Inventory> inventorys = new ArrayList<>();
 			if(dealerVO.getInventory()!= null){
@@ -2089,6 +2100,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			dealer.setVehicleDealerDetails(vehicleDealerDetails);
 			}
+			
+			if( dealerVO.getVehicleResourcDetails() != null){
+				List<VehicleResourceDetails> vehicleDealerDetails = new ArrayList<>();
+				
+				for (VehicleResourceDetailsVO vehicleDealerDetailVO : dealerVO.getVehicleResourcDetails()) {
+					VehicleResourceDetails vehicleDealerDetail = new VehicleResourceDetails();
+					BeanUtils.copyProperties(vehicleDealerDetail, vehicleDealerDetailVO);
+					vehicleDealerDetails.add(vehicleDealerDetail);
+				}
+				dealer.setVehicleResourceDetails(vehicleDealerDetails);
+				}
 			
 			if( dealerVO.getVehicleDealerTranspDetails() != null){
 				List<VehicleDealerTranspDetails> vehicleDealerTranspDetails = new ArrayList<>();

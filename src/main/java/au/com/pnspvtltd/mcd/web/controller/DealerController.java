@@ -120,7 +120,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 
-//@CrossOrigin(origins = "http://localhost:8018")
+@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")

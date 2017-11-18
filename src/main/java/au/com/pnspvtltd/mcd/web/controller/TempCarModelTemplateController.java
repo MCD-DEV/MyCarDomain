@@ -18,6 +18,9 @@ import au.com.pnspvtltd.mcd.service.TempCarModelTemplateService;
 import au.com.pnspvtltd.mcd.service.impl.DealerServiceImpl;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
 @CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
 @RestController
 public class TempCarModelTemplateController {
 

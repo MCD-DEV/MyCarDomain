@@ -193,17 +193,17 @@ public class DealerVO {
 	List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState;
 	List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion;
 	List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode;
-	List<VehicleResourceDetails> vehicleResourcDetails;
+	List<VehicleResourceDetailsVO> vehicleResourcDetails;
 	
 	// start
 	
 	
 	private boolean isServMaint;
-	public List<VehicleResourceDetails> getVehicleResourcDetails() {
+	public List<VehicleResourceDetailsVO> getVehicleResourcDetails() {
 		return vehicleResourcDetails;
 	}
 
-	public void setVehicleResourcDetails(List<VehicleResourceDetails> vehicleResourcDetails) {
+	public void setVehicleResourcDetails(List<VehicleResourceDetailsVO> vehicleResourcDetails) {
 		this.vehicleResourcDetails = vehicleResourcDetails;
 	}
 

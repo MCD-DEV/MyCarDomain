@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -95,7 +96,10 @@ import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
-
+@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
 @RestController
 
 public class UserEBidController {

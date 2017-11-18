@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,6 +48,10 @@ import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
+//@CrossOrigin(origins = "http://localhost:8018")
 @RestController
 public class TranspQuotationController {
 

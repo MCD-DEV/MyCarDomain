@@ -19,6 +19,10 @@ import au.com.pnspvtltd.mcd.web.model.InventoryStatisticsVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 
 @CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
+//@CrossOrigin(origins = "https://www.autoscoop.com.au/")
+//@CrossOrigin(origins = "http://www.shirdienterprises.com/")
+//@CrossOrigin(origins = "http://www.mycardomain.com/")
 @RestController
 public class InventoryController {
 
