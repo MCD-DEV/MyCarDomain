@@ -36,81 +36,159 @@ public class SearchServMaint implements Serializable {
 	private String photo1;
 	private String photo2;
 	private String photo3;
-private long idp;
+	private long idp;
+
+	/*
+	 * private int mobile; private int landLine;
+	 */
+	private String abnNumber;
+	private String email;
+	private String drivingLicense;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
+
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 	
-/*private int mobile;
-private int landLine;*/
-private String abnNumber;
-private String email;
-private String drivingLicense;
-private boolean credStat;
-private boolean idCheck;
-private boolean mobCheck;
-
+	//New fields
+	private Date preferredServDt;
+	private boolean doorStep;
+	private String address;
+	private String landmark;
+	private boolean dropNpick;
+	private boolean complCar;
+	private String contactNum;
+	private String contactPerson;
 	
-	/*public int getMobile() {
-	return mobile;
-}
+	
+	
+	@Column(name = "preferredServDt")
+	public Date getPreferredServDt() {
+		return preferredServDt;
+	}
 
-public void setMobile(int mobile) {
-	this.mobile = mobile;
-}
+	public void setPreferredServDt(Date preferredServDt) {
+		this.preferredServDt = preferredServDt;
+	}
 
-public int getLandLine() {
-	return landLine;
-}
+	@Column(name = "doorStep")
+	public boolean isDoorStep() {
+		return doorStep;
+	}
 
-public void setLandLine(int landLine) {
-	this.landLine = landLine;
-}*/
+	public void setDoorStep(boolean doorStep) {
+		this.doorStep = doorStep;
+	}
 
-public String getAbnNumber() {
-	return abnNumber;
-}
+	@Column(name = "address")
+	public String getAddress() {
+		return address;
+	}
 
-public void setAbnNumber(String abnNumber) {
-	this.abnNumber = abnNumber;
-}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-public String getEmail() {
-	return email;
-}
+	@Column(name = "landmark")
+	public String getLandmark() {
+		return landmark;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
 
-public String getDrivingLicense() {
-	return drivingLicense;
-}
+	@Column(name = "dropNpick")
+	public boolean isDropNpick() {
+		return dropNpick;
+	}
 
-public void setDrivingLicense(String drivingLicense) {
-	this.drivingLicense = drivingLicense;
-}
+	public void setDropNpick(boolean dropNpick) {
+		this.dropNpick = dropNpick;
+	}
 
-public boolean isCredStat() {
-	return credStat;
-}
+	@Column(name = "complCar")
+	public boolean isComplCar() {
+		return complCar;
+	}
 
-public void setCredStat(boolean credStat) {
-	this.credStat = credStat;
-}
+	public void setComplCar(boolean complCar) {
+		this.complCar = complCar;
+	}
+	
+	@Column(name = "contactNum")
+	public String getContactNum() {
+		return contactNum;
+	}
 
-public boolean isIdCheck() {
-	return idCheck;
-}
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
+	}
 
-public void setIdCheck(boolean idCheck) {
-	this.idCheck = idCheck;
-}
+	@Column(name = "contactPerson")
+	public String getContactPerson() {
+		return contactPerson;
+	}
 
-public boolean isMobCheck() {
-	return mobCheck;
-}
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
 
-public void setMobCheck(boolean mobCheck) {
-	this.mobCheck = mobCheck;
-}
+	public String getAbnNumber() {
+		return abnNumber;
+	}
+
+	public void setAbnNumber(String abnNumber) {
+		this.abnNumber = abnNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDrivingLicense() {
+		return drivingLicense;
+	}
+
+	public void setDrivingLicense(String drivingLicense) {
+		this.drivingLicense = drivingLicense;
+	}
+
+	public boolean isCredStat() {
+		return credStat;
+	}
+
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
+
+	public boolean isIdCheck() {
+		return idCheck;
+	}
+
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
+
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
+
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
 
 	public long getIdp() {
 		return idp;
@@ -119,8 +197,9 @@ public void setMobCheck(boolean mobCheck) {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -129,17 +208,13 @@ public void setMobCheck(boolean mobCheck) {
 		this.creationDate = creationDate;
 	}
 
-	
-	
-	
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SEARCHSERVMAINTID")
 	public Long getSearchServMaintId() {
 		return searchServMaintId;
 	}
+
 	@Column(name = "AUTOSCOOPTRIM")
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
@@ -148,6 +223,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setAutoscoopTrim(String autoscoopTrim) {
 		this.autoscoopTrim = autoscoopTrim;
 	}
+
 	@Column(name = "LOOKSERVICE")
 	public String getLookService() {
 		return lookService;
@@ -156,6 +232,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setLookService(String lookService) {
 		this.lookService = lookService;
 	}
+
 	@Column(name = "CURFINPROV")
 	public String getCurFinProv() {
 		return curFinProv;
@@ -164,6 +241,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCurFinProv(String curFinProv) {
 		this.curFinProv = curFinProv;
 	}
+
 	@Column(name = "COVEREDUNDERFIN")
 	public boolean isCoveredUnderFin() {
 		return coveredUnderFin;
@@ -172,6 +250,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCoveredUnderFin(boolean coveredUnderFin) {
 		this.coveredUnderFin = coveredUnderFin;
 	}
+
 	@Column(name = "PHOTO1")
 	public String getPhoto1() {
 		return photo1;
@@ -180,6 +259,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPhoto1(String photo1) {
 		this.photo1 = photo1;
 	}
+
 	@Column(name = "PHOTO2")
 	public String getPhoto2() {
 		return photo2;
@@ -188,6 +268,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPhoto2(String photo2) {
 		this.photo2 = photo2;
 	}
+
 	@Column(name = "PHOTO3")
 	public String getPhoto3() {
 		return photo3;
@@ -200,6 +281,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setSearchServMaintId(Long searchServMaintId) {
 		this.searchServMaintId = searchServMaintId;
 	}
+
 	@Column(name = "FUELTYPE")
 	public String getFeulType() {
 		return feulType;
@@ -208,6 +290,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setFeulType(String feulType) {
 		this.feulType = feulType;
 	}
+
 	@Column(name = "SERVMAINTL1")
 	public String getServMaintL1() {
 		return servMaintL1;
@@ -216,6 +299,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setServMaintL1(String servMaintL1) {
 		this.servMaintL1 = servMaintL1;
 	}
+
 	@Column(name = "SERVMAINTL2")
 	public String getServMaintL2() {
 		return servMaintL2;
@@ -224,6 +308,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setServMaintL2(String servMaintL2) {
 		this.servMaintL2 = servMaintL2;
 	}
+
 	@Column(name = "UPLOADPHOTO")
 	public String getUploadPhotos() {
 		return uploadPhotos;
@@ -232,6 +317,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setUploadPhotos(String uploadPhotos) {
 		this.uploadPhotos = uploadPhotos;
 	}
+
 	@Column(name = "COVEREDUNDINS")
 	public boolean isCoveredUnderIns() {
 		return coveredUnderIns;
@@ -240,6 +326,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCoveredUnderIns(boolean coveredUnderIns) {
 		this.coveredUnderIns = coveredUnderIns;
 	}
+
 	@Column(name = "FREETEXT")
 	public String getFreeText() {
 		return freeText;
@@ -257,6 +344,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
+
 	@Column(name = "REGONO")
 	public String getRegNo() {
 		return regNo;
@@ -265,6 +353,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setRegNo(String regNo) {
 		this.regNo = regNo;
 	}
+
 	@Column(name = "REGOSTATE")
 	public String getRegoState() {
 		return regoState;
@@ -273,6 +362,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
+
 	@Column(name = "YEAR")
 	public int getYear() {
 		return year;
@@ -281,6 +371,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
 	@Column(name = "MAKE")
 	public String getMake() {
 		return make;
@@ -289,6 +380,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
 	@Column(name = "MODEL")
 	public String getModel() {
 		return model;
@@ -297,6 +389,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setModel(String model) {
 		this.model = model;
 	}
+
 	@Column(name = "VARIANT")
 	public String getVariant() {
 		return variant;
@@ -305,6 +398,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
+
 	@Column(name = "CURINSPROV")
 	public String getCurInsProv() {
 		return curInsProv;
@@ -313,6 +407,5 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCurInsProv(String curInsProv) {
 		this.curInsProv = curInsProv;
 	}
-		
 
 }

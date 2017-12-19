@@ -21,7 +21,7 @@ public class SearchServMaintVO {
 	private boolean coveredUnderIns;
 	private String curInsProv;
 	private String freeText;
-	
+
 	private String autoscoopTrim;
 	private String lookService;
 	private String curFinProv;
@@ -29,82 +29,151 @@ public class SearchServMaintVO {
 	private String photo1;
 	private String photo2;
 	private String photo3;
-private long idp;
+	private long idp;
+
+	/*
+	 * private int mobile; private int landLine;
+	 */
+	private String abnNumber;
+	private String email;
+	private String drivingLicense;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
 	
-/*private int mobile;
-private int landLine;*/
-private String abnNumber;
-private String email;
-private String drivingLicense;
-private boolean credStat;
-private boolean idCheck;
-private boolean mobCheck;
-
 	
-	/*public int getMobile() {
-	return mobile;
-}
+	//New fields
+	private Date preferredServDt;
+	private boolean doorStep;
+	private String address;
+	private String landmark;
+	private boolean dropNpick;
+	private boolean complCar;
+	private String contactNum;
+	private String contactPerson;
+	
 
-public void setMobile(int mobile) {
-	this.mobile = mobile;
-}
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
-public int getLandLine() {
-	return landLine;
-}
+	public Date getPreferredServDt() {
+		return preferredServDt;
+	}
 
-public void setLandLine(int landLine) {
-	this.landLine = landLine;
-}*/
+	public void setPreferredServDt(Date preferredServDt) {
+		this.preferredServDt = preferredServDt;
+	}
 
+	public boolean isDoorStep() {
+		return doorStep;
+	}
 
-public String getDrivingLicense() {
-	return drivingLicense;
-}
+	public void setDoorStep(boolean doorStep) {
+		this.doorStep = doorStep;
+	}
 
-public String getAbnNumber() {
-	return abnNumber;
-}
+	public String getAddress() {
+		return address;
+	}
 
-public void setAbnNumber(String abnNumber) {
-	this.abnNumber = abnNumber;
-}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-public String getEmail() {
-	return email;
-}
+	public String getLandmark() {
+		return landmark;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public void setLandmark(String landmark) {
+		this.landmark = landmark;
+	}
 
-public void setDrivingLicense(String drivingLicense) {
-	this.drivingLicense = drivingLicense;
-}
+	public boolean isDropNpick() {
+		return dropNpick;
+	}
 
-public boolean isCredStat() {
-	return credStat;
-}
+	public void setDropNpick(boolean dropNpick) {
+		this.dropNpick = dropNpick;
+	}
 
-public void setCredStat(boolean credStat) {
-	this.credStat = credStat;
-}
+	public boolean isComplCar() {
+		return complCar;
+	}
 
-public boolean isIdCheck() {
-	return idCheck;
-}
+	public void setComplCar(boolean complCar) {
+		this.complCar = complCar;
+	}
 
-public void setIdCheck(boolean idCheck) {
-	this.idCheck = idCheck;
-}
+	public String getContactNum() {
+		return contactNum;
+	}
 
-public boolean isMobCheck() {
-	return mobCheck;
-}
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
+	}
 
-public void setMobCheck(boolean mobCheck) {
-	this.mobCheck = mobCheck;
-}
+	public String getContactPerson() {
+		return contactPerson;
+	}
+
+	public void setContactPerson(String contactPerson) {
+		this.contactPerson = contactPerson;
+	}
+
+	public String getDrivingLicense() {
+		return drivingLicense;
+	}
+
+	public String getAbnNumber() {
+		return abnNumber;
+	}
+
+	public void setAbnNumber(String abnNumber) {
+		this.abnNumber = abnNumber;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setDrivingLicense(String drivingLicense) {
+		this.drivingLicense = drivingLicense;
+	}
+
+	public boolean isCredStat() {
+		return credStat;
+	}
+
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
+
+	public boolean isIdCheck() {
+		return idCheck;
+	}
+
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
+
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
+
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
 
 	public long getIdp() {
 		return idp;
@@ -113,8 +182,9 @@ public void setMobCheck(boolean mobCheck) {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -130,7 +200,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setAutoscoopTrim(String autoscoopTrim) {
 		this.autoscoopTrim = autoscoopTrim;
 	}
-	
+
 	public String getLookService() {
 		return lookService;
 	}
@@ -138,7 +208,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setLookService(String lookService) {
 		this.lookService = lookService;
 	}
-	
+
 	public String getCurFinProv() {
 		return curFinProv;
 	}
@@ -146,7 +216,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCurFinProv(String curFinProv) {
 		this.curFinProv = curFinProv;
 	}
-	
+
 	public boolean isCoveredUnderFin() {
 		return coveredUnderFin;
 	}
@@ -154,7 +224,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setCoveredUnderFin(boolean coveredUnderFin) {
 		this.coveredUnderFin = coveredUnderFin;
 	}
-	
+
 	public String getPhoto1() {
 		return photo1;
 	}
@@ -162,7 +232,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPhoto1(String photo1) {
 		this.photo1 = photo1;
 	}
-	
+
 	public String getPhoto2() {
 		return photo2;
 	}
@@ -170,7 +240,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPhoto2(String photo2) {
 		this.photo2 = photo2;
 	}
-	
+
 	public String getPhoto3() {
 		return photo3;
 	}
@@ -178,6 +248,7 @@ public void setMobCheck(boolean mobCheck) {
 	public void setPhoto3(String photo3) {
 		this.photo3 = photo3;
 	}
+
 	public Long getSearchServMaintId() {
 		return searchServMaintId;
 	}
