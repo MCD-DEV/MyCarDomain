@@ -24,6 +24,10 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
 //@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
+//@CrossOrigin(origins = "*")
 @RestController
 public class ServiceLevelController {
 

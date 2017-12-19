@@ -21,7 +21,11 @@ import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
 @RestController
 public class AdminController {
 

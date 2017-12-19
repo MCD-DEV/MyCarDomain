@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.util.List;
 
 import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 
 public class InventoryVO {
 
@@ -135,8 +136,17 @@ public class InventoryVO {
 
 		// carMake
 		List<QuotationFeatListVO> quotationFeatList;
+		List<VehicleResourceDetailsInvVO> vehicleResourcDetails;
 		
 		
+		public List<VehicleResourceDetailsInvVO> getVehicleResourcDetails() {
+			return vehicleResourcDetails;
+		}
+
+		public void setVehicleResourcDetails(List<VehicleResourceDetailsInvVO> vehicleResourcDetails) {
+			this.vehicleResourcDetails = vehicleResourcDetails;
+		}
+
 		public List<QuotationFeatListVO> getQuotationFeatList() {
 			return quotationFeatList;
 		}

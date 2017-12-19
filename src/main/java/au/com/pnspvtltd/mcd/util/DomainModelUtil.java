@@ -100,6 +100,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
 import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -194,6 +195,7 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleMakeListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsInvVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
@@ -366,7 +368,7 @@ public class DomainModelUtil {
 		InventoryVO userVO = new InventoryVO();
 		try {
 // search
-			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"quotationFeatList"  });
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"quotationFeatList","vehicleResourcDetails"  });
 
 			if (!isMinified) {
 				if (user.getQuotationFeatList() != null) {
@@ -378,6 +380,15 @@ public class DomainModelUtil {
 				}
 				userVO.setQuotationFeatList(searchVOs);
 				}
+				if(user.getVehicleResourceDetails() != null){
+					List<VehicleResourceDetailsInvVO> vehicleDealerDetailsVO = new ArrayList<>();
+					for (VehicleResourceDetailsInv vehicleDealerDetail : user.getVehicleResourceDetails()) {
+						VehicleResourceDetailsInvVO searchFinanceVO = new VehicleResourceDetailsInvVO();
+						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+						vehicleDealerDetailsVO.add(searchFinanceVO);
+					}
+					userVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
+					}
 				
 
 			}
@@ -395,7 +406,24 @@ public class DomainModelUtil {
 	
 	// end to retrive total data 
 	
-	
+	public VehicleResourceDetailsVO fromResource(final VehicleResourceDetails inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		VehicleResourceDetailsVO inventoryVO = new VehicleResourceDetailsVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
 	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
@@ -459,6 +487,29 @@ public class DomainModelUtil {
 			}
 			
 			inventory.setQuotationFeatList(quoList);
+			
+			// resource:
+			
+			List <VehicleResourceDetailsInvVO> qvo1 =inventoryVO.getVehicleResourcDetails();
+			List <VehicleResourceDetailsInv> quoList1 = new ArrayList<VehicleResourceDetailsInv>();
+			
+			Iterator<VehicleResourceDetailsInvVO> it1 = qvo1.iterator();
+			for(;it1.hasNext();){
+				VehicleResourceDetailsInvVO local1 = it1.next();	
+				VehicleResourceDetailsInv quo1 = new VehicleResourceDetailsInv();
+			try {
+				BeanUtils.copyProperties(quo1, local1);
+				quoList1.add(quo1);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+			
+			inventory.setVehicleResourceDetails(quoList1);
 			
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block

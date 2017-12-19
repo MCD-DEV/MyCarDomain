@@ -13,9 +13,11 @@ import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 
 public interface VehicleResourceDetailsRepo extends JpaRepository<VehicleResourceDetails, Long> {
 
-	
+	 
 	
 	@Query("SELECT inv FROM Inventory inv WHERE inv.userId=?1 AND inv.refId=?2" +
 			" ORDER BY inv.repoId")
 			public List<Inventory> getAllInvForSellMy(Long id, Long dealerId);
+	
+	public List<VehicleResourceDetails> findByDealer(Dealer dealer);
 }

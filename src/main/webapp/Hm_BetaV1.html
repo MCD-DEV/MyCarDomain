@@ -334,12 +334,20 @@ tr:hover {
 </style>
 <!-- Meta Tags -->
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Used Cars - New Cars - Search New &amp; Used Cars For Sale &amp; Finance && Insurance For Car - autoscoop.com.au</title>
 <meta charset="utf-8">
 <meta name="keywords" content="auto classifieds,auto dealer,auto dealers,buy car,buy car online,buy cars,buy cars online,car classifieds,car magazine,car magazines,car news,car sales,car sales australia,car search,cars,cars au,cars australia,new used car,new used cars,online car search" />
 <meta name="description" content="Our Mission is to provide you with the stressfree way to buy, lease, sell and manage your vehicle through out its life and
                                 importantly getting you to driver seat and allowing to focus on more importants things in your Life i.e., Family, Friends and Australian way of life.">
 <meta name="author" content="AutoScoop.com">
-<meta name="google-signin-client_id"
+ <meta name="msapplication-task" content="name=New Cars;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Used Cars;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Finance;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Insurance;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Transport Service;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Service && Maintenance;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+        <meta name="msapplication-task" content="name=Sell Your Car;action-uri=/;icon-uri=//css.csnstatic.com/CsnCarsalesWebContent/Content/images/carsales.ico"/>
+     <meta name="google-signin-client_id"
 	content="814821459166-uh2anc0kg2tot0uf5n7n29fv8foogi2n.apps.googleusercontent.com">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -600,8 +608,18 @@ function onSignInG()
                 alert("Please Login & go to Sell My Vehicle");
             } */
         } 
-       
         
+	function redirectWithDeal() {
+            
+        	var url = "home.html";
+            window.location = url;/* 
+        	if (alreadyLogged()) {
+                
+            }
+            else {
+                alert("Please Login & go to Sell My Vehicle");
+            } */
+        } 
         function redirectWithLoy() {
             if (alreadyLogged()) {
                 var url = "Db_BetaV1.html#loyalityProgram";
@@ -768,6 +786,8 @@ table {
 }
 
 </style>
+<link href="css/cc-styles.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
 </head>
 <body class="load-full-screen" ng-app="mainApp1"
 	ng-controller="myController1" id="myController1">
@@ -805,6 +825,9 @@ table {
 					
 					<ul class="quick-menu pull-left hidden-mobile PL10">
 						<li><button type="button" class="btn btn-info" onClick="redirectWithSell()"></i>Sell My Vehicle</button></li>
+					</ul>
+					<ul class="quick-menu pull-left hidden-mobile PL10">
+						<li><button type="button" class="btn btn-info" onClick="redirectWithDeal()"></i>Redirect to Dealer Website</button></li>
 					</ul>
 					<!-- <i class="fa fa-tags PR5 PT2" aria-hidden="true"> -->
 					<!-- <ul class="quick-menu pull-left hidden-mobile PL10">onClick="redirectWithLoy()" 
@@ -4248,175 +4271,109 @@ table {
 
 	<!-- END: SEARCH SECTION -->
 	<!-- BEGIN: HOW IT WORK -->
-	<section id="how-it-work">
-		<div class="row work-row">
-			<div class="container">
-				<div class="section-title text-center">
-					<h1>HOW IT WORKS?</h1>
-					<!--<h4>EBids-R - SEARCH - SELECT - BOOK</h4>
-                    <h4>EBids-R => Review & Select => Submit, Track & Deposit!</h4>-->
-
-				</div>
-				<div class="work-step">
-					<div class="col-md-3 col-sm-3 first-step text-center">
-						<!--<i class="fa fa-search"></i>-->
-						<img src="images/requestquote.png" class="icon-ht PB20" />
-
-						<p style="text-align:justify;">Simply enter your requirement by selecting preferred Year,
-							Make, Model & AutoScoop Variant with your fav Color and after market
-							Options along with Finance & Insurance requirement.</p>
-						<h4>All in One GO!</h4>
-					</div>
-					<div class="col-md-3 col-sm-3 second-step text-center">
-						<!--<i class="fa fa-heart-o"></i>-->
-
-						<img src="images/multiquotes.png" class="icon-ht PB20" />
-						<p style="text-align:justify;">
-							Receive Multiple Quotations and Deals from multiple Dealers,
-							without wasting your weekends and stress of running around. <br />
-							<br />
-						</p>
-						<h4>All comes to You!</h4>
-					</div>
-					<div class="col-md-3 col-sm-3 third-step text-center">
-						<!--<i class="fa fa-shopping-cart"></i>-->
-						<img src="images/cq5.png" class="icon-ht" />
-						<!--<h5>Submit, track & deposit</h5>-->
-						<p style="text-align:justify;">
-							Review and directly contact Dealer or Chat at your convenience,we have made it Simple and Stress
-							free for you. As a Policy, We dont share your details to anyone.<br />
-							<br />
-
-						</p>
-						<h4>Review, Clarify all at one place</h4>
-					</div>
-					<div class="col-md-3 col-sm-3 third-step text-center">
-						<!--<i class="fa fa-shopping-cart"></i>-->
-						<img src="images/sk2.png" class="icon-ht" />
-						<!--<h5>Submit, track & deposit</h5>-->
-						<p style="text-align:justify;">
-							Remember Lowest Price is not always the Best Thing to pick, get
-							the Best Value. Choose What is Best for you!<br />
-							<br /><br />
-						</p>
-						<h4>Clinch the deal!</h4>
-					</div>
-				</div>
-				<hr>
-				<div class="row">
-				<div class="col-sm-2 col-md-1"></div>
-				<div class="col-sm-8 col-md-10 text-center"><h3>This Simple Process can be used for applying for Finance,Insurance,Service & Maintenenace,Transport and more to come - all from the comfort of your Home Or anywhere else you prefer to be!</h3></div>
-				<div class="col-sm-2 col-md-1"></div>
-			</div>
-			</div>
-		</div>
-		
-	</section>
 	<!--END: HOW IT WORK -->
-	<div class="row PT10">
-		<div id="howitworks" class="container PB10 txt-font">
-			<span class="txt-bold h4-font">In addition you will be
-				efficiently manage and look after your vehicle by using our</span>
-			<div class="row" style="padding-left:25px">
-				<ol>
-
-					<li>Smart Garage: Keep track of all your vehicle and its
-						requirements in a single place setting reminders to get notified
-						for:
-						<ul>
-							<li>Next Rego due date</li>
-							<li>Next Insurance Renewal due date - Allowing time to look
-								around</li>
-							<li>Next Service & Maintenance due date</li>
-							<li>Customize adding your own reminders</li>
-							<li>Simplifing the process of sale</li>
-							<li>Getting required deals when it is required.</li>
-						</ul>
-					</li>
-                    <li>
-                        Maintain your Vehicle Logbook assisting to maximize tax
-                        benefits
-                        <ul>
-                            <li>
-                                Log Trip - maintaining separate personal and Business
-                                records
-                            </li>
-                            <li>
-                                Log Expenses - record and upload the receipts for
-                                convenience
-                            </li>
-                            <li>
-                                Log Service & Maintenance no longer fear losing the
-                                vehicle log book
-                            </li>
-                        </ul>
-                    </li>
-				</ol>
+	<div class="container MT20">
+		<div class="row MT20 UserIndex">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 MB20">
+				<h1 class="text-center">How it works</h1>
+				<div class="MT40 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="media MT40">
+					  <div class="media-left">
+						<a href="#">
+						  <img class="media-object" src="images/doc.png" alt="All in one go">
+						</a>
+					  </div>
+					  <div class="media-body">
+						<h4 class="media-heading heading">All in One GO!</h4>
+						Simply enter your requirement by selecting preferred Year, Make, Model & AutoScoop Variant with your fav Color and after market Options along with Finance & Insurance requirement.
+					  </div>
+					</div>
+					
+					<div class="media MT40">
+					  <div class="media-left">
+						<a href="#">
+						  <img class="media-object" src="images/notification.png" alt="All in one go">
+						</a>
+					  </div>
+					  <div class="media-body">
+						<h4 class="media-heading heading">All comes to You!</h4>
+						Receive Multiple Quotations and Deals from multiple Dealers, without wasting your weekends and stress of running around. 
+					  </div>
+					</div>
+				</div>
+				<div class="MT40 col-lg-6 col-md-6 col-sm-12 col-xs-12">	
+					<div class="media MT40">
+					  <div class="media-left">
+						<a href="#">
+						  <img class="media-object" src="images/telephone.png" alt="All in one go">
+						</a>
+					  </div>
+					  <div class="media-body">
+						<h4 class="media-heading heading">Review, Clarify all at one place</h4>
+						Review and directly contact Dealer or Chat at your convenience,we have made it Simple and Stress free for you. As a Policy, We dont share your details to anyone.
+					  </div>
+					</div>
+					
+					<div class="media MT40">
+					  <div class="media-left">
+						<a href="#">
+						  <img class="media-object" src="images/handshake.png" alt="All in one go">
+						</a>
+					  </div>
+					  <div class="media-body">
+						<h4 class="media-heading heading">Clinch the deal!</h4>
+						Remember Lowest Price is not always the Best Thing to pick, get the Best Value. Choose What is Best for you!
+					  </div>
+					</div>
+				</div>
 			</div>
-		
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 MT40">
+				<h1 class="text-center">Services We Offered</h1>
+				<ul class="PL0 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				<div class="heading MT40">Smart Garage: Keep track of all your vehicle and its requirements in a single place setting reminders to get notified for: </div>
+					<li class="MT20">Next Rego due date</li>
+					<li>Next Insurance Renewal due date - Allowing time to look around</li>
+					<li>Next Service & Maintenance due date</li>
+					<li>Customize adding your own reminders</li>
+					<li>Simplifing the process of sale</li>
+					<li>Getting required deals when it is required.</li>
+				</ul>
+				
+				
+				<ul class="PL0 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<div class="heading MT40">Maintain your Vehicle Logbook assisting to maximize tax benefits </div>
+					<li class="MT20">Log Trip - maintaining separate personal and Business records </li>
+					<li>Log Expenses - record and upload the receipts for convenience </li>
+					<li>Log Service & Maintenance no longer fear losing the vehicle log book </li>
+				</ul>
+			</div>
 		</div>
-        <footer class="row v-bg-teritary PT10" id="abtfooter">
-            <div class="container">
-                <div class="row M0">
-                    <p>
-                        <span class="footer-header">About us!</span>
-                    </p>
-                    <p>
-                        They say necessity is the mother of invention, but overlook its
-                        sibling, creation. <b>AutoScoop</b> was created as a direct result
-                        of my own experiences buying and subsequently maintaining a car.
-                        Experiences I believed have been shared by us all. Frustrating and
-                        tiring experiences where I was the 'hunter' seeking out a new car
-                        or an honest repair but ended up feeling like the 'prey'.
-                    </p>
-                    <p>
-                        What intensifies the unfavorable feelings is that for many
-                        of us, the car is the second largest financial investment of our
-                        lives. It's therefore something we traditionally invest at lot of
-                        time on. But do we never feel like we come out ahead?
-                    </p>
-                    <p>
-                        I thought to myself - 'there must be a better way, a way
-                        where I am in the driving seat - other people must be as
-                        frustrated as me'
-                    </p>
-                    <p>
-                        With this thought in mind, <b>AutoScoop</b> was conceived. The
-                        idea was tested through an extensive survey and not surprising the
-                        results showed many people are as frustrated as be. Invigorated I
-                        worked further on the vision and developed the idea further,
-                        drawing on an extensive network of likeminded individuals to make
-                        the magic happen!
-                    </p>
-                    <p>
-                        We have faith that with our dedication and hard work, we
-                        will be able to add true value to the life of the Australian and
-                        put each of us in the driving seat!
-                    </p>
-                    <p>
-                        After all buying a car is not only a financial commitment.
-                        It's a time and emotional commitment too.
-                    </p>
-                    <p>
-                        Have you ever felt internal pressure to buy because the
-                        thought of another hour spent trawling through websites or a
-                        weekend wasted walking through car lots was too overwhelming?
-                    </p>
-                    <p>
-                        Have you spent hours ringing around to get a maintenance
-                        quote but still dreaded that call from the service center stating
-                        that some other work needs to be done?
-                    </p>
-                    <p>
-                        By harnessing and taking advantage of the Digital age, <b>AutoScoop.com.au</b>
-                        will help take away the stress throughout the life of your
-                        vehicle. When buying a new vehicle wouldn't it great if people
-                        came to you? After all YOU are the customer.
-                    </p>
+	</div>
+	
+	<div class="clearfix"></div>
+	<div class="MT40">
+		<div class="row BGf7f7f7 text-center About">
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 UserStats">
+					<div class="container">
+						<div class="row">
+							<div class="col-lg-11 col-md-11 col-sm-12 col-xs-12 BG UserIndex col-lg-offset-1 col-md-offset-1 ">
+								<h1>About Us</h1>
+								<p>They say necessity is the mother of invention, but overlook its sibling, creation. AutoScoop was created as a direct result of my own experiences buying and subsequently maintaining a car. Experiences I believed have been shared by us all. Frustrating and tiring experiences where I was the 'hunter' seeking out a new car or an honest repair but ended up feeling like the 'prey'.
+	What intensifies the unfavorable feelings is that for many of us, the car is the second largest financial investment of our lives. It's therefore something we traditionally invest at lot of time on. But do we never feel like we come out ahead?
+	I thought to myself - 'there must be a better way, a way where I am in the driving seat - other people must be as frustrated as me'
+	With this thought in mind, AutoScoop was conceived. The idea was tested through an extensive survey and not surprising the results showed many people are as frustrated as be. Invigorated I worked further on the vision and developed the idea further, drawing on an extensive network of likeminded individuals to make the magic happen!
+	We have faith that with our dedication and hard work, we will be able to add true value to the life of the Australian and put each of us in the driving seat!
+	After all buying a car is not only a financial commitment. It's a time and emotional commitment too.
+	Have you ever felt internal pressure to buy because the thought of another hour spent trawling through websites or a weekend wasted walking through car lots was too overwhelming?
+	Have you spent hours ringing around to get a maintenance quote but still dreaded that call from the service center stating that some other work needs to be done?
+	By harnessing and taking advantage of the Digital age, AutoScoop.com.au will help take away the stress throughout the life of your vehicle. When buying a new vehicle wouldn't it great if people came to you? After all YOU are the customer.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>	
 
-                </div>
-            </div>
-        </footer>
 		<div class="row bgColor">
 			<div class="container text-center MB30">
 				<h1 class="TxtClrFFF FW300 MB10">Subscribe for the updates</h1>

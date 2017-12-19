@@ -20,8 +20,12 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 //@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
+//@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
+@CrossOrigin
 @RestController
 public class CarModelTemplateController {
 

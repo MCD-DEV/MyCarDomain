@@ -83,4 +83,5 @@ public interface DealerService {
 	DealerSearchVO getDealerSearchUnique(Long dealerId);
 
 	VehicleResourceDetailsVO getDealerResourcebyID(long id);
+	List<VehicleResourceDetailsVO> getResource(Long dealerId);
 }

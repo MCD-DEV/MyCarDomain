@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.service.TempCarModelTemplateService;
 import au.com.pnspvtltd.mcd.service.impl.DealerServiceImpl;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @RestController
 public class TempCarModelTemplateController {
 

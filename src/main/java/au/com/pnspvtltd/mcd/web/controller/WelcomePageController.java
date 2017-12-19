@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
 //@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
+//@CrossOrigin(origins = "*")
+//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin
 @Controller
 public class WelcomePageController {
 

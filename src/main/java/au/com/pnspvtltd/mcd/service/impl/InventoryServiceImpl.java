@@ -88,6 +88,20 @@ public class InventoryServiceImpl implements InventoryService{
 	}
 	
 	@Override
+	public TempCarModelHeaderVO getColorFor(String modelYear, String modelDisplay, String modelName,
+			 String autoscoopTrim) {
+		
+	
+		// retrieve from tempcarModelHeader
+		TempCarModelHeaderVO tempCarHeaderVO = tempCarModelTemplateServiceImpl.getCarModelTemplateForAutoTrim(autoscoopTrim);
+		
+		
+		
+				
+		return tempCarHeaderVO;
+	}
+	
+	@Override
 	@Transactional(readOnly = true)
 	public InventoryVO findById(Long id) {
 		Inventory dealer = inventoryRepository.findOne(id);

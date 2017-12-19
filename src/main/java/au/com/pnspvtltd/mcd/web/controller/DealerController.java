@@ -120,11 +120,15 @@ import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 
-@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:8018")
+//@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
 //@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
 //@CrossOrigin(origins = "http://www.mycardomain.com/")
+//@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 public class DealerController {
 
@@ -898,6 +902,12 @@ public class DealerController {
 	@GetMapping(value = "dealer/getResource/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public VehicleResourceDetailsVO getDealerResourcebyID(@PathVariable Long id, HttpServletResponse response){
 		return dealerService.getDealerResourcebyID(id);
+	}
+	
+	@GetMapping(value = "dealer/{id}/resource", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleResourceDetailsVO> getResource(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Resources with id {} ", id);
+		return dealerService.getResource(id);
 	}
 	
 	/** 

@@ -112,6 +112,18 @@ public class Inventory implements Serializable {
 		List<Feature> features;
 		List<Photo> photos;
 		List<QuotationFeatList> quotationFeatList;
+		List<VehicleResourceDetailsInv> vehicleResourcDetails;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "repoId")
+		public List<VehicleResourceDetailsInv> getVehicleResourceDetails() {
+			return vehicleResourcDetails;
+		}
+
+		public void setVehicleResourceDetails(
+				List<VehicleResourceDetailsInv> vehicleResourcDetails) {
+			this.vehicleResourcDetails = vehicleResourcDetails;
+		}
 		 @OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 			@JoinColumn(name = "repoId")
 			

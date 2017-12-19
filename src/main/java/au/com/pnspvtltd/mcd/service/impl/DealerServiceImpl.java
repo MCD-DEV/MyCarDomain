@@ -627,6 +627,20 @@ public class DealerServiceImpl implements DealerService {
 		}
 		return inventoryList;
 	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<VehicleResourceDetailsVO> getResource(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<VehicleResourceDetailsVO> inventoryList = new ArrayList<>();
+		
+		for(VehicleResourceDetails inventory : vehicleResourceDetailsRepo.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromResource(inventory, true));
+		}
+		return inventoryList;
+	}
 
 	@Override
 	@Transactional(readOnly = true)
