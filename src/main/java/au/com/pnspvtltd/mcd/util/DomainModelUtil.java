@@ -101,6 +101,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
 import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -2939,10 +2940,11 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		VehicleQuotationVO userVO = new VehicleQuotationVO();
 		try {
 
-			org.springframework.beans.BeanUtils.copyProperties(vehicleQuotation, userVO, new String[] { "userQuotationHistory", "dealerQuotationHistory"
+			org.springframework.beans.BeanUtils.copyProperties(vehicleQuotation, userVO, new String[] { "userQuotationHistory", "dealerQuotationHistory","vehicleResourcDetails"
 					 });
 
 			if (!isMinified) {
+				if(vehicleQuotation.getUserQuotationHistory() != null){
 				List<UserQuotationHistoryVO> searchVOs = new ArrayList<>();
 				for (UserQuotationHistory search : vehicleQuotation.getUserQuotationHistory()) {
 					UserQuotationHistoryVO searchVO = new UserQuotationHistoryVO();
@@ -2950,7 +2952,9 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					searchVOs.add(searchVO);
 				}
 				userVO.setUserQuotationHistoryVO(searchVOs);
-
+				}
+				
+				if(vehicleQuotation.getDealerQuotationHistory() != null){
 				List<DealerQuotationHistoryVO> search1VOs = new ArrayList<>();
 				for (DealerQuotationHistory search1 : vehicleQuotation.getDealerQuotationHistory()) {
 					DealerQuotationHistoryVO search1VO = new DealerQuotationHistoryVO();
@@ -2958,8 +2962,17 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 					search1VOs.add(search1VO);
 				}
 				userVO.setDealerQuotationHistoryVO(search1VOs);
+				}
 				
-				
+				if(vehicleQuotation.getVehicleResourceDetails() != null){
+					List<VehicleResourceDetailsQuo> vehicleDealerDetailsVO = new ArrayList<>();
+					for (VehicleResourceDetailsQuo vehicleDealerDetail : vehicleQuotation.getVehicleResourceDetails()) {
+						VehicleResourceDetailsQuo searchFinanceVO = new VehicleResourceDetailsQuo();
+						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+						vehicleDealerDetailsVO.add(searchFinanceVO);
+					}
+					userVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
+					}
 
 			}
 

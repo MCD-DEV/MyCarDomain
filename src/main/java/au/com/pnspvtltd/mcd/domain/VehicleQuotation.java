@@ -412,6 +412,18 @@ public class VehicleQuotation implements Serializable {
 		public void setStatus(boolean status) {
 			this.status = status;
 		}
+		List<VehicleResourceDetailsQuo> vehicleResourcDetails;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "quotId")
+		public List<VehicleResourceDetailsQuo> getVehicleResourceDetails() {
+			return vehicleResourcDetails;
+		}
+
+		public void setVehicleResourceDetails(
+				List<VehicleResourceDetailsQuo> vehicleResourcDetails) {
+			this.vehicleResourcDetails = vehicleResourcDetails;
+		}
 
 		List<VehQuotExtras> vehQuotExtras;
 		

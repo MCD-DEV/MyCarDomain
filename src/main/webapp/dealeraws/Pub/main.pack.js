@@ -31430,7 +31430,8 @@ var dealerservice = (function () {
         //if (refid != null && refid != undefined && refid != '')
         //    this.headers.append('Authorization', 'Bearer ' + refid);http://autoscoop.com.au/api/tempCarModelMakesForYear?modelYear=2017
         //this._uri = 'http://localhost:43893/';
-        this._uri = 'http://localhost:8080/MyCarDomain/';
+        //this._uri = 'http://localhost:8080/MyCarDomain/';
+        this._uri = 'http://www.mycardomain.com/';
     }
     dealerservice.prototype.getstates = function () {
         //var xhr = new XMLHttpRequest();
@@ -73036,7 +73037,7 @@ var AppComponent = (function () {
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: 'src/views/index.html',
+        templateUrl: '/src/views/index.html',
         host: {
             '(document:click)': 'onClick($event)',
         }
@@ -73072,7 +73073,7 @@ var navComponent = (function () {
     navComponent = __decorate([
         core_1.Component({
             selector: 'nav-bar',
-            templateUrl: 'src/views/nav.html'
+            templateUrl: '/src/views/nav.html'
         }), 
         __metadata('design:paramtypes', [])
     ], navComponent);
@@ -73924,7 +73925,7 @@ var SubscribeComponent = (function () {
 SubscribeComponent = __decorate([
     core_1.Component({
         selector: 'subscribe',
-        templateUrl: 'src/views/subscribe.html'
+        templateUrl: '/src/views/subscribe.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], SubscribeComponent);
@@ -75361,7 +75362,7 @@ var HomeComponent = (function () {
 HomeComponent = __decorate([
     core_1.Component({
         selector: 'content',
-        templateUrl: 'src/views/homecontent.html'
+        templateUrl: '/src/views/homecontent.html'
     }),
     __metadata("design:paramtypes", [models_1.MessageService, router_1.Router, models_1.shareService])
 ], HomeComponent);
@@ -76443,7 +76444,7 @@ var ResourceComponent = (function () {
 ResourceComponent = __decorate([
     core_1.Component({
         selector: 'resource',
-        templateUrl: 'src/views/resource.html'
+        templateUrl: '/src/views/resource.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, router_1.Router, models_1.shareService])
 ], ResourceComponent);
@@ -76623,7 +76624,7 @@ var AddResourceComponent = (function () {
 AddResourceComponent = __decorate([
     core_1.Component({
         selector: 'add-resource',
-        templateUrl: 'src/views/addresource.html'
+        templateUrl: '/src/views/addresource.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], AddResourceComponent);
@@ -77038,7 +77039,7 @@ var AddInventoryComponent = (function () {
 AddInventoryComponent = __decorate([
     core_1.Component({
         selector: 'add-inventory',
-        templateUrl: 'src/views/addinventory.html'
+        templateUrl: '/src/views/addinventory.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], AddInventoryComponent);
@@ -77158,7 +77159,7 @@ var InventoryComponent = (function () {
 InventoryComponent = __decorate([
     core_1.Component({
         selector: 'inventory',
-        templateUrl: 'src/views/inventory.html'
+        templateUrl: '/src/views/inventory.html'
     }),
     __metadata("design:paramtypes", [router_1.Router, dealerService_1.dealerservice, models_1.shareService])
 ], InventoryComponent);
@@ -77208,7 +77209,7 @@ var leftPanelComponent = (function () {
 leftPanelComponent = __decorate([
     core_1.Component({
         selector: 'l-panel',
-        templateUrl: 'src/views/leftpanel.html'
+        templateUrl: '/src/views/leftpanel.html'
     }),
     __metadata("design:paramtypes", [router_1.Router, dealerService_1.dealerservice, models_1.shareService])
 ], leftPanelComponent);
@@ -77481,7 +77482,7 @@ var SellVehicleComponent = (function () {
 SellVehicleComponent = __decorate([
     core_1.Component({
         selector: 'add-inventory',
-        templateUrl: 'src/views/sellinventory.html'
+        templateUrl: '/src/views/sellinventory.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], SellVehicleComponent);
@@ -77570,7 +77571,7 @@ var LeadView = (function () {
 LeadView = __decorate([
     core_1.Component({
         selector: 'leadview',
-        templateUrl: 'src/views/leadview.html'
+        templateUrl: '/src/views/leadview.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], LeadView);
@@ -77762,7 +77763,7 @@ var LeadInformation = (function () {
     LeadInformation = __decorate([
         core_1.Component({
             selector: 'leadinfo',
-            templateUrl: 'src/views/leaddetails.html'
+            templateUrl: '/src/views/leaddetails.html'
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
     ], LeadInformation);
@@ -77896,7 +77897,7 @@ var Leads = (function () {
 Leads = __decorate([
     core_1.Component({
         selector: 'lead-s',
-        templateUrl: 'src/views/lead.html'
+        templateUrl: '/src/views/lead.html'
     }),
     __metadata("design:paramtypes", [router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], Leads);
@@ -78083,7 +78084,7 @@ var DealerContext = (function () {
 DealerContext = __decorate([
     core_1.Component({
         selector: 'login',
-        templateUrl: 'src/views/login.html'
+        templateUrl: '/src/views/login.html'
     }),
     __metadata("design:paramtypes", [models_1.MessageService, router_1.ActivatedRoute, dealerService_1.dealerservice, forms_1.FormBuilder, router_1.Router, models_1.shareService])
 ], DealerContext);

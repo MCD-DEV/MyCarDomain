@@ -31428,6 +31428,8 @@ var dealerservice = (function () {
         //    this.headers.append('Authorization', 'Bearer ' + refid);http://autoscoop.com.au/api/tempCarModelMakesForYear?modelYear=2017
         //this._uri = 'http://localhost:43893/';
         this._uri = 'http://localhost:8080/MyCarDomain/';
+        //this._uri = 'http://www.autoscoop.com.au/';
+        //this._uri='http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com/';
     }
     dealerservice.prototype.getstates = function () {
         //var xhr = new XMLHttpRequest();

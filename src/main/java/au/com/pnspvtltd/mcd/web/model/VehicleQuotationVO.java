@@ -15,6 +15,7 @@ import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehQuotDoc;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehQuotTerm;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
 
 public class VehicleQuotationVO {
 
@@ -128,6 +129,16 @@ public class VehicleQuotationVO {
 	List<VehQuotTerm> vehQuotTerm;
 	List<OfferDateList> offerDateList;
 	
+	List<VehicleResourceDetailsQuo> vehicleResourcDetails;
+	
+	
+	public List<VehicleResourceDetailsQuo> getVehicleResourcDetails() {
+		return vehicleResourcDetails;
+	}
+
+	public void setVehicleResourcDetails(List<VehicleResourceDetailsQuo> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
+	}
 	
 
 
