@@ -47,6 +47,31 @@ import javax.persistence.Table;
 	private boolean clientPlaceDriveNo;
 	private boolean roadAssistance;
 	
+	private String servMastLevel1;
+	private String servMastLevel2;
+	private String servMastLevel3;
+	
+	private String companyName;
+	private String companyDesc;
+	private String companyAddress;
+	private String companyWeb;
+	
+	private boolean fixedPrice;
+	private boolean hourlyRate;
+	private boolean partFixPartHr;
+	private boolean isAutoQuote;
+	private boolean addAutoAddCom;
+	private boolean browComSec;
+	
+	private double estHourFix;
+	private double minChargHr;
+	private double hourRate;
+	private double fixHours;
+	private double fixedRate;
+	private double estHoursPartFix;
+	private double rateforExtHr;
+	private double clientPlaceDrCharg;
+	
 	
 	
 	
@@ -57,9 +82,31 @@ import javax.persistence.Table;
 	private boolean isUsedCar;
 	private boolean isBoth;
 	
+	List<VehicleServSpareList> vehicleDealerServSpareList;
+	 List<VehicleServHypList> vehicleDealerServHypList;
+	
 /*start */
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerServMaintDetailId")
+	public List<VehicleServSpareList> getVehicleDealerServSpareList() {
+		return vehicleDealerServSpareList;
+	}
+
+	public void setVehicleDealerServSpareList(
+			List<VehicleServSpareList> vehicleDealerMakeList) {
+		this.vehicleDealerServSpareList = vehicleDealerMakeList;
+	}
 	
-	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerServMaintDetailId")
+	public List<VehicleServHypList> getVehicleDealerServHypList() {
+		return vehicleDealerServHypList;
+	}
+
+	public void setVehicleDealerServHypList(
+			List<VehicleServHypList> vehicleDealerMakeList) {
+		this.vehicleDealerServHypList = vehicleDealerMakeList;
+	}
 	// Flex start
 	private String flex1;	
 	public boolean isAll1() {
