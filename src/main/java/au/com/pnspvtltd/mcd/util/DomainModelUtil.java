@@ -102,6 +102,8 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
+import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
+import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
 import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
@@ -198,6 +200,8 @@ import au.com.pnspvtltd.mcd.web.model.VehicleMakeListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsInvVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServHypListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServSpareListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
 
@@ -407,6 +411,58 @@ public class DomainModelUtil {
 	
 	// end to retrive total data 
 	
+	
+	
+	
+	// start to serv master
+	
+		public VehicleDealerServMaintDetailsVO fromDealerServMast(final VehicleDealerServMaintDetails user) {
+
+			if (user == null) {
+				return null;
+			}
+
+			VehicleDealerServMaintDetailsVO userVO = new VehicleDealerServMaintDetailsVO();
+			try {
+	// search
+				org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"vehicleDealerServSpareList","vehicleDealerServHypList" });
+
+				
+					if (user.getVehicleDealerServSpareList() != null) {
+					List<VehicleServSpareListVO> searchVOs = new ArrayList<>();
+					for (VehicleServSpareList search : user.getVehicleDealerServSpareList()) {
+						VehicleServSpareListVO searchVO = new VehicleServSpareListVO();
+						BeanUtils.copyProperties(searchVO, search);
+						searchVOs.add(searchVO);
+					}
+					userVO.setVehicleDealerServSpareList(searchVOs);
+					}
+					if(user.getVehicleDealerServHypList() != null){
+						List<VehicleServHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
+						for (VehicleServHypList vehicleDealerDetail : user.getVehicleDealerServHypList()) {
+							VehicleServHypListVO searchFinanceVO = new VehicleServHypListVO();
+							BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+							vehicleDealerDetailsVO.add(searchFinanceVO);
+						}
+						userVO.setVehicleDealerServHypList(vehicleDealerDetailsVO);
+						}
+					
+
+				
+
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return userVO;
+		}
+		
+		
+		// end to serv master
+	
 	public VehicleResourceDetailsVO fromResource(final VehicleResourceDetails inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;
@@ -425,6 +481,29 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
+	
+	
+	public VehicleDealerServMaintDetailsVO fromServMast(final VehicleDealerServMaintDetails inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		VehicleDealerServMaintDetailsVO inventoryVO = new VehicleDealerServMaintDetailsVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
+	
+	
 	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
@@ -1962,6 +2041,49 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealer;
 	}
 	// end login dealer
+	
+	
+	// start of Serv Master
+		public VehicleDealerServMaintDetails toDealerServMast(final VehicleDealerServMaintDetailsVO dealerVO) {
+			VehicleDealerServMaintDetails dealer = new VehicleDealerServMaintDetails();
+			try {
+
+
+				org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+						new String[] { "vehicleDealerServSpareList","vehicleDealerServHypList"});
+				
+				if( dealerVO.getVehicleDealerServSpareList() != null){
+				List<VehicleServSpareList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleServSpareListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerServSpareList()) {
+					VehicleServSpareList vehicleDealerMakeList = new VehicleServSpareList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
+				}
+				dealer.setVehicleDealerServSpareList(vehicleDealerMakeLists);
+				}
+				if( dealerVO.getVehicleDealerServHypList() != null){
+				List<VehicleServHypList> vehicleDealerAreaOfOperStates = new ArrayList<>();
+				for (VehicleServHypListVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerServHypList()) {
+					VehicleServHypList vehicleDealerAreaOfOperState = new VehicleServHypList();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
+					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+				}
+				dealer.setVehicleDealerServHypList(vehicleDealerAreaOfOperStates);
+				}
+				
+				
+			
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return dealer;
+		}
+		// end of service Master
+	
 	
 	
 	// start of SBL

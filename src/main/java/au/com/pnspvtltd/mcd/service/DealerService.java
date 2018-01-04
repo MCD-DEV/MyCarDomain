@@ -15,6 +15,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.DealerServMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
@@ -27,6 +28,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 
@@ -84,4 +86,10 @@ public interface DealerService {
 
 	VehicleResourceDetailsVO getDealerResourcebyID(long id);
 	List<VehicleResourceDetailsVO> getResource(Long dealerId);
+	DealerServMasterVO createDealerServMaster(DealerServMasterVO dealerVO);
+	
+
+	VehicleDealerServMaintDetailsVO getServiceMasterId(long id);
+
+	List<VehicleDealerServMaintDetailsVO> getServMast(Long dealerId);
 }

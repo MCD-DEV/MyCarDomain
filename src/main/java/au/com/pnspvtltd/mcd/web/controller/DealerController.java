@@ -75,6 +75,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
+import au.com.pnspvtltd.mcd.web.model.DealerServMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
@@ -116,6 +117,7 @@ import au.com.pnspvtltd.mcd.web.model.UserEBidVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
@@ -883,6 +885,31 @@ public class DealerController {
 		return createdDealer;
 		//createdDealer   dealerService.findById(createdDealer.getDealerId());
 	}
+	
+	
+	/*Subscription Starts*/
+	@PostMapping(value = "dealer/ServiceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerServMasterVO createDealerServMaster(@RequestBody DealerServMasterVO dealerSubscriptionSBLVO, HttpServletResponse response) {
+		LOGGER.debug("Dealer Service Master Creation for Sv", dealerSubscriptionSBLVO.getDealerId());
+		DealerServMasterVO createdDealer = dealerService.createDealerServMaster(dealerSubscriptionSBLVO);
+		response.setStatus(HttpStatus.CREATED.value());
+		return createdDealer;
+		//createdDealer   dealerService.findById(createdDealer.getDealerId());
+	}
+	
+	
+	@GetMapping(value = "dealer/getServiceMaster/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public VehicleDealerServMaintDetailsVO getServiceMasterId(@PathVariable Long id, HttpServletResponse response){
+		return dealerService.getServiceMasterId(id);
+	}
+	
+	
+	@GetMapping(value = "dealer/{id}/ServiceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleDealerServMaintDetailsVO> getServiceMaster(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Service Master with id {} ", id);
+		return dealerService.getServMast(id);
+	}
+	
 	
 	/**
 	 * 

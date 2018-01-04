@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -36,6 +37,7 @@ import javax.persistence.Table;
 
 	
 	private Long vehicleDealerServMaintDetailId;
+	private Dealer dealer;
 	
 	private String vehicleType;
 	private boolean isPetrol;
@@ -83,7 +85,18 @@ import javax.persistence.Table;
 	private boolean isBoth;
 	
 	List<VehicleServSpareList> vehicleDealerServSpareList;
-	 List<VehicleServHypList> vehicleDealerServHypList;
+	List<VehicleServHypList> vehicleDealerServHypList;
+	
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
 	
 /*start */
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
@@ -101,6 +114,175 @@ import javax.persistence.Table;
 	@JoinColumn(name = "vehicleDealerServMaintDetailId")
 	public List<VehicleServHypList> getVehicleDealerServHypList() {
 		return vehicleDealerServHypList;
+	}
+	
+
+	public String getServMastLevel1() {
+		return servMastLevel1;
+	}
+
+	public void setServMastLevel1(String servMastLevel1) {
+		this.servMastLevel1 = servMastLevel1;
+	}
+
+	public String getServMastLevel2() {
+		return servMastLevel2;
+	}
+
+	public void setServMastLevel2(String servMastLevel2) {
+		this.servMastLevel2 = servMastLevel2;
+	}
+
+	public String getServMastLevel3() {
+		return servMastLevel3;
+	}
+
+	public void setServMastLevel3(String servMastLevel3) {
+		this.servMastLevel3 = servMastLevel3;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getCompanyDesc() {
+		return companyDesc;
+	}
+
+	public void setCompanyDesc(String companyDesc) {
+		this.companyDesc = companyDesc;
+	}
+
+	public String getCompanyAddress() {
+		return companyAddress;
+	}
+
+	public void setCompanyAddress(String companyAddress) {
+		this.companyAddress = companyAddress;
+	}
+
+	public String getCompanyWeb() {
+		return companyWeb;
+	}
+
+	public void setCompanyWeb(String companyWeb) {
+		this.companyWeb = companyWeb;
+	}
+
+	public boolean isFixedPrice() {
+		return fixedPrice;
+	}
+
+	public void setFixedPrice(boolean fixedPrice) {
+		this.fixedPrice = fixedPrice;
+	}
+
+	public boolean isHourlyRate() {
+		return hourlyRate;
+	}
+
+	public void setHourlyRate(boolean hourlyRate) {
+		this.hourlyRate = hourlyRate;
+	}
+
+	public boolean isPartFixPartHr() {
+		return partFixPartHr;
+	}
+
+	public void setPartFixPartHr(boolean partFixPartHr) {
+		this.partFixPartHr = partFixPartHr;
+	}
+
+	public boolean isAutoQuote() {
+		return isAutoQuote;
+	}
+
+	public void setAutoQuote(boolean isAutoQuote) {
+		this.isAutoQuote = isAutoQuote;
+	}
+
+	public boolean isAddAutoAddCom() {
+		return addAutoAddCom;
+	}
+
+	public void setAddAutoAddCom(boolean addAutoAddCom) {
+		this.addAutoAddCom = addAutoAddCom;
+	}
+
+	public boolean isBrowComSec() {
+		return browComSec;
+	}
+
+	public void setBrowComSec(boolean browComSec) {
+		this.browComSec = browComSec;
+	}
+
+	public double getEstHourFix() {
+		return estHourFix;
+	}
+
+	public void setEstHourFix(double estHourFix) {
+		this.estHourFix = estHourFix;
+	}
+
+	public double getMinChargHr() {
+		return minChargHr;
+	}
+
+	public void setMinChargHr(double minChargHr) {
+		this.minChargHr = minChargHr;
+	}
+
+	public double getHourRate() {
+		return hourRate;
+	}
+
+	public void setHourRate(double hourRate) {
+		this.hourRate = hourRate;
+	}
+
+	public double getFixHours() {
+		return fixHours;
+	}
+
+	public void setFixHours(double fixHours) {
+		this.fixHours = fixHours;
+	}
+
+	public double getFixedRate() {
+		return fixedRate;
+	}
+
+	public void setFixedRate(double fixedRate) {
+		this.fixedRate = fixedRate;
+	}
+
+	public double getEstHoursPartFix() {
+		return estHoursPartFix;
+	}
+
+	public void setEstHoursPartFix(double estHoursPartFix) {
+		this.estHoursPartFix = estHoursPartFix;
+	}
+
+	public double getRateforExtHr() {
+		return rateforExtHr;
+	}
+
+	public void setRateforExtHr(double rateforExtHr) {
+		this.rateforExtHr = rateforExtHr;
+	}
+
+	public double getClientPlaceDrCharg() {
+		return clientPlaceDrCharg;
+	}
+
+	public void setClientPlaceDrCharg(double clientPlaceDrCharg) {
+		this.clientPlaceDrCharg = clientPlaceDrCharg;
 	}
 
 	public void setVehicleDealerServHypList(

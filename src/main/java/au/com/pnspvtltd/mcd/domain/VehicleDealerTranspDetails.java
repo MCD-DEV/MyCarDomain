@@ -54,8 +54,6 @@ import javax.persistence.Table;
 	
 	
 	
-	
-	
 
 	
 	public String getFromState() {
