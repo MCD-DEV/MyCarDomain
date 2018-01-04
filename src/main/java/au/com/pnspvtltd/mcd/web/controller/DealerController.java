@@ -77,6 +77,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerServMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
+import au.com.pnspvtltd.mcd.web.model.DealerTranpMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerFinLdAdminVO;
@@ -118,6 +119,7 @@ import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
@@ -909,6 +911,31 @@ public class DealerController {
 		LOGGER.debug("Received request to get Service Master with id {} ", id);
 		return dealerService.getServMast(id);
 	}
+	
+	
+	// start of Transport
+	@PostMapping(value = "dealer/TranspMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public DealerTranpMasterVO createDealerTranpMaster(@RequestBody DealerTranpMasterVO dealerSubscriptionSBLVO, HttpServletResponse response) {
+		LOGGER.debug("Dealer Tranport Master Creation for Transp", dealerSubscriptionSBLVO.getDealerId());
+		DealerTranpMasterVO createdDealer = dealerService.createDealerTranpMaster(dealerSubscriptionSBLVO);
+		response.setStatus(HttpStatus.CREATED.value());
+		return createdDealer;
+		//createdDealer   dealerService.findById(createdDealer.getDealerId());
+	}
+	
+	
+	@GetMapping(value = "dealer/getTranspMaster/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public VehicleDealerTranspDetailsVO getTranspMasterId(@PathVariable Long id, HttpServletResponse response){
+		return dealerService.getTranspMasterId(id);
+	}
+	
+	
+	@GetMapping(value = "dealer/{id}/TransportMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleDealerTranspDetailsVO> getTransportMaster(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Transport Master with id {} ", id);
+		return dealerService.getTranspMast(id);
+	}
+	// end of Transport
 	
 	
 	/**

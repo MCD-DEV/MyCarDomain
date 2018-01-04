@@ -105,105 +105,9 @@ import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
 import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
 import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
 import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
+import au.com.pnspvtltd.mcd.domain.VehicleTranpHypList;
 import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
-import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
-import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
-import au.com.pnspvtltd.mcd.web.model.BlogTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
-import au.com.pnspvtltd.mcd.web.model.CountryTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
-import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
-import au.com.pnspvtltd.mcd.web.model.DealerQuotationHistoryVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
-import au.com.pnspvtltd.mcd.web.model.DealerVO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealServMaintr1VO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchFinVO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchInsVO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchTpVO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
-import au.com.pnspvtltd.mcd.web.model.ExtDealerServMaintVO;
-import au.com.pnspvtltd.mcd.web.model.ExternalDealerFinVO;
-import au.com.pnspvtltd.mcd.web.model.ExternalDealerInsVO;
-import au.com.pnspvtltd.mcd.web.model.ExternalDealerTpVO;
-import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
-import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
-import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
-import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
-import au.com.pnspvtltd.mcd.web.model.InventoryVO;
-import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
-import au.com.pnspvtltd.mcd.web.model.MyVehicleFuelExpensesVO;
-import au.com.pnspvtltd.mcd.web.model.MyVehicleLogBookVO;
-import au.com.pnspvtltd.mcd.web.model.MyVehicleServMaintVO;
-import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
-import au.com.pnspvtltd.mcd.web.model.PhotosTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.QuotationFeatListVO;
-import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
-import au.com.pnspvtltd.mcd.web.model.RegoStateUrlVO;
-import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
-import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
-import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
-import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
-import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
-import au.com.pnspvtltd.mcd.web.model.SearchVO;
-import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.SpecificationTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelColourVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelCountryVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelExpertRatingVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelExtFittingVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecDimensionVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecEngineVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecFuelVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecStandEqVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecWarrantyVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelFullSpecWheelVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelIntFittingVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelOptEqpAddOnVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelOptionalFeatureAddOnVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelOverviewVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelPhotosVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelPricingVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelRelatedModelVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelUserRatingVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelVehReviewVO;
-import au.com.pnspvtltd.mcd.web.model.TempCarModelVideosVO;
-import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
-import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryVO;
-import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
-import au.com.pnspvtltd.mcd.web.model.UserReviewTemplateVO;
-import au.com.pnspvtltd.mcd.web.model.UserVO;
-import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperPostCodeVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperRegionVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleAreaOfOperStateVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperPostCodeVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperRegionVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerAreaOfOperStateVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerFinanceDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerMakeListhVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleMakeListVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsInvVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleServHypListVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleServSpareListVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
-import au.com.pnspvtltd.mcd.web.model.YoutubeTemplateVO;
+import au.com.pnspvtltd.mcd.web.model.*;
 
 @Component
 public class DomainModelUtil {
@@ -462,6 +366,47 @@ public class DomainModelUtil {
 		
 		
 		// end to serv master
+		
+		
+		// start to tranp master
+		
+			public VehicleDealerTranspDetailsVO fromDealerTranspMast(final VehicleDealerTranspDetails user) {
+
+				if (user == null) {
+					return null;
+				}
+
+				VehicleDealerTranspDetailsVO userVO = new VehicleDealerTranspDetailsVO();
+				try {
+		// search
+					org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"vehicleDealerTranpHypList" });
+
+					
+						if(user.getVehicleDealerTranpHypList() != null){
+							List<VehicleTranpHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
+							for (VehicleTranpHypList vehicleDealerDetail : user.getVehicleDealerTranpHypList()) {
+								VehicleTranpHypListVO searchFinanceVO = new VehicleTranpHypListVO();
+								BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+								vehicleDealerDetailsVO.add(searchFinanceVO);
+							}
+							userVO.setVehicleDealerTranpHypList(vehicleDealerDetailsVO);
+							}
+						
+
+					
+
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return userVO;
+			}
+			
+			
+			// end to transp master
 	
 	public VehicleResourceDetailsVO fromResource(final VehicleResourceDetails inventory, boolean isMinified) {
 		if (inventory == null) {
@@ -502,7 +447,24 @@ public class DomainModelUtil {
 		return inventoryVO;
 	}
 	
-	
+	public VehicleDealerTranspDetailsVO fromTranspvMast(final VehicleDealerTranspDetails inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		VehicleDealerTranspDetailsVO inventoryVO = new VehicleDealerTranspDetailsVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
 	
 	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
@@ -2041,6 +2003,38 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealer;
 	}
 	// end login dealer
+	
+	// start of Tranp Master
+			public VehicleDealerTranspDetails toDealerTranspvMast(final VehicleDealerTranspDetailsVO dealerVO) {
+				VehicleDealerTranspDetails dealer = new VehicleDealerTranspDetails();
+				try {
+
+
+					org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+							new String[] { "vehicleDealerTranpHypList"});
+					
+					if( dealerVO.getVehicleDealerTranpHypList() != null){
+					List<VehicleTranpHypList> vehicleDealerMakeLists = new ArrayList<>();
+					for (VehicleTranpHypListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerTranpHypList()) {
+						VehicleTranpHypList vehicleDealerMakeList = new VehicleTranpHypList();
+						BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+						vehicleDealerMakeLists.add(vehicleDealerMakeList);
+					}
+					dealer.setVehicleDealerTranpHypList(vehicleDealerMakeLists);
+					}
+					
+					
+				
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				return dealer;
+			}
+			// end of transp Master
 	
 	
 	// start of Serv Master
