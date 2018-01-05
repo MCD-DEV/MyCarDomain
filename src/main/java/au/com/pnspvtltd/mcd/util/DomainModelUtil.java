@@ -466,6 +466,25 @@ public class DomainModelUtil {
 		return inventoryVO;
 	}
 	
+	public FinanceEntityVO fromFinancevMast(final FinanceEntity inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		FinanceEntityVO inventoryVO = new FinanceEntityVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
 	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
@@ -2036,6 +2055,42 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			}
 			// end of transp Master
 	
+			
+			// start of Fin Master
+		public FinanceEntity toDealerFinMast(final FinanceEntityVO dealerVO) {
+							
+							
+							
+							FinanceEntity financeQuotation = new FinanceEntity();
+								try {
+									BeanUtils.copyProperties(financeQuotation, dealerVO);
+								} catch (IllegalAccessException | InvocationTargetException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							
+							return financeQuotation;
+		 }
+						// end of fin Master
+						
+						// start of Fin Master
+						public FinanceEntityVO toDealerFinVOMast(final FinanceEntity dealer) {
+							
+							
+							
+							FinanceEntityVO financeQuotationVO = new FinanceEntityVO();
+								try {
+									BeanUtils.copyProperties(financeQuotationVO, dealer);
+								} catch (IllegalAccessException | InvocationTargetException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							
+							return financeQuotationVO;
+						}
+						// end of fin Master
 	
 	// start of Serv Master
 		public VehicleDealerServMaintDetails toDealerServMast(final VehicleDealerServMaintDetailsVO dealerVO) {

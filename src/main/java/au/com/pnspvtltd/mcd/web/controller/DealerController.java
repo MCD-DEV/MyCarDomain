@@ -68,6 +68,7 @@ import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
+import au.com.pnspvtltd.mcd.web.model.DealerFinanceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -105,6 +106,7 @@ import au.com.pnspvtltd.mcd.web.model.ExternalDealerTpListVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerTpVO;
 import au.com.pnspvtltd.mcd.web.model.ExternalDealerVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceEntityListVO;
+import au.com.pnspvtltd.mcd.web.model.FinanceEntityVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
@@ -936,6 +938,31 @@ public class DealerController {
 		return dealerService.getTranspMast(id);
 	}
 	// end of Transport
+	
+	
+	// start of Finance
+		@PostMapping(value = "dealer/FinanceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public DealerFinanceMasterVO createDealerFinMaster(@RequestBody DealerFinanceMasterVO dealerSubscriptionSBLVO, HttpServletResponse response) {
+			LOGGER.debug("Dealer Finance Master Creation for Transp", dealerSubscriptionSBLVO.getDealerId());
+			DealerFinanceMasterVO createdDealer = dealerService.createDealerFinanceMaster(dealerSubscriptionSBLVO);
+			response.setStatus(HttpStatus.CREATED.value());
+			return createdDealer;
+			//createdDealer   dealerService.findById(createdDealer.getDealerId());
+		}
+		
+		
+		@GetMapping(value = "dealer/getFinanceMaster/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public FinanceEntityVO getFinMasterId(@PathVariable Long id, HttpServletResponse response){
+			return dealerService.getFinanceMasterId(id);
+		}
+		
+		
+		@GetMapping(value = "dealer/{id}/FinanceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public List<FinanceEntityVO> getFinanceMaster(@PathVariable Long id) {
+			LOGGER.debug("Received request to get Finance Master with id {} ", id);
+			return dealerService.getFinanceMast(id);
+		}
+		// end of Finance
 	
 	
 	/**
