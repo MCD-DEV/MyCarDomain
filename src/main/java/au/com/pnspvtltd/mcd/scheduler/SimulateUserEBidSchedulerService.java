@@ -360,6 +360,7 @@ public class SimulateUserEBidSchedulerService {
 				
 				List<Inventory> inventories = inventoryRepository.getInventoryForTrim(search.getModelYear(),search.getModelDisplay(), search.getModelTrim());
 				for (Inventory inventory : inventories) {
+					try{
 					System.out.println("details for Dealer and Quotations Creation"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelTrim());
 					Dealer dealer = inventory.getDealer();
 
@@ -388,7 +389,10 @@ public class SimulateUserEBidSchedulerService {
 						createVehicleQuotation(user, dealer, search, dealerSearch, inventory);
 					}
 					
-					
+					}
+					catch (Exception e){
+						System.out.println("failed details for Dealer and Quotations Creation 1. {year, make, model, autoscooptrim} perfect match 2. Region, 3. Postcode"+inventory.getRepoId());
+					}
 					
 					
 					
@@ -403,6 +407,7 @@ public class SimulateUserEBidSchedulerService {
 				List<Inventory> inventorieMakes = inventoryRepository.getInventoryForMake(
 						search.getModelDisplay());
 				for (Inventory inventory : inventorieMakes) {
+					try{
 					System.out.println("details for matching Make from inventory repo"+inventory.getRepoId()+inventory.getModelYear()+inventory.getModelDisplay()+inventory.getModelTrim());
 					Dealer dealer = inventory.getDealer();
 
@@ -426,7 +431,10 @@ public class SimulateUserEBidSchedulerService {
 						inventoryRepository.flush();
 					}
 					
-					
+					}
+					catch (Exception e){
+						System.out.println("details for matching Make from inventory repo 1.isDealer and dealer have not created lead for this userId 2. Region, Postcode "+inventory.getRepoId());
+					}
 					
 
 				}
@@ -442,6 +450,8 @@ public class SimulateUserEBidSchedulerService {
 					
 					List<VehicleDealerMakeList> makeLists = dealer.getVehicleDealerMakeList();
 					for (VehicleDealerMakeList dealMake : makeLists) {
+						
+						try {
 						if(dealMake.getMake().equals(search.getModelDisplay()) && checkForAlreadyCreatedDealerLead(dealer,user.getUserId()) && dealer.isDealer() && (checkDealerRegion(dealer, search.getPostCode()) || checkDealerPostCode(dealer, search.getPostCode()))){
 					DealerSearch dealerSearch = null;
 					System.out.println("details for matching make from dealer's repo"+dealer.getDealerId()+dealMake.getMake());
@@ -462,7 +472,10 @@ public class SimulateUserEBidSchedulerService {
 						}
 						dealerRepository.flush();
 					}
-					
+						}
+						catch (Exception e){
+							System.out.println("failed details for matching make from dealer's repo 1. isDealer and dealer not created lead for this userId 2. Region, Postcode"+dealer.getDealerId());
+						}
 					
 					}
 					
