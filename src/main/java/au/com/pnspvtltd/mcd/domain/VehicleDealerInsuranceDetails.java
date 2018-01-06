@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -36,7 +37,7 @@ import javax.persistence.Table;
 
 	
 	private Long vehicleDealerInsuranceDetailId;
-	
+	private Dealer dealer;
 	private String vehicleType;
 	private String afslNo;
 	private String authRepNo;
@@ -245,6 +246,16 @@ import javax.persistence.Table;
 		this.vehicleDealerInsuranceDetailId = vehicleDealerInsuranceDetailId;
 	}
 
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "dealerId")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+	
 	@Column(name = "VEHICLETYPE") public String getVehicleType() {
 		return vehicleType;
 	}

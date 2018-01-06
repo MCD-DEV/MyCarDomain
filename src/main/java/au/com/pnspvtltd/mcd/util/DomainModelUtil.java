@@ -93,6 +93,7 @@ import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerFinanceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerInsDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerInsInsDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
@@ -485,6 +486,25 @@ public class DomainModelUtil {
 		return inventoryVO;
 	}
 	
+	
+	public VehicleDealerInsuranceDetailsVO fromInsuranceMast(final VehicleDealerInsuranceDetails inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		VehicleDealerInsuranceDetailsVO inventoryVO = new VehicleDealerInsuranceDetailsVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
 	
 	public InventoryVO fromInventory(final Inventory inventory, boolean isMinified) {
 		if (inventory == null) {
@@ -2091,6 +2111,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 							return financeQuotationVO;
 						}
 						// end of fin Master
+						// start of Ins Master
+public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsuranceDetails dealer) {
+							
+							
+							
+	VehicleDealerInsuranceDetailsVO financeQuotationVO = new VehicleDealerInsuranceDetailsVO();
+								try {
+									BeanUtils.copyProperties(financeQuotationVO, dealer);
+								} catch (IllegalAccessException | InvocationTargetException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+								
+							
+							return financeQuotationVO;
+	}
+						// end of Ins Master				
+	
 	
 	// start of Serv Master
 		public VehicleDealerServMaintDetails toDealerServMast(final VehicleDealerServMaintDetailsVO dealerVO) {
@@ -2133,7 +2171,37 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		// end of service Master
 	
-	
+		// start of ins Master
+				public VehicleDealerInsuranceDetails toDealerInsMast(final VehicleDealerInsuranceDetailsVO dealerVO) {
+					VehicleDealerInsuranceDetails dealer = new VehicleDealerInsuranceDetails();
+					try {
+
+
+						org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+								new String[] { "vehicleDealerInsInsDetails"});
+						
+						if( dealerVO.getVehicleDealerInsInsDetails() != null){
+						List<VehicleDealerInsInsDetails> vehicleDealerMakeLists = new ArrayList<>();
+						for (VehicleDealerInsInsDetailsVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerInsInsDetails()) {
+							VehicleDealerInsInsDetails vehicleDealerMakeList = new VehicleDealerInsInsDetails();
+							BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+							vehicleDealerMakeLists.add(vehicleDealerMakeList);
+						}
+						dealer.setVehicleDealerInsInsDetails(vehicleDealerMakeLists);
+						}
+						
+						
+					
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return dealer;
+				}
+				// end of ins Master
 	
 	// start of SBL
 	public VehicleDealerDetails toDealerSBL(final VehicleDealerDetailsVO dealerVO) {

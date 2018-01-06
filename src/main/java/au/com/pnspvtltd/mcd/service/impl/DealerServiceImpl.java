@@ -36,6 +36,7 @@ import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
@@ -54,6 +55,7 @@ import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleFinanceMasterRepo;
+import au.com.pnspvtltd.mcd.repository.VehicleInsuranceMasterRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleResourceDetailsRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleServMasterRepo;
@@ -64,6 +66,7 @@ import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerFinanceMasterVO;
+import au.com.pnspvtltd.mcd.web.model.DealerInsuranceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -93,6 +96,7 @@ import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -140,6 +144,8 @@ public class DealerServiceImpl implements DealerService {
 	private VehicleTranspMasterRepo vehicleTranspMasterRepo;
 	@Autowired
 	private VehicleFinanceMasterRepo vehicleFinanceMasterRepo;
+	@Autowired
+	private VehicleInsuranceMasterRepo vehicleInsuranceMasterRepo;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -701,6 +707,19 @@ public class DealerServiceImpl implements DealerService {
 		return inventoryList;
 	}
 	
+	@Override
+	@Transactional(readOnly = true)
+	public List<VehicleDealerInsuranceDetailsVO> getInsuranceMast(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<VehicleDealerInsuranceDetailsVO> inventoryList = new ArrayList<>();
+		
+		for(VehicleDealerInsuranceDetails inventory : vehicleInsuranceMasterRepo.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromInsuranceMast(inventory, true));
+		}
+		return inventoryList;
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -915,6 +934,34 @@ public class DealerServiceImpl implements DealerService {
 	}
 	
 	@Override
+	public DealerInsuranceMasterVO createDealerInsuranceMaster(DealerInsuranceMasterVO dealerVO) {
+		// TODO Auto-generated method stub
+		boolean single = false;
+		Dealer dealer = dealerRepository.getDealerForID(dealerVO.getDealerId());
+		List<VehicleDealerInsuranceDetailsVO> vehicleDealerDetailsVO = dealerVO.getVehicleDealerInsDetails();
+		List<VehicleDealerInsuranceDetails> vehicleDealerDetailsList = new ArrayList<VehicleDealerInsuranceDetails>();
+		if (dealer.getVehicleDealerInsuranceDetails() != null){
+			single = true;
+		}
+		for (VehicleDealerInsuranceDetailsVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			VehicleDealerInsuranceDetails vehicleDealerDetails = domainModelUtil.toDealerInsMast(vehicleDealerDetailsVO1);
+			if(single){
+				dealer.getVehicleDealerInsuranceDetails().add(vehicleDealerDetails);
+			}
+			else{
+			vehicleDealerDetailsList.add(vehicleDealerDetails);
+			}
+		}
+		if(!single){
+		dealer.setVehicleDealerInsuranceDetails(vehicleDealerDetailsList);
+		}
+		
+		
+		dealerRepository.saveAndFlush(dealer);
+		return dealerVO;
+	}
+	
+	@Override
 	public DealerResourceVO createDealerResource(DealerResourceVO dealerVO) {
 		// TODO Auto-generated method stub
 		Dealer dealer = dealerRepository.getDealerForID(dealerVO.getDealerId());
@@ -1056,6 +1103,38 @@ public class DealerServiceImpl implements DealerService {
 		FinanceEntity dealer = vehicleFinanceMasterRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.toDealerFinVOMast(dealer);
+			/*try {
+				BeanUtils.copyProperties(dealerVO, dealer);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public VehicleDealerInsuranceDetailsVO getInsMasterId(long id) {
+		// TODO Auto-generated method stub
+		//Dealer dealer = dealerRepository.getDealerForID(id);
+		/*Dealer dealer = dealerRepository.findOne(id);
+		DealerResourceVO dealerResourceVO = new DealerResourceVO();
+		dealerResourceVO.setDealerId(id);
+		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
+		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
+		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
+			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
+			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
+		}
+		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
+		return dealerResourceVO;*/
+		
+		VehicleDealerInsuranceDetailsVO dealerVO = null;
+		VehicleDealerInsuranceDetails dealer = vehicleInsuranceMasterRepo.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.toDealerInsVOMast(dealer);
 			/*try {
 				BeanUtils.copyProperties(dealerVO, dealer);
 			} catch (IllegalAccessException | InvocationTargetException e) {

@@ -10,6 +10,7 @@ import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerFinanceMasterVO;
+import au.com.pnspvtltd.mcd.web.model.DealerInsuranceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -31,6 +32,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryListVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -108,4 +110,10 @@ public interface DealerService {
 	FinanceEntityVO getFinanceMasterId(long id);
 
 	List<FinanceEntityVO> getFinanceMast(Long dealerId);
+
+	DealerInsuranceMasterVO createDealerInsuranceMaster(DealerInsuranceMasterVO dealerVO);
+
+	VehicleDealerInsuranceDetailsVO getInsMasterId(long id);
+
+	List<VehicleDealerInsuranceDetailsVO> getInsuranceMast(Long dealerId);
 }

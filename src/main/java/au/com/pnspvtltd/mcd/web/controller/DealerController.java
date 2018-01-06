@@ -62,6 +62,7 @@ import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
 import au.com.pnspvtltd.mcd.web.model.DealerFinanceMasterVO;
+import au.com.pnspvtltd.mcd.web.model.DealerInsuranceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
 import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
@@ -107,6 +108,7 @@ import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.LoyalAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.LoyalityProgAdminVO;
 import au.com.pnspvtltd.mcd.web.model.QuotationFeatListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -991,6 +993,29 @@ public class DealerController {
 		return dealerService.getFinanceMast(id);
 	}
 	// end of Finance
+	
+	// start of Insurance
+		@PostMapping(value = "dealer/InsuranceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public DealerInsuranceMasterVO createDealerInsMaster(@RequestBody DealerInsuranceMasterVO dealerSubscriptionSBLVO,
+				HttpServletResponse response) {
+			LOGGER.debug("Dealer Insurance Master Creation for Transp", dealerSubscriptionSBLVO.getDealerId());
+			DealerInsuranceMasterVO createdDealer = dealerService.createDealerInsuranceMaster(dealerSubscriptionSBLVO);
+			response.setStatus(HttpStatus.CREATED.value());
+			return createdDealer;
+			// createdDealer dealerService.findById(createdDealer.getDealerId());
+		}
+
+		@GetMapping(value = "dealer/getInsuranceeMaster/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public VehicleDealerInsuranceDetailsVO getInsMasterId(@PathVariable Long id, HttpServletResponse response) {
+			return dealerService.getInsMasterId(id);
+		}
+
+		@GetMapping(value = "dealer/{id}/InsuranceMaster", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public List<VehicleDealerInsuranceDetailsVO> getInsuranceeMaster(@PathVariable Long id) {
+			LOGGER.debug("Received request to get Insurance Master with id {} ", id);
+			return dealerService.getInsuranceMast(id);
+		}
+		// end of Insurance
 
 	/**
 	 * 
