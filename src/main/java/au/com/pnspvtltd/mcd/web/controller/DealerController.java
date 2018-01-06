@@ -527,7 +527,7 @@ public class DealerController {
 	}
 	
 	@PutMapping("extDealerLeadCreation")
-	public String extDealerLeadCreation(@RequestBody ExtDealerSearchLdAdminVO extDealerVO, HttpServletResponse response) {
+	public ResponseEntity<ExtDealerSearchLdAdminVO> extDealerLeadCreation(@RequestBody ExtDealerSearchLdAdminVO extDealerVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to update ext Dealer Lead {}", extDealerVO);
 		
 		String updatedDealer = dealerService.extDealerAdminLead(extDealerVO);
@@ -535,7 +535,9 @@ public class DealerController {
 		if (updatedDealer == null) {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
-		return updatedDealer;
+		HttpStatus status = HttpStatus.OK;
+		response.setStatus(HttpStatus.CREATED.value());
+		return new ResponseEntity<>(extDealerVO,status);
 	}
 	
 	
