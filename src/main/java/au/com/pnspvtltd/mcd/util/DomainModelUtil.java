@@ -6,7 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.BeanUtilsBean;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -152,7 +151,7 @@ public class DomainModelUtil {
 					searchFinanceVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchFinance(searchFinanceVOs);
-				
+
 				List<SearchServMaintVO> searchServMaintVOs = new ArrayList<>();
 				for (SearchServMaint searchFinance : user.getSearchServMaint()) {
 					SearchServMaintVO searchFinanceVO = new SearchServMaintVO();
@@ -160,8 +159,7 @@ public class DomainModelUtil {
 					searchServMaintVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchServMaint(searchServMaintVOs);
-				
-				
+
 				List<SearchTranspVO> searchTranspVOs = new ArrayList<>();
 				for (SearchTransp searchFinance : user.getSearchTransp()) {
 					SearchTranspVO searchFinanceVO = new SearchTranspVO();
@@ -169,7 +167,7 @@ public class DomainModelUtil {
 					searchTranspVOs.add(searchFinanceVO);
 				}
 				userVO.setSearchTransp(searchTranspVOs);
-				
+
 				List<UserNotificationVO> userNotificationVOs = new ArrayList<>();
 				for (UserNotification searchFinance : user.getUserNotification()) {
 					UserNotificationVO searchFinanceVO = new UserNotificationVO();
@@ -231,8 +229,7 @@ public class DomainModelUtil {
 		}
 		return userVO;
 	}
-	
-	
+
 	public AdminAutoVO fromAdmin(final AdminAuto user) {
 
 		if (user == null) {
@@ -266,9 +263,8 @@ public class DomainModelUtil {
 		return user;
 	}
 
-	
 	// start to retrieve total data for inventory
-	
+
 	public InventoryVO fromInventoryFull(final Inventory user, boolean isMinified) {
 
 		if (user == null) {
@@ -282,15 +278,15 @@ public class DomainModelUtil {
 
 			if (!isMinified) {
 				if (user.getQuotationFeatList() != null) {
-				List<QuotationFeatListVO> searchVOs = new ArrayList<>();
-				for (QuotationFeatList search : user.getQuotationFeatList()) {
-					QuotationFeatListVO searchVO = new QuotationFeatListVO();
-					BeanUtils.copyProperties(searchVO, search);
-					searchVOs.add(searchVO);
+					List<QuotationFeatListVO> searchVOs = new ArrayList<>();
+					for (QuotationFeatList search : user.getQuotationFeatList()) {
+						QuotationFeatListVO searchVO = new QuotationFeatListVO();
+						BeanUtils.copyProperties(searchVO, search);
+						searchVOs.add(searchVO);
+					}
+					userVO.setQuotationFeatList(searchVOs);
 				}
-				userVO.setQuotationFeatList(searchVOs);
-				}
-				if(user.getVehicleResourceDetails() != null){
+				if (user.getVehicleResourceDetails() != null) {
 					List<VehicleResourceDetailsInvVO> vehicleDealerDetailsVO = new ArrayList<>();
 					for (VehicleResourceDetailsInv vehicleDealerDetail : user.getVehicleResourceDetails()) {
 						VehicleResourceDetailsInvVO searchFinanceVO = new VehicleResourceDetailsInvVO();
@@ -298,8 +294,7 @@ public class DomainModelUtil {
 						vehicleDealerDetailsVO.add(searchFinanceVO);
 					}
 					userVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
-					}
-				
+				}
 
 			}
 
@@ -312,103 +307,90 @@ public class DomainModelUtil {
 		}
 		return userVO;
 	}
-	
-	
-	// end to retrive total data 
-	
-	
-	
-	
+
+	// end to retrive total data
+
 	// start to serv master
-	
-		public VehicleDealerServMaintDetailsVO fromDealerServMast(final VehicleDealerServMaintDetails user) {
 
-			if (user == null) {
-				return null;
-			}
+	public VehicleDealerServMaintDetailsVO fromDealerServMast(final VehicleDealerServMaintDetails user) {
 
-			VehicleDealerServMaintDetailsVO userVO = new VehicleDealerServMaintDetailsVO();
-			try {
-	// search
-				org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"vehicleDealerServSpareList","vehicleDealerServHypList" });
-
-				
-					if (user.getVehicleDealerServSpareList() != null) {
-					List<VehicleServSpareListVO> searchVOs = new ArrayList<>();
-					for (VehicleServSpareList search : user.getVehicleDealerServSpareList()) {
-						VehicleServSpareListVO searchVO = new VehicleServSpareListVO();
-						BeanUtils.copyProperties(searchVO, search);
-						searchVOs.add(searchVO);
-					}
-					userVO.setVehicleDealerServSpareList(searchVOs);
-					}
-					if(user.getVehicleDealerServHypList() != null){
-						List<VehicleServHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
-						for (VehicleServHypList vehicleDealerDetail : user.getVehicleDealerServHypList()) {
-							VehicleServHypListVO searchFinanceVO = new VehicleServHypListVO();
-							BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
-							vehicleDealerDetailsVO.add(searchFinanceVO);
-						}
-						userVO.setVehicleDealerServHypList(vehicleDealerDetailsVO);
-						}
-					
-
-				
-
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return userVO;
+		if (user == null) {
+			return null;
 		}
-		
-		
-		// end to serv master
-		
-		
-		// start to tranp master
-		
-			public VehicleDealerTranspDetailsVO fromDealerTranspMast(final VehicleDealerTranspDetails user) {
 
-				if (user == null) {
-					return null;
+		VehicleDealerServMaintDetailsVO userVO = new VehicleDealerServMaintDetailsVO();
+		try {
+			// search
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
+					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList" });
+
+			if (user.getVehicleDealerServSpareList() != null) {
+				List<VehicleServSpareListVO> searchVOs = new ArrayList<>();
+				for (VehicleServSpareList search : user.getVehicleDealerServSpareList()) {
+					VehicleServSpareListVO searchVO = new VehicleServSpareListVO();
+					BeanUtils.copyProperties(searchVO, search);
+					searchVOs.add(searchVO);
 				}
-
-				VehicleDealerTranspDetailsVO userVO = new VehicleDealerTranspDetailsVO();
-				try {
-		// search
-					org.springframework.beans.BeanUtils.copyProperties(user, userVO, new String[] {"vehicleDealerTranpHypList" });
-
-					
-						if(user.getVehicleDealerTranpHypList() != null){
-							List<VehicleTranpHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
-							for (VehicleTranpHypList vehicleDealerDetail : user.getVehicleDealerTranpHypList()) {
-								VehicleTranpHypListVO searchFinanceVO = new VehicleTranpHypListVO();
-								BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
-								vehicleDealerDetailsVO.add(searchFinanceVO);
-							}
-							userVO.setVehicleDealerTranpHypList(vehicleDealerDetailsVO);
-							}
-						
-
-					
-
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return userVO;
+				userVO.setVehicleDealerServSpareList(searchVOs);
 			}
-			
-			
-			// end to transp master
-	
+			if (user.getVehicleDealerServHypList() != null) {
+				List<VehicleServHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
+				for (VehicleServHypList vehicleDealerDetail : user.getVehicleDealerServHypList()) {
+					VehicleServHypListVO searchFinanceVO = new VehicleServHypListVO();
+					BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+					vehicleDealerDetailsVO.add(searchFinanceVO);
+				}
+				userVO.setVehicleDealerServHypList(vehicleDealerDetailsVO);
+			}
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+
+	// end to serv master
+
+	// start to tranp master
+
+	public VehicleDealerTranspDetailsVO fromDealerTranspMast(final VehicleDealerTranspDetails user) {
+
+		if (user == null) {
+			return null;
+		}
+
+		VehicleDealerTranspDetailsVO userVO = new VehicleDealerTranspDetailsVO();
+		try {
+			// search
+			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
+					new String[] { "vehicleDealerTranpHypList" });
+
+			if (user.getVehicleDealerTranpHypList() != null) {
+				List<VehicleTranpHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
+				for (VehicleTranpHypList vehicleDealerDetail : user.getVehicleDealerTranpHypList()) {
+					VehicleTranpHypListVO searchFinanceVO = new VehicleTranpHypListVO();
+					BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+					vehicleDealerDetailsVO.add(searchFinanceVO);
+				}
+				userVO.setVehicleDealerTranpHypList(vehicleDealerDetailsVO);
+			}
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+
+	// end to transp master
+
 	public VehicleResourceDetailsVO fromResource(final VehicleResourceDetails inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;
@@ -427,9 +409,9 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
-	
-	
-	public VehicleDealerServMaintDetailsVO fromServMast(final VehicleDealerServMaintDetails inventory, boolean isMinified) {
+
+	public VehicleDealerServMaintDetailsVO fromServMast(final VehicleDealerServMaintDetails inventory,
+			boolean isMinified) {
 		if (inventory == null) {
 			return null;
 		}
@@ -447,8 +429,9 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
-	
-	public VehicleDealerTranspDetailsVO fromTranspvMast(final VehicleDealerTranspDetails inventory, boolean isMinified) {
+
+	public VehicleDealerTranspDetailsVO fromTranspvMast(final VehicleDealerTranspDetails inventory,
+			boolean isMinified) {
 		if (inventory == null) {
 			return null;
 		}
@@ -466,7 +449,7 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
-	
+
 	public FinanceEntityVO fromFinancevMast(final FinanceEntity inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;
@@ -543,55 +526,56 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
+
 	public Inventory toInventory(final InventoryVO inventoryVO) {
 		Inventory inventory = new Inventory();
 		try {
 			BeanUtils.copyProperties(inventory, inventoryVO);
-			
-			List <QuotationFeatListVO> qvo =inventoryVO.getQuotationFeatList();
-			List <QuotationFeatList> quoList = new ArrayList<QuotationFeatList>();
-			
+
+			List<QuotationFeatListVO> qvo = inventoryVO.getQuotationFeatList();
+			List<QuotationFeatList> quoList = new ArrayList<QuotationFeatList>();
+
 			Iterator<QuotationFeatListVO> it = qvo.iterator();
-			for(;it.hasNext();){
-				QuotationFeatListVO local = it.next();	
+			for (; it.hasNext();) {
+				QuotationFeatListVO local = it.next();
 				QuotationFeatList quo = new QuotationFeatList();
-			try {
-				BeanUtils.copyProperties(quo, local);
-				quoList.add(quo);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try {
+					BeanUtils.copyProperties(quo, local);
+					quoList.add(quo);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			}
-			
+
 			inventory.setQuotationFeatList(quoList);
-			
+
 			// resource:
-			
-			List <VehicleResourceDetailsInvVO> qvo1 =inventoryVO.getVehicleResourcDetails();
-			List <VehicleResourceDetailsInv> quoList1 = new ArrayList<VehicleResourceDetailsInv>();
-			
+
+			List<VehicleResourceDetailsInvVO> qvo1 = inventoryVO.getVehicleResourcDetails();
+			List<VehicleResourceDetailsInv> quoList1 = new ArrayList<VehicleResourceDetailsInv>();
+
 			Iterator<VehicleResourceDetailsInvVO> it1 = qvo1.iterator();
-			for(;it1.hasNext();){
-				VehicleResourceDetailsInvVO local1 = it1.next();	
+			for (; it1.hasNext();) {
+				VehicleResourceDetailsInvVO local1 = it1.next();
 				VehicleResourceDetailsInv quo1 = new VehicleResourceDetailsInv();
-			try {
-				BeanUtils.copyProperties(quo1, local1);
-				quoList1.add(quo1);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				try {
+					BeanUtils.copyProperties(quo1, local1);
+					quoList1.add(quo1);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-			}
-			
+
 			inventory.setVehicleResourceDetails(quoList1);
-			
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -601,15 +585,15 @@ public class DomainModelUtil {
 		}
 		return inventory;
 	}
-	
+
 	public List<Inventory> toInventoryList(final InventoryListVO inventoryListVO) {
-		
+
 		List<InventoryVO> inventoryVOList;
 		inventoryVOList = inventoryListVO.getInventoryVO();
 		List<Inventory> inventoryList = new ArrayList<Inventory>();
 		Iterator<InventoryVO> it = inventoryVOList.iterator();
-			for(;it.hasNext();){
-			InventoryVO local = it.next();	
+		for (; it.hasNext();) {
+			InventoryVO local = it.next();
 			Inventory inventory = new Inventory();
 			try {
 				BeanUtils.copyProperties(inventory, local);
@@ -621,19 +605,19 @@ public class DomainModelUtil {
 				e.printStackTrace();
 			}
 			inventoryList.add(inventory);
-			}
+		}
 		return inventoryList;
 	}
-	
-public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO inventoryListVO) {
-		
+
+	public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO inventoryListVO) {
+
 		List<FinanceEntityVO> inventoryVOList;
 		inventoryVOList = inventoryListVO.getInventoryVO();
 		List<FinanceEntity> inventoryList = new ArrayList<FinanceEntity>();
 		Iterator<FinanceEntityVO> it = inventoryVOList.iterator();
-			for(;it.hasNext();){
-				FinanceEntityVO local = it.next();	
-				FinanceEntity inventory = new FinanceEntity();
+		for (; it.hasNext();) {
+			FinanceEntityVO local = it.next();
+			FinanceEntity inventory = new FinanceEntity();
 			try {
 				BeanUtils.copyProperties(inventory, local);
 			} catch (IllegalAccessException e) {
@@ -644,7 +628,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				e.printStackTrace();
 			}
 			inventoryList.add(inventory);
-			}
+		}
 		return inventoryList;
 	}
 
@@ -678,17 +662,16 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return search;
 	}
 
-		
-	
-	//From Vehcile
-	
+	// From Vehcile
+
 	public MyVehicleVO FromMyVehicle(final MyVehicle myVehicle) {
 
 		MyVehicleVO myVehicleVO = new MyVehicleVO();
-		
+
 		try {
-			//BeanUtils.copyProperties(myVehicleVO, myVehicle);
-			org.springframework.beans.BeanUtils.copyProperties(myVehicle, myVehicleVO, new String[] {"myVehicleLogBook","myVehicleFuelExpenses","myVehicleServMaint"});
+			// BeanUtils.copyProperties(myVehicleVO, myVehicle);
+			org.springframework.beans.BeanUtils.copyProperties(myVehicle, myVehicleVO,
+					new String[] { "myVehicleLogBook", "myVehicleFuelExpenses", "myVehicleServMaint" });
 			List<MyVehicleLogBookVO> myVehicleLogBookVOs = new ArrayList<>();
 			for (MyVehicleLogBook myVehicleLogBook : myVehicle.getMyVehicleLogBook()) {
 				MyVehicleLogBookVO myVehicleLogBookVO = new MyVehicleLogBookVO();
@@ -696,8 +679,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				myVehicleLogBookVOs.add(myVehicleLogBookVO);
 			}
 			myVehicleVO.setMyVehicleLogBook(myVehicleLogBookVOs);
-			
-			
+
 			List<MyVehicleFuelExpensesVO> myVehicleFuelExpensesVOs = new ArrayList<>();
 			for (MyVehicleFuelExpenses myVehicleFuelExpenses : myVehicle.getMyVehicleFuelExpenses()) {
 				MyVehicleFuelExpensesVO myVehicleFuelExpensesVO = new MyVehicleFuelExpensesVO();
@@ -705,9 +687,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				myVehicleFuelExpensesVOs.add(myVehicleFuelExpensesVO);
 			}
 			myVehicleVO.setMyVehicleFuelExpenses(myVehicleFuelExpensesVOs);
-			
-			
-			
+
 			List<MyVehicleServMaintVO> myVehicleServMaintVOs = new ArrayList<>();
 			for (MyVehicleServMaint myVehicleServMaint : myVehicle.getMyVehicleServMaint()) {
 				MyVehicleServMaintVO myVehicleServMaintVO = new MyVehicleServMaintVO();
@@ -715,7 +695,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				myVehicleServMaintVOs.add(myVehicleServMaintVO);
 			}
 			myVehicleVO.setMyVehicleServMaint(myVehicleServMaintVOs);
-			
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -725,134 +705,134 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return myVehicleVO;
 	}
-	
+
 	// User Car/Search Details lead
-		public SearchVO toBatchSearchVO(final Search search) {
+	public SearchVO toBatchSearchVO(final Search search) {
 
-			SearchVO searchVO = new SearchVO();
-			try {
-				BeanUtils.copyProperties(searchVO, search);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return searchVO;
+		SearchVO searchVO = new SearchVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		// User Car/Search Details lead
-				public UserReferPointsVO toUserReferVO(final UserReferPoints search) {
+		return searchVO;
+	}
 
-					UserReferPointsVO searchVO = new UserReferPointsVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public ReferencedPointsVO toRefercedVO(final ReferencedPoints search) {
+	// User Car/Search Details lead
+	public UserReferPointsVO toUserReferVO(final UserReferPoints search) {
 
-					ReferencedPointsVO searchVO = new ReferencedPointsVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public BlogPointsVO toBlogPointsVO(final BlogPoints search) {
+		UserReferPointsVO searchVO = new UserReferPointsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
-					BlogPointsVO searchVO = new BlogPointsVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
+	// User Car/Search Details lead
+	public ReferencedPointsVO toRefercedVO(final ReferencedPoints search) {
 
-				// User Car/Search Details lead
-				public ReviewPointsVO toReviewPointsVO(final ReviewPoints search) {
+		ReferencedPointsVO searchVO = new ReferencedPointsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
-					ReviewPointsVO searchVO = new ReviewPointsVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public ValTransPointsVO toValTransPointsVO(final ValTransPoints search) {
+	// User Car/Search Details lead
+	public BlogPointsVO toBlogPointsVO(final BlogPoints search) {
 
-					ValTransPointsVO searchVO = new ValTransPointsVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public LoyalityProgAdminVO toLoyalityProgVO(final LoyalityProgAdmin search) {
+		BlogPointsVO searchVO = new BlogPointsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
-					LoyalityProgAdminVO searchVO = new LoyalityProgAdminVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-		// User Car/Search Details lead
-				public InventoryVO toMyVehInvVO(final Inventory search) {
+	// User Car/Search Details lead
+	public ReviewPointsVO toReviewPointsVO(final ReviewPoints search) {
 
-					InventoryVO searchVO = new InventoryVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
+		ReviewPointsVO searchVO = new ReviewPointsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public ValTransPointsVO toValTransPointsVO(final ValTransPoints search) {
+
+		ValTransPointsVO searchVO = new ValTransPointsVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public LoyalityProgAdminVO toLoyalityProgVO(final LoyalityProgAdmin search) {
+
+		LoyalityProgAdminVO searchVO = new LoyalityProgAdminVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public InventoryVO toMyVehInvVO(final Inventory search) {
+
+		InventoryVO searchVO = new InventoryVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
 	// User Car/Search Details lead
 	public Search toSearch(final SearchVO searchVO) {
@@ -937,480 +917,13 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealerSearch;
 	}
 
-	
 	// Dealer Vehicle Lead
-		public DealerSearchVO toDealerSearchVO(final DealerSearch searchVO) {
+	public DealerSearch toDealerSearch1(final DealerSearchVO searchVO) {
 
-			DealerSearchVO dealerSearch = new DealerSearchVO();
-			try {
-				BeanUtils.copyProperties(dealerSearch, searchVO);
-				
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return dealerSearch;
-		}
-	
-		// Dealer Vehicle Lead
-				public ExtDealerSearchVO toExtDealerSearchVO(final ExtDealerSearch searchVO) {
-
-					ExtDealerSearchVO dealerSearch = new ExtDealerSearchVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				// Dealer Vehicle Lead
-				public LoyalityProgAdminVO fromLoyalProg(final LoyalityProgAdmin searchVO) {
-
-					LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-
-				// Dealer Vehicle Lead
-				public ExtDealServMaintr1VO toExtDealerServMaintVO(final ExtDealServMaintr1 searchVO) {
-
-					ExtDealServMaintr1VO dealerSearch = new ExtDealServMaintr1VO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				
-				// Dealer Vehicle Lead
-				public ExtDealerSearchTpVO toExtDealerTranspVO(final ExtDealerSearchTp searchVO) {
-
-					ExtDealerSearchTpVO dealerSearch = new ExtDealerSearchTpVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// Dealer Vehicle Lead
-				public ExtDealerSearchFinVO toExtDealerFinVO(final ExtDealerSearchFin searchVO) {
-
-					ExtDealerSearchFinVO dealerSearch = new ExtDealerSearchFinVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// Dealer Vehicle Lead
-				public ExtDealerSearchInsVO toExtDealerInsVO(final ExtDealerSearchIns searchVO) {
-
-					ExtDealerSearchInsVO dealerSearch = new ExtDealerSearchInsVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// Dealer Vehicle Lead
-				public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
-
-					VehicleQuotationVO dealerSearch = new VehicleQuotationVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-		
-		// Dealer Vehicle Lead
-				public ExternalDealerVO toExternalDealerVO(final ExternalDealer searchVO) {
-
-					ExternalDealerVO dealerSearch = new ExternalDealerVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public ExternalDealer toExternalDealer(final ExternalDealerVO searchVO) {
-
-					ExternalDealer dealerSearch = new ExternalDealer();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// start of external dealer Tp
-				public ExternalDealerTpVO toExternalDealerTpVO(final ExternalDealerTp searchVO) {
-
-					ExternalDealerTpVO dealerSearch = new ExternalDealerTpVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public ExternalDealerTp toExternalDealerTp(final ExternalDealerTpVO searchVO) {
-
-					ExternalDealerTp dealerSearch = new ExternalDealerTp();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-
-				// end of external dealer Tp
-
-				// start of external dealer Fin
-				public ExternalDealerInsVO toExternalDealerInsVO(final ExternalDealerIns searchVO) {
-
-					ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// start of external dealer Fin
-				public LoyalityProgAdminVO toLoyalityProgramVO(final LoyalityProgAdmin searchVO) {
-
-					LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// start of external dealer Fin
-				public ExternalDealerFinVO toExternalDealerFinVO(final ExternalDealerFin searchVO) {
-
-					ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public ExternalDealerFin toExternalDealerFin(final ExternalDealerFinVO searchVO) {
-
-					ExternalDealerFin dealerSearch = new ExternalDealerFin();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				
-				public ExternalDealerIns toExternalDealerIns(final ExternalDealerInsVO searchVO) {
-
-					ExternalDealerIns dealerSearch = new ExternalDealerIns();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				// end of external dealer Fin
-
-				
-				
-				// start of Ext Dealer S& M 
-				// Dealer Vehicle Lead
-				public ExtDealerServMaintVO toExternalDealerSvVO(final ExtDealServMaint searchVO) {
-
-					ExtDealerServMaintVO dealerSearch = new ExtDealerServMaintVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public ExtDealServMaint toExternalDealerSv(final ExtDealerServMaintVO searchVO) {
-
-					ExtDealServMaint dealerSearch = new ExtDealServMaint();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				// end of Ext Dealer S& M
-				
-				public LoyalityProgAdmin toLoyalityProgram(final LoyalityProgAdminVO searchVO) {
-
-					LoyalityProgAdmin dealerSearch = new LoyalityProgAdmin();
-					try {
-						BeanUtils.copyProperties(dealerSearch,searchVO );
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-			// start of Service and Maintenance
-				// Dealer Vehicle Lead
-				public ServiceMaintQuotationVO toExtQtSmDealerSearchVO(final ServiceMaintQuotation searchVO) {
-
-					ServiceMaintQuotationVO dealerSearch = new ServiceMaintQuotationVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				public TranspServiceQuotationVO toExtQtTpDealerSearchVO(final TranspServiceQuotation searchVO) {
-
-					TranspServiceQuotationVO dealerSearch = new TranspServiceQuotationVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public InsuranceQuotationVO toExtQtInsDealerSearchVO(final InsuranceQuotation searchVO) {
-
-					InsuranceQuotationVO dealerSearch = new InsuranceQuotationVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public FinanceQuotationVO toExtQtFinDealerSearchVO(final FinanceQuotation searchVO) {
-
-					FinanceQuotationVO dealerSearch = new FinanceQuotationVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				// end of service and Maintenance
-				public ExternalDealerTpVO toExternalDealerTpVO1(final ExternalDealerTp searchVO) {
-
-					ExternalDealerTpVO dealerSearch = new ExternalDealerTpVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				public ExternalDealerFinVO toExternalDealerFinVO1(final ExternalDealerFin searchVO) {
-
-					ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				public ExternalDealerInsVO toExternalDealerInsVO1(final ExternalDealerIns searchVO) {
-
-					ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-				
-				// Dealer Vehicle Lead
-				public ExtDealerServMaintVO toExternalDealerSmVO(final ExtDealServMaint searchVO) {
-
-					ExtDealerServMaintVO dealerSearch = new ExtDealerServMaintVO();
-					try {
-						BeanUtils.copyProperties(dealerSearch, searchVO);
-						
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerSearch;
-				}
-		
-	// User Finance Lead
-	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
-		SearchFinance searchFinance = null;
-		if(searchFinanceVO != null){
-		searchFinance = new SearchFinance();
+		DealerSearch dealerSearch = new DealerSearch();
 		try {
-			BeanUtils.copyProperties(searchFinance, searchFinanceVO);
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1418,18 +931,487 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		}
-		return searchFinance;
+		return dealerSearch;
 	}
-	
+
+	// Dealer Vehicle Lead
+	public DealerSearchVO toDealerSearchVO(final DealerSearch searchVO) {
+
+		DealerSearchVO dealerSearch = new DealerSearchVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealerSearchVO toExtDealerSearchVO(final ExtDealerSearch searchVO) {
+
+		ExtDealerSearchVO dealerSearch = new ExtDealerSearchVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public LoyalityProgAdminVO fromLoyalProg(final LoyalityProgAdmin searchVO) {
+
+		LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealServMaintr1VO toExtDealerServMaintVO(final ExtDealServMaintr1 searchVO) {
+
+		ExtDealServMaintr1VO dealerSearch = new ExtDealServMaintr1VO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealerSearchTpVO toExtDealerTranspVO(final ExtDealerSearchTp searchVO) {
+
+		ExtDealerSearchTpVO dealerSearch = new ExtDealerSearchTpVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealerSearchFinVO toExtDealerFinVO(final ExtDealerSearchFin searchVO) {
+
+		ExtDealerSearchFinVO dealerSearch = new ExtDealerSearchFinVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealerSearchInsVO toExtDealerInsVO(final ExtDealerSearchIns searchVO) {
+
+		ExtDealerSearchInsVO dealerSearch = new ExtDealerSearchInsVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public VehicleQuotationVO toExtQtDealerSearchVO(final VehicleQuotation searchVO) {
+
+		VehicleQuotationVO dealerSearch = new VehicleQuotationVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExternalDealerVO toExternalDealerVO(final ExternalDealer searchVO) {
+
+		ExternalDealerVO dealerSearch = new ExternalDealerVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealer toExternalDealer(final ExternalDealerVO searchVO) {
+
+		ExternalDealer dealerSearch = new ExternalDealer();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// start of external dealer Tp
+	public ExternalDealerTpVO toExternalDealerTpVO(final ExternalDealerTp searchVO) {
+
+		ExternalDealerTpVO dealerSearch = new ExternalDealerTpVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealerTp toExternalDealerTp(final ExternalDealerTpVO searchVO) {
+
+		ExternalDealerTp dealerSearch = new ExternalDealerTp();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// end of external dealer Tp
+
+	// start of external dealer Fin
+	public ExternalDealerInsVO toExternalDealerInsVO(final ExternalDealerIns searchVO) {
+
+		ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// start of external dealer Fin
+	public LoyalityProgAdminVO toLoyalityProgramVO(final LoyalityProgAdmin searchVO) {
+
+		LoyalityProgAdminVO dealerSearch = new LoyalityProgAdminVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// start of external dealer Fin
+	public ExternalDealerFinVO toExternalDealerFinVO(final ExternalDealerFin searchVO) {
+
+		ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealerFin toExternalDealerFin(final ExternalDealerFinVO searchVO) {
+
+		ExternalDealerFin dealerSearch = new ExternalDealerFin();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealerIns toExternalDealerIns(final ExternalDealerInsVO searchVO) {
+
+		ExternalDealerIns dealerSearch = new ExternalDealerIns();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+	// end of external dealer Fin
+
+	// start of Ext Dealer S& M
+	// Dealer Vehicle Lead
+	public ExtDealerServMaintVO toExternalDealerSvVO(final ExtDealServMaint searchVO) {
+
+		ExtDealerServMaintVO dealerSearch = new ExtDealerServMaintVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExtDealServMaint toExternalDealerSv(final ExtDealerServMaintVO searchVO) {
+
+		ExtDealServMaint dealerSearch = new ExtDealServMaint();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+	// end of Ext Dealer S& M
+
+	public LoyalityProgAdmin toLoyalityProgram(final LoyalityProgAdminVO searchVO) {
+
+		LoyalityProgAdmin dealerSearch = new LoyalityProgAdmin();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// start of Service and Maintenance
+	// Dealer Vehicle Lead
+	public ServiceMaintQuotationVO toExtQtSmDealerSearchVO(final ServiceMaintQuotation searchVO) {
+
+		ServiceMaintQuotationVO dealerSearch = new ServiceMaintQuotationVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public TranspServiceQuotationVO toExtQtTpDealerSearchVO(final TranspServiceQuotation searchVO) {
+
+		TranspServiceQuotationVO dealerSearch = new TranspServiceQuotationVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public InsuranceQuotationVO toExtQtInsDealerSearchVO(final InsuranceQuotation searchVO) {
+
+		InsuranceQuotationVO dealerSearch = new InsuranceQuotationVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public FinanceQuotationVO toExtQtFinDealerSearchVO(final FinanceQuotation searchVO) {
+
+		FinanceQuotationVO dealerSearch = new FinanceQuotationVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// end of service and Maintenance
+	public ExternalDealerTpVO toExternalDealerTpVO1(final ExternalDealerTp searchVO) {
+
+		ExternalDealerTpVO dealerSearch = new ExternalDealerTpVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealerFinVO toExternalDealerFinVO1(final ExternalDealerFin searchVO) {
+
+		ExternalDealerFinVO dealerSearch = new ExternalDealerFinVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	public ExternalDealerInsVO toExternalDealerInsVO1(final ExternalDealerIns searchVO) {
+
+		ExternalDealerInsVO dealerSearch = new ExternalDealerInsVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
+	// Dealer Vehicle Lead
+	public ExtDealerServMaintVO toExternalDealerSmVO(final ExtDealServMaint searchVO) {
+
+		ExtDealerServMaintVO dealerSearch = new ExtDealerServMaintVO();
+		try {
+			BeanUtils.copyProperties(dealerSearch, searchVO);
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearch;
+	}
+
 	// User Finance Lead
-		public SearchFinanceVO toSearchFinance(final SearchFinance searchFinance) {
-			SearchFinanceVO searchFinanceVO = null;
-			
+	public SearchFinance toSearchFinance(final SearchFinanceVO searchFinanceVO) {
+		SearchFinance searchFinance = null;
+		if (searchFinanceVO != null) {
+			searchFinance = new SearchFinance();
 			try {
-				BeanUtils.copyProperties(searchFinanceVO, searchFinance);
-				
+				BeanUtils.copyProperties(searchFinance, searchFinanceVO);
 			} catch (IllegalAccessException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -1437,124 +1419,140 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
-			
-			return searchFinanceVO;
+
 		}
-		
-		
-		// User Car/Search Details lead
-				public SearchFinanceVO toSearchFinance1(final SearchFinance search) {
+		return searchFinance;
+	}
 
-					SearchFinanceVO searchVO = new SearchFinanceVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public SearchInsuranceVO toSearchInsurance1(final SearchInsurance search) {
+	// User Finance Lead
+	public SearchFinanceVO toSearchFinance(final SearchFinance searchFinance) {
+		SearchFinanceVO searchFinanceVO = null;
 
-					SearchInsuranceVO searchVO = new SearchInsuranceVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public SearchServMaintVO toSearchServMaint1(final SearchServMaint search) {
+		try {
+			BeanUtils.copyProperties(searchFinanceVO, searchFinance);
 
-					SearchServMaintVO searchVO = new SearchServMaintVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public SearchTranspVO toSearchTransp1(final SearchTransp search) {
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-					SearchTranspVO searchVO = new SearchTranspVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
-				// User Car/Search Details lead
-				public SearchFinanceVO toSearchFin1(final SearchFinance search) {
+		return searchFinanceVO;
+	}
 
-					SearchFinanceVO searchVO = new SearchFinanceVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
-				
+	// User Car/Search Details lead
+	public SearchFinanceVO toSearchFinance1(final SearchFinance search) {
 
-				// User Car/Search Details lead
-				public SearchInsuranceVO toSearchIns1(final SearchInsurance search) {
+		SearchFinanceVO searchVO = new SearchFinanceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
-					SearchInsuranceVO searchVO = new SearchInsuranceVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
+	// User Car/Search Details lead
+	public SearchInsuranceVO toSearchInsurance1(final SearchInsurance search) {
 
-				// User Car/Search Details lead
-				public UserNotificationVO toSearchTransp1(final UserNotification search) {
+		SearchInsuranceVO searchVO = new SearchInsuranceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
-					UserNotificationVO searchVO = new UserNotificationVO();
-					try {
-						BeanUtils.copyProperties(searchVO, search);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchVO;
-				}
+	// User Car/Search Details lead
+	public SearchServMaintVO toSearchServMaint1(final SearchServMaint search) {
+
+		SearchServMaintVO searchVO = new SearchServMaintVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public SearchTranspVO toSearchTransp1(final SearchTransp search) {
+
+		SearchTranspVO searchVO = new SearchTranspVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public SearchFinanceVO toSearchFin1(final SearchFinance search) {
+
+		SearchFinanceVO searchVO = new SearchFinanceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public SearchInsuranceVO toSearchIns1(final SearchInsurance search) {
+
+		SearchInsuranceVO searchVO = new SearchInsuranceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+
+	// User Car/Search Details lead
+	public UserNotificationVO toSearchTransp1(final UserNotification search) {
+
+		UserNotificationVO searchVO = new UserNotificationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, search);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
 	// Dealer Finance Lead
 	public DealerSearchFinance toDealerSearchFinance(final SearchFinanceVO searchFinanceVO) {
@@ -1572,13 +1570,12 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		return dealerSearchFinance;
 	}
 
-	// User Insurance Lead
-	public SearchInsurance toSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
-		SearchInsurance searchInsurance = null;
-		if(searchInsuranceVO != null){
-		searchInsurance = new SearchInsurance();
+	// Dealer Finance Lead
+	public DealerSearchFinance toDealerSearchFinance1(final DealerSearchFinanceVO searchFinanceVO) {
+
+		DealerSearchFinance dealerSearchFinance = new DealerSearchFinance();
 		try {
-			BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+			BeanUtils.copyProperties(dealerSearchFinance, searchFinanceVO);
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -1586,15 +1583,29 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		}
-		return searchInsurance;
+		return dealerSearchFinance;
 	}
-	
-	// User ServMaint Lead
-		public SearchServMaint toSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
 
-			SearchServMaint searchInsurance = new SearchServMaint();
+	public DealerSearchFinanceVO toDealerSearchFinanceVO(final DealerSearchFinance dealerSearchFinance) {
+
+		DealerSearchFinanceVO dealerSearchFinanceVO = new DealerSearchFinanceVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchFinanceVO, dealerSearchFinance);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchFinanceVO;
+	}
+
+	// User Insurance Lead
+	public SearchInsurance toSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
+		SearchInsurance searchInsurance = null;
+		if (searchInsuranceVO != null) {
+			searchInsurance = new SearchInsurance();
 			try {
 				BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
 			} catch (IllegalAccessException e) {
@@ -1604,24 +1615,42 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			return searchInsurance;
-		}
-		
-		// User trans Lead
-				public SearchTransp toSearchTrans(final SearchTranspVO searchInsuranceVO) {
 
-					SearchTransp searchInsurance = new SearchTransp();
-					try {
-						BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return searchInsurance;
-				}
+		}
+		return searchInsurance;
+	}
+
+	// User ServMaint Lead
+	public SearchServMaint toSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
+
+		SearchServMaint searchInsurance = new SearchServMaint();
+		try {
+			BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchInsurance;
+	}
+
+	// User trans Lead
+	public SearchTransp toSearchTrans(final SearchTranspVO searchInsuranceVO) {
+
+		SearchTransp searchInsurance = new SearchTransp();
+		try {
+			BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchInsurance;
+	}
 
 	// Dealer Insurance Lead
 	public DealerSearchInsurance toDealerSearchInsurance(final SearchInsuranceVO searchInsuranceVO) {
@@ -1638,56 +1667,152 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return dealerSearchInsurance;
 	}
+
+	// Dealer Insurance Lead
+	public DealerSearchInsurance toDealerSearchInsurance1(final DealerSearchInsuranceVO searchInsuranceVO) {
+
+		DealerSearchInsurance dealerSearchInsurance = new DealerSearchInsurance();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
+	}
+
+	// Dealer Insurance Lead
+	public DealerSearchInsuranceVO toDealerSearchInsuranceVO(final DealerSearchInsurance dealerSearchInsurance) {
+
+		DealerSearchInsuranceVO dealerSearchInsuranceVO = new DealerSearchInsuranceVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsuranceVO, dealerSearchInsurance);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsuranceVO;
+	}
+
+	// Dealer Transp Lead
+	public DealerSearchTransp toDealerSearchTransp(final SearchTranspVO searchInsuranceVO) {
+
+		DealerSearchTransp dealerSearchInsurance = new DealerSearchTransp();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
+	}
+
+	// Dealer Transp Lead
+	public DealerSearchTransp toDealerSearchTransp1(final DealerSearchTranspVO searchInsuranceVO) {
+
+		DealerSearchTransp dealerSearchInsurance = new DealerSearchTransp();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
+	}
 	
 	// Dealer Transp Lead
-			public DealerSearchTransp toDealerSearchTransp(final SearchTranspVO searchInsuranceVO) {
+	public DealerSearchTranspVO toDealerSearchTranspVO(final DealerSearchTransp dealerSearchInsurance) {
 
-				DealerSearchTransp dealerSearchInsurance = new DealerSearchTransp();
-				try {
-					BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				return dealerSearchInsurance;
-			}
+		DealerSearchTranspVO dealerSearchtransp = new DealerSearchTranspVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchtransp, dealerSearchInsurance);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchtransp;
+	}
+
 	// Dealer ServMaint Lead
-		public DealerSearchServMaint toDealerSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
+	public DealerSearchServMaint toDealerSearchServMaint(final SearchServMaintVO searchInsuranceVO) {
 
-			DealerSearchServMaint dealerSearchInsurance = new DealerSearchServMaint();
-			try {
-				BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			return dealerSearchInsurance;
+		DealerSearchServMaint dealerSearchInsurance = new DealerSearchServMaint();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
+	}
+
+	// Dealer ServMaint Lead
+	public DealerSearchServMaint toDealerSearchServMaint1(final DealerSearchServMaintVO searchInsuranceVO) {
+
+		DealerSearchServMaint dealerSearchInsurance = new DealerSearchServMaint();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsurance, searchInsuranceVO);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsurance;
+	}
+
+	// Dealer ServMaint Lead
+	public DealerSearchServMaintVO toDealerSearchServMaintVO(final DealerSearchServMaint dealerSearchInsurance) {
+
+		DealerSearchServMaintVO dealerSearchInsuranceVO = new DealerSearchServMaintVO();
+		try {
+			BeanUtils.copyProperties(dealerSearchInsuranceVO, dealerSearchInsurance);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerSearchInsuranceVO;
+	}
+
+	// start of login
+	public DealerVO fromLoginDealer(final Dealer dealer, boolean isMinified) {
+
+		if (dealer == null) {
+			return null;
 		}
 
-// start of login
-		public DealerVO fromLoginDealer(final Dealer dealer, boolean isMinified) {
+		DealerVO dealerVO = new DealerVO();
+		dealerVO.setDealerId(dealer.getDealerId());
+		dealerVO.setDealername(dealer.getDealername());
+		dealerVO.setEmail(dealerVO.getEmail());
 
-			if (dealer == null) {
-				return null;
-			}
+		return dealerVO;
+	}
 
-			DealerVO dealerVO = new DealerVO();
-			dealerVO.setDealerId(dealer.getDealerId());
-			dealerVO.setDealername(dealer.getDealername());
-			dealerVO.setEmail(dealerVO.getEmail());
-			
-			return dealerVO;
-		}
-		
-		// end of login
-		
-		
+	// end of login
+
 	public DealerVO fromDealer(final Dealer dealer, boolean isMinified) {
 
 		if (dealer == null) {
@@ -1699,80 +1824,81 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 			org.springframework.beans.BeanUtils.copyProperties(dealer, dealerVO,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
-							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleResourcDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
-							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+							"dealSearchServMaint", "dealSearchTransp", "vehicleDealerDetails", "vehicleResourcDetails",
+							"vehicleDealerFinanceDetails", "vehicleDealerInsuranceDetails",
+							"vehicleDealerServMaintDetails", "vehicleDealerMakeList", "vehicleDealerTranspDetails",
+							"vehicleDealerAreaOfOperState", "vehicleDealerRegion", "vehicleDealerPostCode" });
 
 			if (!isMinified) {
 
 				List<InventoryVO> inventoryVOs = new ArrayList<>();
-				if(dealer.getInventory() != null){
-				for (Inventory inventory : dealer.getInventory()) {
-					InventoryVO inventoryVO = new InventoryVO();
-					BeanUtils.copyProperties(inventoryVO, inventory);
-					inventoryVOs.add(inventoryVO);
+				if (dealer.getInventory() != null) {
+					for (Inventory inventory : dealer.getInventory()) {
+						InventoryVO inventoryVO = new InventoryVO();
+						BeanUtils.copyProperties(inventoryVO, inventory);
+						inventoryVOs.add(inventoryVO);
+					}
+					dealerVO.setInventory(inventoryVOs);
 				}
-				dealerVO.setInventory(inventoryVOs);
+				if (dealer.getDealSearch() != null) {
+					List<DealerSearchVO> searchVOs = new ArrayList<>();
+					for (DealerSearch search : dealer.getDealSearch()) {
+						DealerSearchVO searchVO = new DealerSearchVO();
+						BeanUtils.copyProperties(searchVO, search);
+						searchVOs.add(searchVO);
+					}
+					dealerVO.setDealSearch(searchVOs);
 				}
-				if(dealer.getDealSearch() != null){
-				List<DealerSearchVO> searchVOs = new ArrayList<>();
-				for (DealerSearch search : dealer.getDealSearch()) {
-					DealerSearchVO searchVO = new DealerSearchVO();
-					BeanUtils.copyProperties(searchVO, search);
-					searchVOs.add(searchVO);
+				if (dealer.getDealSearchInsurance() != null) {
+					List<DealerSearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
+					for (DealerSearchInsurance searchInsurance : dealer.getDealSearchInsurance()) {
+						DealerSearchInsuranceVO SearchInsuranceVO = new DealerSearchInsuranceVO();
+						BeanUtils.copyProperties(SearchInsuranceVO, searchInsurance);
+						searchInsuranceVOs.add(SearchInsuranceVO);
+					}
+					dealerVO.setDealSearchInsurance(searchInsuranceVOs);
 				}
-				dealerVO.setDealSearch(searchVOs);
+				if (dealer.getDealSearchServMaint() != null) {
+					List<DealerSearchServMaintVO> dealerSearchServMaintVOs = new ArrayList<>();
+					for (DealerSearchServMaint dealerSearchServMaint : dealer.getDealSearchServMaint()) {
+						DealerSearchServMaintVO dealerSearchServMaintVO = new DealerSearchServMaintVO();
+						BeanUtils.copyProperties(dealerSearchServMaintVO, dealerSearchServMaint);
+						dealerSearchServMaintVOs.add(dealerSearchServMaintVO);
+					}
+					dealerVO.setDealSearchServMaint(dealerSearchServMaintVOs);
 				}
-				if(dealer.getDealSearchInsurance() != null){
-				List<DealerSearchInsuranceVO> searchInsuranceVOs = new ArrayList<>();
-				for (DealerSearchInsurance searchInsurance : dealer.getDealSearchInsurance()) {
-					DealerSearchInsuranceVO SearchInsuranceVO = new DealerSearchInsuranceVO();
-					BeanUtils.copyProperties(SearchInsuranceVO, searchInsurance);
-					searchInsuranceVOs.add(SearchInsuranceVO);
+
+				if (dealer.getDealSearchTransp() != null) {
+					List<DealerSearchTranspVO> dealerSearchTranspVOs = new ArrayList<>();
+					for (DealerSearchTransp dealerSearchServMaint : dealer.getDealSearchTransp()) {
+						DealerSearchTranspVO dealerSearchTranspVO = new DealerSearchTranspVO();
+						BeanUtils.copyProperties(dealerSearchTranspVO, dealerSearchServMaint);
+						dealerSearchTranspVOs.add(dealerSearchTranspVO);
+					}
+					dealerVO.setDealSearchTransp(dealerSearchTranspVOs);
+
 				}
-				dealerVO.setDealSearchInsurance(searchInsuranceVOs);
+				if (dealer.getDealSearchFinance() != null) {
+					List<DealerSearchFinanceVO> searchFinanceVOs = new ArrayList<>();
+					for (DealerSearchFinance searchFinance : dealer.getDealSearchFinance()) {
+						DealerSearchFinanceVO searchFinanceVO = new DealerSearchFinanceVO();
+						BeanUtils.copyProperties(searchFinanceVO, searchFinance);
+						searchFinanceVOs.add(searchFinanceVO);
+					}
+					dealerVO.setDealSearchFinance(searchFinanceVOs);
 				}
-				if(dealer.getDealSearchServMaint() != null){
-				List<DealerSearchServMaintVO> dealerSearchServMaintVOs = new ArrayList<>();
-				for (DealerSearchServMaint dealerSearchServMaint : dealer.getDealSearchServMaint()) {
-					DealerSearchServMaintVO dealerSearchServMaintVO = new DealerSearchServMaintVO();
-					BeanUtils.copyProperties(dealerSearchServMaintVO, dealerSearchServMaint);
-					dealerSearchServMaintVOs.add(dealerSearchServMaintVO);
+
+				if (dealer.getVehicleDealerDetails() != null) {
+					List<VehicleDealerDetailsVO> vehicleDealerDetailsVO = new ArrayList<>();
+					for (VehicleDealerDetails vehicleDealerDetail : dealer.getVehicleDealerDetails()) {
+						VehicleDealerDetailsVO searchFinanceVO = new VehicleDealerDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+						vehicleDealerDetailsVO.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerDetails(vehicleDealerDetailsVO);
 				}
-				dealerVO.setDealSearchServMaint(dealerSearchServMaintVOs);
-				}
-				
-				
-				if(dealer.getDealSearchTransp() != null){
-				List<DealerSearchTranspVO> dealerSearchTranspVOs = new ArrayList<>();
-				for (DealerSearchTransp dealerSearchServMaint : dealer.getDealSearchTransp()) {
-					DealerSearchTranspVO dealerSearchTranspVO = new DealerSearchTranspVO();
-					BeanUtils.copyProperties(dealerSearchTranspVO, dealerSearchServMaint);
-					dealerSearchTranspVOs.add(dealerSearchTranspVO);
-				}
-				dealerVO.setDealSearchTransp(dealerSearchTranspVOs);
-				
-				}
-				if(dealer.getDealSearchFinance() != null){
-				List<DealerSearchFinanceVO> searchFinanceVOs = new ArrayList<>();
-				for (DealerSearchFinance searchFinance : dealer.getDealSearchFinance()) {
-					DealerSearchFinanceVO searchFinanceVO = new DealerSearchFinanceVO();
-					BeanUtils.copyProperties(searchFinanceVO, searchFinance);
-					searchFinanceVOs.add(searchFinanceVO);
-				}
-				dealerVO.setDealSearchFinance(searchFinanceVOs);
-				}
-				
-				if(dealer.getVehicleDealerDetails() != null){
-				List<VehicleDealerDetailsVO> vehicleDealerDetailsVO = new ArrayList<>();
-				for (VehicleDealerDetails vehicleDealerDetail : dealer.getVehicleDealerDetails()) {
-					VehicleDealerDetailsVO searchFinanceVO = new VehicleDealerDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
-					vehicleDealerDetailsVO.add(searchFinanceVO);
-				}
-				dealerVO.setVehicleDealerDetails(vehicleDealerDetailsVO);
-				}
-				
-				if(dealer.getVehicleResourceDetails() != null){
+
+				if (dealer.getVehicleResourceDetails() != null) {
 					List<VehicleResourceDetailsVO> vehicleDealerDetailsVO = new ArrayList<>();
 					for (VehicleResourceDetails vehicleDealerDetail : dealer.getVehicleResourceDetails()) {
 						VehicleResourceDetailsVO searchFinanceVO = new VehicleResourceDetailsVO();
@@ -1780,95 +1906,103 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 						vehicleDealerDetailsVO.add(searchFinanceVO);
 					}
 					dealerVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
+				}
+
+				if (dealer.getVehicleDealerTranspDetails() != null) {
+					List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetailsVO = new ArrayList<>();
+					for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer
+							.getVehicleDealerTranspDetails()) {
+						VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
+						vehicleDealerTranspDetailsVO.add(searchFinanceVO);
 					}
-				
-				if(dealer.getVehicleDealerTranspDetails() != null){
-				List<VehicleDealerTranspDetailsVO> vehicleDealerTranspDetailsVO= new ArrayList<>();
-				for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer.getVehicleDealerTranspDetails()) {
-					VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
-					vehicleDealerTranspDetailsVO.add(searchFinanceVO);
+					dealerVO.setVehicleDealerTranspDetails(vehicleDealerTranspDetailsVO);
 				}
-				dealerVO.setVehicleDealerTranspDetails(vehicleDealerTranspDetailsVO);
+
+				if (dealer.getVehicleDealerTranspDetails() != null) {
+					List<VehicleDealerTranspDetailsVO> VehicleDealerTranspDetailsVO = new ArrayList<>();
+					for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer
+							.getVehicleDealerTranspDetails()) {
+						VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
+						VehicleDealerTranspDetailsVO.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerTranspDetails(VehicleDealerTranspDetailsVO);
 				}
-				
-				if(dealer.getVehicleDealerTranspDetails() != null){
-				List<VehicleDealerTranspDetailsVO> VehicleDealerTranspDetailsVO = new ArrayList<>();
-				for (VehicleDealerTranspDetails VehicleDealerTranspDetails : dealer.getVehicleDealerTranspDetails()) {
-					VehicleDealerTranspDetailsVO searchFinanceVO = new VehicleDealerTranspDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerTranspDetails);
-					VehicleDealerTranspDetailsVO.add(searchFinanceVO);
+
+				if (dealer.getVehicleDealerFinanceDetails() != null) {
+					List<VehicleDealerFinanceDetailsVO> VehicleDealerFinanceDetailsVO = new ArrayList<>();
+					for (VehicleDealerFinanceDetails VehicleDealerFinanceDetails : dealer
+							.getVehicleDealerFinanceDetails()) {
+						VehicleDealerFinanceDetailsVO searchFinanceVO = new VehicleDealerFinanceDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerFinanceDetails);
+						VehicleDealerFinanceDetailsVO.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerFinanceDetails(VehicleDealerFinanceDetailsVO);
 				}
-				dealerVO.setVehicleDealerTranspDetails(VehicleDealerTranspDetailsVO);
+
+				if (dealer.getVehicleDealerInsuranceDetails() != null) {
+					List<VehicleDealerInsuranceDetailsVO> VehicleDealerInsuranceDetailsVOs = new ArrayList<>();
+					for (VehicleDealerInsuranceDetails VehicleDealerInsuranceDetails : dealer
+							.getVehicleDealerInsuranceDetails()) {
+						VehicleDealerInsuranceDetailsVO searchFinanceVO = new VehicleDealerInsuranceDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
+						VehicleDealerInsuranceDetailsVOs.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerInsuranceDetails(VehicleDealerInsuranceDetailsVOs);
 				}
-				
-				if(dealer.getVehicleDealerFinanceDetails() != null){
-				List<VehicleDealerFinanceDetailsVO> VehicleDealerFinanceDetailsVO = new ArrayList<>();
-				for (VehicleDealerFinanceDetails VehicleDealerFinanceDetails : dealer.getVehicleDealerFinanceDetails()) {
-					VehicleDealerFinanceDetailsVO searchFinanceVO = new VehicleDealerFinanceDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerFinanceDetails);
-					VehicleDealerFinanceDetailsVO.add(searchFinanceVO);
+
+				if (dealer.getVehicleDealerServMaintDetails() != null) {
+					List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetailsVOs = new ArrayList<>();
+					for (VehicleDealerServMaintDetails VehicleDealerInsuranceDetails : dealer
+							.getVehicleDealerServMaintDetails()) {
+						VehicleDealerServMaintDetailsVO searchFinanceVO = new VehicleDealerServMaintDetailsVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
+						vehicleDealerServMaintDetailsVOs.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetailsVOs);
 				}
-				dealerVO.setVehicleDealerFinanceDetails(VehicleDealerFinanceDetailsVO);
+
+				if (dealer.getVehicleDealerMakeList() != null) {
+					List<VehicleDealerMakeListhVO> vehicleDealerMakeListVOs = new ArrayList<>();
+					for (VehicleDealerMakeList VehicleDealerInsuranceDetails : dealer.getVehicleDealerMakeList()) {
+						VehicleDealerMakeListhVO searchFinanceVO = new VehicleDealerMakeListhVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
+						vehicleDealerMakeListVOs.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerMakeList(vehicleDealerMakeListVOs);
 				}
-				
-				if(dealer.getVehicleDealerInsuranceDetails() != null){
-				List<VehicleDealerInsuranceDetailsVO> VehicleDealerInsuranceDetailsVOs = new ArrayList<>();
-				for (VehicleDealerInsuranceDetails VehicleDealerInsuranceDetails : dealer.getVehicleDealerInsuranceDetails()) {
-					VehicleDealerInsuranceDetailsVO searchFinanceVO = new VehicleDealerInsuranceDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
-					VehicleDealerInsuranceDetailsVOs.add(searchFinanceVO);
+				if (dealer.getVehicleDealerAreaOfOperState() != null) {
+					List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperStateVOs = new ArrayList<>();
+					for (VehicleDealerAreaOfOperState VehicleDealerInsuranceDetails : dealer
+							.getVehicleDealerAreaOfOperState()) {
+						VehicleDealerAreaOfOperStateVO searchFinanceVO = new VehicleDealerAreaOfOperStateVO();
+						BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
+						vehicleDealerAreaOfOperStateVOs.add(searchFinanceVO);
+					}
+					dealerVO.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStateVOs);
 				}
-				dealerVO.setVehicleDealerInsuranceDetails(VehicleDealerInsuranceDetailsVOs);
+				if (dealer.getVehicleDealerRegion() != null) {
+					List<VehicleDealerAreaOfOperRegionVO> vehicleDealerAreaOfOperRegionVOs = new ArrayList<>();
+					for (VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion : dealer
+							.getVehicleDealerRegion()) {
+						VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO = new VehicleDealerAreaOfOperRegionVO();
+						BeanUtils.copyProperties(vehicleDealerAreaOfOperRegionVO, vehicleDealerAreaOfOperRegion);
+						vehicleDealerAreaOfOperRegionVOs.add(vehicleDealerAreaOfOperRegionVO);
+					}
+					dealerVO.setVehicleDealerRegion(vehicleDealerAreaOfOperRegionVOs);
+
 				}
-				
-				if(dealer.getVehicleDealerServMaintDetails() != null){
-				List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetailsVOs = new ArrayList<>();
-				for (VehicleDealerServMaintDetails VehicleDealerInsuranceDetails : dealer.getVehicleDealerServMaintDetails()) {
-					VehicleDealerServMaintDetailsVO searchFinanceVO = new VehicleDealerServMaintDetailsVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
-					vehicleDealerServMaintDetailsVOs.add(searchFinanceVO);
-				}
-				dealerVO.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetailsVOs);
-				}
-				
-				if(dealer.getVehicleDealerMakeList() != null){
-				List<VehicleDealerMakeListhVO> vehicleDealerMakeListVOs = new ArrayList<>();
-				for (VehicleDealerMakeList VehicleDealerInsuranceDetails : dealer.getVehicleDealerMakeList()) {
-					VehicleDealerMakeListhVO searchFinanceVO = new VehicleDealerMakeListhVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
-					vehicleDealerMakeListVOs.add(searchFinanceVO);
-				}
-				dealerVO.setVehicleDealerMakeList(vehicleDealerMakeListVOs);
-				}
-				if(dealer.getVehicleDealerAreaOfOperState() != null){
-				List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperStateVOs = new ArrayList<>();
-				for (VehicleDealerAreaOfOperState VehicleDealerInsuranceDetails : dealer.getVehicleDealerAreaOfOperState()) {
-					VehicleDealerAreaOfOperStateVO searchFinanceVO = new VehicleDealerAreaOfOperStateVO();
-					BeanUtils.copyProperties(searchFinanceVO, VehicleDealerInsuranceDetails);
-					vehicleDealerAreaOfOperStateVOs.add(searchFinanceVO);
-				}
-				dealerVO.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStateVOs);
-				}
-				if(dealer.getVehicleDealerRegion() != null){
-				List<VehicleDealerAreaOfOperRegionVO> vehicleDealerAreaOfOperRegionVOs = new ArrayList<>();
-				for (VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion : dealer.getVehicleDealerRegion()) {
-					VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO = new VehicleDealerAreaOfOperRegionVO();
-					BeanUtils.copyProperties(vehicleDealerAreaOfOperRegionVO, vehicleDealerAreaOfOperRegion);
-					vehicleDealerAreaOfOperRegionVOs.add(vehicleDealerAreaOfOperRegionVO);
-				}
-				dealerVO.setVehicleDealerRegion(vehicleDealerAreaOfOperRegionVOs);
-				
-				}
-				
-				if(dealer.getVehicleDealerPostCode() != null){
-				List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerAreaOfOperPostCodeVOs = new ArrayList<>();
-				for (VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode : dealer.getVehicleDealerPostCode()) {
-					VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO = new VehicleDealerAreaOfOperPostCodeVO();
-					BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCodeVO, vehicleDealerAreaOfOperPostCode);
-					vehicleDealerAreaOfOperPostCodeVOs.add(vehicleDealerAreaOfOperPostCodeVO);
-				}
-				dealerVO.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodeVOs);
+
+				if (dealer.getVehicleDealerPostCode() != null) {
+					List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerAreaOfOperPostCodeVOs = new ArrayList<>();
+					for (VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode : dealer
+							.getVehicleDealerPostCode()) {
+						VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO = new VehicleDealerAreaOfOperPostCodeVO();
+						BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCodeVO, vehicleDealerAreaOfOperPostCode);
+						vehicleDealerAreaOfOperPostCodeVOs.add(vehicleDealerAreaOfOperPostCodeVO);
+					}
+					dealerVO.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodeVOs);
 				}
 			}
 
@@ -1882,33 +2016,24 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 
 		return dealerVO;
 	}
-	
-	
-	/*// start of inventory
-	public InventoryVO fromDealerInv(final Inventory dealer) {
 
-		if (dealer == null) {
-			return null;
-		}
-
-		InventoryVO dealerVO = new InventoryVO();
-		try {
-
-			BeanUtils.copyProperties(dealerVO, dealer);
-			
-
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return dealerVO;
-	}
-	// end of inventory
-*/
+	/*
+	 * // start of inventory public InventoryVO fromDealerInv(final Inventory
+	 * dealer) {
+	 * 
+	 * if (dealer == null) { return null; }
+	 * 
+	 * InventoryVO dealerVO = new InventoryVO(); try {
+	 * 
+	 * BeanUtils.copyProperties(dealerVO, dealer);
+	 * 
+	 * 
+	 * } catch (IllegalAccessException e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); } catch (InvocationTargetException e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); }
+	 * 
+	 * return dealerVO; } // end of inventory
+	 */
 	public DealerSearchVO fromDealerSearch(final DealerSearch dealerSearch) {
 		DealerSearchVO searchVO = new DealerSearchVO();
 		try {
@@ -1919,7 +2044,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public VehicleResourceDetailsVO fromDealerResource(final VehicleResourceDetails dealerSearch) {
 		VehicleResourceDetailsVO searchVO = new VehicleResourceDetailsVO();
 		try {
@@ -1941,7 +2066,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public ExtDealerSearch toExtDealerSearchAdmin(final ExtDealerSearchVO dealerSearch) {
 		ExtDealerSearch searchVO = new ExtDealerSearch();
 		try {
@@ -1952,7 +2077,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public ExtDealServMaintr1 toExtDealerSvAdmin(final ExtDealServMaintr1VO dealerSearch) {
 		ExtDealServMaintr1 searchVO = new ExtDealServMaintr1();
 		try {
@@ -1963,7 +2088,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public ExtDealerSearchTp toExtDealerTpAdmin(final ExtDealerSearchTpVO dealerSearch) {
 		ExtDealerSearchTp searchVO = new ExtDealerSearchTp();
 		try {
@@ -1974,7 +2099,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public ExtDealerSearchIns toExtDealerInsAdmin(final ExtDealerSearchInsVO dealerSearch) {
 		ExtDealerSearchIns searchVO = new ExtDealerSearchIns();
 		try {
@@ -1985,7 +2110,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public ExtDealerSearchFin toExtDealerFinAdmin(final ExtDealerSearchFinVO dealerSearch) {
 		ExtDealerSearchFin searchVO = new ExtDealerSearchFin();
 		try {
@@ -1996,7 +2121,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
-	
+
 	public DealerVO toDealerAdmin(final Dealer dealerSearch) {
 		DealerVO searchVO = new DealerVO();
 		try {
@@ -2007,6 +2132,7 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 		}
 		return searchVO;
 	}
+
 	public DealerSearchInsuranceVO fromDealerSearchInsurance(final DealerSearchInsurance dealerSearchInsurance) {
 		DealerSearchInsuranceVO dealerSearchInsuranceVO = new DealerSearchInsuranceVO();
 		try {
@@ -2032,86 +2158,75 @@ public List<FinanceEntity> toFinanceEntityList(final FinanceEntityListVO invento
 	// start login dealer
 	public Dealer toLoginDealer(final DealerLoginVO dealerVO) {
 		Dealer dealer = new Dealer();
-		
 
-			dealer.setEmail(dealerVO.getEmail());
-			dealer.setPassword(dealerVO.getPassword());
-			dealer.setDealername(dealerVO.getFirstName()+dealerVO.getLastName());
+		dealer.setEmail(dealerVO.getEmail());
+		dealer.setPassword(dealerVO.getPassword());
+		dealer.setDealername(dealerVO.getFirstName() + dealerVO.getLastName());
 
-		
 		return dealer;
 	}
 	// end login dealer
-	
+
 	// start of Tranp Master
-			public VehicleDealerTranspDetails toDealerTranspvMast(final VehicleDealerTranspDetailsVO dealerVO) {
-				VehicleDealerTranspDetails dealer = new VehicleDealerTranspDetails();
-				try {
+	public VehicleDealerTranspDetails toDealerTranspvMast(final VehicleDealerTranspDetailsVO dealerVO) {
+		VehicleDealerTranspDetails dealer = new VehicleDealerTranspDetails();
+		try {
 
+			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+					new String[] { "vehicleDealerTranpHypList" });
 
-					org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-							new String[] { "vehicleDealerTranpHypList"});
-					
-					if( dealerVO.getVehicleDealerTranpHypList() != null){
-					List<VehicleTranpHypList> vehicleDealerMakeLists = new ArrayList<>();
-					for (VehicleTranpHypListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerTranpHypList()) {
-						VehicleTranpHypList vehicleDealerMakeList = new VehicleTranpHypList();
-						BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
-						vehicleDealerMakeLists.add(vehicleDealerMakeList);
-					}
-					dealer.setVehicleDealerTranpHypList(vehicleDealerMakeLists);
-					}
-					
-					
-				
-				} catch (IllegalAccessException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			if (dealerVO.getVehicleDealerTranpHypList() != null) {
+				List<VehicleTranpHypList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleTranpHypListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerTranpHypList()) {
+					VehicleTranpHypList vehicleDealerMakeList = new VehicleTranpHypList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
 				}
-				return dealer;
+				dealer.setVehicleDealerTranpHypList(vehicleDealerMakeLists);
 			}
-			// end of transp Master
-	
-			
-			// start of Fin Master
-		public FinanceEntity toDealerFinMast(final FinanceEntityVO dealerVO) {
-							
-							
-							
-							FinanceEntity financeQuotation = new FinanceEntity();
-								try {
-									BeanUtils.copyProperties(financeQuotation, dealerVO);
-								} catch (IllegalAccessException | InvocationTargetException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-								
-							
-							return financeQuotation;
-		 }
-						// end of fin Master
-						
-						// start of Fin Master
-						public FinanceEntityVO toDealerFinVOMast(final FinanceEntity dealer) {
-							
-							
-							
-							FinanceEntityVO financeQuotationVO = new FinanceEntityVO();
-								try {
-									BeanUtils.copyProperties(financeQuotationVO, dealer);
-								} catch (IllegalAccessException | InvocationTargetException e) {
-									// TODO Auto-generated catch block
-									e.printStackTrace();
-								}
-								
-							
-							return financeQuotationVO;
-						}
-						// end of fin Master
-						// start of Ins Master
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealer;
+	}
+	// end of transp Master
+
+	// start of Fin Master
+	public FinanceEntity toDealerFinMast(final FinanceEntityVO dealerVO) {
+
+		FinanceEntity financeQuotation = new FinanceEntity();
+		try {
+			BeanUtils.copyProperties(financeQuotation, dealerVO);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return financeQuotation;
+	}
+	// end of fin Master
+
+	// start of Fin Master
+	public FinanceEntityVO toDealerFinVOMast(final FinanceEntity dealer) {
+
+		FinanceEntityVO financeQuotationVO = new FinanceEntityVO();
+		try {
+			BeanUtils.copyProperties(financeQuotationVO, dealer);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return financeQuotationVO;
+	}
+	// end of fin Master
+
+	// start of Ins Master
 public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsuranceDetails dealer) {
 							
 							
@@ -2129,17 +2244,15 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 	}
 						// end of Ins Master				
 	
-	
 	// start of Serv Master
-		public VehicleDealerServMaintDetails toDealerServMast(final VehicleDealerServMaintDetailsVO dealerVO) {
-			VehicleDealerServMaintDetails dealer = new VehicleDealerServMaintDetails();
-			try {
+	public VehicleDealerServMaintDetails toDealerServMast(final VehicleDealerServMaintDetailsVO dealerVO) {
+		VehicleDealerServMaintDetails dealer = new VehicleDealerServMaintDetails();
+		try {
 
+			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
+					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList" });
 
-				org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-						new String[] { "vehicleDealerServSpareList","vehicleDealerServHypList"});
-				
-				if( dealerVO.getVehicleDealerServSpareList() != null){
+			if (dealerVO.getVehicleDealerServSpareList() != null) {
 				List<VehicleServSpareList> vehicleDealerMakeLists = new ArrayList<>();
 				for (VehicleServSpareListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerServSpareList()) {
 					VehicleServSpareList vehicleDealerMakeList = new VehicleServSpareList();
@@ -2147,8 +2260,8 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					vehicleDealerMakeLists.add(vehicleDealerMakeList);
 				}
 				dealer.setVehicleDealerServSpareList(vehicleDealerMakeLists);
-				}
-				if( dealerVO.getVehicleDealerServHypList() != null){
+			}
+			if (dealerVO.getVehicleDealerServHypList() != null) {
 				List<VehicleServHypList> vehicleDealerAreaOfOperStates = new ArrayList<>();
 				for (VehicleServHypListVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerServHypList()) {
 					VehicleServHypList vehicleDealerAreaOfOperState = new VehicleServHypList();
@@ -2156,22 +2269,19 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
 				}
 				dealer.setVehicleDealerServHypList(vehicleDealerAreaOfOperStates);
-				}
-				
-				
-			
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			return dealer;
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		// end of service Master
-	
-		// start of ins Master
+		return dealer;
+	}
+	// end of service Master
+	// start of ins Master
 				public VehicleDealerInsuranceDetails toDealerInsMast(final VehicleDealerInsuranceDetailsVO dealerVO) {
 					VehicleDealerInsuranceDetails dealer = new VehicleDealerInsuranceDetails();
 					try {
@@ -2208,60 +2318,62 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		VehicleDealerDetails dealer = new VehicleDealerDetails();
 		try {
 
-
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-					new String[] { "vehicleDealerMakeList","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode","vehicleDealerInsDetails"});
-			
-			if( dealerVO.getVehicleDealerMakeList() != null){
-			List<VehicleMakeList> vehicleDealerMakeLists = new ArrayList<>();
-			for (VehicleMakeListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
-				VehicleMakeList vehicleDealerMakeList = new VehicleMakeList();
-				BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
-				vehicleDealerMakeLists.add(vehicleDealerMakeList);
+					new String[] { "vehicleDealerMakeList", "vehicleDealerAreaOfOperState", "vehicleDealerRegion",
+							"vehicleDealerPostCode", "vehicleDealerInsDetails" });
+
+			if (dealerVO.getVehicleDealerMakeList() != null) {
+				List<VehicleMakeList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleMakeListVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
+					VehicleMakeList vehicleDealerMakeList = new VehicleMakeList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
+				}
+				dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
 			}
-			dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
+			if (dealerVO.getVehicleDealerAreaOfOperState() != null) {
+				List<VehicleAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
+				for (VehicleAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO
+						.getVehicleDealerAreaOfOperState()) {
+					VehicleAreaOfOperState vehicleDealerAreaOfOperState = new VehicleAreaOfOperState();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
+					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+				}
+				dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
 			}
-			if( dealerVO.getVehicleDealerAreaOfOperState() != null){
-			List<VehicleAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
-			for (VehicleAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerAreaOfOperState()) {
-				VehicleAreaOfOperState vehicleDealerAreaOfOperState = new VehicleAreaOfOperState();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
-				vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+
+			if (dealerVO.getVehicleDealerRegion() != null) {
+				List<VehicleAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
+				for (VehicleAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO.getVehicleDealerRegion()) {
+					VehicleAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleAreaOfOperRegion();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperRegion, vehicleDealerAreaOfOperRegionVO);
+					vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
+				}
+				dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
 			}
-			dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
+
+			if (dealerVO.getVehicleDealerPostCode() != null) {
+				List<VehicleAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
+				for (VehicleAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO
+						.getVehicleDealerPostCode()) {
+					VehicleAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleAreaOfOperPostCode();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
+					vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
+				}
+				dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
 			}
-			
-			if( dealerVO.getVehicleDealerRegion() != null){
-			List<VehicleAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
-			for (VehicleAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO.getVehicleDealerRegion()) {
-				VehicleAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleAreaOfOperRegion();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperRegion, vehicleDealerAreaOfOperRegionVO);
-				vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
-			}
-			dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
-			}
-			
-			
-			if( dealerVO.getVehicleDealerPostCode() != null){
-			List<VehicleAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
-			for (VehicleAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerPostCode()) {
-				VehicleAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleAreaOfOperPostCode();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
-				vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
-			}
-			dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
-			}
-			
-			if( dealerVO.getVehicleDealerInsDetails() != null){
+
+			if (dealerVO.getVehicleDealerInsDetails() != null) {
 				List<VehicleDealerInsDetails> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
-				for (VehicleDealerInsDetailsVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerInsDetails()) {
+				for (VehicleDealerInsDetailsVO vehicleDealerAreaOfOperPostCodeVO : dealerVO
+						.getVehicleDealerInsDetails()) {
 					VehicleDealerInsDetails vehicleDealerAreaOfOperPostCode = new VehicleDealerInsDetails();
 					BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
 					vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
 				}
 				dealer.setVehicleDealerInsDetails(vehicleDealerAreaOfOperPostCodes);
-				}
-		
+			}
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2272,18 +2384,15 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return dealer;
 	}
 	// end of SBL
-	
-	
+
 	// start of Resource
-		public VehicleResourceDetails toDealerResource(final VehicleResourceDetailsVO dealerVO) {
-			VehicleResourceDetails dealer = new VehicleResourceDetails();
-			try {
+	public VehicleResourceDetails toDealerResource(final VehicleResourceDetailsVO dealerVO) {
+		VehicleResourceDetails dealer = new VehicleResourceDetails();
+		try {
 
+			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer, new String[] { "vehicleSocialList" });
 
-				org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-						new String[] { "vehicleSocialList"});
-				
-				if( dealerVO.getVehicleSocialList() != null){
+			if (dealerVO.getVehicleSocialList() != null) {
 				List<VehicleSocialList> vehicleDealerMakeLists = new ArrayList<>();
 				for (VehicleSocialListVO vehicleDealerMakeListVO : dealerVO.getVehicleSocialList()) {
 					VehicleSocialList vehicleDealerMakeList = new VehicleSocialList();
@@ -2291,219 +2400,220 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					vehicleDealerMakeLists.add(vehicleDealerMakeList);
 				}
 				dealer.setVehicleSocialList(vehicleDealerMakeLists);
-				}
-				
-			
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
-			return dealer;
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		// end of Resource
-	
-		// start of ResourceVO
-				public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {
-					VehicleResourceDetailsVO dealerVO = new VehicleResourceDetailsVO();
-					try {
+		return dealer;
+	}
+	// end of Resource
 
+	// start of ResourceVO
+	public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {
+		VehicleResourceDetailsVO dealerVO = new VehicleResourceDetailsVO();
+		try {
 
-						org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-								new String[] { "vehicleSocialList"});
-						
-						if( dealerVO.getVehicleSocialList() != null){
-						List<VehicleSocialList> vehicleDealerMakeLists = new ArrayList<>();
-						for (VehicleSocialListVO vehicleDealerMakeListVO : dealerVO.getVehicleSocialList()) {
-							VehicleSocialList vehicleDealerMakeList = new VehicleSocialList();
-							BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
-							vehicleDealerMakeLists.add(vehicleDealerMakeList);
-						}
-						dealer.setVehicleSocialList(vehicleDealerMakeLists);
-						}
-						
-					
-					} catch (IllegalAccessException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					return dealerVO;
+			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer, new String[] { "vehicleSocialList" });
+
+			if (dealerVO.getVehicleSocialList() != null) {
+				List<VehicleSocialList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleSocialListVO vehicleDealerMakeListVO : dealerVO.getVehicleSocialList()) {
+					VehicleSocialList vehicleDealerMakeList = new VehicleSocialList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
 				}
-				// end of ResourceVO	
-		
+				dealer.setVehicleSocialList(vehicleDealerMakeLists);
+			}
+
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return dealerVO;
+	}
+	// end of ResourceVO
+
 	public Dealer toDealer(final DealerVO dealerVO) {
 		Dealer dealer = new Dealer();
 		try {
 
-
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
 					new String[] { "inventory", "dealSearch", "dealSearchInsurance", "dealSearchFinance",
-							"dealSearchServMaint", "dealSearchTransp","vehicleDealerDetails","vehicleResourceDetails","vehicleDealerFinanceDetails","vehicleDealerInsuranceDetails","vehicleDealerServMaintDetails",
-							"vehicleDealerMakeList","vehicleDealerTranspDetails","vehicleDealerAreaOfOperState","vehicleDealerRegion","vehicleDealerPostCode"});
+							"dealSearchServMaint", "dealSearchTransp", "vehicleDealerDetails", "vehicleResourceDetails",
+							"vehicleDealerFinanceDetails", "vehicleDealerInsuranceDetails",
+							"vehicleDealerServMaintDetails", "vehicleDealerMakeList", "vehicleDealerTranspDetails",
+							"vehicleDealerAreaOfOperState", "vehicleDealerRegion", "vehicleDealerPostCode" });
 			List<Inventory> inventorys = new ArrayList<>();
-			if(dealerVO.getInventory()!= null){
-			for (InventoryVO inventoryVO : dealerVO.getInventory()) {
-				Inventory inventory = new Inventory();
-				BeanUtils.copyProperties(inventory,inventoryVO);
-				inventorys.add(inventory);
+			if (dealerVO.getInventory() != null) {
+				for (InventoryVO inventoryVO : dealerVO.getInventory()) {
+					Inventory inventory = new Inventory();
+					BeanUtils.copyProperties(inventory, inventoryVO);
+					inventorys.add(inventory);
+				}
+				dealer.setInventory(inventorys);
 			}
-			dealer.setInventory(inventorys);
+			if (dealerVO.getDealSearch() != null) {
+				List<DealerSearch> searchs = new ArrayList<>();
+				for (DealerSearchVO searchVO : dealerVO.getDealSearch()) {
+					DealerSearch search = new DealerSearch();
+					BeanUtils.copyProperties(search, searchVO);
+					searchs.add(search);
+				}
+				dealer.setDealSearch(searchs);
 			}
-			if(dealerVO.getDealSearch() != null){
-			List<DealerSearch> searchs = new ArrayList<>();
-			for (DealerSearchVO searchVO : dealerVO.getDealSearch()) {
-				DealerSearch search = new DealerSearch();
-				BeanUtils.copyProperties(search, searchVO);
-				searchs.add(search);
+			if (dealerVO.getDealSearchInsurance() != null) {
+				List<DealerSearchInsurance> searchInsurances = new ArrayList<>();
+				for (DealerSearchInsuranceVO searchInsuranceVO : dealerVO.getDealSearchInsurance()) {
+					DealerSearchInsurance searchInsurance = new DealerSearchInsurance();
+					BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
+					searchInsurances.add(searchInsurance);
+				}
+				dealer.setDealSearchInsurance(searchInsurances);
 			}
-			dealer.setDealSearch(searchs);
+			if (dealerVO.getDealSearchFinance() != null) {
+				List<DealerSearchFinance> searchFinances = new ArrayList<>();
+				for (DealerSearchFinanceVO searchFinanceVO : dealerVO.getDealSearchFinance()) {
+					DealerSearchFinance searchFinance = new DealerSearchFinance();
+					BeanUtils.copyProperties(searchFinance, searchFinanceVO);
+					searchFinances.add(searchFinance);
+				}
+				dealer.setDealSearchFinance(searchFinances);
 			}
-			if(dealerVO.getDealSearchInsurance() != null){
-			List<DealerSearchInsurance> searchInsurances = new ArrayList<>();
-			for (DealerSearchInsuranceVO searchInsuranceVO : dealerVO.getDealSearchInsurance()) {
-				DealerSearchInsurance searchInsurance = new DealerSearchInsurance();
-				BeanUtils.copyProperties(searchInsurance, searchInsuranceVO);
-				searchInsurances.add(searchInsurance);
+			if (dealerVO.getVehicleDealerDetails() != null) {
+				List<VehicleDealerDetails> vehicleDealerDetails = new ArrayList<>();
+
+				for (VehicleDealerDetailsVO vehicleDealerDetailVO : dealerVO.getVehicleDealerDetails()) {
+					VehicleDealerDetails vehicleDealerDetail = new VehicleDealerDetails();
+					BeanUtils.copyProperties(vehicleDealerDetail, vehicleDealerDetailVO);
+					vehicleDealerDetails.add(vehicleDealerDetail);
+				}
+				dealer.setVehicleDealerDetails(vehicleDealerDetails);
 			}
-			dealer.setDealSearchInsurance(searchInsurances);
-			}
-			if(dealerVO.getDealSearchFinance() != null){
-			List<DealerSearchFinance> searchFinances = new ArrayList<>();
-			for (DealerSearchFinanceVO searchFinanceVO : dealerVO.getDealSearchFinance()) {
-				DealerSearchFinance searchFinance = new DealerSearchFinance();
-				BeanUtils.copyProperties(searchFinance, searchFinanceVO);
-				searchFinances.add(searchFinance);
-			}
-			dealer.setDealSearchFinance(searchFinances);
-			}
-			if( dealerVO.getVehicleDealerDetails() != null){
-			List<VehicleDealerDetails> vehicleDealerDetails = new ArrayList<>();
-			
-			for (VehicleDealerDetailsVO vehicleDealerDetailVO : dealerVO.getVehicleDealerDetails()) {
-				VehicleDealerDetails vehicleDealerDetail = new VehicleDealerDetails();
-				BeanUtils.copyProperties(vehicleDealerDetail, vehicleDealerDetailVO);
-				vehicleDealerDetails.add(vehicleDealerDetail);
-			}
-			dealer.setVehicleDealerDetails(vehicleDealerDetails);
-			}
-			
-			if( dealerVO.getVehicleResourcDetails() != null){
+
+			if (dealerVO.getVehicleResourcDetails() != null) {
 				List<VehicleResourceDetails> vehicleDealerDetails = new ArrayList<>();
-				
+
 				for (VehicleResourceDetailsVO vehicleDealerDetailVO : dealerVO.getVehicleResourcDetails()) {
 					VehicleResourceDetails vehicleDealerDetail = new VehicleResourceDetails();
 					BeanUtils.copyProperties(vehicleDealerDetail, vehicleDealerDetailVO);
 					vehicleDealerDetails.add(vehicleDealerDetail);
 				}
 				dealer.setVehicleResourceDetails(vehicleDealerDetails);
-				}
-			
-			if( dealerVO.getVehicleDealerTranspDetails() != null){
+			}
+
+			if (dealerVO.getVehicleDealerTranspDetails() != null) {
 				List<VehicleDealerTranspDetails> vehicleDealerTranspDetails = new ArrayList<>();
-				for (VehicleDealerTranspDetailsVO vehicleDealerTranspDetailVO : dealerVO.getVehicleDealerTranspDetails()) {
+				for (VehicleDealerTranspDetailsVO vehicleDealerTranspDetailVO : dealerVO
+						.getVehicleDealerTranspDetails()) {
 					VehicleDealerTranspDetails vehicleDealerFinanceDetail = new VehicleDealerTranspDetails();
 					BeanUtils.copyProperties(vehicleDealerFinanceDetail, vehicleDealerTranspDetailVO);
 					vehicleDealerTranspDetails.add(vehicleDealerFinanceDetail);
 				}
 				dealer.setVehicleDealerTranspDetails(vehicleDealerTranspDetails);
+			}
+
+			if (dealerVO.getVehicleDealerFinanceDetails() != null) {
+				List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails = new ArrayList<>();
+				for (VehicleDealerFinanceDetailsVO vehicleDealerFinanceDetailVO : dealerVO
+						.getVehicleDealerFinanceDetails()) {
+					VehicleDealerFinanceDetails vehicleDealerFinanceDetail = new VehicleDealerFinanceDetails();
+					BeanUtils.copyProperties(vehicleDealerFinanceDetail, vehicleDealerFinanceDetailVO);
+					vehicleDealerFinanceDetails.add(vehicleDealerFinanceDetail);
 				}
-			
-			if( dealerVO.getVehicleDealerFinanceDetails() != null){
-			List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails = new ArrayList<>();
-			for (VehicleDealerFinanceDetailsVO vehicleDealerFinanceDetailVO : dealerVO.getVehicleDealerFinanceDetails()) {
-				VehicleDealerFinanceDetails vehicleDealerFinanceDetail = new VehicleDealerFinanceDetails();
-				BeanUtils.copyProperties(vehicleDealerFinanceDetail, vehicleDealerFinanceDetailVO);
-				vehicleDealerFinanceDetails.add(vehicleDealerFinanceDetail);
+				dealer.setVehicleDealerFinanceDetails(vehicleDealerFinanceDetails);
 			}
-			dealer.setVehicleDealerFinanceDetails(vehicleDealerFinanceDetails);
+			if (dealerVO.getVehicleDealerInsuranceDetails() != null) {
+				List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails = new ArrayList<>();
+				for (VehicleDealerInsuranceDetailsVO vehicleDealerInsuranceDetailVO : dealerVO
+						.getVehicleDealerInsuranceDetails()) {
+					VehicleDealerInsuranceDetails vehicleDealerInsuranceDetail = new VehicleDealerInsuranceDetails();
+					BeanUtils.copyProperties(vehicleDealerInsuranceDetail, vehicleDealerInsuranceDetailVO);
+					vehicleDealerInsuranceDetails.add(vehicleDealerInsuranceDetail);
+				}
+				dealer.setVehicleDealerInsuranceDetails(vehicleDealerInsuranceDetails);
 			}
-			if( dealerVO.getVehicleDealerInsuranceDetails() != null){
-			List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails = new ArrayList<>();
-			for (VehicleDealerInsuranceDetailsVO vehicleDealerInsuranceDetailVO : dealerVO.getVehicleDealerInsuranceDetails()) {
-				VehicleDealerInsuranceDetails vehicleDealerInsuranceDetail = new VehicleDealerInsuranceDetails();
-				BeanUtils.copyProperties(vehicleDealerInsuranceDetail, vehicleDealerInsuranceDetailVO);
-				vehicleDealerInsuranceDetails.add(vehicleDealerInsuranceDetail);
+			if (dealerVO.getVehicleDealerServMaintDetails() != null) {
+				List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails = new ArrayList<>();
+				for (VehicleDealerServMaintDetailsVO vehicleDealerServMaintDetailVO : dealerVO
+						.getVehicleDealerServMaintDetails()) {
+					VehicleDealerServMaintDetails vehicleDealerServMaintDetail = new VehicleDealerServMaintDetails();
+					BeanUtils.copyProperties(vehicleDealerServMaintDetail, vehicleDealerServMaintDetailVO);
+					vehicleDealerServMaintDetails.add(vehicleDealerServMaintDetail);
+				}
+				dealer.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetails);
 			}
-			dealer.setVehicleDealerInsuranceDetails(vehicleDealerInsuranceDetails);
+
+			if (dealerVO.getDealSearchServMaint() != null) {
+				List<DealerSearchServMaint> dealerSearchServMaints = new ArrayList<>();
+				for (DealerSearchServMaintVO dealerSearchServMaintVO : dealerVO.getDealSearchServMaint()) {
+					DealerSearchServMaint dealerSearchServMaint = new DealerSearchServMaint();
+					BeanUtils.copyProperties(dealerSearchServMaint, dealerSearchServMaintVO);
+					dealerSearchServMaints.add(dealerSearchServMaint);
+				}
+				dealer.setDealSearchServMaint(dealerSearchServMaints);
 			}
-			if( dealerVO.getVehicleDealerServMaintDetails() != null){
-			List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails = new ArrayList<>();
-			for (VehicleDealerServMaintDetailsVO vehicleDealerServMaintDetailVO : dealerVO.getVehicleDealerServMaintDetails()) {
-				VehicleDealerServMaintDetails vehicleDealerServMaintDetail = new VehicleDealerServMaintDetails();
-				BeanUtils.copyProperties(vehicleDealerServMaintDetail, vehicleDealerServMaintDetailVO);
-				vehicleDealerServMaintDetails.add(vehicleDealerServMaintDetail);
+
+			if (dealerVO.getDealSearchTransp() != null) {
+				List<DealerSearchTransp> dealerSearchTransps = new ArrayList<>();
+				for (DealerSearchTranspVO dealerSearchTranspVO : dealerVO.getDealSearchTransp()) {
+					DealerSearchTransp dealerSearchTransp = new DealerSearchTransp();
+					BeanUtils.copyProperties(dealerSearchTransp, dealerSearchTranspVO);
+					dealerSearchTransps.add(dealerSearchTransp);
+				}
+				dealer.setDealSearchTransp(dealerSearchTransps);
+
 			}
-			dealer.setVehicleDealerServMaintDetails(vehicleDealerServMaintDetails);
+
+			if (dealerVO.getVehicleDealerMakeList() != null) {
+				List<VehicleDealerMakeList> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleDealerMakeListhVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
+					VehicleDealerMakeList vehicleDealerMakeList = new VehicleDealerMakeList();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
+				}
+				dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
 			}
-			
-			if(dealerVO.getDealSearchServMaint() != null){
-			List<DealerSearchServMaint> dealerSearchServMaints = new ArrayList<>();
-			for (DealerSearchServMaintVO dealerSearchServMaintVO : dealerVO.getDealSearchServMaint()) {
-				DealerSearchServMaint dealerSearchServMaint = new DealerSearchServMaint();
-				BeanUtils.copyProperties(dealerSearchServMaint, dealerSearchServMaintVO);
-				dealerSearchServMaints.add(dealerSearchServMaint);
+			if (dealerVO.getVehicleDealerAreaOfOperState() != null) {
+				List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
+				for (VehicleDealerAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO
+						.getVehicleDealerAreaOfOperState()) {
+					VehicleDealerAreaOfOperState vehicleDealerAreaOfOperState = new VehicleDealerAreaOfOperState();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
+					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+				}
+				dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
 			}
-			dealer.setDealSearchServMaint(dealerSearchServMaints);
+
+			if (dealerVO.getVehicleDealerRegion() != null) {
+				List<VehicleDealerAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
+				for (VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO
+						.getVehicleDealerRegion()) {
+					VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleDealerAreaOfOperRegion();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperRegion, vehicleDealerAreaOfOperRegionVO);
+					vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
+				}
+				dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
 			}
-			
-			
-			if(dealerVO.getDealSearchTransp() != null) {
-			List<DealerSearchTransp> dealerSearchTransps = new ArrayList<>();
-			for (DealerSearchTranspVO dealerSearchTranspVO : dealerVO.getDealSearchTransp()) {
-				DealerSearchTransp dealerSearchTransp = new DealerSearchTransp();
-				BeanUtils.copyProperties(dealerSearchTransp, dealerSearchTranspVO);
-				dealerSearchTransps.add(dealerSearchTransp);
+
+			if (dealerVO.getVehicleDealerPostCode() != null) {
+				List<VehicleDealerAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
+				for (VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO
+						.getVehicleDealerPostCode()) {
+					VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleDealerAreaOfOperPostCode();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
+					vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
+				}
+				dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
 			}
-			dealer.setDealSearchTransp(dealerSearchTransps);
-			
-			}
-			
-			
-			if( dealerVO.getVehicleDealerMakeList() != null){
-			List<VehicleDealerMakeList> vehicleDealerMakeLists = new ArrayList<>();
-			for (VehicleDealerMakeListhVO vehicleDealerMakeListVO : dealerVO.getVehicleDealerMakeList()) {
-				VehicleDealerMakeList vehicleDealerMakeList = new VehicleDealerMakeList();
-				BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
-				vehicleDealerMakeLists.add(vehicleDealerMakeList);
-			}
-			dealer.setVehicleDealerMakeList(vehicleDealerMakeLists);
-			}
-			if( dealerVO.getVehicleDealerAreaOfOperState() != null){
-			List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperStates = new ArrayList<>();
-			for (VehicleDealerAreaOfOperStateVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleDealerAreaOfOperState()) {
-				VehicleDealerAreaOfOperState vehicleDealerAreaOfOperState = new VehicleDealerAreaOfOperState();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
-				vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
-			}
-			dealer.setVehicleDealerAreaOfOperState(vehicleDealerAreaOfOperStates);
-			}
-			
-			if( dealerVO.getVehicleDealerRegion() != null){
-			List<VehicleDealerAreaOfOperRegion> vehicleDealerAreaOfOperRegions = new ArrayList<>();
-			for (VehicleDealerAreaOfOperRegionVO vehicleDealerAreaOfOperRegionVO : dealerVO.getVehicleDealerRegion()) {
-				VehicleDealerAreaOfOperRegion vehicleDealerAreaOfOperRegion = new VehicleDealerAreaOfOperRegion();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperRegion, vehicleDealerAreaOfOperRegionVO);
-				vehicleDealerAreaOfOperRegions.add(vehicleDealerAreaOfOperRegion);
-			}
-			dealer.setVehicleDealerRegion(vehicleDealerAreaOfOperRegions);
-			}
-			
-			
-			if( dealerVO.getVehicleDealerPostCode() != null){
-			List<VehicleDealerAreaOfOperPostCode> vehicleDealerAreaOfOperPostCodes = new ArrayList<>();
-			for (VehicleDealerAreaOfOperPostCodeVO vehicleDealerAreaOfOperPostCodeVO : dealerVO.getVehicleDealerPostCode()) {
-				VehicleDealerAreaOfOperPostCode vehicleDealerAreaOfOperPostCode = new VehicleDealerAreaOfOperPostCode();
-				BeanUtils.copyProperties(vehicleDealerAreaOfOperPostCode, vehicleDealerAreaOfOperPostCodeVO);
-				vehicleDealerAreaOfOperPostCodes.add(vehicleDealerAreaOfOperPostCode);
-			}
-			dealer.setVehicleDealerPostCode(vehicleDealerAreaOfOperPostCodes);
-			}
-		
+
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -2514,9 +2624,8 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return dealer;
 	}
 
-	
-	
-	public TempCarModelHeaderVO fromTempCarModelTemplate(final TempCarModelHeader carModelTemplate, boolean isMinified) {
+	public TempCarModelHeaderVO fromTempCarModelTemplate(final TempCarModelHeader carModelTemplate,
+			boolean isMinified) {
 		if (carModelTemplate == null) {
 			return null;
 		}
@@ -2527,19 +2636,23 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 
 			if (isMinified) {
 				org.springframework.beans.BeanUtils.copyProperties(carModelTemplate, carModelTemplateVO,
-						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn", "TempCarModelColour",
-								"TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension","TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
-								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn","TempCarModelRelatedModel", "TempCarModelVehReview",
-								"TempCarModelVideos", "TempCarModelExtFitting","TempCarModelIntFitting", "TempCarModelUserRating",
-								"TempCarModelExpertRating", "TempCarModelCountry","TempCarModelFullSpecWheel"});
+						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn",
+								"TempCarModelColour", "TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension",
+								"TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
+								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn", "TempCarModelRelatedModel",
+								"TempCarModelVehReview", "TempCarModelVideos", "TempCarModelExtFitting",
+								"TempCarModelIntFitting", "TempCarModelUserRating", "TempCarModelExpertRating",
+								"TempCarModelCountry", "TempCarModelFullSpecWheel" });
 			} else {
 
 				org.springframework.beans.BeanUtils.copyProperties(carModelTemplate, carModelTemplateVO,
-						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn", "TempCarModelColour",
-								"TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension","TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
-								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn","TempCarModelRelatedModel", "TempCarModelVehReview",
-								"TempCarModelVideos", "TempCarModelExtFitting","TempCarModelIntFitting", "TempCarModelUserRating",
-								"TempCarModelExpertRating", "TempCarModelCountry","TempCarModelFullSpecWheel" });
+						new String[] { "TempCarModelPricing", "TempCarModelPricing", "TempCarModelOptionalFeatureAddOn",
+								"TempCarModelColour", "TempCarModelFullSpecEngine", "TempCarModelFullSpecDimension",
+								"TempCarModelFullSpecFuel", "TempCarModelFullSpecWarranty",
+								"TempCarModelFullSpecStandEq", "TempCarModelOptEqpAddOn", "TempCarModelRelatedModel",
+								"TempCarModelVehReview", "TempCarModelVideos", "TempCarModelExtFitting",
+								"TempCarModelIntFitting", "TempCarModelUserRating", "TempCarModelExpertRating",
+								"TempCarModelCountry", "TempCarModelFullSpecWheel" });
 
 				if (carModelTemplate.getCarModel() != null) {
 					List<TempCarModelOverviewVO> blogTemplates = new ArrayList<>();
@@ -2590,7 +2703,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel4(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel5() != null) {
 					List<TempCarModelFullSpecDimensionVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelFullSpecDimension youtubeTemplate : carModelTemplate.getCarModel5()) {
@@ -2600,7 +2713,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel5(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel6() != null) {
 					List<TempCarModelFullSpecFuelVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelFullSpecFuel youtubeTemplate : carModelTemplate.getCarModel6()) {
@@ -2610,7 +2723,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel6(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel7() != null) {
 					List<TempCarModelFullSpecWarrantyVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelFullSpecWarranty youtubeTemplate : carModelTemplate.getCarModel7()) {
@@ -2620,7 +2733,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel7(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel8() != null) {
 					List<TempCarModelFullSpecStandEqVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelFullSpecStandEq youtubeTemplate : carModelTemplate.getCarModel8()) {
@@ -2630,7 +2743,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel8(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel9() != null) {
 					List<TempCarModelOptEqpAddOnVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelOptEqpAddOn youtubeTemplate : carModelTemplate.getCarModel9()) {
@@ -2640,7 +2753,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel9(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel10() != null) {
 					List<TempCarModelRelatedModelVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelRelatedModel youtubeTemplate : carModelTemplate.getCarModel10()) {
@@ -2650,7 +2763,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel10(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel11() != null) {
 					List<TempCarModelPhotosVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelPhotos youtubeTemplate : carModelTemplate.getCarModel11()) {
@@ -2660,7 +2773,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel11(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel12() != null) {
 					List<TempCarModelVehReviewVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelVehReview youtubeTemplate : carModelTemplate.getCarModel12()) {
@@ -2670,7 +2783,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel12(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel13() != null) {
 					List<TempCarModelVideosVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelVideos youtubeTemplate : carModelTemplate.getCarModel13()) {
@@ -2680,7 +2793,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel13(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel14() != null) {
 					List<TempCarModelExtFittingVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelExtFitting youtubeTemplate : carModelTemplate.getCarModel14()) {
@@ -2690,7 +2803,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel14(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel15() != null) {
 					List<TempCarModelIntFittingVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelIntFitting youtubeTemplate : carModelTemplate.getCarModel15()) {
@@ -2700,7 +2813,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel15(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel16() != null) {
 					List<TempCarModelUserRatingVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelUserRating youtubeTemplate : carModelTemplate.getCarModel16()) {
@@ -2710,7 +2823,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel16(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel17() != null) {
 					List<TempCarModelExpertRatingVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelExpertRating youtubeTemplate : carModelTemplate.getCarModel17()) {
@@ -2720,7 +2833,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel17(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel18() != null) {
 					List<TempCarModelCountryVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelCountry youtubeTemplate : carModelTemplate.getCarModel18()) {
@@ -2730,7 +2843,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					}
 					carModelTemplateVO.setCarModel18(youtubeTemplates);
 				}
-				
+
 				if (carModelTemplate.getCarModel19() != null) {
 					List<TempCarModelFullSpecWheelVO> youtubeTemplates = new ArrayList<>();
 					for (TempCarModelFullSpecWheel youtubeTemplate : carModelTemplate.getCarModel19()) {
@@ -2756,7 +2869,6 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return carModelTemplateVO;
 	}
 
-	
 	public TempCarModelHeader toTempCarModelTemplate(final TempCarModelHeaderVO carModelTemplateVO) {
 
 		TempCarModelHeader carModelTemplate = new TempCarModelHeader();
@@ -2796,7 +2908,6 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 				carModelTemplateVO.setCarModel2(null);
 			}
 
-			
 			if (carModelTemplateVO.getCarModel3() != null) {
 				List<TempCarModelColour> userReviewTemplates = new ArrayList<>();
 				for (TempCarModelColourVO userReviewTemplateVO : carModelTemplateVO.getCarModel3()) {
@@ -2968,7 +3079,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 				carModelTemplate.setCarModel19(youtubeTemplates);
 				carModelTemplateVO.setCarModel19(null);
 			}
-			
+
 			nullAwareBeanUtils.copyProperties(carModelTemplate, carModelTemplateVO);
 
 		} catch (IllegalAccessException e) {
@@ -2980,13 +3091,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return carModelTemplate;
 	}
-	
-	
-	
-	
-	
-	
-	
+
 	public CarModelTemplateVO fromCarModelTemplate(final CarModelTemplate carModelTemplate, boolean isMinified) {
 		if (carModelTemplate == null) {
 			return null;
@@ -3168,8 +3273,6 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return vehicleQuotationVO;
 	}
 
-	
-	
 	public VehicleQuotationVO fromVehicleQuotation(final VehicleQuotation vehicleQuotation, boolean isMinified) {
 
 		if (vehicleQuotation == null) {
@@ -3179,31 +3282,31 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		VehicleQuotationVO userVO = new VehicleQuotationVO();
 		try {
 
-			org.springframework.beans.BeanUtils.copyProperties(vehicleQuotation, userVO, new String[] { "userQuotationHistory", "dealerQuotationHistory","vehicleResourcDetails"
-					 });
+			org.springframework.beans.BeanUtils.copyProperties(vehicleQuotation, userVO,
+					new String[] { "userQuotationHistory", "dealerQuotationHistory", "vehicleResourcDetails" });
 
 			if (!isMinified) {
-				if(vehicleQuotation.getUserQuotationHistory() != null){
-				List<UserQuotationHistoryVO> searchVOs = new ArrayList<>();
-				for (UserQuotationHistory search : vehicleQuotation.getUserQuotationHistory()) {
-					UserQuotationHistoryVO searchVO = new UserQuotationHistoryVO();
-					BeanUtils.copyProperties(searchVO, search);
-					searchVOs.add(searchVO);
+				if (vehicleQuotation.getUserQuotationHistory() != null) {
+					List<UserQuotationHistoryVO> searchVOs = new ArrayList<>();
+					for (UserQuotationHistory search : vehicleQuotation.getUserQuotationHistory()) {
+						UserQuotationHistoryVO searchVO = new UserQuotationHistoryVO();
+						BeanUtils.copyProperties(searchVO, search);
+						searchVOs.add(searchVO);
+					}
+					userVO.setUserQuotationHistoryVO(searchVOs);
 				}
-				userVO.setUserQuotationHistoryVO(searchVOs);
+
+				if (vehicleQuotation.getDealerQuotationHistory() != null) {
+					List<DealerQuotationHistoryVO> search1VOs = new ArrayList<>();
+					for (DealerQuotationHistory search1 : vehicleQuotation.getDealerQuotationHistory()) {
+						DealerQuotationHistoryVO search1VO = new DealerQuotationHistoryVO();
+						BeanUtils.copyProperties(search1VO, search1);
+						search1VOs.add(search1VO);
+					}
+					userVO.setDealerQuotationHistoryVO(search1VOs);
 				}
-				
-				if(vehicleQuotation.getDealerQuotationHistory() != null){
-				List<DealerQuotationHistoryVO> search1VOs = new ArrayList<>();
-				for (DealerQuotationHistory search1 : vehicleQuotation.getDealerQuotationHistory()) {
-					DealerQuotationHistoryVO search1VO = new DealerQuotationHistoryVO();
-					BeanUtils.copyProperties(search1VO, search1);
-					search1VOs.add(search1VO);
-				}
-				userVO.setDealerQuotationHistoryVO(search1VOs);
-				}
-				
-				if(vehicleQuotation.getVehicleResourceDetails() != null){
+
+				if (vehicleQuotation.getVehicleResourceDetails() != null) {
 					List<VehicleResourceDetailsQuo> vehicleDealerDetailsVO = new ArrayList<>();
 					for (VehicleResourceDetailsQuo vehicleDealerDetail : vehicleQuotation.getVehicleResourceDetails()) {
 						VehicleResourceDetailsQuo searchFinanceVO = new VehicleResourceDetailsQuo();
@@ -3211,7 +3314,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 						vehicleDealerDetailsVO.add(searchFinanceVO);
 					}
 					userVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
-					}
+				}
 
 			}
 
@@ -3224,11 +3327,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return userVO;
 	}
-	
-	
-	
-	
-	
+
 	public InsuranceQuotationVO fromInsuranceQuotation(final InsuranceQuotation insuranceQuotation) {
 		InsuranceQuotationVO insuranceQuotationVO = new InsuranceQuotationVO();
 		try {
@@ -3250,6 +3349,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return financeQuotationVO;
 	}
+
 	public ServiceMaintQuotationVO fromServMaintQuotation(final ServiceMaintQuotation financeQuotation) {
 		ServiceMaintQuotationVO financeQuotationVO = new ServiceMaintQuotationVO();
 		try {
@@ -3260,6 +3360,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return financeQuotationVO;
 	}
+
 	public TranspServiceQuotationVO fromTranspServQuotation(final TranspServiceQuotation financeQuotation) {
 		TranspServiceQuotationVO financeQuotationVO = new TranspServiceQuotationVO();
 		try {
@@ -3270,7 +3371,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return financeQuotationVO;
 	}
-	
+
 	public MyVehicleVO fromMyVehicle(final MyVehicle financeQuotation) {
 		MyVehicleVO financeQuotationVO = new MyVehicleVO();
 		try {
@@ -3281,8 +3382,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		}
 		return financeQuotationVO;
 	}
-	
-	
+
 	public CurrentOffersVO fromCurrentOffers(final CurrentOffers currentOffer) {
 		CurrentOffersVO currentOfferVO = new CurrentOffersVO();
 		try {
