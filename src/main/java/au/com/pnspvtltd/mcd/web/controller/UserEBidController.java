@@ -83,6 +83,7 @@ import au.com.pnspvtltd.mcd.web.model.UserTranspAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
@@ -155,6 +156,11 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getSearchById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public SearchVO getSearchById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getSearchByID(id);
+	}
+	
 	@GetMapping(value = "getReferUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<UserReferPointsVO> getReferUserId(@RequestParam("userid") Long userid)
 	{
@@ -219,6 +225,13 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	
+	@GetMapping(value = "getFinanceById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public SearchFinanceVO getFinanceById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getFinanceByID(id);
+	}
+	
+	
 	@GetMapping(value = "getInsuranceByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<SearchInsuranceVO> getInsuranceByUserId(@RequestParam("userid") Long userid)
 	{
@@ -227,12 +240,24 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	
+	@GetMapping(value = "getInsuranceById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public SearchInsuranceVO getInsuranceById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getInsuranceByID(id);
+	}
+	
+	
 	@GetMapping(value = "getServMtByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<SearchServMaintVO> getServMtByUserId(@RequestParam("userid") Long userid)
 	{
 		LOGGER.debug("Received request to CarServMaint");
 		return userEBidService.getServMaintByUserId(userid);
 		//return null;
+	}
+	
+	@GetMapping(value = "getServMaintById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public SearchServMaintVO getServMaintById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getServMaintByID(id);
 	}
 	
 	@GetMapping(value = "getTranspByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -244,6 +269,12 @@ public class UserEBidController {
 	}
 	
 	
+	@GetMapping(value = "getTranspById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public SearchTranspVO getTranspById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getTranpByID(id);
+	}
+	
+	
 	@GetMapping(value = "getUseNotByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<UserNotificationVO> getUseNotByUserId(@RequestParam("userid") Long userid)
 	{
@@ -251,6 +282,12 @@ public class UserEBidController {
 		return userEBidService.getUserNotiByUserId(userid);
 		//return null;
 	}
+	
+	@GetMapping(value = "getUserNotById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserNotificationVO getUserNotById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getUserNotiByID(id);
+	}
+	
 	
 	@GetMapping(value = "getCurrentOffers", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<CurrentOffersVO> getCurrentOffers()
@@ -260,6 +297,13 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	
+	@GetMapping(value = "getCurrentOffersById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public CurrentOffersVO getCurrentOffersById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getCurrentOfferByID(id);
+	}
+	
+	
 	@GetMapping(value = "getVehQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<VehicleQuotationVO> getVehQuotaByUserId(@RequestParam("userid") Long userid)
 	{
@@ -267,6 +311,13 @@ public class UserEBidController {
 		return userEBidService.getUserQuotByUserId(userid);
 		//return null;
 	}
+	
+	
+	@GetMapping(value = "getVehQuotaById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public VehicleQuotationVO getVehQuotaById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getVehQuotaByID(id);
+	}
+	
 	
 	@GetMapping(value = "getFinQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<FinanceQuotationVO> getFinQuotaByUserId(@RequestParam("userid") Long userid)
@@ -276,6 +327,13 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getFinQuotaById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public FinanceQuotationVO getFinQuotaById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getFinQuotaByID(id);
+	}
+	
+	
+	
 	@GetMapping(value = "getInsQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<InsuranceQuotationVO> getInsQuotaByUserId(@RequestParam("userid") Long userid)
 	{
@@ -283,6 +341,12 @@ public class UserEBidController {
 		return userEBidService.getInsQuotByUserId(userid);
 		//return null;
 	}
+	
+	@GetMapping(value = "getInsQuotaById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public InsuranceQuotationVO getInsQuotaById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getInsQuotaByID(id);
+	}
+	
 	
 	@GetMapping(value = "getServMQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<ServiceMaintQuotationVO> getServMQuotaByUserId(@RequestParam("userid") Long userid)
@@ -292,6 +356,12 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getServMaintQuotaById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ServiceMaintQuotationVO getServMaintQuotaById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getServMaintQuotaByID(id);
+	}
+	
+	
 	@GetMapping(value = "getTranpQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<TranspServiceQuotationVO> getTranpQuotaByUserId(@RequestParam("userid") Long userid)
 	{
@@ -299,6 +369,12 @@ public class UserEBidController {
 		return userEBidService.getTranspQuotByUserId(userid);
 		//return null;
 	}
+	
+	@GetMapping(value = "getTranpQuotaById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public TranspServiceQuotationVO getTranpQuotaById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getTranpQuotaByID(id);
+	}
+	
 	
 	@GetMapping(value = "getLogBookByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<MyVehicleVO> getLogBookByUserId(@RequestParam("userid") Long userid)

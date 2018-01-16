@@ -39,6 +39,7 @@ import au.com.pnspvtltd.mcd.domain.ValTransPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
 import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 import au.com.pnspvtltd.mcd.repository.BlogPointsRepository;
 import au.com.pnspvtltd.mcd.repository.CountyRegPostSubRepository;
@@ -91,6 +92,7 @@ import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 
 @Service
 public class UserEBidServiceImpl implements UserEBidService {
@@ -1655,6 +1657,191 @@ public class UserEBidServiceImpl implements UserEBidService {
 		return searchVOs;
 	}
 
+	@Override
+	public UserNotificationVO getUserNotiByID(long id) {
+		
+		
+		UserNotificationVO dealerVO = null;
+		UserNotification dealer = userNotificationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromUserNotif(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public VehicleQuotationVO getVehQuotaByID(long id) {
+		
+		
+		VehicleQuotationVO dealerVO = null;
+		VehicleQuotation dealer = vehicleQuotationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromVehiQuota(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public FinanceQuotationVO getFinQuotaByID(long id) {
+		
+		
+		FinanceQuotationVO dealerVO = null;
+		FinanceQuotation dealer = financeQuotationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromFinanQuota(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public InsuranceQuotationVO getInsQuotaByID(long id) {
+		
+		
+		InsuranceQuotationVO dealerVO = null;
+		InsuranceQuotation dealer = insuranceQuotationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromInsQuota(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public ServiceMaintQuotationVO getServMaintQuotaByID(long id) {
+		
+		
+		ServiceMaintQuotationVO dealerVO = null;
+		ServiceMaintQuotation dealer = servMaintQuotationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromServQuota(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	
+	@Override
+	public TranspServiceQuotationVO getTranpQuotaByID(long id) {
+		
+		
+		TranspServiceQuotationVO dealerVO = null;
+		TranspServiceQuotation dealer = transpServQuotationRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromTranpQuota(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	
+	
+	@Override
+	public CurrentOffersVO getCurrentOfferByID(long id) {
+		
+		
+		CurrentOffersVO dealerVO = null;
+		CurrentOffers dealer = currentOffersRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromCurrentOfferId(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public SearchFinanceVO getFinanceByID(long id) {
+		
+		
+		SearchFinanceVO dealerVO = null;
+		SearchFinance dealer = searchFinanceRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromSearchFinance(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public SearchInsuranceVO getInsuranceByID(long id) {
+		
+		
+		SearchInsuranceVO dealerVO = null;
+		SearchInsurance dealer = searchInsuranceRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromSearchInsurance(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	
+	@Override
+	public SearchServMaintVO getServMaintByID(long id) {
+		
+		
+		SearchServMaintVO dealerVO = null;
+		SearchServMaint dealer = searchServMtRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromSearchServMaint(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public SearchTranspVO getTranpByID(long id) {
+		
+		
+		SearchTranspVO dealerVO = null;
+		SearchTransp dealer = searchTranspRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromSearchTranp(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	@Override
+	public SearchVO getSearchByID(long id) {
+		
+		
+		SearchVO dealerVO = null;
+		Search dealer = userSearclLeadRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromSearch(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	
 	@Override
 	public List<VehicleQuotationVO> getUserQuotByUserId(Long userid) {
 		// TODO Auto-generated method stub

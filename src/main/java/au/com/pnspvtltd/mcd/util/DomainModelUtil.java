@@ -2067,6 +2067,140 @@ public class DomainModelUtil {
 		return searchVO;
 	}
 
+	public UserNotificationVO fromUserNotif(final UserNotification dealerSearch) {
+		UserNotificationVO searchVO = new UserNotificationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public FinanceQuotationVO fromFinanQuota(final FinanceQuotation dealerSearch) {
+		FinanceQuotationVO searchVO = new FinanceQuotationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public InsuranceQuotationVO fromInsQuota(final InsuranceQuotation dealerSearch) {
+		InsuranceQuotationVO searchVO = new InsuranceQuotationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public ServiceMaintQuotationVO fromServQuota(final ServiceMaintQuotation dealerSearch) {
+		ServiceMaintQuotationVO searchVO = new ServiceMaintQuotationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public TranspServiceQuotationVO fromTranpQuota(final TranspServiceQuotation dealerSearch) {
+		TranspServiceQuotationVO searchVO = new TranspServiceQuotationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	
+	public VehicleQuotationVO fromVehiQuota(final VehicleQuotation dealerSearch) {
+		VehicleQuotationVO searchVO = new VehicleQuotationVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	
+	public CurrentOffersVO fromCurrentOfferId(final CurrentOffers dealerSearch) {
+		CurrentOffersVO searchVO = new CurrentOffersVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public SearchFinanceVO fromSearchFinance(final SearchFinance dealerSearch) {
+		SearchFinanceVO searchVO = new SearchFinanceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public SearchInsuranceVO fromSearchInsurance(final SearchInsurance dealerSearch) {
+		SearchInsuranceVO searchVO = new SearchInsuranceVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public SearchServMaintVO fromSearchServMaint(final SearchServMaint dealerSearch) {
+		SearchServMaintVO searchVO = new SearchServMaintVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public SearchTranspVO fromSearchTranp(final SearchTransp dealerSearch) {
+		SearchTranspVO searchVO = new SearchTranspVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
+	public SearchVO fromSearch(final Search dealerSearch) {
+		SearchVO searchVO = new SearchVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
 	public ExtDealerSearch toExtDealerSearchAdmin(final ExtDealerSearchVO dealerSearch) {
 		ExtDealerSearch searchVO = new ExtDealerSearch();
 		try {

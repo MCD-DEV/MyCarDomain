@@ -62,4 +62,16 @@ public interface UserEBidService {
 	List<ServiceMaintQuotationVO> getServMQuotByUserId(Long userid);
 	List<TranspServiceQuotationVO> getTranspQuotByUserId(Long userid);
 	List<MyVehicleVO> getMyVehicleByUserId(Long userid);
+	UserNotificationVO getUserNotiByID(long id);
+	SearchVO getSearchByID(long id);
+	SearchFinanceVO getFinanceByID(long id);
+	SearchInsuranceVO getInsuranceByID(long id);
+	SearchServMaintVO getServMaintByID(long id);
+	SearchTranspVO getTranpByID(long id);
+	CurrentOffersVO getCurrentOfferByID(long id);
+	VehicleQuotationVO getVehQuotaByID(long id);
+	FinanceQuotationVO getFinQuotaByID(long id);
+	InsuranceQuotationVO getInsQuotaByID(long id);
+	ServiceMaintQuotationVO getServMaintQuotaByID(long id);
+	TranspServiceQuotationVO getTranpQuotaByID(long id);
 }
