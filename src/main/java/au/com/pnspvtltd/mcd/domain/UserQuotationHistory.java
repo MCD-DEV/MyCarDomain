@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * Entity implementation class for Entity: Quoatation user History
@@ -38,7 +41,17 @@ import javax.persistence.Table;
 	private Long userQuotationHistoryId;
 	 
 	
-	
+	private VehicleQuotation vehicleQuotation;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "quotId")
+		public VehicleQuotation getVehicleQuotation() {
+			return vehicleQuotation;
+		}
+
+		public void setVehicleQuotation(VehicleQuotation vehicleQuotation) {
+			this.vehicleQuotation = vehicleQuotation;
+		}
 	private String comment;
 	private Date creationDate;
 	

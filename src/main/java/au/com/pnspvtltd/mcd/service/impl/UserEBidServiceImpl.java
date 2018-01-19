@@ -1673,6 +1673,22 @@ public class UserEBidServiceImpl implements UserEBidService {
 	}
 	
 	@Override
+	public MyVehicleVO getMyVehiByID(long id) {
+		
+		
+		MyVehicleVO dealerVO = null;
+		MyVehicle dealer = myVehicleRepository.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromMyVehicleById(dealer);
+			
+		}	
+		return dealerVO;
+		
+		
+	}
+	
+	
+	@Override
 	public VehicleQuotationVO getVehQuotaByID(long id) {
 		
 		

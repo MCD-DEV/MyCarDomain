@@ -74,4 +74,5 @@ public interface UserEBidService {
 	InsuranceQuotationVO getInsQuotaByID(long id);
 	ServiceMaintQuotationVO getServMaintQuotaByID(long id);
 	TranspServiceQuotationVO getTranpQuotaByID(long id);
+	MyVehicleVO getMyVehiByID(long id);
 }

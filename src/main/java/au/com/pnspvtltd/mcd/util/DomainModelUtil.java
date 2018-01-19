@@ -409,6 +409,25 @@ public class DomainModelUtil {
 		}
 		return inventoryVO;
 	}
+	
+	public UserQuotationHistoryVO fromChatHistory(final UserQuotationHistory inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		UserQuotationHistoryVO inventoryVO = new UserQuotationHistoryVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
 
 	public VehicleDealerServMaintDetailsVO fromServMast(final VehicleDealerServMaintDetails inventory,
 			boolean isMinified) {
@@ -2055,6 +2074,17 @@ public class DomainModelUtil {
 		}
 		return searchVO;
 	}
+	
+	public UserQuotationHistoryVO fromUserChatVO(final UserQuotationHistory dealerSearch) {
+		UserQuotationHistoryVO searchVO = new UserQuotationHistoryVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
 
 	public DealerSearch toDealerSearchAdmin(final DealerSearchAdminVO dealerSearch) {
 		DealerSearch searchVO = new DealerSearch();
@@ -2077,6 +2107,18 @@ public class DomainModelUtil {
 		}
 		return searchVO;
 	}
+	
+	public MyVehicleVO fromMyVehicleById(final MyVehicle dealerSearch) {
+		MyVehicleVO searchVO = new MyVehicleVO();
+		try {
+			BeanUtils.copyProperties(searchVO, dealerSearch);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return searchVO;
+	}
+	
 	
 	public FinanceQuotationVO fromFinanQuota(final FinanceQuotation dealerSearch) {
 		FinanceQuotationVO searchVO = new FinanceQuotationVO();
@@ -2546,6 +2588,23 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return dealer;
 	}
 	// end of Resource
+	
+	// start of user
+		public UserQuotationHistory toUserChat(final UserQuotationHistoryVO dealerVO) {
+			UserQuotationHistory dealer = new UserQuotationHistory();
+				try {
+					BeanUtils.copyProperties(dealer, dealerVO);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			return dealer;
+		}
+		// end of Resource
 
 	// start of ResourceVO
 	public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {

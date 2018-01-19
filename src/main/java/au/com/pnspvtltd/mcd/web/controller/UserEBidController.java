@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.Inventory;
@@ -41,11 +43,13 @@ import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
+import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
@@ -75,6 +79,7 @@ import au.com.pnspvtltd.mcd.web.model.UserInsAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryVO;
 import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
@@ -84,6 +89,7 @@ import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleUserChatVO;
 import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
 import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
@@ -94,6 +100,7 @@ import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
 import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
 import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepo;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
@@ -147,6 +154,9 @@ public class UserEBidController {
 	
 	@Autowired
 	MyVehicleRepository myVehicleRepository;
+	
+	@Autowired
+	UserQuotationHistoryRepo userQuotationHistoryRepo;
 
 	@GetMapping(value = "getSearchByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<SearchVO> getSearchByUserId(@RequestParam("userid") Long userid)
@@ -383,6 +393,13 @@ public class UserEBidController {
 		return userEBidService.getMyVehicleByUserId(userid);
 		//return null;
 	}
+	
+	@GetMapping(value = "getMyVehiById/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public MyVehicleVO getMyVehiById(@PathVariable Long id, HttpServletResponse response) {
+		return userEBidService.getMyVehiByID(id);
+	}
+	
+	
 	@PostMapping("eBid/userReferPoints")
 	public UserReferPoints userReferPoints(@RequestBody UserReferPointsVO userEBidVO) {
 		
@@ -503,6 +520,103 @@ public class UserEBidController {
 		}
 		return user;
 	}
+	
+	
+	
+	
+	/**
+	 * 
+	 * @param dealer
+	 *            Resource
+	 * @param response
+	 * @return
+	 */
+	@PostMapping(value = "userQuotaChatAdd", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserQuotationHistoryVO> createVehicleResource(@RequestBody VehicleUserChatVO dealerSubscriptionSBLVO,
+			HttpServletResponse response) {
+		LOGGER.debug("User Chat Creation", dealerSubscriptionSBLVO.getQuotId());
+		
+		VehicleQuotation vehicleQuotation = vehicleQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+		
+		
+		
+		List<UserQuotationHistoryVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotationHistoryVO();
+		List<UserQuotationHistory> vehicleDealerDetailsList = new ArrayList<UserQuotationHistory>();
+		boolean saved = false;
+		for (UserQuotationHistoryVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			UserQuotationHistory vehicleDealerDetails = domainModelUtil.toUserChat(vehicleDealerDetailsVO1);
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+		    
+		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+			if (vehicleQuotation.getUserQuotationHistory() != null) {
+				vehicleQuotation.getUserQuotationHistory().add(vehicleDealerDetails);
+				saved=true;
+			}
+			else {
+				vehicleDealerDetailsList.add(vehicleDealerDetails);
+				}
+						
+		}
+		if(!saved){ // intialization
+			vehicleQuotation.setUserQuotationHistory(vehicleDealerDetailsList);
+		}
+		
+		
+		vehicleQuotationRepository.flush();
+		
+		
+		response.setStatus(HttpStatus.CREATED.value());
+		
+		VehicleQuotation dealer = new VehicleQuotation();
+		dealer.setQuotId(dealerSubscriptionSBLVO.getQuotId());
+		
+		List<UserQuotationHistoryVO> inventoryList = new ArrayList<>();
+		
+		for(UserQuotationHistory inventory : userQuotationHistoryRepo.findByVehicleQuotation(dealer)){
+			inventoryList.add(domainModelUtil.fromChatHistory(inventory, true));
+		}
+		return inventoryList;
+		//return dealerSubscriptionSBLVO;
+		// createdDealer dealerService.findById(createdDealer.getDealerId());
+	}
+	
+	
+	@GetMapping(value = "userQuota/getChat/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserQuotationHistoryVO getUserQuotaChatbyID(@PathVariable Long id, HttpServletResponse response) {
+		
+		UserQuotationHistoryVO dealerVO = null;
+		UserQuotationHistory dealer = userQuotationHistoryRepo.findOne(id);
+		if(dealer != null){
+			dealerVO = domainModelUtil.fromUserChatVO(dealer);
+			/*try {
+				BeanUtils.copyProperties(dealerVO, dealer);
+			} catch (IllegalAccessException | InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}*/
+		}
+		
+		return dealerVO;
+	}
+
+	@GetMapping(value = "userQuota/{id}/chat", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserQuotationHistoryVO> getUserQuotaChat(@PathVariable Long id) {
+		LOGGER.debug("Received request to get User Chat{} ", id);
+		
+		VehicleQuotation dealer = new VehicleQuotation();
+		dealer.setQuotId(id);
+		
+		List<UserQuotationHistoryVO> inventoryList = new ArrayList<>();
+		
+		for(UserQuotationHistory inventory : userQuotationHistoryRepo.findByVehicleQuotation(dealer)){
+			inventoryList.add(domainModelUtil.fromChatHistory(inventory, true));
+		}
+		return inventoryList;
+		
+	}
+	
+	
 	
 	@PutMapping("vehicleSearchQuotation")
 	@Transactional
