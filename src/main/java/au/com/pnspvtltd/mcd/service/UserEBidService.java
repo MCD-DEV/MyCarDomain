@@ -5,6 +5,7 @@ import java.util.List;
 import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
+import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
@@ -75,4 +76,7 @@ public interface UserEBidService {
 	ServiceMaintQuotationVO getServMaintQuotaByID(long id);
 	TranspServiceQuotationVO getTranpQuotaByID(long id);
 	MyVehicleVO getMyVehiByID(long id);
+	List<VehicleQuotationVO> getVehQuotaByUserIDEbidId(long userid, long eBidid);
+	List<VehicleQuotation> getVehQuotaByUserID(long userid);
+	String getNameByUserID(long id);
 }

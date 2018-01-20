@@ -1703,6 +1703,38 @@ public class UserEBidServiceImpl implements UserEBidService {
 		
 	}
 	
+	
+	@Override
+	public List<VehicleQuotationVO> getVehQuotaByUserIDEbidId(long userid, long eBidid) {
+		
+		
+		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
+		List<VehicleQuotation> searchs = vehicleQuotationRepository.getQuotationsForUserIdEbidId(userid,eBidid );
+		VehicleQuotationVO searchVO;
+		for (VehicleQuotation search : searchs) {
+			searchVO = domainModelUtil.fromVehicleQuotation(search, false);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+		
+		
+	}
+	
+	@Override
+	public List<VehicleQuotation> getVehQuotaByUserID(long userid) {
+		
+		
+		
+		return vehicleQuotationRepository.getQuotForUserChat(userid );
+		
+		
+		
+	}
+	
+	
+	
 	@Override
 	public FinanceQuotationVO getFinQuotaByID(long id) {
 		
@@ -1855,6 +1887,14 @@ public class UserEBidServiceImpl implements UserEBidService {
 		return dealerVO;
 		
 		
+	}
+	
+	@Override
+	public String getNameByUserID(long id) {
+		
+		User user = userRepository.findOne(id);
+		String name = user.getFirstName() + user.getLastName();
+		return name;
 	}
 	
 	

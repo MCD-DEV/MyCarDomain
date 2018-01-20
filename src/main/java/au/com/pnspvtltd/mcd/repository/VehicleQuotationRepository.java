@@ -20,4 +20,13 @@ public interface VehicleQuotationRepository extends JpaRepository<VehicleQuotati
 	
 	@Query("SELECT deal FROM VehicleQuotation deal where deal.dealSearchId = ?1 AND deal.dealerId = ?2")
 	List<VehicleQuotation> getDealerSearchDealID(Long carSearchId, Long dealerId);
+	
+	
+	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.carSearchId = ?2")
+	List<VehicleQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
+	
+	
+	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
+	List<VehicleQuotation> getQuotForUserChat(Long userId);
+	
 }

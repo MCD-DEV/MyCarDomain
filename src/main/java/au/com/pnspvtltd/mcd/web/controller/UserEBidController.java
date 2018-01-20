@@ -329,6 +329,14 @@ public class UserEBidController {
 	}
 	
 	
+	@GetMapping(value = "getVehQuotaByUserIdEbidId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<VehicleQuotationVO> getVehQuotaByUserIdEbidId(@RequestParam("userid") Long userid, @RequestParam("ebidid") Long eBidId) {
+		LOGGER.debug("Received request to user Transport Quotation");
+		return userEBidService.getVehQuotaByUserIDEbidId(userid, eBidId);
+	}
+	
+		
+	
 	@GetMapping(value = "getFinQuotaByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<FinanceQuotationVO> getFinQuotaByUserId(@RequestParam("userid") Long userid)
 	{
@@ -549,6 +557,8 @@ public class UserEBidController {
 		    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
 		    
 		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+		    
+		    
 			if (vehicleQuotation.getUserQuotationHistory() != null) {
 				vehicleQuotation.getUserQuotationHistory().add(vehicleDealerDetails);
 				saved=true;
@@ -612,6 +622,28 @@ public class UserEBidController {
 		for(UserQuotationHistory inventory : userQuotationHistoryRepo.findByVehicleQuotation(dealer)){
 			inventoryList.add(domainModelUtil.fromChatHistory(inventory, true));
 		}
+		return inventoryList;
+		
+	}
+	
+	
+	@GetMapping(value = "chatByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserQuotationHistoryVO> getChatByUserid(@RequestParam("userid") Long userid) {
+		LOGGER.debug("Received request to get User Chat{} ", userid);
+		String name = userEBidService.getNameByUserID(userid);
+		List<UserQuotationHistoryVO> inventoryList = new ArrayList<>();
+		List<VehicleQuotation> searchs = userEBidService.getVehQuotaByUserID(userid);
+		for (VehicleQuotation search : searchs) {
+			
+			for(UserQuotationHistory inventory : userQuotationHistoryRepo.findByVehicleQuotation(search)){
+				inventory.setName(name);
+				//inventory.setIdp(search.getQuotId());
+				inventoryList.add(domainModelUtil.fromChatHistory(inventory, true));
+			}
+			
+		}
+		
+		
 		return inventoryList;
 		
 	}
