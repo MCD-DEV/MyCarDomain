@@ -143,6 +143,7 @@ public class UserEBidServiceImpl implements UserEBidService {
 	private FinanceQuotationRepository financeQuotationRepository;
 	@Autowired
 	private InsuranceQuotationRepository insuranceQuotationRepository;
+	
 	@Autowired
 	private CountyRegPostSubRepository countyRegPostSubRepository;
 	@Autowired
@@ -1723,6 +1724,77 @@ public class UserEBidServiceImpl implements UserEBidService {
 	}
 	
 	@Override
+	public List<FinanceQuotationVO> getFinQuotaByUserIDEbidId(long userid, long eBidid) {
+		
+		
+		List<FinanceQuotationVO> searchVOs = new ArrayList<FinanceQuotationVO>();
+		List<FinanceQuotation> searchs = financeQuotationRepository.getQuotationsForUserIdEbidId(userid,eBidid );
+		FinanceQuotationVO searchVO;
+		for (FinanceQuotation search : searchs) {
+			searchVO = domainModelUtil.fromFinanceQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+		
+		
+	}
+	@Override
+	public List<InsuranceQuotationVO> getInsQuotaByUserIDEbidId(long userid, long eBidid) {
+		
+		
+		List<InsuranceQuotationVO> searchVOs = new ArrayList<InsuranceQuotationVO>();
+		List<InsuranceQuotation> searchs = insuranceQuotationRepository.getQuotationsForUserIdEbidId(userid,eBidid );
+		InsuranceQuotationVO searchVO;
+		for (InsuranceQuotation search : searchs) {
+			searchVO = domainModelUtil.fromInsuranceQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+		
+		
+	}
+	
+	@Override
+	public List<ServiceMaintQuotationVO> getServQuotaByUserIDEbidId(long userid, long eBidid) {
+		
+		
+		List<ServiceMaintQuotationVO> searchVOs = new ArrayList<ServiceMaintQuotationVO>();
+		List<ServiceMaintQuotation> searchs = servMaintQuotationRepository.getQuotationsForUserIdEbidId(userid,eBidid );
+		ServiceMaintQuotationVO searchVO;
+		for (ServiceMaintQuotation search : searchs) {
+			searchVO = domainModelUtil.fromServMaintQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+		
+		
+	}
+	
+	@Override
+	public List<TranspServiceQuotationVO> getTranspQuotaByUserIDEbidId(long userid, long eBidid) {
+		
+		
+		List<TranspServiceQuotationVO> searchVOs = new ArrayList<TranspServiceQuotationVO>();
+		List<TranspServiceQuotation> searchs = transpServQuotationRepository.getQuotationsForUserIdEbidId(userid,eBidid );
+		TranspServiceQuotationVO searchVO;
+		for (TranspServiceQuotation search : searchs) {
+			searchVO = domainModelUtil.fromTranspServQuotation(search);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+		
+		
+	}
+	
+	@Override
 	public List<VehicleQuotation> getVehQuotaByUserID(long userid) {
 		
 		
@@ -1733,8 +1805,52 @@ public class UserEBidServiceImpl implements UserEBidService {
 		
 	}
 	
+	// finance
+	@Override
+	public List<FinanceQuotation> getFinQuotaByUserID(long userid) {
+		
+		
+		
+		return financeQuotationRepository.getQuotForUserChat(userid );
+		
+		
+		
+	}
 	
-	
+	// insurance
+		@Override
+		public List<InsuranceQuotation> getInsQuotaByUserID(long userid) {
+			
+			
+			
+			return insuranceQuotationRepository.getQuotForUserChat(userid );
+			
+			
+			
+		}
+		// Service
+				@Override
+				public List<ServiceMaintQuotation> getServQuotaByUserID(long userid) {
+					
+					
+					
+					return servMaintQuotationRepository.getQuotForUserChat(userid );
+					
+					
+					
+				}
+				
+				// transport
+				@Override
+				public List<TranspServiceQuotation> getTranpQuotaByUserID(long userid) {
+					
+					
+					
+					return transpServQuotationRepository.getQuotForUserChat(userid );
+					
+					
+					
+				}
 	@Override
 	public FinanceQuotationVO getFinQuotaByID(long id) {
 		

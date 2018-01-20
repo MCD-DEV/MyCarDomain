@@ -47,6 +47,8 @@ public class VehicleQuotation implements Serializable {
 	private Long carSearchId;
 	// inventory repo id
 	private Long refId;
+	private boolean interested;
+	private boolean testDrive;
 	private boolean autoBid;
 	private boolean moveToUser;
 	private String modelYear;
@@ -104,6 +106,26 @@ public class VehicleQuotation implements Serializable {
 		private boolean mobCheck;
 		
 		
+		public boolean isInterested() {
+			return interested;
+		}
+
+
+		public void setInterested(boolean interested) {
+			this.interested = interested;
+		}
+
+
+		public boolean isTestDrive() {
+			return testDrive;
+		}
+
+
+		public void setTestDrive(boolean testDrive) {
+			this.testDrive = testDrive;
+		}
+
+
 		public boolean isCredStat() {
 			return credStat;
 		}
@@ -416,11 +438,11 @@ public class VehicleQuotation implements Serializable {
 		
 		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 		@JoinColumn(name = "quotId")
-		public List<VehicleResourceDetailsQuo> getVehicleResourceDetails() {
+		public List<VehicleResourceDetailsQuo> getVehicleResourcDetails() {
 			return vehicleResourcDetails;
 		}
 
-		public void setVehicleResourceDetails(
+		public void setVehicleResourcDetails(
 				List<VehicleResourceDetailsQuo> vehicleResourcDetails) {
 			this.vehicleResourcDetails = vehicleResourcDetails;
 		}
@@ -483,6 +505,22 @@ public class VehicleQuotation implements Serializable {
 					List<OfferDateList> offerDateList) {
 				this.offerDateList = offerDateList;
 			}
+		
+		
+			List<UserQuotaReqTestDrive> userQuotaReqTestDrive;
+			
+			@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+			@JoinColumn(name = "quotId")
+			
+			public List<UserQuotaReqTestDrive> getUserQuotaReqTestDrive() {
+				return userQuotaReqTestDrive;
+			}
+
+
+			public void setUserQuotaReqTestDrive(
+					List<UserQuotaReqTestDrive> userQuotaReqTestDrive) {
+				this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+			}	
 			
 		
 		List<UserQuotationHistory> userQuotationHistory;

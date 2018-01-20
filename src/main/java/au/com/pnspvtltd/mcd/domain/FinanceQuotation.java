@@ -162,6 +162,22 @@ public class FinanceQuotation implements Serializable {
 		this.vehQuotExtras = vehQuotExtras;
 	}
 	
+	List<UserQuotationHistoryFin> userQuotationHistory;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "finQuotId")
+	
+	public List<UserQuotationHistoryFin> getUserQuotationHistory() {
+		return userQuotationHistory;
+	}
+
+
+	public void setUserQuotationHistory(
+			List<UserQuotationHistoryFin> userQuotationHistory) {
+		this.userQuotationHistory = userQuotationHistory;
+	}
+	
+	
 	private boolean isUsed;
 	private String postCode;
 	private String autoscoopTrim;

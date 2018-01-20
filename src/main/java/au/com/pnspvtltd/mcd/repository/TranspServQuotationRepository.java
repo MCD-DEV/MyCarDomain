@@ -17,5 +17,11 @@ public interface TranspServQuotationRepository extends JpaRepository<TranspServi
 	
 	@Query("SELECT deal FROM TranspServiceQuotation deal where deal.userTranspServId = ?1")
 	List<TranspServiceQuotation> getDealerSmForID(Long carServMaintId);
+	
+	@Query("SELECT vehicleQuotation FROM TranspServiceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
+	List<TranspServiceQuotation> getQuotForUserChat(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM TranspServiceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.userTranspServId = ?2")
+	List<TranspServiceQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
 
 }

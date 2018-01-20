@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.OfferDateList;
 import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDrive;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehQuotDoc;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
@@ -35,6 +36,9 @@ public class VehicleQuotationVO {
 	private Long carSearchId;
 	// inventory reference id
 	private Long refId;
+	private boolean interested;
+	private boolean testDrive;
+	
 	private boolean autoBid;
 	private boolean moveToUser;
 	private String modelYear;
@@ -96,6 +100,29 @@ public class VehicleQuotationVO {
 			private boolean idCheck;
 			private boolean mobCheck;
 			
+			
+			
+			
+	public boolean isInterested() {
+				return interested;
+			}
+
+
+			public void setInterested(boolean interested) {
+				this.interested = interested;
+			}
+
+
+			public boolean isTestDrive() {
+				return testDrive;
+			}
+
+
+			public void setTestDrive(boolean testDrive) {
+				this.testDrive = testDrive;
+			}
+
+
 	public boolean isCredStat() {
 				return credStat;
 			}
@@ -460,6 +487,17 @@ public class VehicleQuotationVO {
 		this.status = status;
 	}
 
+	List<UserQuotaReqTestDriveVO> userQuotaReqTestDrive;
+	
+	
+	public List<UserQuotaReqTestDriveVO> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveVO> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
 	List<UserQuotationHistoryVO> userQuotationHistoryVO;
 	
 	public List<UserQuotationHistoryVO> getUserQuotationHistoryVO() {

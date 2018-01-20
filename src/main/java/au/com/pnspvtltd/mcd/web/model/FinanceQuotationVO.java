@@ -134,7 +134,17 @@ public class FinanceQuotationVO {
 		private String firstName;
 		private String lastName;
 		
+		List<UserQuotationHistoryFinVO> userQuotationHistoryVO;
 		
+		public List<UserQuotationHistoryFinVO> getUserQuotationHistoryVO() {
+			return userQuotationHistoryVO;
+		}
+
+
+		public void setUserQuotationHistoryVO(
+				List<UserQuotationHistoryFinVO> userQuotationHistoryVO) {
+			this.userQuotationHistoryVO = userQuotationHistoryVO;
+		}
 		
 	public boolean isNewer() {
 			return isNewer;

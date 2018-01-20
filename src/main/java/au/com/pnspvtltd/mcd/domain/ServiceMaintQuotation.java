@@ -71,7 +71,20 @@ public class ServiceMaintQuotation implements Serializable {
 			// Dealer info end
 
 	private String modelYear;
+	List<UserQuotationHistoryServ> userQuotationHistory;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	
+	public List<UserQuotationHistoryServ> getUserQuotationHistory() {
+		return userQuotationHistory;
+	}
+
+
+	public void setUserQuotationHistory(
+			List<UserQuotationHistoryServ> userQuotationHistory) {
+		this.userQuotationHistory = userQuotationHistory;
+	}
 	List<VehQuotExtrasServ> vehQuotExtras;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

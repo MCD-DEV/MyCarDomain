@@ -135,7 +135,7 @@ public class VehicleQuotationController {
 		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		vehicleQuotation.setVehQuotDoc(dealerVO.getVehQuotDoc());
 		vehicleQuotation.setOfferDateList(dealerVO.getOfferDateList());
-		vehicleQuotation.setVehicleResourceDetails(dealerVO.getVehicleResourcDetails());
+		vehicleQuotation.setVehicleResourcDetails(dealerVO.getVehicleResourcDetails());
 		vehicleQuotation.setVehQuotTerm(dealerVO.getVehQuotTerm());
 		vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		vehicleQuotation.setBasicPrice(dealerVO.getBasicPrice()); // set Basic Price

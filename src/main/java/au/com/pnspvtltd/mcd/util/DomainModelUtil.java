@@ -10,103 +10,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import au.com.pnspvtltd.mcd.domain.AdminAuto;
-import au.com.pnspvtltd.mcd.domain.BlogPoints;
-import au.com.pnspvtltd.mcd.domain.BlogTemplate;
-import au.com.pnspvtltd.mcd.domain.CarModelTemplate;
-import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
-import au.com.pnspvtltd.mcd.domain.CountryTemplate;
-import au.com.pnspvtltd.mcd.domain.CurrentOffers;
-import au.com.pnspvtltd.mcd.domain.Dealer;
-import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
-import au.com.pnspvtltd.mcd.domain.DealerSearch;
-import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
-import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
-import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
-import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
-import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
-import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
-import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
-import au.com.pnspvtltd.mcd.domain.ExtDealerSearchFin;
-import au.com.pnspvtltd.mcd.domain.ExtDealerSearchIns;
-import au.com.pnspvtltd.mcd.domain.ExtDealerSearchTp;
-import au.com.pnspvtltd.mcd.domain.ExternalDealer;
-import au.com.pnspvtltd.mcd.domain.ExternalDealerFin;
-import au.com.pnspvtltd.mcd.domain.ExternalDealerIns;
-import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
-import au.com.pnspvtltd.mcd.domain.FinanceEntity;
-import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
-import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
-import au.com.pnspvtltd.mcd.domain.Inventory;
-import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
-import au.com.pnspvtltd.mcd.domain.MyVehicle;
-import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
-import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
-import au.com.pnspvtltd.mcd.domain.MyVehicleServMaint;
-import au.com.pnspvtltd.mcd.domain.PhotosTemplate;
-import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
-import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
-import au.com.pnspvtltd.mcd.domain.RegoStateUrl;
-import au.com.pnspvtltd.mcd.domain.ReviewPoints;
-import au.com.pnspvtltd.mcd.domain.Search;
-import au.com.pnspvtltd.mcd.domain.SearchFinance;
-import au.com.pnspvtltd.mcd.domain.SearchInsurance;
-import au.com.pnspvtltd.mcd.domain.SearchServMaint;
-import au.com.pnspvtltd.mcd.domain.SearchTransp;
-import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
-import au.com.pnspvtltd.mcd.domain.SpecificationTemplate;
-import au.com.pnspvtltd.mcd.domain.TempCarModelColour;
-import au.com.pnspvtltd.mcd.domain.TempCarModelCountry;
-import au.com.pnspvtltd.mcd.domain.TempCarModelExpertRating;
-import au.com.pnspvtltd.mcd.domain.TempCarModelExtFitting;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecDimension;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecEngine;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecFuel;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecStandEq;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecWarranty;
-import au.com.pnspvtltd.mcd.domain.TempCarModelFullSpecWheel;
-import au.com.pnspvtltd.mcd.domain.TempCarModelHeader;
-import au.com.pnspvtltd.mcd.domain.TempCarModelIntFitting;
-import au.com.pnspvtltd.mcd.domain.TempCarModelOptEqpAddOn;
-import au.com.pnspvtltd.mcd.domain.TempCarModelOptionalFeatureAddOn;
-import au.com.pnspvtltd.mcd.domain.TempCarModelOverview;
-import au.com.pnspvtltd.mcd.domain.TempCarModelPhotos;
-import au.com.pnspvtltd.mcd.domain.TempCarModelPricing;
-import au.com.pnspvtltd.mcd.domain.TempCarModelRelatedModel;
-import au.com.pnspvtltd.mcd.domain.TempCarModelUserRating;
-import au.com.pnspvtltd.mcd.domain.TempCarModelVehReview;
-import au.com.pnspvtltd.mcd.domain.TempCarModelVideos;
-import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
-import au.com.pnspvtltd.mcd.domain.User;
-import au.com.pnspvtltd.mcd.domain.UserNotification;
-import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
-import au.com.pnspvtltd.mcd.domain.UserReferPoints;
-import au.com.pnspvtltd.mcd.domain.UserReviewTemplate;
-import au.com.pnspvtltd.mcd.domain.ValTransPoints;
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperPostCode;
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperRegion;
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperState;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerFinanceDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerInsDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerInsInsDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerInsuranceDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
-import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
-import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
-import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
-import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
-import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
-import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
-import au.com.pnspvtltd.mcd.domain.VehicleTranpHypList;
-import au.com.pnspvtltd.mcd.domain.YoutubeTemplate;
+import au.com.pnspvtltd.mcd.domain.*;
 import au.com.pnspvtltd.mcd.web.model.*;
 
 @Component
@@ -429,6 +333,87 @@ public class DomainModelUtil {
 		return inventoryVO;
 	}
 
+	
+	// finance
+	public UserQuotationHistoryFinVO fromChatHistoryFin(final UserQuotationHistoryFin inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		UserQuotationHistoryFinVO inventoryVO = new UserQuotationHistoryFinVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
+	// insurance
+		public UserQuotationHistoryInsVO fromChatHistoryIns(final UserQuotationHistoryIns inventory, boolean isMinified) {
+			if (inventory == null) {
+				return null;
+			}
+
+			UserQuotationHistoryInsVO inventoryVO = new UserQuotationHistoryInsVO();
+			try {
+				// TODO: return only minified if required
+				BeanUtils.copyProperties(inventoryVO, inventory);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return inventoryVO;
+		}
+	
+		// service
+				public UserQuotationHistoryServVO fromChatHistoryServ(final UserQuotationHistoryServ inventory, boolean isMinified) {
+					if (inventory == null) {
+						return null;
+					}
+
+					UserQuotationHistoryServVO inventoryVO = new UserQuotationHistoryServVO();
+					try {
+						// TODO: return only minified if required
+						BeanUtils.copyProperties(inventoryVO, inventory);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return inventoryVO;
+				}
+				
+				// transport
+				public UserQuotationHistoryTranpVO fromChatHistoryTransp(final UserQuotationHistoryTranp inventory, boolean isMinified) {
+					if (inventory == null) {
+						return null;
+					}
+
+					UserQuotationHistoryTranpVO inventoryVO = new UserQuotationHistoryTranpVO();
+					try {
+						// TODO: return only minified if required
+						BeanUtils.copyProperties(inventoryVO, inventory);
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					return inventoryVO;
+				}
+				
 	public VehicleDealerServMaintDetailsVO fromServMast(final VehicleDealerServMaintDetails inventory,
 			boolean isMinified) {
 		if (inventory == null) {
@@ -2605,6 +2590,23 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 			return dealer;
 		}
 		// end of Resource
+		
+		// start of user
+				public UserQuotaReqTestDrive toUserQuota(final UserQuotaReqTestDriveVO dealerVO) {
+					UserQuotaReqTestDrive dealer = new UserQuotaReqTestDrive();
+						try {
+							BeanUtils.copyProperties(dealer, dealerVO);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					return dealer;
+				}
+				// end of Resource
 
 	// start of ResourceVO
 	public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {
@@ -3499,9 +3501,9 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					userVO.setDealerQuotationHistoryVO(search1VOs);
 				}
 
-				if (vehicleQuotation.getVehicleResourceDetails() != null) {
+				if (vehicleQuotation.getVehicleResourcDetails() != null) {
 					List<VehicleResourceDetailsQuo> vehicleDealerDetailsVO = new ArrayList<>();
-					for (VehicleResourceDetailsQuo vehicleDealerDetail : vehicleQuotation.getVehicleResourceDetails()) {
+					for (VehicleResourceDetailsQuo vehicleDealerDetail : vehicleQuotation.getVehicleResourcDetails()) {
 						VehicleResourceDetailsQuo searchFinanceVO = new VehicleResourceDetailsQuo();
 						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
 						vehicleDealerDetailsVO.add(searchFinanceVO);

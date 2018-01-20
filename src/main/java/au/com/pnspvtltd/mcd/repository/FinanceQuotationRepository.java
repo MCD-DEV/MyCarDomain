@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 
 public interface FinanceQuotationRepository extends JpaRepository<FinanceQuotation, Long> {
 
@@ -17,4 +18,10 @@ public interface FinanceQuotationRepository extends JpaRepository<FinanceQuotati
 	
 	@Query("SELECT deal FROM FinanceQuotation deal where deal.carSearchId = ?1")
 	List<FinanceQuotation> getDealerSmForID(Long carServMaintId);
+	
+	@Query("SELECT vehicleQuotation FROM FinanceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
+	List<FinanceQuotation> getQuotForUserChat(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM FinanceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.carSearchId = ?2")
+	List<FinanceQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
 }

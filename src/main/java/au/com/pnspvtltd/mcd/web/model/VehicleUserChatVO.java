@@ -23,6 +23,8 @@ public class VehicleUserChatVO {
 	private Long quotId;
 	// dealer id
 	private Long dealerId;
+	
+	private String typeOfQuotation;
 	// user id
 	private Long userId;
 	
@@ -33,6 +35,16 @@ public class VehicleUserChatVO {
 	private Long refId;
 			
 	
+	public String getTypeOfQuotation() {
+		return typeOfQuotation;
+	}
+
+
+	public void setTypeOfQuotation(String typeOfQuotation) {
+		this.typeOfQuotation = typeOfQuotation;
+	}
+
+
 	List<UserQuotationHistoryVO> userQuotationHistoryVO;
 	
 	public List<UserQuotationHistoryVO> getUserQuotationHistoryVO() {

@@ -111,6 +111,21 @@ public class InsuranceQuotation implements Serializable {
 		this.vehQuotExtras = vehQuotExtras;
 	}
 	
+	List<UserQuotationHistoryIns> userQuotationHistory;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "insQuotId")
+	
+	public List<UserQuotationHistoryIns> getUserQuotationHistory() {
+		return userQuotationHistory;
+	}
+
+
+	public void setUserQuotationHistory(
+			List<UserQuotationHistoryIns> userQuotationHistory) {
+		this.userQuotationHistory = userQuotationHistory;
+	}
+	
 	// Start of search Insurance
 	
 		private boolean isNewer;

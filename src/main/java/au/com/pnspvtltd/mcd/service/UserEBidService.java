@@ -2,8 +2,12 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
+import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
 import au.com.pnspvtltd.mcd.domain.Search;
+import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
+import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
@@ -79,4 +83,12 @@ public interface UserEBidService {
 	List<VehicleQuotationVO> getVehQuotaByUserIDEbidId(long userid, long eBidid);
 	List<VehicleQuotation> getVehQuotaByUserID(long userid);
 	String getNameByUserID(long id);
+	List<FinanceQuotation> getFinQuotaByUserID(long userid);
+	List<InsuranceQuotation> getInsQuotaByUserID(long userid);
+	List<ServiceMaintQuotation> getServQuotaByUserID(long userid);
+	List<TranspServiceQuotation> getTranpQuotaByUserID(long userid);
+	List<FinanceQuotationVO> getFinQuotaByUserIDEbidId(long userid, long eBidid);
+	List<InsuranceQuotationVO> getInsQuotaByUserIDEbidId(long userid, long eBidid);
+	List<ServiceMaintQuotationVO> getServQuotaByUserIDEbidId(long userid, long eBidid);
+	List<TranspServiceQuotationVO> getTranspQuotaByUserIDEbidId(long userid, long eBidid);
 }

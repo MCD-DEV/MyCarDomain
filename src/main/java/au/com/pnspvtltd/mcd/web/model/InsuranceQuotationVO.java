@@ -179,7 +179,17 @@ public class InsuranceQuotationVO {
 		// end of External Dealer info
 	
 	
+			List<UserQuotationHistoryInsVO> userQuotationHistoryVO;
 			
+			public List<UserQuotationHistoryInsVO> getUserQuotationHistoryVO() {
+				return userQuotationHistoryVO;
+			}
+
+
+			public void setUserQuotationHistoryVO(
+					List<UserQuotationHistoryInsVO> userQuotationHistoryVO) {
+				this.userQuotationHistoryVO = userQuotationHistoryVO;
+			}		
 	public Long getDealSearchId() {
 		return dealSearchId;
 	}

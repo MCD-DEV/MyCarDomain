@@ -61,6 +61,17 @@ public class ServiceMaintQuotationVO {
 				// Dealer info end
 
 	private String modelYear;
+	List<UserQuotationHistoryServVO> userQuotationHistoryVO;
+	
+	public List<UserQuotationHistoryServVO> getUserQuotationHistoryVO() {
+		return userQuotationHistoryVO;
+	}
+
+
+	public void setUserQuotationHistoryVO(
+			List<UserQuotationHistoryServVO> userQuotationHistoryVO) {
+		this.userQuotationHistoryVO = userQuotationHistoryVO;
+	}
 	List<VehQuotExtrasServ> vehQuotExtras;
 	
 	public List<VehQuotExtrasServ> getVehQuotExtras() {

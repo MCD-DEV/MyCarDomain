@@ -51,7 +51,20 @@ public class TranspServiceQuotation implements Serializable {
 	private boolean autoBid;
 	private boolean moveToUser;
 	
+	List<UserQuotationHistoryTranp> userQuotationHistory;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TranspServQuotId")
+	
+	public List<UserQuotationHistoryTranp> getUserQuotationHistory() {
+		return userQuotationHistory;
+	}
+
+
+	public void setUserQuotationHistory(List<UserQuotationHistoryTranp> userQuotationHistory) {
+		this.userQuotationHistory = userQuotationHistory;
+	}
+
 	private String fromPostCodeAddr;
 	private String toPostCodeAddr;
 	private String transTypeReq;
