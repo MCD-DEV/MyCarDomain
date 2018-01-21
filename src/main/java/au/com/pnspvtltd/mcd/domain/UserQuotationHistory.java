@@ -52,7 +52,7 @@ public class UserQuotationHistory implements Serializable {
 	
 	/*@Temporal(TemporalType.TIMESTAMP)*/
 	private Timestamp creationDate;
-	// private long idp;
+	private long idp;
 
 	private String name;
 
@@ -69,6 +69,14 @@ public class UserQuotationHistory implements Serializable {
 	 * 
 	 * public void setIdp(long idp) { this.idp = idp; }
 	 */
+
+	public long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(long idp) {
+		this.idp = idp;
+	}
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

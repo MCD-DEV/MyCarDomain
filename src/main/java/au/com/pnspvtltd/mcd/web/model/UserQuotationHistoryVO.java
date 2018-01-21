@@ -19,19 +19,19 @@ public class UserQuotationHistoryVO {
 	private String comment;
 	private Timestamp creationDate;
 	
-	//private long idp;
+	private long idp;
 	
 	private String name;
 	
 	
-	/*public long getIdp() {
+	public long getIdp() {
 		return idp;
 	}
 
 
 	public void setIdp(long idp) {
 		this.idp = idp;
-	}*/
+	}
 
 
 	public String getName() {

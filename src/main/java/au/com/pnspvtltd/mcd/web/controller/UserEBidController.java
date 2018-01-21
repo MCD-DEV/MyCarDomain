@@ -624,10 +624,10 @@ public class UserEBidController {
 		for (UserQuotationHistoryVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
 			UserQuotationHistory vehicleDealerDetails = domainModelUtil.toUserChat(vehicleDealerDetailsVO1);
 			Calendar calendar = Calendar.getInstance();
-		    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+		    java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 		    
-		   // vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
-		    
+		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+		    vehicleDealerDetails.setIdp(vehicleQuotation.getQuotId());
 		    
 			if (vehicleQuotation.getUserQuotationHistory() != null) {
 				vehicleQuotation.getUserQuotationHistory().add(vehicleDealerDetails);
@@ -663,10 +663,10 @@ public class UserEBidController {
 				fin.setComment(vehicleDealerDetails.getComment());
 				fin.setName(vehicleDealerDetails.getName());
 				Calendar calendar = Calendar.getInstance();
-			    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+			    java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 			    
 			    fin.setCreationDate(ourJavaTimestampObject);
-			    
+			    fin.setIdp(vehicleQuotation.getFinQuotId());
 			    
 				if (vehicleQuotation.getUserQuotationHistory() != null) {
 					vehicleQuotation.getUserQuotationHistory().add(fin);
@@ -705,8 +705,8 @@ public class UserEBidController {
 				Calendar calendar = Calendar.getInstance();
 			    java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 			    
-			    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
-			    
+			    fin.setCreationDate(ourJavaTimestampObject);
+			    fin.setIdp(vehicleQuotation.getInsQuotId());
 			    
 				if (vehicleQuotation.getUserQuotationHistory() != null) {
 					vehicleQuotation.getUserQuotationHistory().add(fin);
@@ -745,8 +745,8 @@ public class UserEBidController {
 				Calendar calendar = Calendar.getInstance();
 			    java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 			    
-			    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
-			    
+			    fin.setCreationDate(ourJavaTimestampObject);
+			    fin.setIdp(vehicleQuotation.getServMaintQuotId());
 			    
 				if (vehicleQuotation.getUserQuotationHistory() != null) {
 					vehicleQuotation.getUserQuotationHistory().add(fin);
@@ -781,11 +781,11 @@ public class UserEBidController {
 				
 				fin.setComment(vehicleDealerDetails.getComment());
 				fin.setName(vehicleDealerDetails.getName());
-				
+				fin.setIdp(vehicleQuotation.getTranspServQuotId());
 				Calendar calendar = Calendar.getInstance();
 			    java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 			    
-			    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+			    fin.setCreationDate(ourJavaTimestampObject);
 			    
 			    
 				if (vehicleQuotation.getUserQuotationHistory() != null) {
@@ -1089,7 +1089,7 @@ public class UserEBidController {
 			
 			for(UserQuotationHistoryFin inventory : userQuotationHistoryRepoFin.findByVehicleQuotation(searchFin)){
 				//inventory.setName(name);
-				//inventory.setIdp(search.getQuotId());
+				//inventory.setIdp(searchFin.getFinQuotId());
 				inventoryListFin.add(domainModelUtil.fromChatHistoryFin(inventory, true));
 			}
 			
@@ -1103,7 +1103,7 @@ public class UserEBidController {
 					
 					for(UserQuotationHistoryIns inventory : userQuotationHistoryRepoIns.findByVehicleQuotation(searchIns)){
 						//inventory.setName(name);
-						//inventory.setIdp(search.getQuotId());
+						//inventory.setIdp(searchIns.getInsQuotId());
 						inventoryListIns.add(domainModelUtil.fromChatHistoryIns(inventory, true));
 					}
 					
@@ -1117,7 +1117,7 @@ public class UserEBidController {
 					
 					for(UserQuotationHistoryServ inventory : userQuotationHistoryRepoServ.findByVehicleQuotation(searchServ)){
 						//inventory.setName(name);
-						//inventory.setIdp(search.getQuotId());
+						//inventory.setIdp(searchServ.getServMaintQuotId());
 						inventoryListServ.add(domainModelUtil.fromChatHistoryServ(inventory, true));
 					}
 					
@@ -1131,7 +1131,7 @@ public class UserEBidController {
 					
 					for(UserQuotationHistoryTranp inventory : userQuotationHistoryRepoTranp.findByVehicleQuotation(searchTrans)){
 						//inventory.setName(name);
-						//inventory.setIdp(search.getQuotId());
+						//inventory.setIdp(searchTrans.getTranspServQuotId());
 						inventoryListTransp.add(domainModelUtil.fromChatHistoryTransp(inventory, true));
 					}
 					

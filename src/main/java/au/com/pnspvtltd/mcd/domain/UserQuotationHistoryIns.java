@@ -1,6 +1,7 @@
 package au.com.pnspvtltd.mcd.domain;
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -53,8 +54,8 @@ import javax.persistence.OneToOne;
 			this.vehicleQuotation = vehicleQuotation;
 		}
 	private String comment;
-	private Date creationDate;
-	//private long idp;
+	private Timestamp creationDate;
+	private long idp;
 	
 	private String name;
 	
@@ -66,13 +67,13 @@ import javax.persistence.OneToOne;
 		this.name = name;
 	}
 
-	/*public long getIdp() {
+	public long getIdp() {
 		return idp;
 	}
 
 	public void setIdp(long idp) {
 		this.idp = idp;
-	}*/
+	}
 
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "USERQUOTATIONHISTORYID")
 	public Long getUserQuotationHistoryId() {
@@ -97,12 +98,12 @@ import javax.persistence.OneToOne;
 
 	
 	@Column(name = "CREATIONDATE") 
-	public Date getCreationDate() {
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
 
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
 	}
 

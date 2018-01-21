@@ -1,6 +1,7 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 import org.joda.time.DateTime;
 
@@ -16,21 +17,21 @@ public class UserQuotationHistoryServVO {
 	
 	
 	private String comment;
-	private Date creationDate;
+	private Timestamp creationDate;
 	
-	//private long idp;
+	private long idp;
 	
 	private String name;
 	
 	
-	/*public long getIdp() {
+	public long getIdp() {
 		return idp;
 	}
 
 
 	public void setIdp(long idp) {
 		this.idp = idp;
-	}*/
+	}
 
 
 	public String getName() {
@@ -65,12 +66,12 @@ public class UserQuotationHistoryServVO {
 
 	
 	
-	public Date getCreationDate() {
+	public Timestamp getCreationDate() {
 		return creationDate;
 	}
 
 
-	public void setCreationDate(Date creationDate) {
+	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
 	}
 
