@@ -133,7 +133,36 @@ public class FinanceQuotationVO {
 		private String mr;
 		private String firstName;
 		private String lastName;
+		private boolean interested;
+		private boolean testDrive;
 		
+		
+		public boolean isInterested() {
+			return interested;
+		}
+
+		public void setInterested(boolean interested) {
+			this.interested = interested;
+		}
+
+		public boolean isTestDrive() {
+			return testDrive;
+		}
+
+		public void setTestDrive(boolean testDrive) {
+			this.testDrive = testDrive;
+		}
+		List<UserQuotaReqTestDriveFinVO> userQuotaReqTestDrive;
+		
+		
+		public List<UserQuotaReqTestDriveFinVO> getUserQuotaReqTestDrive() {
+			return userQuotaReqTestDrive;
+		}
+
+
+		public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveFinVO> userQuotaReqTestDrive) {
+			this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+		}
 		List<UserQuotationHistoryFinVO> userQuotationHistoryVO;
 		
 		public List<UserQuotationHistoryFinVO> getUserQuotationHistoryVO() {

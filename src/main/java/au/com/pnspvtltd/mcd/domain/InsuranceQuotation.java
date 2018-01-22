@@ -43,8 +43,26 @@ public class InsuranceQuotation implements Serializable {
 	private Long carSearchId;
 	// inventory repo id
 	private Long refId;
+	private boolean interested;
+	private boolean testDrive;
 	private boolean autoBid;
 	private boolean moveToUser;
+
+	public boolean isInterested() {
+		return interested;
+	}
+
+	public void setInterested(boolean interested) {
+		this.interested = interested;
+	}
+
+	public boolean isTestDrive() {
+		return testDrive;
+	}
+
+	public void setTestDrive(boolean testDrive) {
+		this.testDrive = testDrive;
+	}
 
 	public boolean isAutoBid() {
 		return autoBid;
@@ -110,6 +128,22 @@ public class InsuranceQuotation implements Serializable {
 			List<VehQuotExtrasIns> vehQuotExtras) {
 		this.vehQuotExtras = vehQuotExtras;
 	}
+	
+	List<UserQuotaReqTestDriveIns> userQuotaReqTestDrive;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "insQuotId")
+	
+	public List<UserQuotaReqTestDriveIns> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(
+			List<UserQuotaReqTestDriveIns> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
 	
 	List<UserQuotationHistoryIns> userQuotationHistory;
 	

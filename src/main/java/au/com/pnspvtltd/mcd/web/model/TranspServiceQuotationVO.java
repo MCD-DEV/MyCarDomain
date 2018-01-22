@@ -124,7 +124,29 @@ public class TranspServiceQuotationVO {
 							
 	// Flex start
 		private String flex1;
-		// User Creation Date
+		private boolean interested;
+		private boolean testDrive;
+		
+		public boolean isInterested() {
+			return interested;
+		}
+
+
+		public void setInterested(boolean interested) {
+			this.interested = interested;
+		}
+
+
+		public boolean isTestDrive() {
+			return testDrive;
+		}
+
+
+		public void setTestDrive(boolean testDrive) {
+			this.testDrive = testDrive;
+		}
+
+					// User Creation Date
 					private Date userCreationDate;
 					//Creation Date
 					private Date creationDate;
@@ -148,6 +170,18 @@ public class TranspServiceQuotationVO {
 						this.creationDate = creationDate;
 					}
 
+					List<UserQuotaReqTestDriveTranpVO> userQuotaReqTestDrive;
+					
+					
+					public List<UserQuotaReqTestDriveTranpVO> getUserQuotaReqTestDrive() {
+						return userQuotaReqTestDrive;
+					}
+
+
+					public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveTranpVO> userQuotaReqTestDrive) {
+						this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+					}
+					
 		List<VehQuotExtrasTp> vehQuotExtras;
 		
 		

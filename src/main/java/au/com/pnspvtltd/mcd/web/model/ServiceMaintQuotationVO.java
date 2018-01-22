@@ -59,8 +59,42 @@ public class ServiceMaintQuotationVO {
 				private float longitude;
 				private float latitude;
 				// Dealer info end
+				private boolean interested;
+				private boolean testDrive;
+				
+				public boolean isInterested() {
+					return interested;
+				}
+
+
+				public void setInterested(boolean interested) {
+					this.interested = interested;
+				}
+
+
+				public boolean isTestDrive() {
+					return testDrive;
+				}
+
+
+				public void setTestDrive(boolean testDrive) {
+					this.testDrive = testDrive;
+				}
 
 	private String modelYear;
+	
+	List<UserQuotaReqTestDriveServVO> userQuotaReqTestDrive;
+	
+	
+	public List<UserQuotaReqTestDriveServVO> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveServVO> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
 	List<UserQuotationHistoryServVO> userQuotationHistoryVO;
 	
 	public List<UserQuotationHistoryServVO> getUserQuotationHistoryVO() {

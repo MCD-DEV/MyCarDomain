@@ -76,7 +76,40 @@ public class InsuranceQuotationVO {
 	private String adhoc2;
 	private String adhoc3;
 	private String adhoc4;
+	private boolean interested;
+	private boolean testDrive;
+	
+	
+	
+	public boolean isInterested() {
+		return interested;
+	}
 
+	public void setInterested(boolean interested) {
+		this.interested = interested;
+	}
+
+	public boolean isTestDrive() {
+		return testDrive;
+	}
+
+	public void setTestDrive(boolean testDrive) {
+		this.testDrive = testDrive;
+	}
+
+	List<UserQuotaReqTestDriveInsVO> userQuotaReqTestDrive;
+	
+	
+	public List<UserQuotaReqTestDriveInsVO> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveInsVO> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
+	
 	List<VehQuotExtrasIns> vehQuotExtras;
 	
 	public List<VehQuotExtrasIns> getVehQuotExtras() {

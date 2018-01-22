@@ -43,8 +43,26 @@ public class FinanceQuotation implements Serializable {
 	private Long carSearchId;
 	// inventory repo id
 	private Long refId;
+	private boolean interested;
+	private boolean testDrive;
 	private boolean autoBid;
 	private boolean moveToUser;
+
+	public boolean isInterested() {
+		return interested;
+	}
+
+	public void setInterested(boolean interested) {
+		this.interested = interested;
+	}
+
+	public boolean isTestDrive() {
+		return testDrive;
+	}
+
+	public void setTestDrive(boolean testDrive) {
+		this.testDrive = testDrive;
+	}
 
 	public boolean isAutoBid() {
 		return autoBid;
@@ -147,6 +165,22 @@ public class FinanceQuotation implements Serializable {
 		this.postalAddress = postalAddress;
 	}
 
+	List<UserQuotaReqTestDriveFin> userQuotaReqTestDrive;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "finQuotId")
+	
+	public List<UserQuotaReqTestDriveFin> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(
+			List<UserQuotaReqTestDriveFin> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
+	
 	List<VehQuotExtrasFin> vehQuotExtras;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

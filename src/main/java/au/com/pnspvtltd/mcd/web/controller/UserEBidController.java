@@ -45,6 +45,10 @@ import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDrive;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveFin;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveIns;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveServ;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveTranp;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistoryFin;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistoryIns;
@@ -90,7 +94,9 @@ import au.com.pnspvtltd.mcd.web.model.UserInsAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserMyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaAllSingleVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaAllVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryInsVO;
@@ -885,10 +891,14 @@ public class UserEBidController {
 	 * @return
 	 */
 	@PostMapping(value = "userQuotaInterest", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public VehicleQuotationVO userQuotaInterest(@RequestBody QuotaInterestVO dealerSubscriptionSBLVO,
+	public UserQuotaAllSingleVO userQuotaInterest(@RequestBody QuotaInterestVO dealerSubscriptionSBLVO,
 			HttpServletResponse response) {
 		LOGGER.debug("User Quoation Interested or not Creation", dealerSubscriptionSBLVO.getQuotId());
+		UserQuotaAllSingleVO userQuotaAllVO = new UserQuotaAllSingleVO();
 		
+		
+		// vehicle
+		if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("vehicle")){
 		VehicleQuotation vehicleQuotation = vehicleQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
 		
 		
@@ -928,12 +938,224 @@ public class UserEBidController {
 		}
 		
 		vehicleQuotationRepository.flush();
+		userQuotaAllVO.setVehicleQuotationVO(domainModelUtil.fromVehicleQuotation(vehicleQuotation, false));
+		}
+		
+		// finance
+		else if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("finance")){
+				FinanceQuotation vehicleQuotation = financeQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+				
+				
+				// start of test drive logic
+				if(dealerSubscriptionSBLVO.isTestDrive()){
+				List<UserQuotaReqTestDriveVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqTestDriveVO();
+				List<UserQuotaReqTestDriveFin> vehicleDealerDetailsList = new ArrayList<UserQuotaReqTestDriveFin>();
+				boolean saved = false;
+				for (UserQuotaReqTestDriveVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+					UserQuotaReqTestDrive vehicleDealerDetails = domainModelUtil.toUserQuota(vehicleDealerDetailsVO1);
+					UserQuotaReqTestDriveFin fin = new UserQuotaReqTestDriveFin();
+					fin.setAddress(vehicleDealerDetails.getAddress());
+					fin.setPostCode(vehicleDealerDetails.getPostCode());
+					fin.setfName(vehicleDealerDetails.getfName());
+					fin.setlName(vehicleDealerDetails.getlName());
+					fin.setTitle(vehicleDealerDetails.getTitle());
+					fin.setPrefDate(vehicleDealerDetails.getPrefDate());
+					fin.setMobile(vehicleDealerDetails.getMobile());
+					
+					Calendar calendar = Calendar.getInstance();
+				    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+				    
+				    fin.setCreationDate(ourJavaTimestampObject);
+				    
+				    
+					if (vehicleQuotation.getUserQuotaReqTestDrive() != null) {
+						vehicleQuotation.getUserQuotaReqTestDrive().add(fin);
+						saved=true;
+					}
+					else {
+						vehicleDealerDetailsList.add(fin);
+						}
+								
+				}
+				if(!saved){ // intialization
+					vehicleQuotation.setUserQuotaReqTestDrive(vehicleDealerDetailsList);
+					}
+				}
+				// end of test drive logic
+				
+				if(dealerSubscriptionSBLVO.isInterest()){
+					vehicleQuotation.setInterested(true);
+				}
+				else {
+					vehicleQuotation.setInterested(false);
+				}
+				
+				financeQuotationRepository.flush();
+				userQuotaAllVO.setFinanceQuotationVO(domainModelUtil.fromFinanQuota(vehicleQuotation));
+				}
 		
 		
+		// insurance
+				else if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("insurance")){
+						InsuranceQuotation vehicleQuotation = insuranceQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+						
+						
+						// start of test drive logic
+						if(dealerSubscriptionSBLVO.isTestDrive()){
+						List<UserQuotaReqTestDriveVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqTestDriveVO();
+						List<UserQuotaReqTestDriveIns> vehicleDealerDetailsList = new ArrayList<UserQuotaReqTestDriveIns>();
+						boolean saved = false;
+						for (UserQuotaReqTestDriveVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+							UserQuotaReqTestDrive vehicleDealerDetails = domainModelUtil.toUserQuota(vehicleDealerDetailsVO1);
+							UserQuotaReqTestDriveIns fin = new UserQuotaReqTestDriveIns();
+							fin.setAddress(vehicleDealerDetails.getAddress());
+							fin.setPostCode(vehicleDealerDetails.getPostCode());
+							fin.setfName(vehicleDealerDetails.getfName());
+							fin.setlName(vehicleDealerDetails.getlName());
+							fin.setTitle(vehicleDealerDetails.getTitle());
+							fin.setPrefDate(vehicleDealerDetails.getPrefDate());
+							fin.setMobile(vehicleDealerDetails.getMobile());
+							
+							Calendar calendar = Calendar.getInstance();
+						    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+						    
+						    fin.setCreationDate(ourJavaTimestampObject);
+						    
+						    
+							if (vehicleQuotation.getUserQuotaReqTestDrive() != null) {
+								vehicleQuotation.getUserQuotaReqTestDrive().add(fin);
+								saved=true;
+							}
+							else {
+								vehicleDealerDetailsList.add(fin);
+								}
+										
+						}
+						if(!saved){ // intialization
+							vehicleQuotation.setUserQuotaReqTestDrive(vehicleDealerDetailsList);
+							}
+						}
+						// end of test drive logic
+						
+						if(dealerSubscriptionSBLVO.isInterest()){
+							vehicleQuotation.setInterested(true);
+						}
+						else {
+							vehicleQuotation.setInterested(false);
+						}
+						
+						insuranceQuotationRepository.flush();
+						userQuotaAllVO.setInsuranceQuotationVO(domainModelUtil.fromInsQuota(vehicleQuotation));
+						}
+		// service
+				else if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("service")){
+						ServiceMaintQuotation vehicleQuotation = serviceQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+						
+						
+						// start of test drive logic
+						if(dealerSubscriptionSBLVO.isTestDrive()){
+						List<UserQuotaReqTestDriveVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqTestDriveVO();
+						List<UserQuotaReqTestDriveServ> vehicleDealerDetailsList = new ArrayList<UserQuotaReqTestDriveServ>();
+						boolean saved = false;
+						for (UserQuotaReqTestDriveVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+							UserQuotaReqTestDrive vehicleDealerDetails = domainModelUtil.toUserQuota(vehicleDealerDetailsVO1);
+							UserQuotaReqTestDriveServ fin = new UserQuotaReqTestDriveServ();
+							fin.setAddress(vehicleDealerDetails.getAddress());
+							fin.setPostCode(vehicleDealerDetails.getPostCode());
+							fin.setfName(vehicleDealerDetails.getfName());
+							fin.setlName(vehicleDealerDetails.getlName());
+							fin.setTitle(vehicleDealerDetails.getTitle());
+							fin.setPrefDate(vehicleDealerDetails.getPrefDate());
+							fin.setMobile(vehicleDealerDetails.getMobile());
+							
+							Calendar calendar = Calendar.getInstance();
+						    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+						    
+						    fin.setCreationDate(ourJavaTimestampObject);
+						    
+						    
+							if (vehicleQuotation.getUserQuotaReqTestDrive() != null) {
+								vehicleQuotation.getUserQuotaReqTestDrive().add(fin);
+								saved=true;
+							}
+							else {
+								vehicleDealerDetailsList.add(fin);
+								}
+										
+						}
+						if(!saved){ // intialization
+							vehicleQuotation.setUserQuotaReqTestDrive(vehicleDealerDetailsList);
+							}
+						}
+						// end of test drive logic
+						
+						if(dealerSubscriptionSBLVO.isInterest()){
+							vehicleQuotation.setInterested(true);
+						}
+						else {
+							vehicleQuotation.setInterested(false);
+						}
+						
+						serviceQuotationRepository.flush();
+						userQuotaAllVO.setServiceMaintQuotationVO(domainModelUtil.fromServQuota(vehicleQuotation));
+						}
+		
+		// transport
+				else if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("transport")){
+						TranspServiceQuotation vehicleQuotation = transQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+						
+						
+						// start of test drive logic
+						if(dealerSubscriptionSBLVO.isTestDrive()){
+						List<UserQuotaReqTestDriveVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqTestDriveVO();
+						List<UserQuotaReqTestDriveTranp> vehicleDealerDetailsList = new ArrayList<UserQuotaReqTestDriveTranp>();
+						boolean saved = false;
+						for (UserQuotaReqTestDriveVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+							UserQuotaReqTestDrive vehicleDealerDetails = domainModelUtil.toUserQuota(vehicleDealerDetailsVO1);
+							UserQuotaReqTestDriveTranp fin = new UserQuotaReqTestDriveTranp();
+							fin.setAddress(vehicleDealerDetails.getAddress());
+							fin.setPostCode(vehicleDealerDetails.getPostCode());
+							fin.setfName(vehicleDealerDetails.getfName());
+							fin.setlName(vehicleDealerDetails.getlName());
+							fin.setTitle(vehicleDealerDetails.getTitle());
+							fin.setPrefDate(vehicleDealerDetails.getPrefDate());
+							fin.setMobile(vehicleDealerDetails.getMobile());
+							
+							Calendar calendar = Calendar.getInstance();
+						    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+						    
+						    fin.setCreationDate(ourJavaTimestampObject);
+						    
+						    
+							if (vehicleQuotation.getUserQuotaReqTestDrive() != null) {
+								vehicleQuotation.getUserQuotaReqTestDrive().add(fin);
+								saved=true;
+							}
+							else {
+								vehicleDealerDetailsList.add(fin);
+								}
+										
+						}
+						if(!saved){ // intialization
+							vehicleQuotation.setUserQuotaReqTestDrive(vehicleDealerDetailsList);
+							}
+						}
+						// end of test drive logic
+						
+						if(dealerSubscriptionSBLVO.isInterest()){
+							vehicleQuotation.setInterested(true);
+						}
+						else {
+							vehicleQuotation.setInterested(false);
+						}
+						
+						serviceQuotationRepository.flush();
+						userQuotaAllVO.setTranspServiceQuotationVO(domainModelUtil.fromTranpQuota(vehicleQuotation));
+						}
 		response.setStatus(HttpStatus.CREATED.value());
 		
 		
-		return domainModelUtil.fromVehicleQuotation(vehicleQuotation, false);
+		return userQuotaAllVO;
 		//return dealerSubscriptionSBLVO;
 		// createdDealer dealerService.findById(createdDealer.getDealerId());
 	}

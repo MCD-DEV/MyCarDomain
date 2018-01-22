@@ -69,6 +69,27 @@ public class ServiceMaintQuotation implements Serializable {
 			private float longitude;
 			private float latitude;
 			// Dealer info end
+			private boolean interested;
+			private boolean testDrive;
+			
+			public boolean isInterested() {
+				return interested;
+			}
+
+
+			public void setInterested(boolean interested) {
+				this.interested = interested;
+			}
+
+
+			public boolean isTestDrive() {
+				return testDrive;
+			}
+
+
+			public void setTestDrive(boolean testDrive) {
+				this.testDrive = testDrive;
+			}
 
 	private String modelYear;
 	List<UserQuotationHistoryServ> userQuotationHistory;
@@ -85,6 +106,22 @@ public class ServiceMaintQuotation implements Serializable {
 			List<UserQuotationHistoryServ> userQuotationHistory) {
 		this.userQuotationHistory = userQuotationHistory;
 	}
+	
+	List<UserQuotaReqTestDriveServ> userQuotaReqTestDrive;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	
+	public List<UserQuotaReqTestDriveServ> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(
+			List<UserQuotaReqTestDriveServ> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
 	List<VehQuotExtrasServ> vehQuotExtras;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

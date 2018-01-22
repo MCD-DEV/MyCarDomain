@@ -25,8 +25,19 @@ public class QuotaInterestVO {
 	private boolean interest;
 	
 	private boolean testDrive;
-			
 	
+	private String typeOfQuotation;	
+	
+	public String getTypeOfQuotation() {
+		return typeOfQuotation;
+	}
+
+
+	public void setTypeOfQuotation(String typeOfQuotation) {
+		this.typeOfQuotation = typeOfQuotation;
+	}
+
+
 	public boolean isInterest() {
 		return interest;
 	}

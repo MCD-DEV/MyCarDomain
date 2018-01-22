@@ -50,6 +50,44 @@ public class TranspServiceQuotation implements Serializable {
 	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
+	private boolean interested;
+	private boolean testDrive;
+	
+	public boolean isInterested() {
+		return interested;
+	}
+
+
+	public void setInterested(boolean interested) {
+		this.interested = interested;
+	}
+
+
+	public boolean isTestDrive() {
+		return testDrive;
+	}
+
+
+	public void setTestDrive(boolean testDrive) {
+		this.testDrive = testDrive;
+	}
+
+
+	List<UserQuotaReqTestDriveTranp> userQuotaReqTestDrive;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TranspServQuotId")
+	
+	public List<UserQuotaReqTestDriveTranp> getUserQuotaReqTestDrive() {
+		return userQuotaReqTestDrive;
+	}
+
+
+	public void setUserQuotaReqTestDrive(
+			List<UserQuotaReqTestDriveTranp> userQuotaReqTestDrive) {
+		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
+	}
+	
 	
 	List<UserQuotationHistoryTranp> userQuotationHistory;
 	
