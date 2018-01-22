@@ -2,17 +2,25 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "dealsearchservmaint")
 public class DealerSearchServMaint implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long dealerSearchServMaintId;
 	private String postCode;
 	private int year;
@@ -29,6 +37,19 @@ public class DealerSearchServMaint implements Serializable {
 	private String curInsProv;
 	private String freeText;
 	private Long userId;
+
+	private Dealer dealer;
+
+	@ManyToOne
+	@JoinColumn(name = "DEALERID")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+
 
 	@Column(name = "USERID")
 	public Long getUserId() {

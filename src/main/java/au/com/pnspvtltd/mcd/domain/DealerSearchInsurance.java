@@ -12,15 +12,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "dealsearchinsurance")
 public class DealerSearchInsurance implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private boolean isNewer;
 	private boolean isUsed;
-	//private boolean isNew;
+	// private boolean isNew;
 	private Long dealerSearchInsuranceId;
 	private String postCode;
 	private String insuranceType;
@@ -62,23 +67,33 @@ public class DealerSearchInsurance implements Serializable {
 	private int avgNoOfKmYr;
 	private int noOfDrivers;
 	private boolean licenseGotSuspened;
-	
-List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
-	
+
+	private Dealer dealer;
+
+	@ManyToOne
+	@JoinColumn(name = "DEALERID")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+
+
+	List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerSearchInsuranceId")
-	
+
 	public List<DealerSearchInsAdditionalDriv> getDealerSearchInsAdditionalDriv() {
 		return dealerSearchInsAdditionalDriv;
 	}
 
-
-	public void setDealerSearchInsAdditionalDriv(
-			List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv) {
+	public void setDealerSearchInsAdditionalDriv(List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv) {
 		this.dealerSearchInsAdditionalDriv = dealerSearchInsAdditionalDriv;
 	}
-	
-	
+
 	@Column(name = "USERID")
 	public Long getUserId() {
 		return userId;
@@ -88,14 +103,11 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 		this.userId = userId;
 	}
 
-	/*@Column(name = "ISNEW")
-	public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * @Column(name = "ISNEW") public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 
 	@Column(name = "DATEOFBIRTH")
 	public Date getDateOfBirth() {
@@ -305,6 +317,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setNewer(boolean isNewer) {
 		this.isNewer = isNewer;
 	}
+
 	@Column(name = "ISUSED")
 	public boolean isUsed() {
 		return isUsed;
@@ -318,10 +331,11 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}
+
 	public void setAutoscoopTrim(String autoscoopTrim) {
 		this.autoscoopTrim = autoscoopTrim;
 	}
-	
+
 	@Column(name = "CARPARKEDAT")
 	public String getCarParkedAt() {
 		return carParkedAt;
@@ -330,6 +344,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setCarParkedAt(String carParkedAt) {
 		this.carParkedAt = carParkedAt;
 	}
+
 	@Column(name = "STREETNO")
 	public String getStreetNO() {
 		return streetNO;
@@ -338,6 +353,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setStreetNO(String streetNO) {
 		this.streetNO = streetNO;
 	}
+
 	@Column(name = "STREETNAME")
 	public String getStreetName() {
 		return streetName;
@@ -346,6 +362,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setStreetName(String streetName) {
 		this.streetName = streetName;
 	}
+
 	@Column(name = "CARUSEDFOR")
 	public String getCarUsedfor() {
 		return carUsedfor;
@@ -354,6 +371,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setCarUsedfor(String carUsedfor) {
 		this.carUsedfor = carUsedfor;
 	}
+
 	@Column(name = "TYPEOFBUSINESS")
 	public String getTypeOfBusiness() {
 		return typeOfBusiness;
@@ -362,6 +380,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setTypeOfBusiness(String typeOfBusiness) {
 		this.typeOfBusiness = typeOfBusiness;
 	}
+
 	@Column(name = "DRIVERFIRSTNAME")
 	public String getDriverFirstName() {
 		return driverFirstName;
@@ -370,6 +389,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setDriverFirstName(String driverFirstName) {
 		this.driverFirstName = driverFirstName;
 	}
+
 	@Column(name = "DRIVERLASTNAME")
 	public String getDriverLastName() {
 		return driverLastName;
@@ -378,6 +398,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setDriverLastName(String driverLastName) {
 		this.driverLastName = driverLastName;
 	}
+
 	@Column(name = "DRIVERMOBILENO")
 	public String getDriverMobileNo() {
 		return driverMobileNo;
@@ -386,6 +407,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setDriverMobileNo(String driverMobileNo) {
 		this.driverMobileNo = driverMobileNo;
 	}
+
 	@Column(name = "DRIVEREMAILID")
 	public String getDriverEmailId() {
 		return driverEmailId;
@@ -394,6 +416,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setDriverEmailId(String driverEmailId) {
 		this.driverEmailId = driverEmailId;
 	}
+
 	@Column(name = "LICENSEISSUEDATE")
 	public Date getLicenseIssueDate() {
 		return licenseIssueDate;
@@ -402,6 +425,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setLicenseIssueDate(Date licenseIssueDate) {
 		this.licenseIssueDate = licenseIssueDate;
 	}
+
 	@Column(name = "LASTATFAULTCLAIMDATE")
 	public Date getLastAtFaultClaimDate() {
 		return lastAtFaultClaimDate;
@@ -410,14 +434,16 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setLastAtFaultClaimDate(Date lastAtFaultClaimDate) {
 		this.lastAtFaultClaimDate = lastAtFaultClaimDate;
 	}
+
 	@Column(name = "REASONFORSUSPEND")
 	public String getReasonForSuspension() {
 		return reasonForSuspension;
 	}
-	
+
 	public void setReasonForSuspension(String reasonForSuspension) {
 		this.reasonForSuspension = reasonForSuspension;
 	}
+
 	@Column(name = "AVERGNOOFKMYR")
 	public int getAvgNoOfKmYr() {
 		return avgNoOfKmYr;
@@ -426,6 +452,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setAvgNoOfKmYr(int avgNoOfKmYr) {
 		this.avgNoOfKmYr = avgNoOfKmYr;
 	}
+
 	@Column(name = "NOOFDRIVERS")
 	public int getNoOfDrivers() {
 		return noOfDrivers;
@@ -434,6 +461,7 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 	public void setNoOfDrivers(int noOfDrivers) {
 		this.noOfDrivers = noOfDrivers;
 	}
+
 	@Column(name = "LICENSEGOTSUSPEND")
 	public boolean isLicenseGotSuspened() {
 		return licenseGotSuspened;
@@ -443,6 +471,4 @@ List<DealerSearchInsAdditionalDriv> dealerSearchInsAdditionalDriv;
 		this.licenseGotSuspened = licenseGotSuspened;
 	}
 
-	
-	
 }

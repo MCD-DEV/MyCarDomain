@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -42,10 +44,24 @@ public class DealerSearch implements Serializable {
 	private int noOfAtFaultClaims;
 	private Date dateOfBirth;
 	private double indicativeExcessAmount;
-	private Date ageOfAdditionalDriver;//Lead Creation Date
+	private Date ageOfAdditionalDriver;// Lead Creation Date
 	private Long userId;
 	private Long carSearchId;
 	private boolean status;
+	
+	private Dealer dealer1;
+
+
+	@ManyToOne
+	@JoinColumn(name = "DEALERID")
+	public Dealer getDealer1() {
+		return dealer1;
+	}
+
+	public void setDealer1(Dealer dealer1) {
+		this.dealer1 = dealer1;
+	}
+	
 	
 	public boolean isStatus() {
 		return status;
@@ -355,10 +371,9 @@ public class DealerSearch implements Serializable {
 
 	private Date sYearOfMake;
 
-	
-
 	private boolean newer;
 	private boolean used;
+
 	public boolean isFinApproved() {
 		return finApproved;
 	}

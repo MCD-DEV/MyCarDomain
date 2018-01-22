@@ -8,21 +8,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "dealsearchfinance")
 public class DealerSearchFinance implements Serializable {
 
-	
-	/*private boolean isNew;*/
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/* private boolean isNew; */
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long dealerSearchFinanceId;
 	private String postCode;
-	
+
 	private int year;
-	
+
 	private String make;
 	private String model;
 	private String variant;
@@ -36,9 +41,7 @@ public class DealerSearchFinance implements Serializable {
 	private String creditRating;
 	private Date dateOfBirth;
 	private Long userId;
-	
-	
-	
+
 	private int yearEmploymentBusiness;
 	private String incomeBeforeSuperTax;
 	private String incomeAfterSuperTax;
@@ -50,6 +53,21 @@ public class DealerSearchFinance implements Serializable {
 	private String mr;
 	private String firstName;
 	private String lastName;
+	private Dealer dealer;
+
+	@ManyToOne
+	@JoinColumn(name = "DEALERID")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
+
+
+	
+
 	@Column(name = "REGO")
 	public String getRego() {
 		return rego;
@@ -58,6 +76,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setRego(String rego) {
 		this.rego = rego;
 	}
+
 	@Column(name = "REGOSTATE")
 	public String getRegoState() {
 		return regoState;
@@ -66,6 +85,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
+
 	@Column(name = "STREETNO")
 	public String getStreetNo() {
 		return streetNo;
@@ -74,6 +94,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setStreetNo(String streetNo) {
 		this.streetNo = streetNo;
 	}
+
 	@Column(name = "STREETNAME")
 	public String getStreetName() {
 		return streetName;
@@ -82,6 +103,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setStreetName(String streetName) {
 		this.streetName = streetName;
 	}
+
 	@Column(name = "MR")
 	public String getMr() {
 		return mr;
@@ -90,6 +112,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setMr(String mr) {
 		this.mr = mr;
 	}
+
 	@Column(name = "FIRSTNAME")
 	public String getFirstName() {
 		return firstName;
@@ -98,6 +121,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	@Column(name = "LASTNAME")
 	public String getLastName() {
 		return lastName;
@@ -124,7 +148,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setNewer(boolean isNewer) {
 		this.isNewer = isNewer;
 	}
-	
+
 	public int getYearEmploymentBusiness() {
 		return yearEmploymentBusiness;
 	}
@@ -156,6 +180,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
 		this.ifBusinessProvideABN = ifBusinessProvideABN;
 	}
+
 	@Column(name = "ISUSED")
 	public boolean isUsed() {
 		return isUsed;
@@ -164,8 +189,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setUsed(boolean isUsed) {
 		this.isUsed = isUsed;
 	}
-	
-	
+
 	@Column(name = "USERID")
 	public Long getUserId() {
 		return userId;
@@ -175,14 +199,11 @@ public class DealerSearchFinance implements Serializable {
 		this.userId = userId;
 	}
 
-	/*@Column(name = "ISNEW")
-	public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * @Column(name = "ISNEW") public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 	@Column(name = "DATEOFBIRTH")
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -191,7 +212,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	
+
 	@Column(name = "POSTCODE")
 	public String getPostCode() {
 		return postCode;
@@ -200,7 +221,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-	
+
 	@Column(name = "YEAR")
 	public int getYear() {
 		return year;
@@ -209,6 +230,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
 	@Column(name = "MAKE")
 	public String getMake() {
 		return make;
@@ -217,6 +239,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
 	@Column(name = "MODEL")
 	public String getModel() {
 		return model;
@@ -225,6 +248,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
+
 	@Column(name = "VARIANT")
 	public String getVariant() {
 		return variant;
@@ -233,8 +257,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "DEALSEARCHFINANCEID")
@@ -245,6 +268,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setDealerSearchFinanceId(Long dealerSearchFinanceId) {
 		this.dealerSearchFinanceId = dealerSearchFinanceId;
 	}
+
 	@Column(name = "VEHVALUE")
 	public double getVehValue() {
 		return vehValue;
@@ -253,6 +277,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setVehValue(double vehValue) {
 		this.vehValue = vehValue;
 	}
+
 	@Column(name = "BALLOONPAY")
 	public double getBalloonPay() {
 		return balloonPay;
@@ -261,6 +286,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setBalloonPay(double balloonPay) {
 		this.balloonPay = balloonPay;
 	}
+
 	@Column(name = "LOANAMOUNT")
 	public double getLoanAmount() {
 		return loanAmount;
@@ -269,6 +295,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setLoanAmount(double loanAmount) {
 		this.loanAmount = loanAmount;
 	}
+
 	@Column(name = "LOANPERIOD")
 	public int getLoanPeriod() {
 		return loanPeriod;
@@ -277,6 +304,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setLoanPeriod(int loanPeriod) {
 		this.loanPeriod = loanPeriod;
 	}
+
 	@Column(name = "ANNUALINCOME")
 	public double getAnnualIncome() {
 		return annualIncome;
@@ -285,6 +313,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setAnnualIncome(double annualIncome) {
 		this.annualIncome = annualIncome;
 	}
+
 	@Column(name = "INCOMETYPE")
 	public String getIncomeType() {
 		return incomeType;
@@ -293,6 +322,7 @@ public class DealerSearchFinance implements Serializable {
 	public void setIncomeType(String incomeType) {
 		this.incomeType = incomeType;
 	}
+
 	@Column(name = "CREDITRATING")
 	public String getCreditRating() {
 		return creditRating;
@@ -301,6 +331,5 @@ public class DealerSearchFinance implements Serializable {
 	public void setCreditRating(String creditRating) {
 		this.creditRating = creditRating;
 	}
-	
 
 }
