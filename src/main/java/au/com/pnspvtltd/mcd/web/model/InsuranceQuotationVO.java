@@ -26,7 +26,16 @@ public class InsuranceQuotationVO {
 	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
+	private String quotaStatus;
+	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
 
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
 	public boolean isAutoBid() {
 		return autoBid;
 	}

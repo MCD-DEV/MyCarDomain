@@ -52,7 +52,16 @@ public class TranspServiceQuotation implements Serializable {
 	private boolean moveToUser;
 	private boolean interested;
 	private boolean testDrive;
+	private String quotaStatus;
 	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
+
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
 	public boolean isInterested() {
 		return interested;
 	}
@@ -72,7 +81,21 @@ public class TranspServiceQuotation implements Serializable {
 		this.testDrive = testDrive;
 	}
 
+	List<UserQuotaReqBookSlotTranp> userQuotaReqBookSlotTranp;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TranspServQuotId")
+	
+	public List<UserQuotaReqBookSlotTranp> getUserQuotaReqBookSlotTranp() {
+		return userQuotaReqBookSlotTranp;
+	}
 
+
+	public void setUserQuotaReqBookSlotTranp(
+			List<UserQuotaReqBookSlotTranp> userQuotaReqBookSlotServ) {
+		this.userQuotaReqBookSlotTranp = userQuotaReqBookSlotServ;
+	}
+	
 	List<UserQuotaReqTestDriveTranp> userQuotaReqTestDrive;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

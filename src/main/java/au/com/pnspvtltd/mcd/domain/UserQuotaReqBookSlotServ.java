@@ -21,7 +21,7 @@ import javax.persistence.OneToOne;
  * Entity implementation class for Entity: Quoatation user History
  * 
  */
-@Entity @Table(name = "insquotareqtodrive") public class UserQuotaReqTestDriveIns implements Serializable 
+@Entity @Table(name = "servquotareqslot") public class UserQuotaReqBookSlotServ implements Serializable 
 {
 
 
@@ -41,24 +41,20 @@ import javax.persistence.OneToOne;
 	private Long userQuotationHistoryId;
 	 
 	
-	private InsuranceQuotation vehicleQuotation;
+	private ServiceMaintQuotation vehicleQuotation;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-		@JoinColumn(name = "insQuotId")
-		public InsuranceQuotation getVehicleQuotation() {
+		@JoinColumn(name = "servMaintQuotId")
+		public ServiceMaintQuotation getVehicleQuotation() {
 			return vehicleQuotation;
 		}
 
-		public void setVehicleQuotation(InsuranceQuotation vehicleQuotation) {
+		public void setVehicleQuotation(ServiceMaintQuotation vehicleQuotation) {
 			this.vehicleQuotation = vehicleQuotation;
 		}
-	private String postCode;
-	private String title;
-	private String fName;
-	private String lName;
-	private String address;
-	private String mobile;
-	private Date prefDate;
+	private String text;
+	private String time;
+	private Date date;
 	private Date creationDate;
 	//private long idp;
 	
@@ -74,64 +70,34 @@ import javax.persistence.OneToOne;
 		this.idp = idp;
 	}*/
 
-	public String getPostCode() {
-		return postCode;
-	}
-
-	public void setPostCode(String postCode) {
-		this.postCode = postCode;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getfName() {
-		return fName;
-	}
-
-	public void setfName(String fName) {
-		this.fName = fName;
-	}
-
-	public String getlName() {
-		return lName;
-	}
-
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-
-	public Date getPrefDate() {
-		return prefDate;
-	}
-
-	public void setPrefDate(Date prefDate) {
-		this.prefDate = prefDate;
-	}
+	
 
 	public String getFlex1() {
 		return flex1;
+	}
+
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 	public void setFlex1(String flex1) {

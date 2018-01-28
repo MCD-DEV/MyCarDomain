@@ -82,10 +82,32 @@ public class ServiceMaintQuotationVO {
 				}
 
 	private String modelYear;
+	private String quotaStatus;
+	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
+
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
+	
+	List<UserQuotaReqBookSlotServVO> userQuotaReqBookSlotServ;
 	
 	List<UserQuotaReqTestDriveServVO> userQuotaReqTestDrive;
 	
 	
+	public List<UserQuotaReqBookSlotServVO> getUserQuotaReqBookSlotServ() {
+		return userQuotaReqBookSlotServ;
+	}
+
+
+	public void setUserQuotaReqBookSlotServ(List<UserQuotaReqBookSlotServVO> userQuotaReqBookSlotServ) {
+		this.userQuotaReqBookSlotServ = userQuotaReqBookSlotServ;
+	}
+
+
 	public List<UserQuotaReqTestDriveServVO> getUserQuotaReqTestDrive() {
 		return userQuotaReqTestDrive;
 	}

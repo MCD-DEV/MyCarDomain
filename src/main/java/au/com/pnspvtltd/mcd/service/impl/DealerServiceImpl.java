@@ -989,30 +989,13 @@ public class DealerServiceImpl implements DealerService {
 
 	@Override
 	public VehicleResourceDetailsVO getDealerResourcebyID(long id) {
-		// TODO Auto-generated method stub
-		//Dealer dealer = dealerRepository.getDealerForID(id);
-		/*Dealer dealer = dealerRepository.findOne(id);
-		DealerResourceVO dealerResourceVO = new DealerResourceVO();
-		dealerResourceVO.setDealerId(id);
-		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
-		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
-		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
-			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
-			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
-		}
-		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;*/
+		
 		
 		VehicleResourceDetailsVO dealerVO = null;
 		VehicleResourceDetails dealer = vehicleResourceDetailsRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.fromDealerResource(dealer);
-			/*try {
-				BeanUtils.copyProperties(dealerVO, dealer);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+			
 		}	
 		return dealerVO;
 		
@@ -1021,30 +1004,13 @@ public class DealerServiceImpl implements DealerService {
 	
 	@Override
 	public VehicleDealerServMaintDetailsVO getServiceMasterId(long id) {
-		// TODO Auto-generated method stub
-		//Dealer dealer = dealerRepository.getDealerForID(id);
-		/*Dealer dealer = dealerRepository.findOne(id);
-		DealerResourceVO dealerResourceVO = new DealerResourceVO();
-		dealerResourceVO.setDealerId(id);
-		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
-		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
-		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
-			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
-			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
-		}
-		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;*/
+		
 		
 		VehicleDealerServMaintDetailsVO dealerVO = null;
 		VehicleDealerServMaintDetails dealer = vehicleServMasterRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.fromDealerServMast(dealer);
-			/*try {
-				BeanUtils.copyProperties(dealerVO, dealer);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+			
 		}	
 		return dealerVO;
 		
@@ -1053,30 +1019,13 @@ public class DealerServiceImpl implements DealerService {
 	
 	@Override
 	public VehicleDealerTranspDetailsVO getTranspMasterId(long id) {
-		// TODO Auto-generated method stub
-		//Dealer dealer = dealerRepository.getDealerForID(id);
-		/*Dealer dealer = dealerRepository.findOne(id);
-		DealerResourceVO dealerResourceVO = new DealerResourceVO();
-		dealerResourceVO.setDealerId(id);
-		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
-		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
-		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
-			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
-			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
-		}
-		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;*/
+		
 		
 		VehicleDealerTranspDetailsVO dealerVO = null;
 		VehicleDealerTranspDetails dealer = vehicleTranspMasterRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.fromDealerTranspMast(dealer);
-			/*try {
-				BeanUtils.copyProperties(dealerVO, dealer);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+			
 		}	
 		return dealerVO;
 		
@@ -1085,30 +1034,13 @@ public class DealerServiceImpl implements DealerService {
 	
 	@Override
 	public FinanceEntityVO getFinanceMasterId(long id) {
-		// TODO Auto-generated method stub
-		//Dealer dealer = dealerRepository.getDealerForID(id);
-		/*Dealer dealer = dealerRepository.findOne(id);
-		DealerResourceVO dealerResourceVO = new DealerResourceVO();
-		dealerResourceVO.setDealerId(id);
-		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
-		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
-		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
-			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
-			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
-		}
-		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;*/
+		
 		
 		FinanceEntityVO dealerVO = null;
 		FinanceEntity dealer = vehicleFinanceMasterRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.toDealerFinVOMast(dealer);
-			/*try {
-				BeanUtils.copyProperties(dealerVO, dealer);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+			
 		}	
 		return dealerVO;
 		
@@ -1117,30 +1049,13 @@ public class DealerServiceImpl implements DealerService {
 	
 	@Override
 	public VehicleDealerInsuranceDetailsVO getInsMasterId(long id) {
-		// TODO Auto-generated method stub
-		//Dealer dealer = dealerRepository.getDealerForID(id);
-		/*Dealer dealer = dealerRepository.findOne(id);
-		DealerResourceVO dealerResourceVO = new DealerResourceVO();
-		dealerResourceVO.setDealerId(id);
-		List<VehicleResourceDetails> vehicleResourceDetailsList = dealer.getVehicleResourceDetails();
-		List<VehicleResourceDetailsVO> vehicleResourceDetailsVOList = new ArrayList<VehicleResourceDetailsVO>();
-		for(VehicleResourceDetails vehicleResourceDetails : vehicleResourceDetailsList){
-			VehicleResourceDetailsVO vehicleDealerDetailsVO = domainModelUtil.toDealerResourceVO(vehicleResourceDetails);
-			vehicleResourceDetailsVOList.add(vehicleDealerDetailsVO);
-		}
-		dealerResourceVO.setVehicleDealerDetails(vehicleResourceDetailsVOList);
-		return dealerResourceVO;*/
+		
 		
 		VehicleDealerInsuranceDetailsVO dealerVO = null;
 		VehicleDealerInsuranceDetails dealer = vehicleInsuranceMasterRepo.findOne(id);
 		if(dealer != null){
 			dealerVO = domainModelUtil.toDealerInsVOMast(dealer);
-			/*try {
-				BeanUtils.copyProperties(dealerVO, dealer);
-			} catch (IllegalAccessException | InvocationTargetException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}*/
+			
 		}	
 		return dealerVO;
 		

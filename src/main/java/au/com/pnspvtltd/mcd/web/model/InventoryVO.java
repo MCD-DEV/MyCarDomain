@@ -105,6 +105,18 @@ public class InventoryVO {
 		//private int counterOfEnquiryCar;
 		private Date saleDate;
 
+		private String subsType;
+		
+		
+
+		public String getSubsType() {
+			return subsType;
+		}
+
+		public void setSubsType(String subsType) {
+			this.subsType = subsType;
+		}
+		
 		List<FeatureVO> features;
 		List<PhotoVO> photos;
 

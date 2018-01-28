@@ -47,7 +47,17 @@ public class FinanceQuotation implements Serializable {
 	private boolean testDrive;
 	private boolean autoBid;
 	private boolean moveToUser;
+	private String quotaStatus;
+	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
 
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
+	
 	public boolean isInterested() {
 		return interested;
 	}

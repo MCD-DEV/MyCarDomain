@@ -113,7 +113,17 @@ import javax.persistence.Table;
 	private Date creationDate;
 	/*private boolean status;*/
 	
+	private String subsType;
 	
+	
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
 	
 	public Long getRefId() {
 		return refId;

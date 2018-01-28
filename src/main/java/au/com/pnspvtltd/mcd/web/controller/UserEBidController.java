@@ -44,6 +44,8 @@ import au.com.pnspvtltd.mcd.domain.ServiceMaintQuotation;
 import au.com.pnspvtltd.mcd.domain.TranspServiceQuotation;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserNotification;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqBookSlotServ;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqBookSlotTranp;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDrive;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveFin;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDriveIns;
@@ -75,6 +77,7 @@ import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
 import au.com.pnspvtltd.mcd.web.model.QuotaInterestVO;
 import au.com.pnspvtltd.mcd.web.model.ReferencedPointsVO;
 import au.com.pnspvtltd.mcd.web.model.ReviewPointsVO;
+import au.com.pnspvtltd.mcd.web.model.SampleSuccessVO;
 import au.com.pnspvtltd.mcd.web.model.SearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchInsuranceVO;
 import au.com.pnspvtltd.mcd.web.model.SearchServMaintVO;
@@ -96,6 +99,8 @@ import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaAllSingleVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaAllVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaReqBookSlotServVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaReqBookSlotTranpVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryFinVO;
@@ -107,7 +112,9 @@ import au.com.pnspvtltd.mcd.web.model.UserReferPointsVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminOtDateVO;
 import au.com.pnspvtltd.mcd.web.model.UserSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.UserServiceMaintAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserServiceSlotVO;
 import au.com.pnspvtltd.mcd.web.model.UserTranspAdminVO;
+import au.com.pnspvtltd.mcd.web.model.UserTransportSlotVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
@@ -604,6 +611,105 @@ public class UserEBidController {
 	}
 	
 	
+	// serv time slot start
+
+	/**
+	 * 
+	 * @param dealer
+	 *            Resource
+	 * @param response
+	 * @return
+	 */
+	@PostMapping(value = "serviceslotupdate", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ServiceMaintQuotationVO serviceSlotUpdate(@RequestBody UserServiceSlotVO dealerSubscriptionSBLVO,
+			HttpServletResponse response) {
+		LOGGER.debug("Service Book Slot Creation", dealerSubscriptionSBLVO.getQuotId());
+		
+		ServiceMaintQuotation vehicleQuotation = serviceQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+		
+		
+		
+		List<UserQuotaReqBookSlotServVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqBookSlotServVO();
+		List<UserQuotaReqBookSlotServ> vehicleDealerDetailsList = new ArrayList<UserQuotaReqBookSlotServ>();
+		boolean saved = false;
+		for (UserQuotaReqBookSlotServVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			UserQuotaReqBookSlotServ vehicleDealerDetails = domainModelUtil.toServSlot(vehicleDealerDetailsVO1);
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+		    
+		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+		   
+			if (vehicleQuotation.getUserQuotaReqBookSlotServ() != null) {
+				vehicleQuotation.getUserQuotaReqBookSlotServ().add(vehicleDealerDetails);
+				saved=true;
+			}
+			else {
+				vehicleDealerDetailsList.add(vehicleDealerDetails);
+				}
+						
+		}
+		if(!saved){ // intialization
+			vehicleQuotation.setUserQuotaReqBookSlotServ(vehicleDealerDetailsList);
+		}
+		
+		
+		serviceQuotationRepository.flush();
+		
+		return domainModelUtil.fromServQuota(vehicleQuotation);
+		//return dealerSubscriptionSBLVO;
+		// createdDealer dealerService.findById(createdDealer.getDealerId());
+	}
+	// serv time slot end
+	
+	
+	/**
+	 * 
+	 * @param dealer
+	 *            Resource
+	 * @param response
+	 * @return
+	 */
+	@PostMapping(value = "transportslotupdate", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public TranspServiceQuotationVO transportSlotUpdate(@RequestBody UserTransportSlotVO dealerSubscriptionSBLVO,
+			HttpServletResponse response) {
+		LOGGER.debug("transport Book Slot Creation", dealerSubscriptionSBLVO.getQuotId());
+		
+		TranspServiceQuotation vehicleQuotation = transQuotationRepository.findOne(dealerSubscriptionSBLVO.getQuotId());
+		
+		
+		
+		List<UserQuotaReqBookSlotTranpVO> vehicleDealerDetailsVO = dealerSubscriptionSBLVO.getUserQuotaReqBookSlotTranpVO();
+		List<UserQuotaReqBookSlotTranp> vehicleDealerDetailsList = new ArrayList<UserQuotaReqBookSlotTranp>();
+		boolean saved = false;
+		for (UserQuotaReqBookSlotTranpVO vehicleDealerDetailsVO1 : vehicleDealerDetailsVO) {
+			UserQuotaReqBookSlotTranp vehicleDealerDetails = domainModelUtil.toTrnspSlot(vehicleDealerDetailsVO1);
+			Calendar calendar = Calendar.getInstance();
+		    java.sql.Date ourJavaTimestampObject = new java.sql.Date(calendar.getTime().getTime());
+		    
+		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+		   
+			if (vehicleQuotation.getUserQuotaReqBookSlotTranp() != null) {
+				vehicleQuotation.getUserQuotaReqBookSlotTranp().add(vehicleDealerDetails);
+				saved=true;
+			}
+			else {
+				vehicleDealerDetailsList.add(vehicleDealerDetails);
+				}
+						
+		}
+		if(!saved){ // intialization
+			vehicleQuotation.setUserQuotaReqBookSlotTranp(vehicleDealerDetailsList);
+		}
+		
+		
+		transQuotationRepository.flush();
+		
+		return domainModelUtil.fromTranpQuota(vehicleQuotation);
+		//return dealerSubscriptionSBLVO;
+		// createdDealer dealerService.findById(createdDealer.getDealerId());
+	}
+	// serv time slot end
+	
 	
 	
 	/**
@@ -891,11 +997,12 @@ public class UserEBidController {
 	 * @return
 	 */
 	@PostMapping(value = "userQuotaInterest", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public UserQuotaAllSingleVO userQuotaInterest(@RequestBody QuotaInterestVO dealerSubscriptionSBLVO,
+	public SampleSuccessVO userQuotaInterest(@RequestBody QuotaInterestVO dealerSubscriptionSBLVO,
 			HttpServletResponse response) {
 		LOGGER.debug("User Quoation Interested or not Creation", dealerSubscriptionSBLVO.getQuotId());
 		UserQuotaAllSingleVO userQuotaAllVO = new UserQuotaAllSingleVO();
-		
+		boolean failCondition = false;
+		SampleSuccessVO success = new SampleSuccessVO();
 		
 		// vehicle
 		if(dealerSubscriptionSBLVO.getTypeOfQuotation().equals("vehicle")){
@@ -930,14 +1037,28 @@ public class UserEBidController {
 		}
 		// end of test drive logic
 		
-		if(dealerSubscriptionSBLVO.isInterest()){
-			vehicleQuotation.setInterested(true);
+		String value= "other" ;
+		// end of test drive logic
+		 
+		 if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("created")) {
+	           value = "created";
+	        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("interested")) {
+	        	 value = "interested";
+	        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("notinterested")) {
+	        	 value = "notinterested";
+	        }
+		 if(!value.equalsIgnoreCase("other")){
+			 vehicleQuotation.setQuotaStatus(value);
+			 if(value.equalsIgnoreCase("notinterested")){
+			 vehicleQuotation.setInterested(false);
+			 }
 		}
-		else {
-			vehicleQuotation.setInterested(false);
-		}
+		 else{
+			 // fail condition
+			 failCondition = true;
+		 }
 		
-		vehicleQuotationRepository.flush();
+		vehicleQuotationRepository.saveAndFlush(vehicleQuotation);
 		userQuotaAllVO.setVehicleQuotationVO(domainModelUtil.fromVehicleQuotation(vehicleQuotation, false));
 		}
 		
@@ -983,12 +1104,26 @@ public class UserEBidController {
 				}
 				// end of test drive logic
 				
-				if(dealerSubscriptionSBLVO.isInterest()){
-					vehicleQuotation.setInterested(true);
+				String value= "other" ;
+				// end of test drive logic
+				 
+				 if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("created")) {
+			           value = "created";
+			        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("interested")) {
+			        	 value = "interested";
+			        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("notinterested")) {
+			        	 value = "notinterested";
+			        }
+				 if(!value.equalsIgnoreCase("other")){
+					 vehicleQuotation.setQuotaStatus(value);
+					 if(value.equalsIgnoreCase("notinterested")){
+					 vehicleQuotation.setInterested(false);
+					 }
 				}
-				else {
-					vehicleQuotation.setInterested(false);
-				}
+				 else{
+					 // fail condition
+					 failCondition = true;
+				 }
 				
 				financeQuotationRepository.flush();
 				userQuotaAllVO.setFinanceQuotationVO(domainModelUtil.fromFinanQuota(vehicleQuotation));
@@ -1037,12 +1172,26 @@ public class UserEBidController {
 						}
 						// end of test drive logic
 						
-						if(dealerSubscriptionSBLVO.isInterest()){
-							vehicleQuotation.setInterested(true);
+						String value= "other" ;
+						// end of test drive logic
+						 
+						 if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("created")) {
+					           value = "created";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("interested")) {
+					        	 value = "interested";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("notinterested")) {
+					        	 value = "notinterested";
+					        }
+						 if(!value.equalsIgnoreCase("other")){
+							 vehicleQuotation.setQuotaStatus(value);
+							 if(value.equalsIgnoreCase("notinterested")){
+							 vehicleQuotation.setInterested(false);
+							 }
 						}
-						else {
-							vehicleQuotation.setInterested(false);
-						}
+						 else{
+							 // fail condition
+							 failCondition = true;
+						 }
 						
 						insuranceQuotationRepository.flush();
 						userQuotaAllVO.setInsuranceQuotationVO(domainModelUtil.fromInsQuota(vehicleQuotation));
@@ -1089,12 +1238,26 @@ public class UserEBidController {
 						}
 						// end of test drive logic
 						
-						if(dealerSubscriptionSBLVO.isInterest()){
-							vehicleQuotation.setInterested(true);
+						String value= "other" ;
+						// end of test drive logic
+						 
+						 if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("created")) {
+					           value = "created";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("interested")) {
+					        	 value = "interested";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("notinterested")) {
+					        	 value = "notinterested";
+					        }
+						 if(!value.equalsIgnoreCase("other")){
+							 vehicleQuotation.setQuotaStatus(value);
+							 if(value.equalsIgnoreCase("notinterested")){
+							 vehicleQuotation.setInterested(false);
+							 }
 						}
-						else {
-							vehicleQuotation.setInterested(false);
-						}
+						 else{
+							 // fail condition
+							 failCondition = true;
+						 }
 						
 						serviceQuotationRepository.flush();
 						userQuotaAllVO.setServiceMaintQuotationVO(domainModelUtil.fromServQuota(vehicleQuotation));
@@ -1142,20 +1305,41 @@ public class UserEBidController {
 						}
 						// end of test drive logic
 						
-						if(dealerSubscriptionSBLVO.isInterest()){
-							vehicleQuotation.setInterested(true);
+						String value= "other" ;
+						// end of test drive logic
+						 
+						 if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("created")) {
+					           value = "created";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("interested")) {
+					        	 value = "interested";
+					        } else if (dealerSubscriptionSBLVO.getQuotaStatus().equalsIgnoreCase("notinterested")) {
+					        	 value = "notinterested";
+					        }
+						 if(!value.equalsIgnoreCase("other")){
+							 vehicleQuotation.setQuotaStatus(value);
+							 if(value.equalsIgnoreCase("notinterested")){
+							 vehicleQuotation.setInterested(false);
+							 }
 						}
-						else {
-							vehicleQuotation.setInterested(false);
-						}
-						
+						 else{
+							 // fail condition
+							 failCondition = true;
+						 }
 						serviceQuotationRepository.flush();
 						userQuotaAllVO.setTranspServiceQuotationVO(domainModelUtil.fromTranpQuota(vehicleQuotation));
 						}
-		response.setStatus(HttpStatus.CREATED.value());
 		
 		
-		return userQuotaAllVO;
+		if(failCondition){
+			response.setStatus(HttpStatus.BAD_REQUEST.value());
+			success.setStatus("failure - Due to Bad Quota Status");
+		}
+		else{
+			response.setStatus(HttpStatus.CREATED.value());
+			success.setStatus("success");
+		}
+		
+		return success;
 		//return dealerSubscriptionSBLVO;
 		// createdDealer dealerService.findById(createdDealer.getDealerId());
 	}

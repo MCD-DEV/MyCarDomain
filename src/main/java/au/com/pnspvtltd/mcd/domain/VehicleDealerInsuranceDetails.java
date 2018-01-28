@@ -70,7 +70,17 @@ import javax.persistence.Table;
 	private String title;
 	
 /*start */
+	private String subsType;
 	
+	
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
 	public String getContactPerson() {
 		return contactPerson;
 	}

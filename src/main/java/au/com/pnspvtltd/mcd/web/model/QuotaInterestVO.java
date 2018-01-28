@@ -28,6 +28,20 @@ public class QuotaInterestVO {
 	
 	private String typeOfQuotation;	
 	
+	private String quotaStatus;
+	
+	
+	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
+
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
+
+
 	public String getTypeOfQuotation() {
 		return typeOfQuotation;
 	}

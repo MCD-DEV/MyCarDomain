@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqBookSlotTranp;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasTp;
 
 public class TranspServiceQuotationVO {
@@ -126,7 +127,16 @@ public class TranspServiceQuotationVO {
 		private String flex1;
 		private boolean interested;
 		private boolean testDrive;
+		private String quotaStatus;
 		
+		public String getQuotaStatus() {
+			return quotaStatus;
+		}
+
+
+		public void setQuotaStatus(String quotaStatus) {
+			this.quotaStatus = quotaStatus;
+		}
 		public boolean isInterested() {
 			return interested;
 		}
@@ -169,10 +179,21 @@ public class TranspServiceQuotationVO {
 					public void setCreationDate(Date creationDate) {
 						this.creationDate = creationDate;
 					}
-
+					List<UserQuotaReqBookSlotTranpVO> userQuotaReqBookSlotTranp;
+					
 					List<UserQuotaReqTestDriveTranpVO> userQuotaReqTestDrive;
 					
 					
+					public List<UserQuotaReqBookSlotTranpVO> getUserQuotaReqBookSlotTranp() {
+						return userQuotaReqBookSlotTranp;
+					}
+
+
+					public void setUserQuotaReqBookSlotTranp(List<UserQuotaReqBookSlotTranpVO> userQuotaReqBookSlotTranp) {
+						this.userQuotaReqBookSlotTranp = userQuotaReqBookSlotTranp;
+					}
+
+
 					public List<UserQuotaReqTestDriveTranpVO> getUserQuotaReqTestDrive() {
 						return userQuotaReqTestDrive;
 					}

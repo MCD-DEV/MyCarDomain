@@ -104,8 +104,18 @@ public class VehicleQuotation implements Serializable {
 		private boolean credStat;
 		private boolean idCheck;
 		private boolean mobCheck;
+		private String quotaStatus;
 		
-		
+		public String getQuotaStatus() {
+			return quotaStatus;
+		}
+
+
+		public void setQuotaStatus(String quotaStatus) {
+			this.quotaStatus = quotaStatus;
+		}
+
+
 		public boolean isInterested() {
 			return interested;
 		}

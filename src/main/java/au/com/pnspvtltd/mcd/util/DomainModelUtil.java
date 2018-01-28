@@ -226,7 +226,7 @@ public class DomainModelUtil {
 		try {
 			// search
 			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
-					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList" });
+					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList", "vehicleResourceDetails" });
 
 			if (user.getVehicleDealerServSpareList() != null) {
 				List<VehicleServSpareListVO> searchVOs = new ArrayList<>();
@@ -245,6 +245,16 @@ public class DomainModelUtil {
 					vehicleDealerDetailsVO.add(searchFinanceVO);
 				}
 				userVO.setVehicleDealerServHypList(vehicleDealerDetailsVO);
+			}
+			
+			if (user.getVehicleResourceDetails() != null) {
+				List<VehicleResourceDetailsServVO> vehicleDealerDetailsVO = new ArrayList<>();
+				for (VehicleResourceDetailsServ vehicleDealerDetail : user.getVehicleResourceDetails()) {
+					VehicleResourceDetailsServVO searchFinanceVO = new VehicleResourceDetailsServVO();
+					BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+					vehicleDealerDetailsVO.add(searchFinanceVO);
+				}
+				userVO.setVehicleResourcDetails(vehicleDealerDetailsVO);
 			}
 
 		} catch (IllegalAccessException e) {
@@ -271,7 +281,7 @@ public class DomainModelUtil {
 		try {
 			// search
 			org.springframework.beans.BeanUtils.copyProperties(user, userVO,
-					new String[] { "vehicleDealerTranpHypList" });
+					new String[] { "vehicleDealerTranpHypList","vehicleResourceDetails" });
 
 			if (user.getVehicleDealerTranpHypList() != null) {
 				List<VehicleTranpHypListVO> vehicleDealerDetailsVO = new ArrayList<>();
@@ -281,6 +291,15 @@ public class DomainModelUtil {
 					vehicleDealerDetailsVO.add(searchFinanceVO);
 				}
 				userVO.setVehicleDealerTranpHypList(vehicleDealerDetailsVO);
+			}
+			if (user.getVehicleResourceDetails() != null) {
+				List<VehicleResourceDetailsTranspVO> vehicleDealerDetailsVO = new ArrayList<>();
+				for (VehicleResourceDetailsTransp vehicleDealerDetail : user.getVehicleResourceDetails()) {
+					VehicleResourceDetailsTranspVO searchFinanceVO = new VehicleResourceDetailsTranspVO();
+					BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
+					vehicleDealerDetailsVO.add(searchFinanceVO);
+				}
+				userVO.setVehicleResourceDetails(vehicleDealerDetailsVO);
 			}
 
 		} catch (IllegalAccessException e) {
@@ -2334,7 +2353,7 @@ public class DomainModelUtil {
 		try {
 
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-					new String[] { "vehicleDealerTranpHypList" });
+					new String[] { "vehicleDealerTranpHypList","vehicleResourceDetails" });
 
 			if (dealerVO.getVehicleDealerTranpHypList() != null) {
 				List<VehicleTranpHypList> vehicleDealerMakeLists = new ArrayList<>();
@@ -2344,6 +2363,15 @@ public class DomainModelUtil {
 					vehicleDealerMakeLists.add(vehicleDealerMakeList);
 				}
 				dealer.setVehicleDealerTranpHypList(vehicleDealerMakeLists);
+			}
+			if (dealerVO.getVehicleResourceDetails() != null) {
+				List<VehicleResourceDetailsTransp> vehicleDealerMakeLists = new ArrayList<>();
+				for (VehicleResourceDetailsTranspVO vehicleDealerMakeListVO : dealerVO.getVehicleResourceDetails()) {
+					VehicleResourceDetailsTransp vehicleDealerMakeList = new VehicleResourceDetailsTransp();
+					BeanUtils.copyProperties(vehicleDealerMakeList, vehicleDealerMakeListVO);
+					vehicleDealerMakeLists.add(vehicleDealerMakeList);
+				}
+				dealer.setVehicleResourceDetails(vehicleDealerMakeLists);
 			}
 
 		} catch (IllegalAccessException e) {
@@ -2411,7 +2439,7 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		try {
 
 			org.springframework.beans.BeanUtils.copyProperties(dealerVO, dealer,
-					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList" });
+					new String[] { "vehicleDealerServSpareList", "vehicleDealerServHypList", "vehicleResourceDetails" });
 
 			if (dealerVO.getVehicleDealerServSpareList() != null) {
 				List<VehicleServSpareList> vehicleDealerMakeLists = new ArrayList<>();
@@ -2430,6 +2458,15 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
 				}
 				dealer.setVehicleDealerServHypList(vehicleDealerAreaOfOperStates);
+			}
+			if (dealerVO.getVehicleResourceDetails() != null) {
+				List<VehicleResourceDetailsServ> vehicleDealerAreaOfOperStates = new ArrayList<>();
+				for (VehicleResourceDetailsServVO vehicleDealerAreaOfOperStateVO : dealerVO.getVehicleResourceDetails()) {
+					VehicleResourceDetailsServ vehicleDealerAreaOfOperState = new VehicleResourceDetailsServ();
+					BeanUtils.copyProperties(vehicleDealerAreaOfOperState, vehicleDealerAreaOfOperStateVO);
+					vehicleDealerAreaOfOperStates.add(vehicleDealerAreaOfOperState);
+				}
+				dealer.setVehicleResourceDetails(vehicleDealerAreaOfOperStates);
 			}
 
 		} catch (IllegalAccessException e) {
@@ -2590,6 +2627,41 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 			return dealer;
 		}
 		// end of Resource
+		
+		
+		// start serv slot
+				public UserQuotaReqBookSlotServ toServSlot(final UserQuotaReqBookSlotServVO dealerVO) {
+					UserQuotaReqBookSlotServ dealer = new UserQuotaReqBookSlotServ();
+						try {
+							BeanUtils.copyProperties(dealer, dealerVO);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					return dealer;
+				}
+				// end of serv slot
+				
+				// start tranp slot
+				public UserQuotaReqBookSlotTranp toTrnspSlot(final UserQuotaReqBookSlotTranpVO dealerVO) {
+					UserQuotaReqBookSlotTranp dealer = new UserQuotaReqBookSlotTranp();
+						try {
+							BeanUtils.copyProperties(dealer, dealerVO);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					return dealer;
+				}
+				// end of transp slot
 		
 		// start of user
 				public UserQuotaReqTestDrive toUserQuota(final UserQuotaReqTestDriveVO dealerVO) {

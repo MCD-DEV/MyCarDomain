@@ -102,7 +102,17 @@ public class FinanceEntityVO {
 	
 	
 	
+	private String subsType;
 	
+	
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
 	
 	
 	

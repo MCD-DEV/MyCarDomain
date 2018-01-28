@@ -92,6 +92,32 @@ public class ServiceMaintQuotation implements Serializable {
 			}
 
 	private String modelYear;
+	private String quotaStatus;
+	
+	public String getQuotaStatus() {
+		return quotaStatus;
+	}
+
+
+	public void setQuotaStatus(String quotaStatus) {
+		this.quotaStatus = quotaStatus;
+	}
+	
+	List<UserQuotaReqBookSlotServ> userQuotaReqBookSlotServ;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	
+	public List<UserQuotaReqBookSlotServ> getUserQuotaReqBookSlotServ() {
+		return userQuotaReqBookSlotServ;
+	}
+
+
+	public void setUserQuotaReqBookSlotServ(
+			List<UserQuotaReqBookSlotServ> userQuotaReqBookSlotServ) {
+		this.userQuotaReqBookSlotServ = userQuotaReqBookSlotServ;
+	}
+	
 	List<UserQuotationHistoryServ> userQuotationHistory;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

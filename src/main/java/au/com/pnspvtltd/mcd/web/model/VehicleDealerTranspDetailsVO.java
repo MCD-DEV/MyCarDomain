@@ -3,6 +3,7 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsTransp;
 import au.com.pnspvtltd.mcd.domain.VehicleTranpHypList;
 
 
@@ -47,10 +48,40 @@ private Long vehicleDealerTranspDetailId;
 	private String companyDesc;
 	private String companyAddress;
 	private String companyWeb;
+	private String vehicleType;
+	private String subsType;
+	
+	
+
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
+	
+	List<VehicleResourceDetailsTranspVO> vehicleResourceDetails;
 	
 	List<VehicleTranpHypListVO> vehicleDealerTranpHypList;
 	
 	
+	public List<VehicleResourceDetailsTranspVO> getVehicleResourceDetails() {
+		return vehicleResourceDetails;
+	}
+
+	public void setVehicleResourceDetails(List<VehicleResourceDetailsTranspVO> vehicleResourceDetails) {
+		this.vehicleResourceDetails = vehicleResourceDetails;
+	}
+
 	public String getFromCity() {
 		return fromCity;
 	}

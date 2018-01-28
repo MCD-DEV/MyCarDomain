@@ -41,15 +41,15 @@ import javax.persistence.OneToOne;
 	private Long userQuotationHistoryId;
 	 
 	
-	private FinanceQuotation vehicleQuotation;
+	private ServiceMaintQuotation vehicleQuotation;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 		@JoinColumn(name = "servMaintQuotId")
-		public FinanceQuotation getVehicleQuotation() {
+		public ServiceMaintQuotation getVehicleQuotation() {
 			return vehicleQuotation;
 		}
 
-		public void setVehicleQuotation(FinanceQuotation vehicleQuotation) {
+		public void setVehicleQuotation(ServiceMaintQuotation vehicleQuotation) {
 			this.vehicleQuotation = vehicleQuotation;
 		}
 	private String postCode;

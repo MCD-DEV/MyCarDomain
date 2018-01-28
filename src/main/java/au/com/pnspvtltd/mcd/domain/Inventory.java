@@ -108,6 +108,19 @@ public class Inventory implements Serializable {
 		/*private int counterOfViewingCar;
 		private int counterOfEnquiryCar;*/
 		private Date saleDate;
+		
+		private String subsType;
+		
+		
+
+		public String getSubsType() {
+			return subsType;
+		}
+
+		public void setSubsType(String subsType) {
+			this.subsType = subsType;
+		}
+
 
 		List<Feature> features;
 		List<Photo> photos;

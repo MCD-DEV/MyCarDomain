@@ -73,8 +73,42 @@ import javax.persistence.Table;
 	private String companyDesc;
 	private String companyAddress;
 	private String companyWeb;
+	private String vehicleType;
 	
+	
+	private String subsType;
+	
+	
+
+	public String getVehicleType() {
+		return vehicleType;
+	}
+
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
+	}
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
+	List<VehicleResourceDetailsTransp> vehicleResourceDetails;
 	List<VehicleTranpHypList> vehicleDealerTranpHypList;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "vehicleDealerTranspDetailId")
+	public List<VehicleResourceDetailsTransp> getVehicleResourceDetails() {
+		return vehicleResourceDetails;
+	}
+
+	public void setVehicleResourceDetails(
+			List<VehicleResourceDetailsTransp> vehicleResourcDetails) {
+		this.vehicleResourceDetails = vehicleResourcDetails;
+	}
+	
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")

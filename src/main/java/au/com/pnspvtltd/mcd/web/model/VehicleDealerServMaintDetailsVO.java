@@ -3,6 +3,7 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsServ;
 import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
 import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
 
@@ -56,7 +57,7 @@ public class VehicleDealerServMaintDetailsVO {
 	private double estHoursPartFix;
 	private double rateforExtHr;
 	private double clientPlaceDrCharg;
-	
+	List<VehicleResourceDetailsServVO> vehicleResourceDetails;
 	
 	List<VehicleServSpareListVO> vehicleDealerServSpareList;
 	List<VehicleServHypListVO> vehicleDealerServHypList;
@@ -67,6 +68,14 @@ public class VehicleDealerServMaintDetailsVO {
 	
 	public boolean isAll1() {
 		return all1;
+	}
+
+	public List<VehicleResourceDetailsServVO> getVehicleResourceDetails() {
+		return vehicleResourceDetails;
+	}
+
+	public void setVehicleResourcDetails(List<VehicleResourceDetailsServVO> vehicleResourceDetails) {
+		this.vehicleResourceDetails = vehicleResourceDetails;
 	}
 
 	public boolean isAddAutoAddCom() {
