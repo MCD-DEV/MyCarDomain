@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocsServ;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasServ;
 
 
@@ -92,12 +93,22 @@ public class ServiceMaintQuotationVO {
 	public void setQuotaStatus(String quotaStatus) {
 		this.quotaStatus = quotaStatus;
 	}
-	
+	List<UserQuotaDocServVO> userQuotaDocs;
 	List<UserQuotaReqBookSlotServVO> userQuotaReqBookSlotServ;
 	
 	List<UserQuotaReqTestDriveServVO> userQuotaReqTestDrive;
 	
 	
+	public List<UserQuotaDocServVO> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
+
+
+	public void setUserQuotaDocs(List<UserQuotaDocServVO> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
+
+
 	public List<UserQuotaReqBookSlotServVO> getUserQuotaReqBookSlotServ() {
 		return userQuotaReqBookSlotServ;
 	}

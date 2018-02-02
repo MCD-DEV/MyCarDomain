@@ -80,7 +80,20 @@ public class TranspServiceQuotation implements Serializable {
 	public void setTestDrive(boolean testDrive) {
 		this.testDrive = testDrive;
 	}
+	List<UserQuotaDocsTranp> userQuotaDocs;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TranspServQuotId")
+	
+	public List<UserQuotaDocsTranp> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
 
+
+	public void setUserQuotaDocs(
+			List<UserQuotaDocsTranp> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
 	List<UserQuotaReqBookSlotTranp> userQuotaReqBookSlotTranp;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

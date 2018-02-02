@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocsTranp;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqBookSlotTranp;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasTp;
 
@@ -202,10 +203,20 @@ public class TranspServiceQuotationVO {
 					public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveTranpVO> userQuotaReqTestDrive) {
 						this.userQuotaReqTestDrive = userQuotaReqTestDrive;
 					}
-					
+					List<UserQuotaDocTranpVO> userQuotaDocs;			
 		List<VehQuotExtrasTp> vehQuotExtras;
 		
 		
+		public List<UserQuotaDocTranpVO> getUserQuotaDocs() {
+			return userQuotaDocs;
+		}
+
+
+		public void setUserQuotaDocs(List<UserQuotaDocTranpVO> userQuotaDocs) {
+			this.userQuotaDocs = userQuotaDocs;
+		}
+
+
 		public List<VehQuotExtrasTp> getVehQuotExtras() {
 			return vehQuotExtras;
 		}

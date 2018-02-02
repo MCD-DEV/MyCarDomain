@@ -125,7 +125,20 @@ public class InsuranceQuotation implements Serializable {
 	private String adhoc4;
 
 	List<VehQuotExtrasIns> vehQuotExtras;
+	List<UserQuotaDocsIns> userQuotaDocs;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "finQuotId")
+	
+	public List<UserQuotaDocsIns> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
+
+
+	public void setUserQuotaDocs(
+			List<UserQuotaDocsIns> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "insQuotId")
 	

@@ -133,6 +133,20 @@ public class ServiceMaintQuotation implements Serializable {
 		this.userQuotationHistory = userQuotationHistory;
 	}
 	
+	List<UserQuotaDocsServ> userQuotaDocs;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	
+	public List<UserQuotaDocsServ> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
+
+
+	public void setUserQuotaDocs(
+			List<UserQuotaDocsServ> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
 	List<UserQuotaReqTestDriveServ> userQuotaReqTestDrive;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

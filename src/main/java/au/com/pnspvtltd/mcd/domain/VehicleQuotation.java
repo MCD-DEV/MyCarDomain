@@ -548,6 +548,21 @@ public class VehicleQuotation implements Serializable {
 			this.userQuotationHistory = userQuotationHistory;
 		}
 		
+		List<UserQuotaDocs> userQuotaDocs;
+		
+		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+		@JoinColumn(name = "quotId")
+		
+		public List<UserQuotaDocs> getUserQuotaDocs() {
+			return userQuotaDocs;
+		}
+
+
+		public void setUserQuotaDocs(
+				List<UserQuotaDocs> userQuotaDocs) {
+			this.userQuotaDocs = userQuotaDocs;
+		}
+		
 List<DealerQuotationHistory> dealerQuotationHistory;
 		
 		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

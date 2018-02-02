@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,6 +26,7 @@ import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
+import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
@@ -33,8 +35,10 @@ import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
+import au.com.pnspvtltd.mcd.web.model.DealerInsuranceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchListAdminVO;
@@ -42,6 +46,7 @@ import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtQtDealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
 //@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
@@ -66,6 +71,8 @@ public class VehicleQuotationController {
 	DealerSearchRepository dealerSearchRepository;
 	@Autowired
 	UserRepository userRepository;
+	@Autowired
+	private UserSearchLeadRepository userSearchLeadRepository;
 	@Autowired
 	DomainModelUtil domainModelUtil;
 	
@@ -227,10 +234,12 @@ public class VehicleQuotationController {
 		vehicleQuotation.setOfferPrice2(dealerVO.getOfferPrice2());// set Save Price
 		vehicleQuotation.setOfferPrice3(dealerVO.getOfferPrice3());// Actual value of Offer
 		// Offer Details select Template Id from Car Templates via list
-		vehicleQuotation.setModelYear(dealerVO.getModelYear());
-		vehicleQuotation.setModelDisplay(dealerVO.getModelDisplay());
-		vehicleQuotation.setModelName(dealerVO.getModelName());
-		vehicleQuotation.setModelTrim(dealerVO.getModelTrim());
+		Search search=userSearchLeadRepository.findOne(dealerVO.getCarSearchId());
+		
+		vehicleQuotation.setModelYear(search.getModelYear());
+		vehicleQuotation.setModelDisplay(search.getModelDisplay());
+		vehicleQuotation.setModelName(search.getModelName());
+		vehicleQuotation.setModelTrim(search.getModelTrim());
 		
 		// Addition of extras
 		

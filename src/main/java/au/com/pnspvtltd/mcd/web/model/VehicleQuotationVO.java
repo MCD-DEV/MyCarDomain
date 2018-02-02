@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.OfferDateList;
 import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocs;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDrive;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehQuotDoc;
@@ -510,8 +511,21 @@ public class VehicleQuotationVO {
 	public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveVO> userQuotaReqTestDrive) {
 		this.userQuotaReqTestDrive = userQuotaReqTestDrive;
 	}
+	List<UserQuotaDocVO> userQuotaDocs;
+	
 	List<UserQuotationHistoryVO> userQuotationHistoryVO;
 	
+	
+	public List<UserQuotaDocVO> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
+
+
+	public void setUserQuotaDocs(List<UserQuotaDocVO> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
+
+
 	public List<UserQuotationHistoryVO> getUserQuotationHistoryVO() {
 		return userQuotationHistoryVO;
 	}

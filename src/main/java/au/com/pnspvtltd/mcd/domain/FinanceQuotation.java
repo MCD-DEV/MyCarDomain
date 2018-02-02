@@ -174,7 +174,21 @@ public class FinanceQuotation implements Serializable {
 	public void setPostalAddress(String postalAddress) {
 		this.postalAddress = postalAddress;
 	}
+	List<UserQuotaDocsFin> userQuotaDocs;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "finQuotId")
+	
+	public List<UserQuotaDocsFin> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
 
+
+	public void setUserQuotaDocs(
+			List<UserQuotaDocsFin> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
+	
 	List<UserQuotaReqTestDriveFin> userQuotaReqTestDrive;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })

@@ -2680,6 +2680,23 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 				}
 				// end of Resource
 
+				
+				// start of quota doc
+				public UserQuotaDocs toQuotaDoc(final UserQuotaDocVO dealerVO) {
+					UserQuotaDocs dealer = new UserQuotaDocs();
+						try {
+							BeanUtils.copyProperties(dealer, dealerVO);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					return dealer;
+				}
+				// end of quota doc
 	// start of ResourceVO
 	public VehicleResourceDetailsVO toDealerResourceVO(final VehicleResourceDetails dealer) {
 		VehicleResourceDetailsVO dealerVO = new VehicleResourceDetailsVO();

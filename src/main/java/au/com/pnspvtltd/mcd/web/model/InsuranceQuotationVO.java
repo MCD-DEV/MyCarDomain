@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocsIns;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasIns;
 
 public class InsuranceQuotationVO {
@@ -105,10 +106,21 @@ public class InsuranceQuotationVO {
 	public void setTestDrive(boolean testDrive) {
 		this.testDrive = testDrive;
 	}
-
+	List<UserQuotaDocInsVO> userQuotaDocs;
+	
 	List<UserQuotaReqTestDriveInsVO> userQuotaReqTestDrive;
 	
 	
+	public List<UserQuotaDocInsVO> getUserQuotaDocs() {
+		return userQuotaDocs;
+	}
+
+
+	public void setUserQuotaDocs(List<UserQuotaDocInsVO> userQuotaDocs) {
+		this.userQuotaDocs = userQuotaDocs;
+	}
+
+
 	public List<UserQuotaReqTestDriveInsVO> getUserQuotaReqTestDrive() {
 		return userQuotaReqTestDrive;
 	}

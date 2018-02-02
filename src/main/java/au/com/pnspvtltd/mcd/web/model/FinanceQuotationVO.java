@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocsFin;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasFin;
 
 public class FinanceQuotationVO {
@@ -173,8 +174,19 @@ public class FinanceQuotationVO {
 		public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveFinVO> userQuotaReqTestDrive) {
 			this.userQuotaReqTestDrive = userQuotaReqTestDrive;
 		}
+		List<UserQuotaDocFinVO> userQuotaDocs;
 		List<UserQuotationHistoryFinVO> userQuotationHistoryVO;
 		
+		public List<UserQuotaDocFinVO> getUserQuotaDocs() {
+			return userQuotaDocs;
+		}
+
+
+		public void setUserQuotaDocs(List<UserQuotaDocFinVO> userQuotaDocs) {
+			this.userQuotaDocs = userQuotaDocs;
+		}
+
+
 		public List<UserQuotationHistoryFinVO> getUserQuotationHistoryVO() {
 			return userQuotationHistoryVO;
 		}
