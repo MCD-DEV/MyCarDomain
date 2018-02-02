@@ -29,6 +29,7 @@ import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
@@ -135,7 +136,15 @@ public class VehicleQuotationController {
 		vehicleQuotation.setVehQuotExtras(dealerVO.getVehQuotExtras());
 		vehicleQuotation.setVehQuotDoc(dealerVO.getVehQuotDoc());
 		vehicleQuotation.setOfferDateList(dealerVO.getOfferDateList());
-		vehicleQuotation.setVehicleResourcDetails(dealerVO.getVehicleResourcDetails());
+		// start of logic change of ID to resourceDetail
+		List<VehicleResourceDetailsQuo> vehicleResourceDetailsQuos= dealerVO.getVehicleResourcDetails();
+		List<VehicleResourceDetailsQuo> chVehicleResourceDetailsQuos = new ArrayList<VehicleResourceDetailsQuo>();
+		for (VehicleResourceDetailsQuo search : vehicleResourceDetailsQuos) {
+			search.setId(search.getVehicleResourceDetailId().toString());
+			search.setVehicleResourceDetailId(null);
+			chVehicleResourceDetailsQuos.add(search);
+		}
+		vehicleQuotation.setVehicleResourcDetails(chVehicleResourceDetailsQuos);
 		vehicleQuotation.setVehQuotTerm(dealerVO.getVehQuotTerm());
 		vehicleQuotation.setFname(dealerVO.getFname()); // Terms and conditions
 		vehicleQuotation.setBasicPrice(dealerVO.getBasicPrice()); // set Basic Price
@@ -148,6 +157,7 @@ public class VehicleQuotationController {
 		vehicleQuotation.setCreationDate(ourJavaDateObject);
 		vehicleQuotation.setStatus(true);
 		vehicleQuotation.setDealSearchId(dealerVO.getDealSearchId());
+		//vehicleQuotation.setDealSearchId(dealerVO.getCarSearchId());
 		DealerSearch extDealerSearch=dealerSearchRepository.findOne(dealerVO.getDealSearchId());
 		extDealerSearch.setStatus(true);
 		User user =userRepository.findOne(dealerVO.getUserId());
