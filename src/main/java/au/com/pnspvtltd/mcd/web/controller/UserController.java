@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.UserService;
 import au.com.pnspvtltd.mcd.web.model.MyVehicleVO;
+import au.com.pnspvtltd.mcd.web.model.UserOnlyVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 //@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
@@ -39,10 +40,20 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@GetMapping(value = "user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	/*@GetMapping(value = "user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserVO getUser(@PathVariable Long id, HttpServletResponse response) {
 		LOGGER.debug("Received request to get User with id {} ", id);
 		UserVO user = userService.findById(id);
+		if (user == null) {
+			response.setStatus(HttpStatus.NO_CONTENT.value());
+		}
+		return user;
+	}*/
+	
+	@GetMapping(value = "user/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserOnlyVO getUser(@PathVariable Long id, HttpServletResponse response) {
+		LOGGER.debug("Received request to get changed User with id {} ", id);
+		UserOnlyVO user = userService.findByUserOnlyId(id);
 		if (user == null) {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}

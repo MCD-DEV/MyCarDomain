@@ -36,7 +36,7 @@ public class UserQuotaDocsIns implements Serializable {
 
 	private Long userQuotationHistoryId;
 
-	private InsuranceQuotation vehicleQuotation;
+	/*private InsuranceQuotation vehicleQuotation;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "insQuotId")
@@ -47,7 +47,7 @@ public class UserQuotaDocsIns implements Serializable {
 	public void setVehicleQuotation(InsuranceQuotation vehicleQuotation) {
 		this.vehicleQuotation = vehicleQuotation;
 	}
-
+*/
 	private String docName;
 	
 	/*@Temporal(TemporalType.TIMESTAMP)*/

@@ -1023,7 +1023,7 @@ public class UserEBidController {
 			Calendar calendar = Calendar.getInstance();
 			java.sql.Timestamp ourJavaTimestampObject = new java.sql.Timestamp(calendar.getTime().getTime());
 		    
-		    vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
+		    //vehicleDealerDetails.setCreationDate(ourJavaTimestampObject);
 		    
 		    
 			if (vehicleQuotation.getUserQuotaDocs() != null) {

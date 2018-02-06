@@ -2,6 +2,7 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
+import au.com.pnspvtltd.mcd.web.model.UserOnlyVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 
 public interface UserService {
@@ -15,4 +16,6 @@ public interface UserService {
 	List<UserVO> findAllUsers();
 
 	UserVO findUserByEmail(String email);
+
+	UserOnlyVO findByUserOnlyId(Long id);
 }

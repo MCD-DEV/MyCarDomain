@@ -128,7 +128,7 @@ public class InsuranceQuotation implements Serializable {
 	List<UserQuotaDocsIns> userQuotaDocs;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "finQuotId")
+	@JoinColumn(name = "insQuotId")
 	
 	public List<UserQuotaDocsIns> getUserQuotaDocs() {
 		return userQuotaDocs;

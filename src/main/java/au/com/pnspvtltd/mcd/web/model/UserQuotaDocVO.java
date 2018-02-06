@@ -17,7 +17,7 @@ public class UserQuotaDocVO {
 	
 	
 	private String docName;
-	private Timestamp creationDate;
+	//private Timestamp creationDate;
 	
 	
 	
@@ -61,14 +61,14 @@ public class UserQuotaDocVO {
 	
 	
 	
-	public Timestamp getCreationDate() {
+	/*public Timestamp getCreationDate() {
 		return creationDate;
 	}
 
 
 	public void setCreationDate(Timestamp creationDate) {
 		this.creationDate = creationDate;
-	}
+	}*/
 
 	
 		

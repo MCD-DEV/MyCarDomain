@@ -115,6 +115,21 @@ public class DomainModelUtil {
 		return user;
 	}
 
+	public UserOnlyVO toUserOnly(final User user) {
+
+		UserOnlyVO userVO = new UserOnlyVO();
+		try {
+			BeanUtils.copyProperties(userVO, user);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return userVO;
+	}
+	
 	public ComingSoonVO fromComingSoonUser(final ComingSoonUser user) {
 
 		if (user == null) {

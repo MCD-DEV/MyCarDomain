@@ -34,6 +34,7 @@ import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.UserOnlyVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
 
@@ -117,6 +118,19 @@ public class UserServiceImpl implements UserService {
 		return userVO;
 	}
 
+	
+	@Override
+	@Transactional(readOnly = true)
+	public UserOnlyVO findByUserOnlyId(Long id) {
+		UserOnlyVO userVO = null;
+		User user = userRepository.findOne(id);
+		if (user != null) {
+			userVO = domainModelUtil.toUserOnly(user);
+		}
+		return userVO;
+	}
+	
+	
 	@Override
 	@Transactional
 	public UserVO createUser(UserVO userVO) {

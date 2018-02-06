@@ -36,22 +36,11 @@ public class UserQuotaDocs implements Serializable {
 
 	private Long userQuotationHistoryId;
 
-	private VehicleQuotation vehicleQuotation;
-
-	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
-	@JoinColumn(name = "quotId")
-	public VehicleQuotation getVehicleQuotation() {
-		return vehicleQuotation;
-	}
-
-	public void setVehicleQuotation(VehicleQuotation vehicleQuotation) {
-		this.vehicleQuotation = vehicleQuotation;
-	}
-
+	
 	private String docName;
 	
 	/*@Temporal(TemporalType.TIMESTAMP)*/
-	private Timestamp creationDate;
+	//private Timestamp creationDate;
 	
 	private String descDoc;
 
@@ -88,14 +77,7 @@ public class UserQuotaDocs implements Serializable {
 
 	
 
-	@Column(name = "CREATIONDATE")
-	public Timestamp getCreationDate() {
-		return creationDate;
-	}
-
-	public void setCreationDate(Timestamp creationDate) {
-		this.creationDate = creationDate;
-	}
+	
 
 	/* end */
 
