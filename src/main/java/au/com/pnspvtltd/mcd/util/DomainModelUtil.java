@@ -205,9 +205,9 @@ public class DomainModelUtil {
 					}
 					userVO.setQuotationFeatList(searchVOs);
 				}
-				if (user.getVehicleResourceDetails() != null) {
+				if (user.getVehicleResourcDetails() != null) {
 					List<VehicleResourceDetailsInvVO> vehicleDealerDetailsVO = new ArrayList<>();
-					for (VehicleResourceDetailsInv vehicleDealerDetail : user.getVehicleResourceDetails()) {
+					for (VehicleResourceDetailsInv vehicleDealerDetail : user.getVehicleResourcDetails()) {
 						VehicleResourceDetailsInvVO searchFinanceVO = new VehicleResourceDetailsInvVO();
 						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
 						vehicleDealerDetailsVO.add(searchFinanceVO);
@@ -612,7 +612,7 @@ public class DomainModelUtil {
 				}
 			}
 
-			inventory.setVehicleResourceDetails(quoList1);
+			inventory.setVehicleResourcDetails(quoList1);
 
 		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
@@ -3606,9 +3606,9 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 				}
 
 				if (vehicleQuotation.getVehicleResourcDetails() != null) {
-					List<VehicleResourceDetailsQuo> vehicleDealerDetailsVO = new ArrayList<>();
+					List<VehicleResourceDetailsQuoVO> vehicleDealerDetailsVO = new ArrayList<>();
 					for (VehicleResourceDetailsQuo vehicleDealerDetail : vehicleQuotation.getVehicleResourcDetails()) {
-						VehicleResourceDetailsQuo searchFinanceVO = new VehicleResourceDetailsQuo();
+						VehicleResourceDetailsQuoVO searchFinanceVO = new VehicleResourceDetailsQuoVO();
 						BeanUtils.copyProperties(searchFinanceVO, vehicleDealerDetail);
 						vehicleDealerDetailsVO.add(searchFinanceVO);
 					}

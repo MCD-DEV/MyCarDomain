@@ -43,6 +43,8 @@ public class Inventory implements Serializable {
 	// New car or old car
 		private boolean isNewCar;
 		private String typeOfCar;
+		private String vendorStockNoString;
+		private String additionalDetails;
 
 		// vehicle description by vendor
 		private String vehicleDescriptin;
@@ -129,11 +131,11 @@ public class Inventory implements Serializable {
 		
 		@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 		@JoinColumn(name = "repoId")
-		public List<VehicleResourceDetailsInv> getVehicleResourceDetails() {
+		public List<VehicleResourceDetailsInv> getVehicleResourcDetails() {
 			return vehicleResourcDetails;
 		}
 
-		public void setVehicleResourceDetails(
+		public void setVehicleResourcDetails(
 				List<VehicleResourceDetailsInv> vehicleResourcDetails) {
 			this.vehicleResourcDetails = vehicleResourcDetails;
 		}
@@ -150,6 +152,23 @@ public class Inventory implements Serializable {
 				this.quotationFeatList = quotationFeatList;
 			}
 		
+
+		public String getAdditionalDetails() {
+				return additionalDetails;
+			}
+
+			public void setAdditionalDetails(String additionalDetails) {
+				this.additionalDetails = additionalDetails;
+			}
+
+		public String getVendorStockNoString() {
+				return vendorStockNoString;
+			}
+
+			public void setVendorStockNoString(String vendorStockNoString) {
+				this.vendorStockNoString = vendorStockNoString;
+			}
+
 
 		// kolor
 		private String carColor;

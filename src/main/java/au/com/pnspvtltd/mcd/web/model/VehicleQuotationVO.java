@@ -169,14 +169,14 @@ public class VehicleQuotationVO {
 	List<VehQuotTerm> vehQuotTerm;
 	List<OfferDateList> offerDateList;
 	
-	List<VehicleResourceDetailsQuo> vehicleResourcDetails;
+	List<VehicleResourceDetailsQuoVO> vehicleResourcDetails;
 	
 	
-	public List<VehicleResourceDetailsQuo> getVehicleResourcDetails() {
+	public List<VehicleResourceDetailsQuoVO> getVehicleResourcDetails() {
 		return vehicleResourcDetails;
 	}
 
-	public void setVehicleResourcDetails(List<VehicleResourceDetailsQuo> vehicleResourcDetails) {
+	public void setVehicleResourcDetails(List<VehicleResourceDetailsQuoVO> vehicleResourcDetails) {
 		this.vehicleResourcDetails = vehicleResourcDetails;
 	}
 	

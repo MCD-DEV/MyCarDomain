@@ -67,6 +67,7 @@ public class VehicleDealerDetailsVO {
 	 private int postcode;
 	
 	 // finance and insurance
+	 private String finVehicleType;
 	 private String afslNo;
 		private String authRepNo;
 		private String aclNo;
@@ -126,6 +127,14 @@ public class VehicleDealerDetailsVO {
 	 
 	 
 	
+
+	public String getFinVehicleType() {
+		return finVehicleType;
+	}
+
+	public void setFinVehicleType(String finVehicleType) {
+		this.finVehicleType = finVehicleType;
+	}
 
 	public List<VehicleDealerInsDetailsVO> getVehicleDealerInsDetails() {
 		return vehicleDealerInsDetails;

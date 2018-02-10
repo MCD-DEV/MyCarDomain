@@ -67,7 +67,7 @@ public class InventoryVO {
 		private String intColor;
 		private String wheelSize;
 		private String seatMake;
-
+		private String vendorStockNoString;
 		// External Fittings
 		private String extFittingFlex1;
 		private String extFittingFlex2;
@@ -120,7 +120,16 @@ public class InventoryVO {
 		List<FeatureVO> features;
 		List<PhotoVO> photos;
 
-		
+		private String additionalDetails;
+
+		public String getVendorStockNoString() {
+			return vendorStockNoString;
+		}
+
+		public void setVendorStockNoString(String vendorStockNoString) {
+			this.vendorStockNoString = vendorStockNoString;
+		}
+
 
 		// kolor
 		private String carColor;
@@ -177,6 +186,14 @@ public class InventoryVO {
 
 	public long getRefId() {
 		return refId;
+	}
+
+	public String getAdditionalDetails() {
+		return additionalDetails;
+	}
+
+	public void setAdditionalDetails(String additionalDetails) {
+		this.additionalDetails = additionalDetails;
 	}
 
 	public String getExtColour() {

@@ -40,8 +40,16 @@ import au.com.pnspvtltd.mcd.domain.ExternalDealerTp;
 import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.LoyalityProgAdmin;
 import au.com.pnspvtltd.mcd.domain.QuotationFeatList;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerServMaintDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsServ;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsTransp;
+import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
+import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
 import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
+import au.com.pnspvtltd.mcd.domain.VehicleTranpHypList;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerInsRepository;
@@ -57,6 +65,8 @@ import au.com.pnspvtltd.mcd.repository.ExternalDealerTpRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.LoyalityProgAdminRepository;
 import au.com.pnspvtltd.mcd.repository.VehicleResourceDetailsRepo;
+import au.com.pnspvtltd.mcd.repository.VehicleServMasterRepo;
+import au.com.pnspvtltd.mcd.repository.VehicleTranspMasterRepo;
 import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
@@ -112,8 +122,14 @@ import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerServMaintDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerTranspDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsInvVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsServVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsTranspVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServHypListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServSpareListVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleTranpHypListVO;
 
 //@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -167,7 +183,10 @@ public class DealerController {
 	private InventoryRepository inventoryRepository;
 	@Autowired
 	private VehicleResourceDetailsRepo vehicleResourceDetailsRepo;
-
+	@Autowired
+	private VehicleServMasterRepo vehicleServMasterRepo;
+	@Autowired
+	private VehicleTranspMasterRepo vehicleTranspMasterRepo;
 	@Autowired
 	DomainModelUtil domainModelUtil;
 
@@ -357,7 +376,7 @@ public class DealerController {
 
 	@PutMapping("dealer/updateInventory")
 	@Transactional
-	public Inventory updateInventory(@RequestBody InventoryVO inventoryVO, HttpServletResponse response) {
+	public InventoryVO updateInventory(@RequestBody InventoryVO inventoryVO, HttpServletResponse response) {
 		Inventory user = new Inventory();
 		LOGGER.debug("Received request to update inventory {}", inventoryVO.getRepoId());
 		// TODO: create a service for VehicleQutotation to update quotation
@@ -390,6 +409,9 @@ public class DealerController {
 			user.setState(inventoryVO.getState());
 			user.setDealAmountMin(inventoryVO.getDealAmountMin());
 			user.setDealAmountMax(inventoryVO.getDealAmountMax());
+			user.setVehicleDescriptin(inventoryVO.getVehicleDescriptin());
+			user.setVendorStockNoString(inventoryVO.getVendorStockNoString());
+			user.setAdditionalDetails(inventoryVO.getAdditionalDetails());
 			user.setNewCar(inventoryVO.isNewCar());
 			// user.setStockItem(inventoryVO.getStockItem());
 			// user.setDealerId(inventoryVO.getDealerId());
@@ -414,13 +436,59 @@ public class DealerController {
 					e.printStackTrace();
 				}
 				user.setQuotationFeatList(quoList);
-				inventoryRepository.flush();
+				//inventoryRepository.flush();
 
-				// user.setAreaName(userMyVehicleVO.); // phone number
-				// vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+				//ssssssssssssssss
 			}
+			
+			
+			List<VehicleResourceDetailsInvVO> qvo1 = inventoryVO.getVehicleResourcDetails();
+			List<VehicleResourceDetailsInv> quoList1 = new ArrayList<VehicleResourceDetailsInv>();
+
+			Iterator<VehicleResourceDetailsInvVO> it1 = qvo1.iterator();
+			for (; it1.hasNext();) {
+				VehicleResourceDetailsInvVO local = it1.next();
+				VehicleResourceDetailsInv quo1 = new VehicleResourceDetailsInv();
+				try {
+					BeanUtils.copyProperties(quo1, local);
+					
+					List<VehicleSocialListVO> qvo22 = local.getVehicleSocialList();
+					List<VehicleSocialList> quoList22 = new ArrayList<VehicleSocialList>();
+
+					Iterator<VehicleSocialListVO> it22 = qvo22.iterator();
+					for (; it22.hasNext();) {
+						VehicleSocialListVO local22 = it22.next();
+						VehicleSocialList quo22 = new VehicleSocialList();
+						try {
+							BeanUtils.copyProperties(quo22, local22);
+							quoList22.add(quo22);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						quo1.setVehicleSocialList(quoList22);
+
+					}
+					
+					
+					quoList1.add(quo1);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			user.setVehicleResourcDetails(quoList1);
+
+			}
+			
+			inventoryRepository.save(user);
 		}
-		return user;
+		return inventoryVO;
 	}
 
 	@PostMapping("dealer/addInventoryUser")
@@ -1091,15 +1159,297 @@ public class DealerController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				// user.setVehicleSocialList(quoList);
+				user.setVehicleSocialList(quoList);
 
 			}
-			vehicleResourceDetailsRepo.flush();
+			
+			vehicleResourceDetailsRepo.save(user);
+			//vehicleResourceDetailsRepo.flush();
 			// user.setAreaName(userMyVehicleVO.); // phone number
 			// vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}
 
 		return user;
+	}
+	
+	/**
+	 * Update service Master
+	 * 
+	 * @param vehicleResourceVO
+	 * @param response
+	 * @return
+	 */
+	/* Subscription Starts */
+	@PutMapping("dealer/updateServiceMaster")
+	@Transactional
+	public VehicleDealerServMaintDetailsVO updateServiceMas(@RequestBody VehicleDealerServMaintDetailsVO inventoryVO,
+			HttpServletResponse response) {
+		VehicleDealerServMaintDetails user = new VehicleDealerServMaintDetails();
+		LOGGER.debug("Received request to update service Master {}", inventoryVO.getVehicleDealerServMaintDetailId());
+		
+		if (inventoryVO != null) {
+			user = vehicleServMasterRepo.findOne(inventoryVO.getVehicleDealerServMaintDetailId());
+			try {
+				BeanUtils.copyProperties(user, inventoryVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			/*user.setVehicleType(inventoryVO.getVehicleType());
+			user.setPetrol(inventoryVO.isPetrol());
+			user.setDiesel(inventoryVO.isDiesel());
+			user.setElectric(inventoryVO.isElectric());
+			user.setAll1(inventoryVO.isAll1());
+			user.setClientPlaceDriveYes(inventoryVO.isClientPlaceDriveYes());
+			user.setClientPlaceDriveMaybe(inventoryVO.isClientPlaceDriveMaybe());
+			user.setClientPlaceDriveNo(inventoryVO.isClientPlaceDriveNo());
+			user.setRoadAssistance(inventoryVO.isRoadAssistance());
+			user.setServMastLevel1(inventoryVO.getServMastLevel1());
+			user.setServMastLevel2(inventoryVO.getServMastLevel2());
+			user.setServMastLevel3(inventoryVO.getServMastLevel3());
+			
+			user.setCompanyName(inventoryVO.getCompanyName());
+			user.setCompanyDesc(inventoryVO.getCompanyDesc());
+			user.setCompanyAddress(inventoryVO.getCompanyAddress());
+			user.setCompanyWeb(inventoryVO.getCompanyWeb());
+			
+			
+			user.setFixedPrice(inventoryVO.isFixedPrice());
+			user.setHourlyRate(inventoryVO.isHourlyRate());
+			user.setPartFixPartHr(inventoryVO.isPartFixPartHr());
+			user.setAutoQuote(inventoryVO.isAutoQuote());
+			user.setAddAutoAddCom(inventoryVO.isAddAutoAddCom());
+			user.setBrowComSec(inventoryVO.isBrowComSec());
+			
+			user.setEstHourFix(inventoryVO.getEstHourFix());
+			user.setMinChargHr(inventoryVO.getMinChargHr());
+			user.setHourRate(inventoryVO.getHourRate());
+			user.setFixHours(inventoryVO.getFixHours());
+			user.setFixedRate(inventoryVO.getFixedRate());
+			user.setEstHoursPartFix(inventoryVO.getEstHoursPartFix());
+			user.setRateforExtHr(inventoryVO.getRateforExtHr());
+			user.setClientPlaceDrCharg(inventoryVO.getClientPlaceDrCharg());
+			
+			user.setIndividual(inventoryVO.isIndividual());
+			user.setLicensedBroker(inventoryVO.isLicensedBroker());
+			user.setServMaintInstitute(inventoryVO.isServMaintInstitute());
+			user.setNewCar(inventoryVO.isNewCar());
+			user.setUsedCar(inventoryVO.isUsedCar());
+			user.setBoth(inventoryVO.isBoth());
+			
+			user.setSubsType(inventoryVO.getSubsType());*/
+			
+			
+			List<VehicleResourceDetailsServVO> qvo = inventoryVO.getVehicleResourceDetails();
+			List<VehicleResourceDetailsServ> quoList = new ArrayList<VehicleResourceDetailsServ>();
+
+			Iterator<VehicleResourceDetailsServVO> it = qvo.iterator();
+			for (; it.hasNext();) {
+				VehicleResourceDetailsServVO local = it.next();
+				VehicleResourceDetailsServ quo = new VehicleResourceDetailsServ();
+				try {
+					BeanUtils.copyProperties(quo, local);
+
+
+					List<VehicleSocialListVO> qvo22 = local.getVehicleSocialList();
+					List<VehicleSocialList> quoList22 = new ArrayList<VehicleSocialList>();
+
+					Iterator<VehicleSocialListVO> it22 = qvo22.iterator();
+					for (; it22.hasNext();) {
+						VehicleSocialListVO local22 = it22.next();
+						VehicleSocialList quo22 = new VehicleSocialList();
+						try {
+							BeanUtils.copyProperties(quo22, local22);
+							quoList22.add(quo22);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						quo.setVehicleSocialList(quoList22);
+
+					}
+					
+					quoList.add(quo);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				
+				
+				 user.setVehicleResourceDetails(quoList);
+
+			}
+			
+			List<VehicleServSpareListVO> qvo1 = inventoryVO.getVehicleDealerServSpareList();
+			List<VehicleServSpareList> quoList1 = new ArrayList<VehicleServSpareList>();
+
+			Iterator<VehicleServSpareListVO> it1 = qvo1.iterator();
+			for (; it1.hasNext();) {
+				VehicleServSpareListVO local = it1.next();
+				VehicleServSpareList quo1 = new VehicleServSpareList();
+				try {
+					BeanUtils.copyProperties(quo1, local);
+					quoList1.add(quo1);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				user.setVehicleDealerServSpareList(quoList1);
+
+			}
+			
+			List<VehicleServHypListVO> qvo2 = inventoryVO.getVehicleDealerServHypList();
+			List<VehicleServHypList> quoList2 = new ArrayList<VehicleServHypList>();
+
+			Iterator<VehicleServHypListVO> it2 = qvo2.iterator();
+			for (; it2.hasNext();) {
+				VehicleServHypListVO local = it2.next();
+				VehicleServHypList quo2 = new VehicleServHypList();
+				try {
+					BeanUtils.copyProperties(quo2, local);
+					quoList2.add(quo2);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				user.setVehicleDealerServHypList(quoList2);
+
+			}
+			
+			VehicleDealerServMaintDetails dealer = vehicleServMasterRepo.save(user);
+			//vehicleServMasterRepo.flush();
+			
+			
+			
+			// user.setAreaName(userMyVehicleVO.); // phone number
+			// vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+		}
+
+		return inventoryVO;
+	}
+	
+	
+	/**
+	 * Update transport Master
+	 * 
+	 * @param vehicleResourceVO
+	 * @param response
+	 * @return
+	 */
+	/* Subscription Starts */
+	@PutMapping("dealer/updateTranspMaster")
+	@Transactional
+	public VehicleDealerTranspDetailsVO updateServiceMas(@RequestBody VehicleDealerTranspDetailsVO inventoryVO,
+			HttpServletResponse response) {
+		VehicleDealerTranspDetails user = new VehicleDealerTranspDetails();
+		LOGGER.debug("Received request to update transport Master {}", inventoryVO.getVehicleDealerTranspDetailId());
+		
+		if (inventoryVO != null) {
+			user = vehicleTranspMasterRepo.findOne(inventoryVO.getVehicleDealerTranspDetailId());
+			try {
+				BeanUtils.copyProperties(user, inventoryVO);
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			List<VehicleResourceDetailsTranspVO> qvo = inventoryVO.getVehicleResourceDetails();
+			List<VehicleResourceDetailsTransp> quoList = new ArrayList<VehicleResourceDetailsTransp>();
+
+			Iterator<VehicleResourceDetailsTranspVO> it = qvo.iterator();
+			for (; it.hasNext();) {
+				VehicleResourceDetailsTranspVO local = it.next();
+				VehicleResourceDetailsTransp quo = new VehicleResourceDetailsTransp();
+				try {
+					BeanUtils.copyProperties(quo, local);
+					
+					List<VehicleSocialListVO> qvo22 = local.getVehicleSocialList();
+					List<VehicleSocialList> quoList22 = new ArrayList<VehicleSocialList>();
+
+					Iterator<VehicleSocialListVO> it22 = qvo22.iterator();
+					for (; it22.hasNext();) {
+						VehicleSocialListVO local22 = it22.next();
+						VehicleSocialList quo22 = new VehicleSocialList();
+						try {
+							BeanUtils.copyProperties(quo22, local22);
+							quoList22.add(quo22);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						quo.setVehicleSocialList(quoList22);
+
+					}
+					
+					quoList.add(quo);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				 user.setVehicleResourceDetails(quoList);
+
+			}
+			
+			List<VehicleTranpHypListVO> qvo1 = inventoryVO.getVehicleDealerTranpHypList();
+			List<VehicleTranpHypList> quoList1 = new ArrayList<VehicleTranpHypList>();
+
+			Iterator<VehicleTranpHypListVO> it1 = qvo1.iterator();
+			for (; it1.hasNext();) {
+				VehicleTranpHypListVO local = it1.next();
+				VehicleTranpHypList quo1 = new VehicleTranpHypList();
+				try {
+					BeanUtils.copyProperties(quo1, local);
+					quoList1.add(quo1);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			user.setVehicleDealerTranpHypList(quoList1);
+
+			}
+			
+			
+			VehicleDealerTranspDetails dealer = vehicleTranspMasterRepo.save(user);
+			//return domainModelUtil.fromDealer(dealer, true);
+			
+			//vehicleTranspMasterRepo.flush();
+			
+			
+			
+			// user.setAreaName(userMyVehicleVO.); // phone number
+			// vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
+		}
+
+		return inventoryVO;
 	}
 
 }

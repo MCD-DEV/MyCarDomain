@@ -57,6 +57,18 @@ public class VehicleDealerServMaintDetailsVO {
 	private double estHoursPartFix;
 	private double rateforExtHr;
 	private double clientPlaceDrCharg;
+	
+	private String subsType;
+	
+	
+
+	public String getSubsType() {
+		return subsType;
+	}
+
+	public void setSubsType(String subsType) {
+		this.subsType = subsType;
+	}
 	List<VehicleResourceDetailsServVO> vehicleResourceDetails;
 	
 	List<VehicleServSpareListVO> vehicleDealerServSpareList;

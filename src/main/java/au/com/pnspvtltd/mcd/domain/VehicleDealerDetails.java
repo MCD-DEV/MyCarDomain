@@ -127,6 +127,7 @@ import javax.persistence.Table;
 	 private int postcode;
 	 
 	 // finance and insurance
+	 private String finVehicleType;
 	 private String afslNo;
 		private String authRepNo;
 		private String aclNo;
@@ -186,6 +187,14 @@ import javax.persistence.Table;
 	 
 	 
 	 
+	public String getFinVehicleType() {
+		return finVehicleType;
+	}
+
+	public void setFinVehicleType(String finVehicleType) {
+		this.finVehicleType = finVehicleType;
+	}
+
 	public boolean isPetrol() {
 		return petrol;
 	}

@@ -1,11 +1,14 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,9 +32,16 @@ import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
 import au.com.pnspvtltd.mcd.domain.Search;
 import au.com.pnspvtltd.mcd.domain.SearchFinance;
 import au.com.pnspvtltd.mcd.domain.User;
+import au.com.pnspvtltd.mcd.domain.UserQuotaDocs;
+import au.com.pnspvtltd.mcd.domain.UserQuotaReqTestDrive;
+import au.com.pnspvtltd.mcd.domain.UserQuotationHistory;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtras;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsInv;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsQuo;
+import au.com.pnspvtltd.mcd.domain.VehicleServHypList;
+import au.com.pnspvtltd.mcd.domain.VehicleServSpareList;
+import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerSearchRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
@@ -46,8 +56,16 @@ import au.com.pnspvtltd.mcd.web.model.ExtDealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.ExtQtDealerSearchListAdminVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaDocVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveVO;
+import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleDealerInsuranceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsInvVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsQuoVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServHypListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleServSpareListVO;
+import au.com.pnspvtltd.mcd.web.model.VehicleSocialListVO;
 
 //@CrossOrigin(origins = "http://springbootaws-env.yh4cnzetmj.us-east-1.elasticbeanstalk.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
@@ -116,6 +134,168 @@ public class VehicleQuotationController {
 		return vehicleQuotationVO;
 	}
 	
+	@PutMapping("vehicleQuotationUpd")
+	@Transactional
+	public VehicleQuotationVO updVehicleQuotation(@RequestBody VehicleQuotationVO vehicleQuotationVO,
+			HttpServletResponse response) {
+		LOGGER.debug("Received request to update total VehicleQuotation {}", vehicleQuotationVO.getQuotId());
+	    //TODO: create a service for VehicleQutotation to update quotation details
+		if(vehicleQuotationVO != null){
+			VehicleQuotation vehicleQuotation = vehicleQuotationRepository.findOne(vehicleQuotationVO.getQuotId());
+			vehicleQuotation.setRegoEndDate(vehicleQuotationVO.getRegoEndDate());// set Offer Valid Date
+			vehicleQuotation.setDriveAwayPrice(vehicleQuotationVO.getDriveAwayPrice()); // set Drive Away Price
+			vehicleQuotation.setOfferPrice2(vehicleQuotationVO.getOfferPrice2());// set Save Price
+			vehicleQuotation.setOfferPrice3(vehicleQuotationVO.getOfferPrice3());// Actual value of Offer
+			// Offer Details select Template Id from Car Templates via list
+			vehicleQuotation.setModelYear(vehicleQuotationVO.getModelYear());
+			vehicleQuotation.setModelDisplay(vehicleQuotationVO.getModelDisplay());
+			vehicleQuotation.setModelName(vehicleQuotationVO.getModelName());
+			vehicleQuotation.setModelTrim(vehicleQuotationVO.getModelTrim());
+			vehicleQuotation.setVehQuotExtras(vehicleQuotationVO.getVehQuotExtras());
+			vehicleQuotation.setVehQuotDoc(vehicleQuotationVO.getVehQuotDoc());
+			vehicleQuotation.setOfferDateList(vehicleQuotationVO.getOfferDateList());
+			// start of logic change of ID to resourceDetail
+			/*List<VehicleResourceDetailsQuo> vehicleResourceDetailsQuos= vehicleQuotationVO.getVehicleResourcDetails();
+			List<VehicleResourceDetailsQuo> chVehicleResourceDetailsQuos = new ArrayList<VehicleResourceDetailsQuo>();
+			for (VehicleResourceDetailsQuo search : vehicleResourceDetailsQuos) {
+				search.setId(search.getVehicleResourceDetailId().toString());
+				search.setVehicleResourceDetailId(null);
+				chVehicleResourceDetailsQuos.add(search);
+			}
+			vehicleQuotation.setVehicleResourcDetails(chVehicleResourceDetailsQuos);*/
+			
+			List<VehicleResourceDetailsQuoVO> qvo1 = vehicleQuotationVO.getVehicleResourcDetails();
+			List<VehicleResourceDetailsQuo> quoList1 = new ArrayList<VehicleResourceDetailsQuo>();
+
+			Iterator<VehicleResourceDetailsQuoVO> it1 = qvo1.iterator();
+			for (; it1.hasNext();) {
+				VehicleResourceDetailsQuoVO local = it1.next();
+				VehicleResourceDetailsQuo quo1 = new VehicleResourceDetailsQuo();
+				try {
+					BeanUtils.copyProperties(quo1, local);
+					
+					List<VehicleSocialListVO> qvo22 = local.getVehicleSocialList();
+					List<VehicleSocialList> quoList22 = new ArrayList<VehicleSocialList>();
+
+					Iterator<VehicleSocialListVO> it22 = qvo22.iterator();
+					for (; it22.hasNext();) {
+						VehicleSocialListVO local22 = it22.next();
+						VehicleSocialList quo22 = new VehicleSocialList();
+						try {
+							BeanUtils.copyProperties(quo22, local22);
+							quoList22.add(quo22);
+						} catch (IllegalAccessException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (InvocationTargetException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						quo1.setVehicleSocialList(quoList22);
+
+					}
+					
+					
+					quoList1.add(quo1);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				vehicleQuotation.setVehicleResourcDetails(quoList1);
+
+			}
+			
+			
+			
+			vehicleQuotation.setVehQuotExtras(vehicleQuotationVO.getVehQuotExtras());
+			vehicleQuotation.setVehQuotDoc(vehicleQuotationVO.getVehQuotDoc());
+			vehicleQuotation.setVehQuotTerm(vehicleQuotationVO.getVehQuotTerm());
+			vehicleQuotation.setOfferDateList(vehicleQuotationVO.getOfferDateList());
+						
+			
+			
+			
+			
+			
+			
+			List<UserQuotaDocVO> qvo2 = vehicleQuotationVO.getUserQuotaDocs();
+			List<UserQuotaDocs> quoList2 = new ArrayList<UserQuotaDocs>();
+
+			Iterator<UserQuotaDocVO> it2 = qvo2.iterator();
+			for (; it2.hasNext();) {
+				UserQuotaDocVO local = it2.next();
+				UserQuotaDocs quo2 = new UserQuotaDocs();
+				try {
+					BeanUtils.copyProperties(quo2, local);
+					quoList2.add(quo2);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				vehicleQuotation.setUserQuotaDocs(quoList2);
+
+			}
+			
+			List<UserQuotaReqTestDriveVO> qvo3 = vehicleQuotationVO.getUserQuotaReqTestDrive();
+			List<UserQuotaReqTestDrive> quoList3 = new ArrayList<UserQuotaReqTestDrive>();
+
+			Iterator<UserQuotaReqTestDriveVO> it3 = qvo3.iterator();
+			for (; it3.hasNext();) {
+				UserQuotaReqTestDriveVO local = it3.next();
+				UserQuotaReqTestDrive quo3 = new UserQuotaReqTestDrive();
+				try {
+					BeanUtils.copyProperties(quo3, local);
+					quoList3.add(quo3);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				vehicleQuotation.setUserQuotaReqTestDrive(quoList3);
+
+			}
+			
+			List<UserQuotationHistoryVO> qvo4 = vehicleQuotationVO.getUserQuotationHistoryVO();
+			List<UserQuotationHistory> quoList4 = new ArrayList<UserQuotationHistory>();
+
+			Iterator<UserQuotationHistoryVO> it4 = qvo4.iterator();
+			for (; it4.hasNext();) {
+				UserQuotationHistoryVO local = it4.next();
+				UserQuotationHistory quo4 = new UserQuotationHistory();
+				try {
+					BeanUtils.copyProperties(quo4, local);
+					quoList4.add(quo4);
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (InvocationTargetException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				vehicleQuotation.setUserQuotationHistory(quoList4);
+
+			}
+			
+			
+			
+			
+			vehicleQuotation.setVehQuotTerm(vehicleQuotationVO.getVehQuotTerm());
+			vehicleQuotation.setFname(vehicleQuotationVO.getFname()); // Terms and conditions
+			vehicleQuotation.setBasicPrice(vehicleQuotationVO.getBasicPrice()); // set Basic Price
+			
+			vehicleQuotationRepository.save(vehicleQuotation);
+		}
+		return vehicleQuotationVO;
+	}
+	
 	@PutMapping("dealerQuotCreation")
 	public VehicleQuotation dealerQuotCreation(@RequestBody VehicleQuotationVO dealerVO, HttpServletResponse response) {
 		LOGGER.debug("Received request to create Quotati for Ext Dealer {}", dealerVO);
@@ -144,12 +324,24 @@ public class VehicleQuotationController {
 		vehicleQuotation.setVehQuotDoc(dealerVO.getVehQuotDoc());
 		vehicleQuotation.setOfferDateList(dealerVO.getOfferDateList());
 		// start of logic change of ID to resourceDetail
-		List<VehicleResourceDetailsQuo> vehicleResourceDetailsQuos= dealerVO.getVehicleResourcDetails();
+		List<VehicleResourceDetailsQuoVO> vehicleResourceDetailsQuos= dealerVO.getVehicleResourcDetails();
 		List<VehicleResourceDetailsQuo> chVehicleResourceDetailsQuos = new ArrayList<VehicleResourceDetailsQuo>();
-		for (VehicleResourceDetailsQuo search : vehicleResourceDetailsQuos) {
+		for (VehicleResourceDetailsQuoVO search : vehicleResourceDetailsQuos) {
 			search.setId(search.getVehicleResourceDetailId().toString());
 			search.setVehicleResourceDetailId(null);
-			chVehicleResourceDetailsQuos.add(search);
+			VehicleResourceDetailsQuo th = new VehicleResourceDetailsQuo();
+			
+			try {
+				BeanUtils.copyProperties(th, search);
+				
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InvocationTargetException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			chVehicleResourceDetailsQuos.add(th);
 		}
 		vehicleQuotation.setVehicleResourcDetails(chVehicleResourceDetailsQuos);
 		vehicleQuotation.setVehQuotTerm(dealerVO.getVehQuotTerm());
