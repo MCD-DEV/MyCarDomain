@@ -873,7 +873,13 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
             <div class="container">
               <div class="col-sm-10 col-md-10">
                 <div id="main">
- 					<!-- full-width-style  -->               
+ 					<!-- full-width-style  --> 
+ 					<!-- <div class="travelo-box contact-box">
+			            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#inviteModal"><i class="fa fa-users PR5 PT2" aria-hidden="true" style="color:yellow"></i>Invite Your Friend</button>
+			            <br/><br/> 	
+                 	
+					
+					    </div>   -->            
                     <div class="tab-container arrow-left dashboard">
                         <ul class="tabs">
                             <li class="active"><a data-toggle="tab" href="#dashboard"><i id="usrleftnav" class="soap-icon-anchor circle"></i>Users</a></li>
@@ -883,6 +889,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
                              <li class=""><a data-toggle="tab" href="#finRequest"><i id="usrleftnav" class="soap-icon-user circle"></i>Finance Requests</a></li>
                              <li class=""><a data-toggle="tab" href="#insRequest"><i id="usrleftnav" class="soap-icon-user circle"></i>Insurance Requests</a></li>
                               <li class=""><a data-toggle="tab" href="#extDealCreate"><i id="usrleftnav" class="soap-icon-user circle"></i>Ext-Dealer Creation</a></li>
+                              <li class=""><a data-toggle="tab" href="#extDealSearch"><i id="usrleftnav" class="soap-icon-user circle"></i>Ext-Dealer Search</a></li>
                             <!-- <li class=""><a data-toggle="tab" href="#cruise-description"><i class="soap-icon-status circle"></i>My Vehicle</a></li> -->
                             <!-- <li class=""><a data-toggle="tab" href="#VehicleQuotation12"><i id="usrleftnav" class="flaticon-private-garage circle"></i>Vehicle Garage</a></li>
                             <li class="" id="logBookTab"><a data-toggle="tab" href="#l2Profile1"><i id="usrleftnav" class="flaticon-log-file-format-symbol"></i>Log Book</a></li>
@@ -3578,7 +3585,7 @@ Date is Required</b></span>
 	                                        <!-- end of Finance requests -->
 	                                        <!-- end of insurance requests -->
 	                                        
-	                                        <!--  Start of External Dealer Creation -->
+	                                        <!--  Start of External Dealer Creation nowssssdsd-->
 	                                        
 	                                        <div id="extDealCreate" class="tab-pane fade">
 				                      
@@ -5395,7 +5402,416 @@ Date is Required</b></span>
 													</div>
 	                                        
 	                                        
-	                                        <!--  End of External Dealer Creation -->
+	                                        
+	                                        <!--  start of External Dealer Search 12345678 -->
+	                                        
+	                                        
+	                                        <!--  Start of External Dealer Creation nowssssdsd-->
+	                                        
+	                                        <div id="extDealSearch" class="tab-pane fade">
+				                      
+				                       			 <div class="col-md-12 product-search-title">
+                                                     	<label>External Dealer Search for Dealers (New && Used), Service and Maintenance, Finance</label> 
+                                                  </div>
+                                                  
+                                                  <ul class="nav nav-tabs">
+															<li class="dropdown active">
+															    <a class="dropdown-toggle" data-toggle="dropdown" href="#">External Dealer Search
+															    <span class="caret"></span></a>
+															    <ul class="dropdown-menu">
+															      <li><a data-toggle="tab" href="#NuExtDealSearch">Dealer Search</a></li>
+															      <li><a data-toggle="tab" href="#ExtSvSearch">S & M Dealer Search</a></li>
+															      <li><a data-toggle="tab" href="#ExtTpSearch">Transport Dealer Search</a></li>
+															      <li><a data-toggle="tab" href="#ExtFinSearch">Financer's Dealer Search</a></li>
+															      <li><a data-toggle="tab" href="#ExtInsSearch">Insurance's Dealer Search</a></li>
+															      <li><a data-toggle="tab" href="#LoyalPrgSearch">Loyality Create Search</a></li>
+															    </ul>
+															  </li>
+														    
+														  </ul>
+                                                   <!-- Start for External Dealer Creation -->
+                                                   <div class="tab-content">
+                                                    <div id="NuExtDealSearch" class="tab-pane fade in active">
+														   
+	<!--  start of create -->
+	
+															   <h4><center>External Dealer Search for Dealer (New and Used Cars)</center></h4>
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerSearchfrm" name="ExtDealerSearchfrm" ng-submit="getallDealerInfor()">
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categoryExtS" name="categoryExtS" ng-model="categoryExtS" placeholder="Category [Vehicle Dealer]" required>
+																								<option value="" disabled selected>Category Type </option>
+																								<option>Motor Cars-Used</option>
+																								<option>Motor Cars-New</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerSearchfrm.categoryExtS.$error.required &amp;&amp; (!ExtDealerSearchfrm.categoryExtS.$pristine || ExtDealerSearchfrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+														<!-- <div class="col-sm-3 col-md-3">
+															<input type="text" id="companyExtDeal" name="companyExtDeal"
+																ng-model="companyExtDeal" class="input-text full-width"
+																value="" placeholder="Company Name [Vehicle Dealer]"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerSearchfrm.companyExtDeal.$error.required &amp;&amp; (!ExtDealerSearchfrm.companyExtDeal.$pristine || ExtDealerSearchfrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div> -->
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateExtDeal" name="stateExtDeal"
+																ng-model="stateExtDeal" class="input-text full-width"
+																value="" placeholder="State [Vehicle Dealer]"
+																/>
+															
+														</div>
+														
+														
+														
+																		
+														
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Search External Dealer for Dealers (New and Used)</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+															<h4>List of External Dealer  (New and Used)</h4>
+                                         <table id="car-model-dealerData">
+                                        </table>	
+																
+	<!--  end of create -->
+															
+															
+														    </div>
+                                                  
+                                                   <!-- End for External Dealer Search -->
+                                                   
+                                                   <!--  Start of S&M Dealer Creation -->
+                                                   <div id="ExtSvSearch" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>External Dealer Search for Service and Maintenance</center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerSvSearchfrm" name="ExtDealerSvSearchfrm" ng-submit="getallDealerSvInfo()">
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categorySvExtSh" name="categorySvExtSh" ng-model="categorySvExtSh" placeholder="Category [S&M Dealer]" required>
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Motor Engineers Repairers</option>
+																								<option>Mechanical Engineers</option>
+																								<option>Motor Radiator Services</option>
+																								<option>Motor Replacement Parts</option>
+																								<option>Motor Sport Services</option>
+																								<option>Motor Vehicle Inspection Testing</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerSvSearchfrm.categorySvExtSh.$error.required &amp;&amp; (!ExtDealerSvSearchfrm.categorySvExtSh.$pristine || ExtDealerSvSearchfrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+														<!-- <div class="col-sm-3 col-md-3">
+															<input type="text" id="companySvExtSh" name="companySvExtSh"
+																ng-model="companySvExtSh" class="input-text full-width"
+																value="" placeholder="Company [S&M Dealer]"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerSvSearchfrm.companySvExtSh.$error.required &amp;&amp; (!ExtDealerSvSearchfrm.companySvExtSh.$pristine || ExtDealerSvSearchfrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div> -->
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateSvExtSh" name="stateSvExtSh"
+																ng-model="stateSvExtSh" class="input-text full-width"
+																value="" placeholder="State [S&M Dealer]"
+																/>
+															
+														</div>
+														
+														
+																		
+														
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Search External Dealer for Service and Maintenance</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+												<h4>List of External Dealer Service and Maintenance</h4>
+                                         <table id="car-model-dealerDataSm">
+                                        </table>				
+																
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+														    
+														    <!-- Start of Transport -->
+														    <div id="ExtTpSearch" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>External Dealer Search for Transport</center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerTpSearchfrm" name="ExtDealerTpSearchfrm" ng-submit="getallDealerTpInfo()">
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categoryTpExtSrh" name="categoryTpExtSrh" ng-model="categoryTpExtSrh" placeholder="Category [Transp Dealer]" required>
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Car Transport</option>
+																								<option>House removals</option>
+																								<option>Relocation services</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerTpSearchfrm.categoryTpExtSrh.$error.required &amp;&amp; (!ExtDealerTpSearchfrm.categoryTpExtSrh.$pristine || ExtDealerTpSearchfrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+														<!-- <div class="col-sm-3 col-md-3">
+															<input type="text" id="companyTpExtSrh" name="companyTpExtSrh"
+																ng-model="companyTpExtSrh" class="input-text full-width"
+																value="" placeholder="Company [Transp Dealer]"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerTpSearchfrm.companyTpExtSrh.$error.required &amp;&amp; (!ExtDealerTpSearchfrm.companyTpExtSrh.$pristine || ExtDealerTpSearchfrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div> -->
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateTpExtSrh" name="stateTpExtSrh"
+																ng-model="stateTpExtSrh" class="input-text full-width"
+																value="" placeholder="State"
+																/>
+															
+														</div>
+														
+																												
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Search External Dealer for Transport</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+												<h4>List of External Dealer Transport</h4>
+                                         <table id="car-model-dealerDataTp">
+                                        </table>				
+																
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+														    <!-- End of Transport -->
+<!--  start of External Finance -->
+														    <div id="ExtFinSearch" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>External Dealer Search for Financers</center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerFinSearchfrm" name="ExtDealerFinSearchfrm" ng-submit="getallDealerFnInfo()" novalidate>
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categoryFinExtSrh" name="categoryFinExtSrh" ng-model="categoryFinExtSrh" placeholder="Category" required>
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Finance Brokers</option>
+																								<option>Finance Factoring</option>
+																								<option>Finance Mortgage Loans</option>
+																								<option>Finance Motor Vehicle</option>
+																								<option>Financial Planning</option>
+																								<option>Financiers</option>
+																								<option>Mortgage Brokers</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerFinSearchfrm.categoryFinExtSrh.$error.required &amp;&amp; (!ExtDealerFinSearchfrm.categoryFinExtSrh.$pristine || ExtDealerFinSearchfrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+							<!-- 							<div class="col-sm-3 col-md-3">
+															<input type="text" id="companyFinExtSrh" name="companyFinExtSrh"
+																ng-model="companyFinExtSrh" class="input-text full-width"
+																value="" placeholder="Company"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerFinSearchfrm.companyFinExtSrh.$error.required &amp;&amp; (!ExtDealerFinSearchfrm.companyFinExtSrh.$pristine || ExtDealerFinSearchfrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div>
+							 -->							
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateFinExtSrh" name="stateFinExtSrh"
+																ng-model="stateFinExtSrh" class="input-text full-width"
+																value="" placeholder="State"
+																/>
+															
+														</div>
+														
+														
+														
+														
+																	
+														
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Search External Dealer for Financer's</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+																<h4>List of External Dealer for Finance</h4>
+                                         <table id="car-model-dealerDataFin">
+                                        </table>
+																
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+
+<!-- end of External Finance -->														    
+												<!-- Start of External Insurance -->
+												
+														    <div id="ExtInsSearch" class="tab-pane fade">
+	<!--  start of create -->
+	 <h4><center>External Dealer Search for Insurer's</center></h4>
+															   
+																<div class="booking-section travelo-box" >
+																	<form class="booking-form" id="ExtDealerInsSearchfrm" name="ExtDealerInsSearchfrm" ng-submit="getallDealerIsInfo()" novalidate>
+															<div class="col-sm-3 col-md-3">
+																						<div class="selector">
+																							<select class="full-width" id="categoryInsExtSrh" name="categoryInsExtSrh" ng-model="categoryInsExtSrh" placeholder="Category" required>
+																								<option value="" disabled selected>Category Type</option>
+																								<option>Fire Marine Accident and General Insurance</option>
+																								<option>Health Insurance</option>
+																								<option>Insurance Agents</option>
+																								<option>Insurance Assessors Loss Adjusters</option>
+																								<option>Insurance Brokers</option>
+																								<option>Insurance Life</option>
+																								<option>Insurance Motor Vehicle</option>
+																							</select>
+																							<span style="color: red"
+																ng-show="ExtDealerInsSearchfrm.categoryInsExtSrh.$error.required &amp;&amp; (!ExtDealerInsSearchfrm.categoryInsExtSrh.$pristine || ExtDealerInsSearchfrm.$submitted)"><b>Category
+																	is Required</b></span>
+																						</div>
+																			 </div>    	
+														
+														<!-- <div class="col-sm-3 col-md-3">
+															<input type="text" id="companyInsExtSrh" name="companyInsExtSrh"
+																ng-model="companyInsExtSrh" class="input-text full-width"
+																value="" placeholder="Company"
+																required/>
+															<span style="color: red"
+																ng-show="ExtDealerInsSearchfrm.companyInsExtSrh.$error.required &amp;&amp; (!ExtDealerInsSearchfrm.companyInsExtSrh.$pristine || ExtDealerInsSearchfrm.$submitted)"><b>Company
+																	is Required</b></span>
+														</div> -->
+														
+														
+														<div class="col-sm-3 col-md-3">
+															<input type="text" id="stateInsExtSrh" name="stateInsExtSrh"
+																ng-model="stateInsExtSrh" class="input-text full-width"
+																value="" placeholder="State"
+																/>
+															
+														</div>
+														
+																															
+														
+													
+													<br />
+													<div class="row">
+										                                    <div class="col-sm-6 col-md-6">
+										                                        <button type="submit" class="full-width btn btn-warning btn-large">Search External Dealer for Insurer's</button>
+										                                    </div>
+										                                </div>
+													
+																	
+
+																		
+																		
+																		</div>
+																	
+																</form>
+																
+																
+															<h4>List of External Dealer for Insurer's</h4>
+                                         <table id="car-model-dealerDataIns">
+                                        </table>	
+	<!--  end of create -->
+															
+															
+															<!-- Lead for Extern start-->
+																
+																<!-- end -->
+														    </div>
+
+												    
+												
+												<!-- End of External Insurance -->	
+												
+												
+													    
+														    </div>
+                                                   <!--  End of S&M Dealer Creation -->
+
+                                                  
+                                                 
+												
+	                                        
+	                                         
+													</div>
+	                                        <!-- end of External Dealer Search -->
+	                                        
+	                                        <!--  End of External Dealer Creation kkkkkkkkk-->
 	                                       </div> 
 	                                        
 				             <hr></div>
@@ -8397,88 +8813,52 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 <div class="modale"><!-- Place at bottom of page --></div>
 
 
-<!--Verification Modal -->
-		<div id="inviteModal" class="modal fade" role="dialog">
+
+		
+		<!--Invite Modal -->
+		<!-- <div id="inviteModal" class="modal fade" role="dialog">
 		  <div class="modal-dialog">
 		
-		    <!-- Modal content-->
+		    Modal content
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title" style="color:#bd191e">Verification Process</h4>
+		        <h4 class="modal-title" style="color:#bd191e">Invite friend!</h4>
 		      </div>
 		      <div class="modal-body">
-		      	<form name="VerfFrm" id="VerfFrm" ng-submit="VerfFrmSub()" novalidate>
-			        <div class="form-group row">
+		      	<form name="inviteFrm" id="inviteFrm" ng-submit="inviteFrmSub(inviteFrm.$valid)" novalidate>
+			        <div class="row">
+						<div class="col-sm-8 col-md-8">
+							<input type="email" id="inviteEmail" name="inviteEmail"
+																ng-model="inviteEmail" class="input-text full-width"
+																value="" placeholder="Friend s Email ID" required/>
+							<span style="color: red"
+																ng-show="inviteFrm.inviteEmail.$error.required &amp;&amp; (!inviteFrm.inviteEmail.$pristine || inviteFrm.$submitted)"><b>Email ID is Required</b></span>
+							
+						</div>
+		          	</div><br/>	
 			        
-			        <!-- <div class="row">
-		          		<div class="col-sm-6 col-md-6">
-		         		<button class="btn btn-default btn-block" style="color:green;"><b>Existing Status</b>&nbsp;&nbsp;<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"></i></button>
-						</div>
-		          	</div> -->
-						<div class="col-sm-6 col-md-6">
-							<label for="VerfMob">Mobile No:</label>
-							<input type="text" id="VerfMob" name="VerfMob"
-																ng-model="VerfMob" class="input-text full-width"
-																value="" placeholder="Mobile No" readonly/>
-						</div>
-						
-						<div class="col-sm-6 col-md-6">
-							<label for="verMob">Verify:</label>
+			        
+			        <div class="row">
+			          		<div class="col-sm-4 col-md-4">
+								<input type="text" id="inviteFname" name="inviteFname"
+																	ng-model="inviteFname" class="input-text full-width"
+																	value="" placeholder="First Name" required/>
+								<span style="color: red"
+																	ng-show="inviteFrm.inviteFname.$error.required &amp;&amp; (!inviteFrm.inviteFname.$pristine || inviteFrm.$submitted)"><b>First Name is Required</b></span>
+							</div>
+							<div class="col-sm-4 col-md-4">
+								<input type="text" id="inviteLname" name="inviteLname"
+																	ng-model="inviteLname" class="input-text full-width"
+																	value="" placeholder="Last Name" required/>
+								<span style="color: red"
+																	ng-show="inviteFrm.inviteLname.$error.required &amp;&amp; (!inviteFrm.inviteLname.$pristine || inviteFrm.$submitted)"><b>Last Name is Required</b></span>																
+							</div>
 							
-							<input type="radio"  ng-value="true"  ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == true">True
-							<input type="radio" ng-value="false" ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == false">False
-							
-							<!-- <div class="radio">
-								<label><input type="radio"  ng-value="true"  ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == true">True</label>
-							</div>class="newUsedCarEbid" 
-							<div class="radio">
-								<label><input type="radio" ng-value="false" ng-model="mobCheck" name="mobCheck" ng-checked="mobCheck == false">False</label>
-							</div> -->
-						</div>
-						<div class="col-sm-3 col-md-3" ng-show="mobCheck == true">
-							<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"><b> Verified</b></i>
-						</div>
-						<div class="col-sm-3 col-md-3" ng-show="mobCheck == false">
-							<i class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;"><b> Not Verified</b></i>
-						</div>
-		          	</div><br/>	
-		          	
-		          	<div class="form-group row">
-						<div class="col-sm-6 col-md-6">
-							<label for="verLIC">License No:</label>
-							<input type="text" id="VerfLIC" name="VerfLIC"
-																ng-model="VerfLIC" class="input-text full-width"
-																value="" placeholder="Licence No" readonly/>							
-						</div>
-						
-						
-						<div class="col-sm-6 col-md-6">
-							<label for="VerfLIC">Verify:</label>
-							<input type="radio"  ng-value="true"  ng-model="idCheck" name="idCheck" ng-checked="idCheck">True
-							<input type="radio" ng-value="false" ng-model="idCheck" name="idCheck" ng-checked="idCheck">False
-							
-							
-							<!-- 
-							<div class="radio">
-								<label><input type="radio"  ng-value="true"  ng-model="idCheck" name="idCheck" ng-checked="idCheck">True</label>
-							</div>class="newUsedCarEbid" 
-							<div class="radio">
-								<label><input type="radio" ng-value="false" ng-model="idCheck" name="idCheck" ng-checked="idCheck">False</label>
-							</div> -->
-						</div>
-						
-						<div class="col-sm-3 col-md-3" ng-show="idCheck == true">
-							<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"><b> Verified</b></i>
-						</div> 
-						<div class="col-sm-3 col-md-3" ng-show="idCheck == false">
-							<i class="glyphicon glyphicon-remove" aria-hidden="true" style="color:red;"><b> Not Verified</b></i>
-						</div>
-						 
-		          	</div><br/>	
+			          	</div><br/>
 		          	<div class="row">
-		          		<div class="col-sm-6 col-md-6">
-		         		<button class="btn btn-default btn-block" style="color:green;"><b>Update Status</b>&nbsp;&nbsp;<i class="glyphicon glyphicon-ok" aria-hidden="true" style="color:green;"></i></button>
+		          		<div class="col-sm-8 col-md-8">
+		         		<button class="btn btn-success btn-block">Invite the friend&nbsp;&nbsp;&nbsp;<i class="fa fa-usd PR5 PT2" aria-hidden="true" style="color:yellow"></i></button>
 						</div>
 		          	</div>
 		          	<div class="row">
@@ -8493,6 +8873,6 @@ js.src = "http://connect.facebook.net/en_US/all.js";
 		    </div>
 		
 		  </div>
-		</div>
+		</div> -->
 </body>
 </html>
