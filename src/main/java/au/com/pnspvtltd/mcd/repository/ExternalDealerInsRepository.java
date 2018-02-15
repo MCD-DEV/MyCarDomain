@@ -26,5 +26,9 @@ public interface ExternalDealerInsRepository extends JpaRepository<ExternalDeale
 	@Query("SELECT search FROM ExternalDealerIns search WHERE search.category=?1 AND search.postCode=?2" +
 			" ORDER BY search.externalDealerId")
 			public List<ExternalDealerIns> getSearchCatPost(String category, int postCode);
+	
+	@Query("SELECT search FROM ExternalDealerIns search WHERE search.category=?1 AND search.state=?2" +
+			" ORDER BY search.externalDealerId")
+			public List<ExternalDealerIns> getSearchCatSt(String category, String state);
 		
 }

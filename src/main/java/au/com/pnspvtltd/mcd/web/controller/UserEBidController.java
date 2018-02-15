@@ -91,6 +91,7 @@ import au.com.pnspvtltd.mcd.web.model.SearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.SearchVO;
 import au.com.pnspvtltd.mcd.web.model.ServiceMaintQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.TranspServiceQuotationVO;
+import au.com.pnspvtltd.mcd.web.model.UserAdminInviteMailVO;
 import au.com.pnspvtltd.mcd.web.model.UserAdminSearchVO;
 import au.com.pnspvtltd.mcd.web.model.UserChatAllVO;
 import au.com.pnspvtltd.mcd.web.model.UserEBidFinanceVO;
@@ -517,6 +518,29 @@ public class UserEBidController {
 		
 		return userReferPoint;
 	}
+	
+	
+	@PostMapping("eBid/sendInviteEmailFrAd")
+	public UserAdminInviteMailVO sendInviteEmailFrAd(@RequestBody UserAdminInviteMailVO userEBidVO) {
+		
+		
+		//UserReferPoints userReferPoint = new UserReferPoints();
+			try {
+				smtp.sendMail(userEBidVO.getfName(),userEBidVO.getlName(),userEBidVO.getFirstName(),userEBidVO.getLastName(),userEBidVO.getReferedEmailId(), "Autoscoop Notification",
+						"You have been successfully Registered");
+			} catch (MessagingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		
+		return userEBidVO;
+	}
+	
+	
 	@PostMapping("eBid/questionRealLoyal")
 	public UserReferPoints questionRealLoyal(@RequestBody UserReferPointsVO userEBidVO) {
 		

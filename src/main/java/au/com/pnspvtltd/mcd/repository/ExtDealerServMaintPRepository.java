@@ -20,5 +20,9 @@ public interface ExtDealerServMaintPRepository extends JpaRepository<ExtDealServ
 			" ORDER BY search.externalDealerId")
 			public List<ExtDealServMaint> getSearchCatPost(String category, int postCode);
 	
+	@Query("SELECT search FROM ExtDealServMaint search WHERE search.category=?1 AND search.state=?2" +
+			" ORDER BY search.externalDealerId")
+			public List<ExtDealServMaint> getSearchCatSt(String category, String state);
+	
 
 }

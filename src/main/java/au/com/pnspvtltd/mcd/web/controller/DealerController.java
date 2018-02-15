@@ -804,7 +804,44 @@ public class DealerController {
 
 		return userAdminSearchVO12;
 	}
+	
+	@GetMapping(value = "getExtDealNu", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExternalDealerSearchVO getExtDealNu(@RequestParam("category") String category,
+			@RequestParam("state") String state) {
+		LOGGER.debug("Received request to get External Dealer for New Used id {} ");
+		ExternalDealerSearchVO userAdminSearchVO12 = new ExternalDealerSearchVO();
 
+		List<ExternalDealer> users = externalDealerRepository.getSearchState(category, state);
+		List<ExternalDealerVO> searchVOs = new ArrayList<ExternalDealerVO>();
+		for (ExternalDealer search : users) {
+			ExternalDealerVO dealVO = domainModelUtil.toExternalDealerVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExternalDealerVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
+
+	
+	@GetMapping(value = "getExtDealTpSt", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExternalDealerTpListVO getExtDealTpSt(@RequestParam("category") String category,
+			@RequestParam("state") String state) {
+		LOGGER.debug("Received request to get External Dealer Tranport State id {} ");
+		ExternalDealerTpListVO userAdminSearchVO12 = new ExternalDealerTpListVO();
+
+		List<ExternalDealerTp> users = externalDealerTpRepository.getSearchCatPost(category, state);
+		List<ExternalDealerTpVO> searchVOs = new ArrayList<ExternalDealerTpVO>();
+		for (ExternalDealerTp search : users) {
+			ExternalDealerTpVO dealVO = domainModelUtil.toExternalDealerTpVO1(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExternalDealerVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
+
+	
+	
 	@GetMapping(value = "getExtDealTp", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ExternalDealerTpListVO getExtDealTp(@RequestParam("category") String category,
 			@RequestParam("postCode") int postCode) {
@@ -822,6 +859,29 @@ public class DealerController {
 		return userAdminSearchVO12;
 	}
 
+	// start of Finance and state
+	// start of Finance
+	@GetMapping(value = "getExtDealFinSt", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExternalDealerFinListVO getExtDealFinSt(@RequestParam("category") String category,
+			@RequestParam("state") String state) {
+		LOGGER.debug("Received request to get External Dealer Fin id and State{} ");
+		ExternalDealerFinListVO userAdminSearchVO12 = new ExternalDealerFinListVO();
+
+		List<ExternalDealerFin> users = externalDealerFinRepository.getSearchCatPost(category, state);
+		List<ExternalDealerFinVO> searchVOs = new ArrayList<ExternalDealerFinVO>();
+		for (ExternalDealerFin search : users) {
+			ExternalDealerFinVO dealVO = domainModelUtil.toExternalDealerFinVO1(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExternalDealerVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
+
+	// end of Finance and State
+	
+	
+	
 	// start of Finance
 	@GetMapping(value = "getExtDealFin", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ExternalDealerFinListVO getExtDealFin(@RequestParam("category") String category,
@@ -840,6 +900,27 @@ public class DealerController {
 		return userAdminSearchVO12;
 	}
 
+	
+	// starrt of Insurance and state
+		@GetMapping(value = "getExtDealInsSt", produces = { MediaType.APPLICATION_JSON_VALUE })
+		public ExternalDealerInsListVO getExtDealInsSt(@RequestParam("category") String category,
+				@RequestParam("string") String state) {
+			LOGGER.debug("Received request to get External Dealer Ins and state id {} ");
+			ExternalDealerInsListVO userAdminSearchVO12 = new ExternalDealerInsListVO();
+
+			List<ExternalDealerIns> users = externalDealerInsRepository.getSearchCatSt(category, state);
+			List<ExternalDealerInsVO> searchVOs = new ArrayList<ExternalDealerInsVO>();
+			for (ExternalDealerIns search : users) {
+				ExternalDealerInsVO dealVO = domainModelUtil.toExternalDealerInsVO1(search);
+				searchVOs.add(dealVO);
+			}
+			userAdminSearchVO12.setExternalDealerVO(searchVOs);
+
+			return userAdminSearchVO12;
+		}
+	
+	
+	
 	// starrt of Insurance
 	@GetMapping(value = "getExtDealIns", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ExternalDealerInsListVO getExtDealIns(@RequestParam("category") String category,
@@ -858,6 +939,24 @@ public class DealerController {
 		return userAdminSearchVO12;
 	}
 
+	@GetMapping(value = "getExtDealSmSt", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExternalDealerSmVO getExtDealSmSt(@RequestParam("category") String category,
+			@RequestParam("state") String state) {
+		LOGGER.debug("Received request to get External Dealer s&m state id {} ");
+		ExternalDealerSmVO userAdminSearchVO12 = new ExternalDealerSmVO();
+
+		List<ExtDealServMaint> users = extDealerServMaintPRepository.getSearchCatSt(category, state);
+		List<ExtDealerServMaintVO> searchVOs = new ArrayList<ExtDealerServMaintVO>();
+		for (ExtDealServMaint search : users) {
+			ExtDealerServMaintVO dealVO = domainModelUtil.toExternalDealerSmVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setExternalDealerVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
+	
+	
 	@GetMapping(value = "getExtDealSM", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ExternalDealerSmVO getExtDealSM(@RequestParam("category") String category,
 			@RequestParam("postCode") int postCode) {
@@ -1123,7 +1222,7 @@ public class DealerController {
 
 	@PutMapping("dealer/updateResource")
 	@Transactional
-	public VehicleResourceDetails updateInventory(@RequestBody VehicleResourceDetailsVO inventoryVO,
+	public VehicleResourceDetailsVO updateInventory(@RequestBody VehicleResourceDetailsVO inventoryVO,
 			HttpServletResponse response) {
 		VehicleResourceDetails user = new VehicleResourceDetails();
 		LOGGER.debug("Received request to update resource {}", inventoryVO.getVehicleResourceDetailId());
@@ -1169,7 +1268,7 @@ public class DealerController {
 			// vehicleQuotation.setMoveToUser(vehicleQuotationVO.isMoveToUser());
 		}
 
-		return user;
+		return inventoryVO;
 	}
 	
 	/**
