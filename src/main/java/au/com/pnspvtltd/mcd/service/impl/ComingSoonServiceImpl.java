@@ -2,8 +2,6 @@ package au.com.pnspvtltd.mcd.service.impl;
 
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +15,7 @@ import au.com.pnspvtltd.mcd.web.model.ComingSoonVO;
 @Service
 public class ComingSoonServiceImpl implements ComingSoonService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(ComingSoonServiceImpl.class);
+	//private static final Logger LOGGER = LoggerFactory.getLogger(ComingSoonServiceImpl.class);
 
 	@Autowired
 	ComingSoonRepository userRepository;

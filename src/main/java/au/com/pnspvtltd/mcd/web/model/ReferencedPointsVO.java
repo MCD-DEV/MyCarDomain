@@ -1,18 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 
 public class ReferencedPointsVO {
 
@@ -30,11 +18,11 @@ public class ReferencedPointsVO {
 	private Date creationDate;
 	private long idp;
 	private String action;
-	
+
 	private boolean provStatus;
 	private boolean status;
 	private long refUserId;
-	
+
 	public long getRefUserId() {
 		return refUserId;
 	}
@@ -43,7 +31,6 @@ public class ReferencedPointsVO {
 		this.refUserId = refUserId;
 	}
 
-	
 	public boolean isProvStatus() {
 		return provStatus;
 	}
@@ -67,7 +54,7 @@ public class ReferencedPointsVO {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
+
 	public String getAction() {
 		return action;
 	}
@@ -75,6 +62,7 @@ public class ReferencedPointsVO {
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -82,7 +70,7 @@ public class ReferencedPointsVO {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -90,6 +78,7 @@ public class ReferencedPointsVO {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -97,9 +86,7 @@ public class ReferencedPointsVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
 	public Long getReferPointId() {
 		return referPointId;
 	}
@@ -107,12 +94,10 @@ public class ReferencedPointsVO {
 	public void setReferPointId(Long referPointId) {
 		this.referPointId = referPointId;
 	}
-	
+
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
-
-	
 
 	public String getReferencedEmailId() {
 		return referencedEmailId;
@@ -173,7 +158,5 @@ public class ReferencedPointsVO {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

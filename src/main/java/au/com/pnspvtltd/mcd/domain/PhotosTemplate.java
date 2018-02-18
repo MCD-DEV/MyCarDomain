@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "templatephotos")
 public class PhotosTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long templatePhotoId;
 	private String photo1;
 	private String flex1;

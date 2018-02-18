@@ -1,6 +1,5 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -9,17 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import au.com.pnspvtltd.mcd.service.CarModelTemplateService;
-import au.com.pnspvtltd.mcd.service.CountyRegPostSubService;
 import au.com.pnspvtltd.mcd.service.FinanceCompanyService;
-import au.com.pnspvtltd.mcd.service.ServiceLevelService;
 import au.com.pnspvtltd.mcd.service.impl.DealerServiceImpl;
-import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
 //@CrossOrigin(origins = "http://www.shirdienterprises.com/")
@@ -28,7 +20,7 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 //@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
 //@CrossOrigin(origins = "http://localhost:4200")
 @CrossOrigin
-//@CrossOrigin(origins = "*")
+// @CrossOrigin(origins = "*")
 @RestController
 public class FinanceCompController {
 
@@ -37,16 +29,11 @@ public class FinanceCompController {
 	@Autowired
 	FinanceCompanyService financeCompanyService;
 
-	
 	@GetMapping(value = "financeProv", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllFinance() {
 		LOGGER.info("Received request to get All FinanceCompany");
 		return financeCompanyService.getAllFinance();
 
 	}
-	
-	
-	
-	
 
 }

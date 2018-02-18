@@ -3,8 +3,6 @@ package au.com.pnspvtltd.mcd.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,7 @@ import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
 @Service
 public class TempCarModelTemplateServiceImpl implements TempCarModelTemplateService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(TempCarModelTemplateServiceImpl.class);
+	//private static final Logger LOGGER = LoggerFactory.getLogger(TempCarModelTemplateServiceImpl.class);
 
 	@Autowired
 	private TempCarModelTemplateRepository carModelTemplateRepository;
@@ -47,7 +45,7 @@ public class TempCarModelTemplateServiceImpl implements TempCarModelTemplateServ
 	@Transactional(readOnly = true)
 	public List<TempCarModelHeaderVO> getAllCarModelTemplates() {
 		List<TempCarModelHeader> carModelTemplates = carModelTemplateRepository.findAll();
-		//carModelTemplateRepository.findAll(modelYear)
+		// carModelTemplateRepository.findAll(modelYear)
 		List<TempCarModelHeaderVO> carModelTemplateVOs = new ArrayList<>();
 		for (TempCarModelHeader carModelTemplate : carModelTemplates) {
 			carModelTemplateVOs.add(domainModelUtil.fromTempCarModelTemplate(carModelTemplate, false));
@@ -72,38 +70,37 @@ public class TempCarModelTemplateServiceImpl implements TempCarModelTemplateServ
 	@Override
 	public List<String> getAllCarModelNamesForMake(String modelDisplay, String modelYear) {
 		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelNamesForMake(modelDisplay,modelYear);
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelNamesForMake(modelDisplay, modelYear);
 		return carModelTemplates;
 	}
 
 	@Override
-	public List<String> getAllCarModelVariantsForModel(String modelName,String modelDisplay,String modelYear) {
+	public List<String> getAllCarModelVariantsForModel(String modelName, String modelDisplay, String modelYear) {
 		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelVariantsForModel(modelName,modelDisplay,modelYear);
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelVariantsForModel(modelName,
+				modelDisplay, modelYear);
 		return carModelTemplates;
 	}
 
-	/*@Override
-	public List<String> getAllCarModelTrimForAllSelect(String modelTrim, String modelName, String modelDisplay,
-			String modelYear) {
-		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelTrimForAllSelect(modelTrim,modelName,modelDisplay,modelYear);
-		return carModelTemplates;
-	}*/
+	/*
+	 * @Override public List<String> getAllCarModelTrimForAllSelect(String
+	 * modelTrim, String modelName, String modelDisplay, String modelYear) { //
+	 * TODO Auto-generated method stub List<String> carModelTemplates =
+	 * carModelTemplateRepository.getAllCarModelTrimForAllSelect(modelTrim,
+	 * modelName,modelDisplay,modelYear); return carModelTemplates; }
+	 */
 
 	@Override
-	public List<String> getAllCarModelTrimForAllSelect(String modelName, String modelDisplay,
-			String modelYear) {
+	public List<String> getAllCarModelTrimForAllSelect(String modelName, String modelDisplay, String modelYear) {
 		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelTrimForAllSelect(modelName,modelDisplay,modelYear);
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelTrimForAllSelect(modelName,
+				modelDisplay, modelYear);
 		return carModelTemplates;
 	}
-	
+
 	@Override
 	public TempCarModelHeaderVO getCarModelTemplateForAutoTrim(String flex1) {
-		return domainModelUtil.fromTempCarModelTemplate(
-				carModelTemplateRepository.findByFlex1IgnoreCase(flex1),
-				false);
+		return domainModelUtil.fromTempCarModelTemplate(carModelTemplateRepository.findByFlex1IgnoreCase(flex1), false);
 	}
 
 }

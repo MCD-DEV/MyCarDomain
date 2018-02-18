@@ -2,35 +2,28 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class TempCarModelColourVO {
 
-	
 	private Long tempCarModelColourId;
-	
+
 	private double price;
 	private String availableColour;
-/*start */
-		
+	/* start */
+
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
+
 	public String getFlex1() {
 		return flex1;
 	}
@@ -126,14 +119,9 @@ public class TempCarModelColourVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	/*end*/
-	
+	// End of flex
 
-	
-
-	
+	/* end */
 
 	public double getPrice() {
 		return price;
@@ -151,28 +139,12 @@ public class TempCarModelColourVO {
 		this.price = price;
 	}
 
-	
-	
-
-	
 	public Long getTempCarModelColourId() {
 		return this.tempCarModelColourId;
 	}
-
-   
 
 	public void setTempCarModelColourId(Long tempCarModelColourId) {
 		this.tempCarModelColourId = tempCarModelColourId;
 	}
 
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

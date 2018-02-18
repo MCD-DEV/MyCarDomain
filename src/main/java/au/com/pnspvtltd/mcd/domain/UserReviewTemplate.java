@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "templateuserreview")
 public class UserReviewTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long templateUserReviewId;
 	private String review1;
 	private String flex1;

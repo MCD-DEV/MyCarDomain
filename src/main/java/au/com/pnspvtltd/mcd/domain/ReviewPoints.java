@@ -2,29 +2,22 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "reviewpoints")
 public class ReviewPoints implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long revPointId;
 	private long revId;
 	private String revName;
@@ -36,9 +29,8 @@ public class ReviewPoints implements Serializable {
 	private double usdVal;
 	private Date creationDate;
 	private long idp;
-private String action;
-	
-	
+	private String action;
+
 	public String getAction() {
 		return action;
 	}
@@ -46,6 +38,7 @@ private String action;
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -53,7 +46,7 @@ private String action;
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -61,6 +54,7 @@ private String action;
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -68,8 +62,7 @@ private String action;
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "REVPOINTID")
@@ -80,12 +73,11 @@ private String action;
 	public void setRevPointId(Long revPointId) {
 		this.revPointId = revPointId;
 	}
-	
+
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
 
-	
 	public long getRevId() {
 		return revId;
 	}
@@ -137,7 +129,5 @@ private String action;
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

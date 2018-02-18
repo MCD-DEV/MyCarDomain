@@ -1,18 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 
 public class BlogPointsVO {
 
@@ -28,8 +16,7 @@ public class BlogPointsVO {
 	private Date creationDate;
 	private long idp;
 	private String action;
-	
-	
+
 	public String getAction() {
 		return action;
 	}
@@ -37,7 +24,7 @@ public class BlogPointsVO {
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -45,7 +32,7 @@ public class BlogPointsVO {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -53,6 +40,7 @@ public class BlogPointsVO {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -60,9 +48,7 @@ public class BlogPointsVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
 	public Long getBlogPointId() {
 		return blogPointId;
 	}
@@ -70,12 +56,11 @@ public class BlogPointsVO {
 	public void setBlogPointId(Long blogPointId) {
 		this.blogPointId = blogPointId;
 	}
-	
+
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
 
-	
 	public long getBlogId() {
 		return blogId;
 	}
@@ -127,7 +112,5 @@ public class BlogPointsVO {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

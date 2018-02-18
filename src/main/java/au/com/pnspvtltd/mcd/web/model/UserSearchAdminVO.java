@@ -10,10 +10,9 @@ public class UserSearchAdminVO {
 	private String modelName;
 	private String modelTrim;
 	private Date creationDate;
-	
+
 	List<SearchVO> searchVO;
 
-	
 	public String getModelYear() {
 		return modelYear;
 	}
@@ -61,8 +60,5 @@ public class UserSearchAdminVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
-	
 
 }

@@ -10,10 +10,9 @@ public class UserFinAdminVO {
 	private String modelName;
 	private String modelTrim;
 	private Date creationDate;
-	
+
 	List<SearchFinanceVO> searchVO;
 
-	
 	public String getModelYear() {
 		return modelYear;
 	}
@@ -61,8 +60,5 @@ public class UserFinAdminVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
-	
 
 }

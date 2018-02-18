@@ -2,29 +2,22 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "blogpoints")
 public class BlogPoints implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long blogPointId;
 	private long blogId;
 	private String blogName;
@@ -36,9 +29,8 @@ public class BlogPoints implements Serializable {
 	private double usdVal;
 	private Date creationDate;
 	private long idp;
-private String action;
-	
-	
+	private String action;
+
 	public String getAction() {
 		return action;
 	}
@@ -46,7 +38,7 @@ private String action;
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -54,7 +46,7 @@ private String action;
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -62,6 +54,7 @@ private String action;
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -69,8 +62,7 @@ private String action;
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "BLOGPOINTID")
@@ -81,12 +73,11 @@ private String action;
 	public void setBlogPointId(Long blogPointId) {
 		this.blogPointId = blogPointId;
 	}
-	
+
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
 
-	
 	public long getBlogId() {
 		return blogId;
 	}
@@ -138,7 +129,5 @@ private String action;
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

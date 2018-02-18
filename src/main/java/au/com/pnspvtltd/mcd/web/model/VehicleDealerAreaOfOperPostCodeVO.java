@@ -2,122 +2,87 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-
 public class VehicleDealerAreaOfOperPostCodeVO {
 
-									
-		
-
-	
 	private Long vehicleDealAreaOfOperPostId;
-	
-	
+
 	private String country;
 	private String state;
 	private String region;
 	private String postCode;
-	
-	
+
 	public Long getVehicleDealAreaOfOperPostId() {
 		return vehicleDealAreaOfOperPostId;
 	}
-
 
 	public void setVehicleDealAreaOfOperPostId(Long vehicleDealAreaOfOperPostId) {
 		this.vehicleDealAreaOfOperPostId = vehicleDealAreaOfOperPostId;
 	}
 
-
 	public String getPostCode() {
 		return postCode;
 	}
-
 
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
 
-
-
-
-
-
-
-
-
-
 	private boolean offered;
-	
-/*start */
-	
-	
+
+	/* start */
+
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-		
-	
-	
 
 	public String getRegion() {
 		return region;
 	}
 
-
 	public void setRegion(String region) {
 		this.region = region;
 	}
-
 
 	public String getCountry() {
 		return country;
 	}
 
-
 	public void setCountry(String country) {
 		this.country = country;
 	}
-
-
-	
-
 
 	public String getState() {
 		return state;
 	}
 
-
 	public void setState(String state) {
 		this.state = state;
 	}
-
 
 	public boolean isOffered() {
 		return offered;
 	}
 
-
 	public void setOffered(boolean offered) {
 		this.offered = offered;
 	}
-
 
 	public String getFlex1() {
 		return flex1;
 	}
 
-	
 	public boolean isFlex13() {
 		return isFlex13;
 	}
@@ -225,35 +190,8 @@ public class VehicleDealerAreaOfOperPostCodeVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
-	
-	
-
-	 	
-	
 }

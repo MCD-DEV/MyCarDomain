@@ -10,12 +10,12 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @SpringBootApplication
 @EnableScheduling
 @ComponentScan("au.com.pnspvtltd.mcd")
-public class MyCarDomainApplication extends SpringBootServletInitializer{
+public class MyCarDomainApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MyCarDomainApplication.class, args);
 	}
-	
+
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(MyCarDomainApplication.class);

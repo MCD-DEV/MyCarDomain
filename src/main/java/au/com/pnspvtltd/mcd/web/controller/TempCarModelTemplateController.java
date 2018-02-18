@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import au.com.pnspvtltd.mcd.service.TempCarModelTemplateService;
 import au.com.pnspvtltd.mcd.service.impl.DealerServiceImpl;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelHeaderVO;
+
 //@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "*")
 //@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
@@ -54,65 +55,73 @@ public class TempCarModelTemplateController {
 		return carModelTemplateService.getAllCarModelTemplates();
 
 	}
-	
+
 	@GetMapping(value = "tempCarModelYears", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllCarModelYears() {
 		LOGGER.info("Received request to get All TempCarModelYears");
 		return carModelTemplateService.getAllCarModelYears();
 
 	}
-	
-	//Makes in select box
+
+	// Makes in select box
 	@GetMapping(value = "tempCarModelMakesForYear", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllCarModelMakesForYear(@RequestParam("modelYear") String modelYear) {
 		LOGGER.info("Received request to get All TempCarModelMakes");
 		return carModelTemplateService.getAllCarModelMakesForYear(modelYear);
 
 	}
-	
-	//MODEL in Select Box
+
+	// MODEL in Select Box
 	@GetMapping(value = "tempCarModelNamesForMake", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<String> getAllCarModelNamesForMake(@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
+	public List<String> getAllCarModelNamesForMake(@RequestParam("modelDisplay") String modelDisplay,
+			@RequestParam("modelYear") String modelYear) {
 		LOGGER.info("Received request to get All TempCarModelNames");
-		return carModelTemplateService.getAllCarModelNamesForMake(modelDisplay,modelYear);
+		return carModelTemplateService.getAllCarModelNamesForMake(modelDisplay, modelYear);
 
 	}
-	
-	//String modelName,String modelDisplay,String modelYear
-	//Variant in Select Box
-		@GetMapping(value = "tempCarModelVariantForModel", produces = { MediaType.APPLICATION_JSON_VALUE })
-		public List<String> getAllCarModelVariantsForModel(@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
-			LOGGER.info("Received request to get All TempCarModelvariant");
-			return carModelTemplateService.getAllCarModelVariantsForModel(modelName,modelDisplay,modelYear);
 
-		}
-		
-		//String modelName,String modelDisplay,String modelYear
-		//Variant in Select Box
-			/*@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
-			public List<String> getAllCarModelTrimForAllSelect(@RequestParam("modelTrim") String modelTrim,@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
-				LOGGER.info("Received request to get All TempCarModelvariant");
-				return carModelTemplateService.getAllCarModelTrimForAllSelect(modelTrim,modelName,modelDisplay,modelYear);
+	// String modelName,String modelDisplay,String modelYear
+	// Variant in Select Box
+	@GetMapping(value = "tempCarModelVariantForModel", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<String> getAllCarModelVariantsForModel(@RequestParam("modelName") String modelName,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelYear") String modelYear) {
+		LOGGER.info("Received request to get All TempCarModelvariant");
+		return carModelTemplateService.getAllCarModelVariantsForModel(modelName, modelDisplay, modelYear);
 
-			}*/
-			
-			@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
-			public List<String> getAllCarModelTrimForAllSelect(@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
-				LOGGER.info("Received request to get All TempCarModelvariantch");
-				return carModelTemplateService.getAllCarModelTrimForAllSelect(modelName,modelDisplay,modelYear);
+	}
 
-			}
-			
-			
-			// get tempCarModelHeader for given AutoscoopTrim
-			//String modelName,String modelDisplay,String modelYear
-			//Variant in Select Box
-			@GetMapping(value = "tempCarModelTemplateForAutoTrim", produces = { MediaType.APPLICATION_JSON_VALUE })
-			public TempCarModelHeaderVO getCarModelTemplateForAutoTrim(String flex1) {
+	// String modelName,String modelDisplay,String modelYear
+	// Variant in Select Box
+	/*
+	 * @GetMapping(value = "tempCarModelTrimForAllSelect", produces = {
+	 * MediaType.APPLICATION_JSON_VALUE }) public List<String>
+	 * getAllCarModelTrimForAllSelect(@RequestParam("modelTrim") String
+	 * modelTrim,@RequestParam("modelName") String
+	 * modelName,@RequestParam("modelDisplay") String
+	 * modelDisplay,@RequestParam("modelYear") String modelYear) { LOGGER.info(
+	 * "Received request to get All TempCarModelvariant"); return
+	 * carModelTemplateService.getAllCarModelTrimForAllSelect(modelTrim,
+	 * modelName,modelDisplay,modelYear);
+	 * 
+	 * }
+	 */
 
-				LOGGER.info("Received request to get a TempCarModelTemplate for");
-				return carModelTemplateService.getCarModelTemplateForAutoTrim(flex1);
-			}		
-			
+	@GetMapping(value = "tempCarModelTrimForAllSelect", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<String> getAllCarModelTrimForAllSelect(@RequestParam("modelName") String modelName,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelYear") String modelYear) {
+		LOGGER.info("Received request to get All TempCarModelvariantch");
+		return carModelTemplateService.getAllCarModelTrimForAllSelect(modelName, modelDisplay, modelYear);
+
+	}
+
+	// get tempCarModelHeader for given AutoscoopTrim
+	// String modelName,String modelDisplay,String modelYear
+	// Variant in Select Box
+	@GetMapping(value = "tempCarModelTemplateForAutoTrim", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public TempCarModelHeaderVO getCarModelTemplateForAutoTrim(String flex1) {
+
+		LOGGER.info("Received request to get a TempCarModelTemplate for");
+		return carModelTemplateService.getCarModelTemplateForAutoTrim(flex1);
+	}
 
 }

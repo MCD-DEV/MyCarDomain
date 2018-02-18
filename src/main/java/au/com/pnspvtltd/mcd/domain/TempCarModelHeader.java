@@ -1,7 +1,8 @@
 package au.com.pnspvtltd.mcd.domain;
+
 import java.io.Serializable;
-import java.util.List;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -12,16 +13,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: Employee
  * 
  */
-@Entity @Table(name = "tempcarmodelheader") public class TempCarModelHeader implements Serializable 
-{
-
+@Entity
+@Table(name = "tempcarmodelheader")
+public class TempCarModelHeader implements Serializable {
 
 	/**
 	 * 
@@ -30,7 +30,7 @@ import javax.persistence.Table;
 	/**
 	 * 
 	 */
-	
+
 	private Long tempCarModelHeaderId;
 	// year
 	private String modelYear;
@@ -46,8 +46,7 @@ import javax.persistence.Table;
 	private String modelBatch;
 	// trim
 	private String modelTrim;
-	
-	
+
 	private double engineSize;
 	private int cylinder;
 	private int noOfGears;
@@ -56,15 +55,16 @@ import javax.persistence.Table;
 	private String driveType;
 	private String fuelType;
 	private int modelDoors;
-	
+
 	private String modelBody;
 	private int modelSeats;
 	// manfacture year
 	private String manfYear;
 	private Date creationDate;
 	private Date modifiedDate;
-	
-	@Column(name = "CREATIONDATE") public Date getCreationDate() {
+
+	@Column(name = "CREATIONDATE")
+	public Date getCreationDate() {
 		return creationDate;
 	}
 
@@ -72,7 +72,8 @@ import javax.persistence.Table;
 		this.creationDate = creationDate;
 	}
 
-	@Column(name = "MODIFIEDDATE") public Date getModifiedDate() {
+	@Column(name = "MODIFIEDDATE")
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
 
@@ -80,23 +81,22 @@ import javax.persistence.Table;
 		this.modifiedDate = modifiedDate;
 	}
 
-
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
-	@Column(name = "FLEX1") public String getFlex1() {
+
+	@Column(name = "FLEX1")
+	public String getFlex1() {
 		return flex1;
 	}
 
@@ -104,7 +104,8 @@ import javax.persistence.Table;
 		this.flex1 = flex1;
 	}
 
-	@Column(name = "FLEX2") public String getFlex2() {
+	@Column(name = "FLEX2")
+	public String getFlex2() {
 		return flex2;
 	}
 
@@ -112,7 +113,8 @@ import javax.persistence.Table;
 		this.flex2 = flex2;
 	}
 
-	@Column(name = "FLEX3") public String getFlex3() {
+	@Column(name = "FLEX3")
+	public String getFlex3() {
 		return flex3;
 	}
 
@@ -120,7 +122,8 @@ import javax.persistence.Table;
 		this.flex3 = flex3;
 	}
 
-	@Column(name = "FLEX4") public String getFlex4() {
+	@Column(name = "FLEX4")
+	public String getFlex4() {
 		return flex4;
 	}
 
@@ -128,7 +131,8 @@ import javax.persistence.Table;
 		this.flex4 = flex4;
 	}
 
-	@Column(name = "FLEX5") public int getFlex5() {
+	@Column(name = "FLEX5")
+	public int getFlex5() {
 		return flex5;
 	}
 
@@ -136,7 +140,8 @@ import javax.persistence.Table;
 		this.flex5 = flex5;
 	}
 
-	@Column(name = "FLEX6") public int getFlex6() {
+	@Column(name = "FLEX6")
+	public int getFlex6() {
 		return flex6;
 	}
 
@@ -144,7 +149,8 @@ import javax.persistence.Table;
 		this.flex6 = flex6;
 	}
 
-	@Column(name = "FLEX7") public double getFlex7() {
+	@Column(name = "FLEX7")
+	public double getFlex7() {
 		return flex7;
 	}
 
@@ -152,7 +158,8 @@ import javax.persistence.Table;
 		this.flex7 = flex7;
 	}
 
-	@Column(name = "FLEX8") public double getFlex8() {
+	@Column(name = "FLEX8")
+	public double getFlex8() {
 		return flex8;
 	}
 
@@ -160,7 +167,8 @@ import javax.persistence.Table;
 		this.flex8 = flex8;
 	}
 
-	@Column(name = "FLEX9") public double getFlex9() {
+	@Column(name = "FLEX9")
+	public double getFlex9() {
 		return flex9;
 	}
 
@@ -168,7 +176,8 @@ import javax.persistence.Table;
 		this.flex9 = flex9;
 	}
 
-	@Column(name = "FLEX10") public double getFlex10() {
+	@Column(name = "FLEX10")
+	public double getFlex10() {
 		return flex10;
 	}
 
@@ -176,7 +185,8 @@ import javax.persistence.Table;
 		this.flex10 = flex10;
 	}
 
-	@Column(name = "FLEX11") public Date getFlex11() {
+	@Column(name = "FLEX11")
+	public Date getFlex11() {
 		return flex11;
 	}
 
@@ -184,15 +194,18 @@ import javax.persistence.Table;
 		this.flex11 = flex11;
 	}
 
-	@Column(name = "FLEX12") public Date getFlex12() {
+	@Column(name = "FLEX12")
+	public Date getFlex12() {
 		return flex12;
 	}
 
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-	@Column(name = "MODELVARIANT") public String getModelVariant() {
+
+	// End of flex
+	@Column(name = "MODELVARIANT")
+	public String getModelVariant() {
 		return modelVariant;
 	}
 
@@ -200,7 +213,8 @@ import javax.persistence.Table;
 		this.modelVariant = modelVariant;
 	}
 
-	@Column(name = "MODELSERIES") public String getModelSeries() {
+	@Column(name = "MODELSERIES")
+	public String getModelSeries() {
 		return modelSeries;
 	}
 
@@ -208,7 +222,8 @@ import javax.persistence.Table;
 		this.modelSeries = modelSeries;
 	}
 
-	@Column(name = "MODELBATCH") public String getModelBatch() {
+	@Column(name = "MODELBATCH")
+	public String getModelBatch() {
 		return modelBatch;
 	}
 
@@ -216,7 +231,8 @@ import javax.persistence.Table;
 		this.modelBatch = modelBatch;
 	}
 
-	@Column(name = "ENGINESIZE") public double getEngineSize() {
+	@Column(name = "ENGINESIZE")
+	public double getEngineSize() {
 		return engineSize;
 	}
 
@@ -224,7 +240,8 @@ import javax.persistence.Table;
 		this.engineSize = engineSize;
 	}
 
-	@Column(name = "CYLINDER") public int getCylinder() {
+	@Column(name = "CYLINDER")
+	public int getCylinder() {
 		return cylinder;
 	}
 
@@ -232,7 +249,8 @@ import javax.persistence.Table;
 		this.cylinder = cylinder;
 	}
 
-	@Column(name = "NOOFGEARS") public int getNoOfGears() {
+	@Column(name = "NOOFGEARS")
+	public int getNoOfGears() {
 		return noOfGears;
 	}
 
@@ -240,7 +258,8 @@ import javax.persistence.Table;
 		this.noOfGears = noOfGears;
 	}
 
-	@Column(name = "TRANSMISSION") public String getTransimission() {
+	@Column(name = "TRANSMISSION")
+	public String getTransimission() {
 		return transimission;
 	}
 
@@ -248,7 +267,8 @@ import javax.persistence.Table;
 		this.transimission = transimission;
 	}
 
-	@Column(name = "DRIVETYPE") public String getDriveType() {
+	@Column(name = "DRIVETYPE")
+	public String getDriveType() {
 		return driveType;
 	}
 
@@ -256,7 +276,8 @@ import javax.persistence.Table;
 		this.driveType = driveType;
 	}
 
-	@Column(name = "FUELTYPE") public String getFuelType() {
+	@Column(name = "FUELTYPE")
+	public String getFuelType() {
 		return fuelType;
 	}
 
@@ -264,7 +285,8 @@ import javax.persistence.Table;
 		this.fuelType = fuelType;
 	}
 
-	@Column(name = "MODELDOORS") public int getModelDoors() {
+	@Column(name = "MODELDOORS")
+	public int getModelDoors() {
 		return modelDoors;
 	}
 
@@ -272,7 +294,8 @@ import javax.persistence.Table;
 		this.modelDoors = modelDoors;
 	}
 
-	@Column(name = "MODELBODY") public String getModelBody() {
+	@Column(name = "MODELBODY")
+	public String getModelBody() {
 		return modelBody;
 	}
 
@@ -280,7 +303,8 @@ import javax.persistence.Table;
 		this.modelBody = modelBody;
 	}
 
-	@Column(name = "MODELSEATS") public int getModelSeats() {
+	@Column(name = "MODELSEATS")
+	public int getModelSeats() {
 		return modelSeats;
 	}
 
@@ -288,7 +312,8 @@ import javax.persistence.Table;
 		this.modelSeats = modelSeats;
 	}
 
-	@Column(name = "MANFYEAR") public String getManfYear() {
+	@Column(name = "MANFYEAR")
+	public String getManfYear() {
 		return manfYear;
 	}
 
@@ -296,7 +321,8 @@ import javax.persistence.Table;
 		this.manfYear = manfYear;
 	}
 
-	@Column(name = "MODELYEAR") public String getModelYear() {
+	@Column(name = "MODELYEAR")
+	public String getModelYear() {
 		return modelYear;
 	}
 
@@ -304,7 +330,8 @@ import javax.persistence.Table;
 		this.modelYear = modelYear;
 	}
 
-	@Column(name = "MODELMAKE") public String getModelDisplay() {
+	@Column(name = "MODELMAKE")
+	public String getModelDisplay() {
 		return modelDisplay;
 	}
 
@@ -312,7 +339,8 @@ import javax.persistence.Table;
 		this.modelDisplay = modelDisplay;
 	}
 
-	@Column(name = "MODELNAME") public String getModelName() {
+	@Column(name = "MODELNAME")
+	public String getModelName() {
 		return modelName;
 	}
 
@@ -320,7 +348,8 @@ import javax.persistence.Table;
 		this.modelName = modelName;
 	}
 
-	@Column(name = "MODELTRIM") public String getModelTrim() {
+	@Column(name = "MODELTRIM")
+	public String getModelTrim() {
 		return modelTrim;
 	}
 
@@ -328,61 +357,62 @@ import javax.persistence.Table;
 		this.modelTrim = modelTrim;
 	}
 
-	
 	List<TempCarModelOverview> carModel;
-	
+
 	List<TempCarModelPricing> carModel1;
-	
+
 	List<TempCarModelOptionalFeatureAddOn> carModel2;
-	
+
 	List<TempCarModelColour> carModel3;
-	
+
 	List<TempCarModelFullSpecEngine> carModel4;
-	
-List<TempCarModelFullSpecDimension> carModel5;
-	
+
+	List<TempCarModelFullSpecDimension> carModel5;
+
 	List<TempCarModelFullSpecFuel> carModel6;
-	
+
 	List<TempCarModelFullSpecWarranty> carModel7;
-	
-List<TempCarModelFullSpecStandEq> carModel8;
-	
+
+	List<TempCarModelFullSpecStandEq> carModel8;
+
 	List<TempCarModelOptEqpAddOn> carModel9;
-	
+
 	List<TempCarModelRelatedModel> carModel10;
-List<TempCarModelPhotos> carModel11;
-	
+	List<TempCarModelPhotos> carModel11;
+
 	List<TempCarModelVehReview> carModel12;
-List<TempCarModelVideos> carModel13;
-	
+	List<TempCarModelVideos> carModel13;
+
 	List<TempCarModelExtFitting> carModel14;
-	
-List<TempCarModelIntFitting> carModel15;
-	
+
+	List<TempCarModelIntFitting> carModel15;
+
 	List<TempCarModelUserRating> carModel16;
-	
-List<TempCarModelExpertRating> carModel17;
-	
+
+	List<TempCarModelExpertRating> carModel17;
+
 	List<TempCarModelCountry> carModel18;
-	
+
 	List<TempCarModelFullSpecWheel> carModel19;
-	
-	
-	
+
 	public TempCarModelHeader() {
-        super();
-    }
+		super();
+	}
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "TEMPCARMODELHEADID") public Long getTempCarModelHeaderId() {
-        return this.tempCarModelHeaderId;
-    }
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TEMPCARMODELHEADID")
+	public Long getTempCarModelHeaderId() {
+		return this.tempCarModelHeaderId;
+	}
 
-    public void setTempCarModelHeaderId(Long tempCarModelHeaderId) {
-        this.tempCarModelHeaderId = tempCarModelHeaderId;
-    }
+	public void setTempCarModelHeaderId(Long tempCarModelHeaderId) {
+		this.tempCarModelHeaderId = tempCarModelHeaderId;
+	}
 
-   
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelOverview> getCarModel() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelOverview> getCarModel() {
 		return carModel;
 	}
 
@@ -390,18 +420,19 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel = carModel;
 	}
 
-	
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelPricing> getCarModel1() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelPricing> getCarModel1() {
 		return carModel1;
 	}
 
 	public void setCarModel1(List<TempCarModelPricing> carModel1) {
 		this.carModel1 = carModel1;
 	}
-	
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelOptionalFeatureAddOn> getCarModel2() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelOptionalFeatureAddOn> getCarModel2() {
 		return carModel2;
 	}
 
@@ -409,8 +440,9 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel2 = carModel2;
 	}
 
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelColour> getCarModel3() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelColour> getCarModel3() {
 		return carModel3;
 	}
 
@@ -418,8 +450,9 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel3 = carModel3;
 	}
 
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecEngine> getCarModel4() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecEngine> getCarModel4() {
 		return carModel4;
 	}
 
@@ -427,7 +460,9 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel4 = carModel4;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecDimension> getCarModel5() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecDimension> getCarModel5() {
 		return carModel5;
 	}
 
@@ -435,97 +470,129 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel5 = carModel5;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecFuel> getCarModel6() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecFuel> getCarModel6() {
 		return carModel6;
 	}
 
 	public void setCarModel6(List<TempCarModelFullSpecFuel> carModel6) {
 		this.carModel6 = carModel6;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecWarranty> getCarModel7() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecWarranty> getCarModel7() {
 		return carModel7;
 	}
 
 	public void setCarModel7(List<TempCarModelFullSpecWarranty> carModel7) {
 		this.carModel7 = carModel7;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecStandEq> getCarModel8() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecStandEq> getCarModel8() {
 		return carModel8;
 	}
 
 	public void setCarModel8(List<TempCarModelFullSpecStandEq> carModel8) {
 		this.carModel8 = carModel8;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelOptEqpAddOn> getCarModel9() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelOptEqpAddOn> getCarModel9() {
 		return carModel9;
 	}
 
 	public void setCarModel9(List<TempCarModelOptEqpAddOn> carModel9) {
 		this.carModel9 = carModel9;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelRelatedModel> getCarModel10() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelRelatedModel> getCarModel10() {
 		return carModel10;
 	}
 
 	public void setCarModel10(List<TempCarModelRelatedModel> carModel10) {
 		this.carModel10 = carModel10;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelPhotos> getCarModel11() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelPhotos> getCarModel11() {
 		return carModel11;
 	}
 
 	public void setCarModel11(List<TempCarModelPhotos> carModel11) {
 		this.carModel11 = carModel11;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelVehReview> getCarModel12() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelVehReview> getCarModel12() {
 		return carModel12;
 	}
 
 	public void setCarModel12(List<TempCarModelVehReview> carModel12) {
 		this.carModel12 = carModel12;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelVideos> getCarModel13() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelVideos> getCarModel13() {
 		return carModel13;
 	}
 
 	public void setCarModel13(List<TempCarModelVideos> carModel13) {
 		this.carModel13 = carModel13;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelExtFitting> getCarModel14() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelExtFitting> getCarModel14() {
 		return carModel14;
 	}
 
 	public void setCarModel14(List<TempCarModelExtFitting> carModel14) {
 		this.carModel14 = carModel14;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelIntFitting> getCarModel15() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelIntFitting> getCarModel15() {
 		return carModel15;
 	}
 
 	public void setCarModel15(List<TempCarModelIntFitting> carModel15) {
 		this.carModel15 = carModel15;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelUserRating> getCarModel16() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelUserRating> getCarModel16() {
 		return carModel16;
 	}
 
 	public void setCarModel16(List<TempCarModelUserRating> carModel16) {
 		this.carModel16 = carModel16;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelExpertRating> getCarModel17() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelExpertRating> getCarModel17() {
 		return carModel17;
 	}
 
 	public void setCarModel17(List<TempCarModelExpertRating> carModel17) {
 		this.carModel17 = carModel17;
 	}
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelCountry> getCarModel18() {
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelCountry> getCarModel18() {
 		return carModel18;
 	}
 
@@ -533,7 +600,9 @@ List<TempCarModelExpertRating> carModel17;
 		this.carModel18 = carModel18;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })  @JoinColumn(name="tempCarModelHeaderId")public List<TempCarModelFullSpecWheel> getCarModel19() {
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "tempCarModelHeaderId")
+	public List<TempCarModelFullSpecWheel> getCarModel19() {
 		return carModel19;
 	}
 

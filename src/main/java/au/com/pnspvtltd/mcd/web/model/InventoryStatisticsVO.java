@@ -20,7 +20,7 @@ public class InventoryStatisticsVO {
 	private double avgSavMax;
 	private int noDealers;
 	private int noStock;
-	
+
 	private TempCarModelHeaderVO tempCarModelHeaderVO;
 
 	public double getPriceMin() {

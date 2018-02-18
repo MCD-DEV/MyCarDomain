@@ -39,190 +39,194 @@ public class ExtDealerSearchFinVO {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
+
 	// start of Finance Ebid
-		private boolean isNewer;
-		private boolean isUsed;
-		
-		private String finPostCode;
-		
-		private int year;
-		
-		private String make;
-		private String model;
-		private String variant;
-		private String autoscoopTrim;
-		private double vehValue;
-		private double balloonPay;
-		/*private double loanAmount;
-		private int loanPeriod;*/
-		private double annualIncome;
-		/*private String incomeType;
-		private String creditRating;
-		private Date dateOfBirth;*/
-		
-		/*private int yearEmploymentBusiness;
-		private String incomeBeforeSuperTax;
-		private String incomeAfterSuperTax;
-		private String ifBusinessProvideABN;*/
-		private String rego;
-		private String regoState;
-		private String streetNo;
-		private String streetName;
-		private String mr;
-		private String firstName;
-		private String lastName;
-		/*private Date creationDate;*/
-		// end of Finance Ebid
-	
+	/*
+	 * private boolean isNewer; private boolean isUsed;
+	 */
+
+	private String finPostCode;
+
+	private int year;
+
+	private String make;
+	private String model;
+	private String variant;
+	private String autoscoopTrim;
+	private double vehValue;
+	private double balloonPay;
+	/*
+	 * private double loanAmount; private int loanPeriod;
+	 */
+	private double annualIncome;
+	/*
+	 * private String incomeType; private String creditRating; private Date
+	 * dateOfBirth;
+	 */
+
+	/*
+	 * private int yearEmploymentBusiness; private String incomeBeforeSuperTax;
+	 * private String incomeAfterSuperTax; private String ifBusinessProvideABN;
+	 */
+	private String rego;
+	private String regoState;
+	private String streetNo;
+	private String streetName;
+	private String mr;
+	private String firstName;
+	private String lastName;
+	/* private Date creationDate; */
+	// end of Finance Ebid
+
 	// Dealer info Start
-		private String category;
-		public String getFinPostCode() {
-			return finPostCode;
-		}
+	private String category;
 
-		public void setFinPostCode(String finPostCode) {
-			this.finPostCode = finPostCode;
-		}
+	public String getFinPostCode() {
+		return finPostCode;
+	}
 
-		public int getYear() {
-			return year;
-		}
+	public void setFinPostCode(String finPostCode) {
+		this.finPostCode = finPostCode;
+	}
 
-		public void setYear(int year) {
-			this.year = year;
-		}
+	public int getYear() {
+		return year;
+	}
 
-		public String getMake() {
-			return make;
-		}
+	public void setYear(int year) {
+		this.year = year;
+	}
 
-		public void setMake(String make) {
-			this.make = make;
-		}
+	public String getMake() {
+		return make;
+	}
 
-		public String getModel() {
-			return model;
-		}
+	public void setMake(String make) {
+		this.make = make;
+	}
 
-		public void setModel(String model) {
-			this.model = model;
-		}
+	public String getModel() {
+		return model;
+	}
 
-		public String getVariant() {
-			return variant;
-		}
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-		public void setVariant(String variant) {
-			this.variant = variant;
-		}
+	public String getVariant() {
+		return variant;
+	}
 
-		public String getAutoscoopTrim() {
-			return autoscoopTrim;
-		}
+	public void setVariant(String variant) {
+		this.variant = variant;
+	}
 
-		public void setAutoscoopTrim(String autoscoopTrim) {
-			this.autoscoopTrim = autoscoopTrim;
-		}
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
 
-		public double getVehValue() {
-			return vehValue;
-		}
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
 
-		public void setVehValue(double vehValue) {
-			this.vehValue = vehValue;
-		}
+	public double getVehValue() {
+		return vehValue;
+	}
 
-		public double getBalloonPay() {
-			return balloonPay;
-		}
+	public void setVehValue(double vehValue) {
+		this.vehValue = vehValue;
+	}
 
-		public void setBalloonPay(double balloonPay) {
-			this.balloonPay = balloonPay;
-		}
+	public double getBalloonPay() {
+		return balloonPay;
+	}
 
-		public double getAnnualIncome() {
-			return annualIncome;
-		}
+	public void setBalloonPay(double balloonPay) {
+		this.balloonPay = balloonPay;
+	}
 
-		public void setAnnualIncome(double annualIncome) {
-			this.annualIncome = annualIncome;
-		}
+	public double getAnnualIncome() {
+		return annualIncome;
+	}
 
-		public String getRego() {
-			return rego;
-		}
+	public void setAnnualIncome(double annualIncome) {
+		this.annualIncome = annualIncome;
+	}
 
-		public void setRego(String rego) {
-			this.rego = rego;
-		}
+	public String getRego() {
+		return rego;
+	}
 
-		public String getRegoState() {
-			return regoState;
-		}
+	public void setRego(String rego) {
+		this.rego = rego;
+	}
 
-		public void setRegoState(String regoState) {
-			this.regoState = regoState;
-		}
+	public String getRegoState() {
+		return regoState;
+	}
 
-		public String getStreetNo() {
-			return streetNo;
-		}
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
 
-		public void setStreetNo(String streetNo) {
-			this.streetNo = streetNo;
-		}
+	public String getStreetNo() {
+		return streetNo;
+	}
 
-		public String getStreetName() {
-			return streetName;
-		}
+	public void setStreetNo(String streetNo) {
+		this.streetNo = streetNo;
+	}
 
-		public void setStreetName(String streetName) {
-			this.streetName = streetName;
-		}
+	public String getStreetName() {
+		return streetName;
+	}
 
-		public String getMr() {
-			return mr;
-		}
+	public void setStreetName(String streetName) {
+		this.streetName = streetName;
+	}
 
-		public void setMr(String mr) {
-			this.mr = mr;
-		}
+	public String getMr() {
+		return mr;
+	}
 
-		public String getFirstName() {
-			return firstName;
-		}
+	public void setMr(String mr) {
+		this.mr = mr;
+	}
 
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
+	public String getFirstName() {
+		return firstName;
+	}
 
-		public String getLastName() {
-			return lastName;
-		}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
-		private String companyName;
-		private String street;
-		private String suburb;
-		private String dealState;
-		private int postCode;
-		private String country;
-		private String phone;
-		private String website;
-		private String mobile;
-		private String tollFree;
-		private String fax;
-		private String afterHours;
-		private String postalAddress;
-		private String email;
-		private float longitude;
-		private float latitude;
-		// Dealer info end
-	
-	
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	private String companyName;
+	private String street;
+	private String suburb;
+	private String dealState;
+	private int postCode;
+	private String country;
+	private String phone;
+	private String website;
+	private String mobile;
+	private String tollFree;
+	private String fax;
+	private String afterHours;
+	private String postalAddress;
+	private String email;
+	private float longitude;
+	private float latitude;
+	// Dealer info end
+
 	public String getState() {
 		return state;
 	}
@@ -366,7 +370,7 @@ public class ExtDealerSearchFinVO {
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -382,9 +386,10 @@ public class ExtDealerSearchFinVO {
 	public void setUsed(boolean used) {
 		this.used = used;
 	}
+
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -400,7 +405,7 @@ public class ExtDealerSearchFinVO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -408,7 +413,7 @@ public class ExtDealerSearchFinVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+
 	public Long getUserid() {
 		return userid;
 	}
@@ -424,6 +429,7 @@ public class ExtDealerSearchFinVO {
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}
@@ -431,9 +437,7 @@ public class ExtDealerSearchFinVO {
 	public void setCarSearchId(Long carSearchId) {
 		this.carSearchId = carSearchId;
 	}
-	
 
-	
 	public String getExtraExter2() {
 		return extraExter2;
 	}
@@ -894,5 +898,4 @@ public class ExtDealerSearchFinVO {
 		this.sPcode = sPcode;
 	}
 
-	
 }

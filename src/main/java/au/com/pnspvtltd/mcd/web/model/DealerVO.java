@@ -2,15 +2,12 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.domain.VehicleDealerTranspDetails;
-import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
-
 public class DealerVO {
 
 	private Long dealerId;
 	private String password;
 	private String email;
-	
+
 	private String vehicleType;
 	private String licenceNumber;
 	private String dealerGroupName;
@@ -18,8 +15,7 @@ public class DealerVO {
 	private String additionalInfo;
 	private String subscription;
 	private String subscriptionType;
-	
-	
+
 	private boolean isAdmin;
 	private boolean isDealer;
 	private boolean isInsurer;
@@ -39,7 +35,7 @@ public class DealerVO {
 	private int postcode;
 	private boolean new1;
 	private boolean used;
-	
+
 	private int leaadSellCount;
 	private int leaadLeaseCount;
 	private int leaadBuyCount;
@@ -47,7 +43,7 @@ public class DealerVO {
 	private int leadFinCount;
 	private int leadServCount;
 	private int leadTranspCount;
-	
+
 	public int getLeaadSellCount() {
 		return leaadSellCount;
 	}
@@ -182,8 +178,7 @@ public class DealerVO {
 	List<DealerSearchFinanceVO> dealSearchFinance;
 	List<DealerSearchServMaintVO> dealSearchServMaint;
 	List<DealerSearchTranspVO> dealSearchTransp;
-	
-	
+
 	List<VehicleDealerDetailsVO> vehicleDealerDetails;
 	List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails;
 	List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails;
@@ -194,11 +189,11 @@ public class DealerVO {
 	List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion;
 	List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode;
 	List<VehicleResourceDetailsVO> vehicleResourcDetails;
-	
+
 	// start
-	
-	
+
 	private boolean isServMaint;
+
 	public List<VehicleResourceDetailsVO> getVehicleResourcDetails() {
 		return vehicleResourcDetails;
 	}
@@ -213,7 +208,7 @@ public class DealerVO {
 	private boolean isAreaOfOperartinStates;
 	private boolean isAreaOfOperartinPostcodes;
 	private boolean isAllMakes;
-	
+
 	public List<VehicleDealerTranspDetailsVO> getVehicleDealerTranspDetails() {
 		return vehicleDealerTranspDetails;
 	}
@@ -226,71 +221,63 @@ public class DealerVO {
 		return vehicleDealerDetails;
 	}
 
-	public void setVehicleDealerDetails(
-			List<VehicleDealerDetailsVO> vehicleDealerDetails) {
+	public void setVehicleDealerDetails(List<VehicleDealerDetailsVO> vehicleDealerDetails) {
 		this.vehicleDealerDetails = vehicleDealerDetails;
 	}
-	
+
 	public List<VehicleDealerFinanceDetailsVO> getVehicleDealerFinanceDetails() {
 		return vehicleDealerFinanceDetails;
 	}
 
-	public void setVehicleDealerFinanceDetails(
-			List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails) {
+	public void setVehicleDealerFinanceDetails(List<VehicleDealerFinanceDetailsVO> vehicleDealerFinanceDetails) {
 		this.vehicleDealerFinanceDetails = vehicleDealerFinanceDetails;
 	}
-	
+
 	public List<VehicleDealerInsuranceDetailsVO> getVehicleDealerInsuranceDetails() {
 		return vehicleDealerInsuranceDetails;
 	}
 
-	public void setVehicleDealerInsuranceDetails(
-			List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails) {
+	public void setVehicleDealerInsuranceDetails(List<VehicleDealerInsuranceDetailsVO> vehicleDealerInsuranceDetails) {
 		this.vehicleDealerInsuranceDetails = vehicleDealerInsuranceDetails;
 	}
-	
+
 	public List<VehicleDealerServMaintDetailsVO> getVehicleDealerServMaintDetails() {
 		return vehicleDealerServMaintDetails;
 	}
 
-	public void setVehicleDealerServMaintDetails(
-			List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetails) {
+	public void setVehicleDealerServMaintDetails(List<VehicleDealerServMaintDetailsVO> vehicleDealerServMaintDetails) {
 		this.vehicleDealerServMaintDetails = vehicleDealerServMaintDetails;
 	}
-	
+
 	public List<VehicleDealerMakeListhVO> getVehicleDealerMakeList() {
 		return vehicleDealerMakeList;
 	}
 
-	public void setVehicleDealerMakeList(
-			List<VehicleDealerMakeListhVO> vehicleDealerMakeList) {
+	public void setVehicleDealerMakeList(List<VehicleDealerMakeListhVO> vehicleDealerMakeList) {
 		this.vehicleDealerMakeList = vehicleDealerMakeList;
 	}
-	
+
 	public List<VehicleDealerAreaOfOperStateVO> getVehicleDealerAreaOfOperState() {
 		return vehicleDealerAreaOfOperState;
 	}
 
-	public void setVehicleDealerAreaOfOperState(
-			List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState) {
+	public void setVehicleDealerAreaOfOperState(List<VehicleDealerAreaOfOperStateVO> vehicleDealerAreaOfOperState) {
 		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
 	}
-	
+
 	public List<VehicleDealerAreaOfOperRegionVO> getVehicleDealerRegion() {
 		return vehicleDealerRegion;
 	}
 
-	public void setVehicleDealerRegion(
-			List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion) {
+	public void setVehicleDealerRegion(List<VehicleDealerAreaOfOperRegionVO> vehicleDealerRegion) {
 		this.vehicleDealerRegion = vehicleDealerRegion;
 	}
-	
+
 	public List<VehicleDealerAreaOfOperPostCodeVO> getVehicleDealerPostCode() {
 		return vehicleDealerPostCode;
 	}
 
-	public void setVehicleDealerPostCode(
-			List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode) {
+	public void setVehicleDealerPostCode(List<VehicleDealerAreaOfOperPostCodeVO> vehicleDealerPostCode) {
 		this.vehicleDealerPostCode = vehicleDealerPostCode;
 	}
 
@@ -377,16 +364,10 @@ public class DealerVO {
 	private boolean isMakeList;
 	private String licenseNo;
 	private String dealGroup;
-	
-	
-	
 
 	List<VehicleQuotationVO> vehicleQuotation;
 	List<InsuranceQuotationVO> insuranceQuotation;
 	List<FinanceQuotationVO> financeQuotation;
-	
-	
-	
 
 	public Long getDealerId() {
 		return dealerId;

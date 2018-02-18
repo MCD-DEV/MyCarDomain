@@ -5,7 +5,7 @@ public class UserEBidVO {
 	private Long userId;
 	private boolean finance;
 	private boolean insurance;
-	
+
 	public boolean isFinance() {
 		return finance;
 	}

@@ -2,10 +2,8 @@ package au.com.pnspvtltd.mcd.service;
 
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
-
 public interface CountyRegPostSubService {
-	
+
 	List<String> getAllCountries();
 
 	List<String> getAllStatesForCountry(String modelYear);
@@ -19,6 +17,7 @@ public interface CountyRegPostSubService {
 	boolean existsPostcodeForState(String state, int postcode);
 
 	boolean existsPostcodeForRegion(String region, int postcode);
+
 	List<String> getRegionForGivenPostCode(int postCode);
 
 	List<String> getRegionForCountryStates(String country, List<String> states);

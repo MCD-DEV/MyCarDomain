@@ -11,36 +11,35 @@ import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.DispatcherServlet;
 
 @Configuration
-public class DispatcherServletCustomConfiguration{
+public class DispatcherServletCustomConfiguration {
 
-    @Bean
-    public DispatcherServlet dispatcherServlet() {
-        return new DispatcherServlet();
-    }
+	@Bean
+	public DispatcherServlet dispatcherServlet() {
+		return new DispatcherServlet();
+	}
 
-    @Bean
-    public ServletRegistrationBean dispatcherServletRegistration() {
-        ServletRegistrationBean registration = new ServletRegistrationBean(
-                dispatcherServlet(), new String[]{"/api/*", "/"});
-        registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
-        return registration;
-    }
-    
-    @Bean
-    public Filter filterToSupportPUTOperations(){
-    	return new HiddenHttpMethodFilter();
-    }
-    
-    @Bean
-    public FilterRegistrationBean registerFilterToSupportPUTOperations() {
+	@Bean
+	public ServletRegistrationBean dispatcherServletRegistration() {
+		ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet(),
+				new String[] { "/api/*", "/" });
+		registration.setName(DispatcherServletAutoConfiguration.DEFAULT_DISPATCHER_SERVLET_REGISTRATION_BEAN_NAME);
+		return registration;
+	}
 
-        FilterRegistrationBean registration = new FilterRegistrationBean();
-        registration.setFilter(filterToSupportPUTOperations());
-        registration.addUrlPatterns(new String[]{"/api/*"});
-        registration.setName("FilterToSupportPUTOperations");
-        //registration.setOrder(1);
-        return registration;
-    }
-    
+	@Bean
+	public Filter filterToSupportPUTOperations() {
+		return new HiddenHttpMethodFilter();
+	}
+
+	@Bean
+	public FilterRegistrationBean registerFilterToSupportPUTOperations() {
+
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		registration.setFilter(filterToSupportPUTOperations());
+		registration.addUrlPatterns(new String[] { "/api/*" });
+		registration.setName("FilterToSupportPUTOperations");
+		// registration.setOrder(1);
+		return registration;
+	}
+
 }
-

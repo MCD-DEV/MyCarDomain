@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Table(name = "searchservmaint")
 public class SearchServMaint implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long searchServMaintId;
 	private String postCode;
 	private int year;
@@ -57,8 +61,8 @@ public class SearchServMaint implements Serializable {
 	 * 
 	 * public void setLandLine(int landLine) { this.landLine = landLine; }
 	 */
-	
-	//New fields
+
+	// New fields
 	private Date preferredServDt;
 	private boolean doorStep;
 	private String address;
@@ -67,9 +71,7 @@ public class SearchServMaint implements Serializable {
 	private boolean complCar;
 	private String contactNum;
 	private String contactPerson;
-	
-	
-	
+
 	@Column(name = "preferredServDt")
 	public Date getPreferredServDt() {
 		return preferredServDt;
@@ -123,7 +125,7 @@ public class SearchServMaint implements Serializable {
 	public void setComplCar(boolean complCar) {
 		this.complCar = complCar;
 	}
-	
+
 	@Column(name = "contactNum")
 	public String getContactNum() {
 		return contactNum;

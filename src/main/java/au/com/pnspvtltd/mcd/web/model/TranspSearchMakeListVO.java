@@ -2,116 +2,77 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-
 public class TranspSearchMakeListVO {
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2795828321233759004L;
-	
-
-	/**
-	 * 
-	 */
-												
-		
-
-	
 	private Long transpSearchMakeListId;
-	
-	
-	
+
 	private String make;
 	private String model;
 	private String variant;
 	private String autoscoopTrim;
-	
-	
+
 	public String getMake() {
 		return make;
 	}
-
 
 	public void setMake(String make) {
 		this.make = make;
 	}
 
-
 	public Long getTranspSearchMakeListId() {
 		return transpSearchMakeListId;
 	}
-
 
 	public void setTranspSearchMakeListId(Long transpSearchMakeListId) {
 		this.transpSearchMakeListId = transpSearchMakeListId;
 	}
 
-	
 	public String getModel() {
 		return model;
 	}
-
 
 	public void setModel(String model) {
 		this.model = model;
 	}
 
-	
 	public String getVariant() {
 		return variant;
 	}
-
 
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
 
-	
 	public String getAutoscoopTrim() {
 		return autoscoopTrim;
 	}
-
 
 	public void setAutoscoopTrim(String autoscoopTrim) {
 		this.autoscoopTrim = autoscoopTrim;
 	}
 
+	/* start */
 
-	
-
-	
-/*start */
-	
-	
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-		
-	
-	
-
-	
-
 
 	public String getFlex1() {
 		return flex1;
 	}
 
-	
 	public boolean isFlex13() {
 		return isFlex13;
 	}
@@ -219,35 +180,8 @@ public class TranspSearchMakeListVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
-	
-	
-
-	 	
-	
 }

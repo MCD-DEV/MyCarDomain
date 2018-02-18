@@ -3,7 +3,6 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
-
 import au.com.pnspvtltd.mcd.domain.TranspSearchMakeList;
 
 public class SearchTranspVO {
@@ -31,82 +30,75 @@ public class SearchTranspVO {
 	private String photo;
 	private String regoNo;
 	private String regoState;
-private long idp;
-	
-/*private int mobile;
-private int landLine;*/
-private String abnNumber;
-private String email;
-private String drivingLicense;
-private boolean credStat;
-private boolean idCheck;
-private boolean mobCheck;
+	private long idp;
 
+	/*
+	 * private int mobile; private int landLine;
+	 */
+	private String abnNumber;
+	private String email;
+	private String drivingLicense;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
 
-	
-	/*public int getMobile() {
-	return mobile;
-}
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
-public void setMobile(int mobile) {
-	this.mobile = mobile;
-}
+	public String getAbnNumber() {
+		return abnNumber;
+	}
 
-public int getLandLine() {
-	return landLine;
-}
+	public void setAbnNumber(String abnNumber) {
+		this.abnNumber = abnNumber;
+	}
 
-public void setLandLine(int landLine) {
-	this.landLine = landLine;
-}*/
+	public String getEmail() {
+		return email;
+	}
 
-public String getAbnNumber() {
-	return abnNumber;
-}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-public void setAbnNumber(String abnNumber) {
-	this.abnNumber = abnNumber;
-}
+	public String getDrivingLicense() {
+		return drivingLicense;
+	}
 
-public String getEmail() {
-	return email;
-}
+	public void setDrivingLicense(String drivingLicense) {
+		this.drivingLicense = drivingLicense;
+	}
 
-public void setEmail(String email) {
-	this.email = email;
-}
+	public boolean isCredStat() {
+		return credStat;
+	}
 
-public String getDrivingLicense() {
-	return drivingLicense;
-}
+	public void setCredStat(boolean credStat) {
+		this.credStat = credStat;
+	}
 
-public void setDrivingLicense(String drivingLicense) {
-	this.drivingLicense = drivingLicense;
-}
+	public boolean isIdCheck() {
+		return idCheck;
+	}
 
-public boolean isCredStat() {
-	return credStat;
-}
+	public void setIdCheck(boolean idCheck) {
+		this.idCheck = idCheck;
+	}
 
-public void setCredStat(boolean credStat) {
-	this.credStat = credStat;
-}
+	public boolean isMobCheck() {
+		return mobCheck;
+	}
 
-public boolean isIdCheck() {
-	return idCheck;
-}
-
-public void setIdCheck(boolean idCheck) {
-	this.idCheck = idCheck;
-}
-
-public boolean isMobCheck() {
-	return mobCheck;
-}
-
-public void setMobCheck(boolean mobCheck) {
-	this.mobCheck = mobCheck;
-}
+	public void setMobCheck(boolean mobCheck) {
+		this.mobCheck = mobCheck;
+	}
 
 	public long getIdp() {
 		return idp;
@@ -115,8 +107,8 @@ public void setMobCheck(boolean mobCheck) {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
-	
-public String getPhoto() {
+
+	public String getPhoto() {
 		return photo;
 	}
 
@@ -140,7 +132,7 @@ public String getPhoto() {
 		this.regoState = regoState;
 	}
 
-public String getHowMay() {
+	public String getHowMay() {
 		return howMay;
 	}
 
@@ -196,8 +188,8 @@ public String getHowMay() {
 		this.flexWithDateDefault = flexWithDateDefault;
 	}
 
-List<TranspSearchMakeList> carModel;
-	
+	List<TranspSearchMakeList> carModel;
+
 	public List<TranspSearchMakeList> getCarModel() {
 		return carModel;
 	}

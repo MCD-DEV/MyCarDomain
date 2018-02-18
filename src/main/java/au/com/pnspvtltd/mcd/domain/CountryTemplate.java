@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "templatecountry")
 public class CountryTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long templateCountryId;
 	private String country;
 	private String flex1;

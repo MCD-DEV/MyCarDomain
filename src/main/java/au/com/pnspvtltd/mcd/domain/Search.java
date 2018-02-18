@@ -18,8 +18,12 @@ import au.com.pnspvtltd.mcd.enums.LeadInitiatedBy;
 @Table(name = "searchrepo")
 public class Search implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long carSearchId;
-	//private boolean isNew;
+	// private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private String modelYear;
@@ -30,17 +34,16 @@ public class Search implements Serializable {
 	private boolean insurance;
 	private boolean dealer;
 	private Long userid;
-	/*private int mobile;
-	private int landLine;*/
+	/*
+	 * private int mobile; private int landLine;
+	 */
 	private String abnNumber;
 	private String email;
 	private String drivingLicense;
 	private boolean credStat;
 	private boolean idCheck;
 	private boolean mobCheck;
-	
-	
-	
+
 	public String getAbnNumber() {
 		return abnNumber;
 	}
@@ -81,21 +84,15 @@ public class Search implements Serializable {
 		this.mobCheck = mobCheck;
 	}
 
-	/*public int getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-
-	public int getLandLine() {
-		return landLine;
-	}
-
-	public void setLandLine(int landLine) {
-		this.landLine = landLine;
-	}*/
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
 	public String getDrivingLicense() {
 		return drivingLicense;
@@ -112,8 +109,9 @@ public class Search implements Serializable {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
+
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -121,8 +119,10 @@ public class Search implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 	// FLEX1
 	private String sModel;
+
 	@Column(name = "ISUSED")
 	public boolean isUsed() {
 		return isUsed;
@@ -131,6 +131,7 @@ public class Search implements Serializable {
 	public void setUsed(boolean isUsed) {
 		this.isUsed = isUsed;
 	}
+
 	@Column(name = "ISNEWER")
 	public boolean isNewer() {
 		return isNewer;
@@ -139,14 +140,12 @@ public class Search implements Serializable {
 	public void setNewer(boolean isNewer) {
 		this.isNewer = isNewer;
 	}
-	/*@Column(name = "ISNEW")
-	public boolean isNew() {
-		return isNew;
-	}
 
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * @Column(name = "ISNEW") public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 	@Column(name = "SMODEL")
 	public String getsModel() {
 		return sModel;
@@ -156,17 +155,13 @@ public class Search implements Serializable {
 		this.sModel = sModel;
 	}
 
-	/* Mapping 
-	 * "carColor" : $("carColor").val(),
-																			 "postCode":$('#postCode').val(),
-																			"make":$('#seats').val(),
-																			"bodyType":$('#driveType').val(),
-																			"state":$('#fuelType').val(),
-																			"region":$('#freetext').val(),
-																			"ausCapTer":$('#vehiclePurpose').val(),
-																			"region":$('#transmission').val(),
-																			"sMake":$('#extraExternal1').val(),
-	 * */
+	/*
+	 * Mapping "carColor" : $("carColor").val(),
+	 * "postCode":$('#postCode').val(), "make":$('#seats').val(),
+	 * "bodyType":$('#driveType').val(), "state":$('#fuelType').val(),
+	 * "region":$('#freetext').val(), "ausCapTer":$('#vehiclePurpose').val(),
+	 * "region":$('#transmission').val(), "sMake":$('#extraExternal1').val(),
+	 */
 	private String make;
 	private String bodyType;
 	private String carColor;
@@ -183,13 +178,12 @@ public class Search implements Serializable {
 	private boolean thirdPartyCover;
 	private String ausCapTer;
 
-	
-	
 	private String extraExter2;
-	private String extraExter3;	
-	private String extraExter4;	
-	private String extraExter5;	
+	private String extraExter3;
+	private String extraExter4;
+	private String extraExter5;
 	private String extraExter6;
+
 	public String getExtraExter6() {
 		return extraExter6;
 	}
@@ -246,19 +240,19 @@ public class Search implements Serializable {
 		this.extraIntern11 = extraIntern11;
 	}
 
-	private String extraIntern1;	
-	private String extraIntern2;	
-	private String extraIntern3;	
-	private String extraIntern4;	
+	private String extraIntern1;
+	private String extraIntern2;
+	private String extraIntern3;
+	private String extraIntern4;
 	private String extraIntern5;
-	private String extraIntern6;	
-	private String extraIntern7;	
-	private String extraIntern8;	
-	private String extraIntern9;	
+	private String extraIntern6;
+	private String extraIntern7;
+	private String extraIntern8;
+	private String extraIntern9;
 	private String extraIntern10;
 	private String extraIntern11;
 	private LeadInitiatedBy leadInitiatedBy;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "CARSEARCHID")
@@ -544,7 +538,5 @@ public class Search implements Serializable {
 	public void setLeadInitiatedBy(LeadInitiatedBy leadInitiatedBy) {
 		this.leadInitiatedBy = leadInitiatedBy;
 	}
-	
-	
-	
+
 }

@@ -6,7 +6,6 @@ public class FeatureVO {
 	private String featureName;
 	private String featurDescription;
 
-	
 	public long getFeatureId() {
 		return this.featureId;
 	}
@@ -15,7 +14,6 @@ public class FeatureVO {
 		this.featureId = featureId;
 	}
 
-	
 	public String getFeatureName() {
 		return featureName;
 	}
@@ -24,7 +22,6 @@ public class FeatureVO {
 		this.featureName = featureName;
 	}
 
-	
 	public String getFeaturDescription() {
 		return featurDescription;
 	}

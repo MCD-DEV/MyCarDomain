@@ -34,8 +34,8 @@ public class DealerSearchVO {
 	private Long userId;
 	private Long carSearchId;
 	private boolean finApproved;
-private boolean status;
-	
+	private boolean status;
+
 	public boolean isStatus() {
 		return status;
 	}
@@ -43,6 +43,7 @@ private boolean status;
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
 	public boolean isFinApproved() {
 		return finApproved;
 	}
@@ -52,6 +53,7 @@ private boolean status;
 	}
 
 	private boolean newer;
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -78,6 +80,7 @@ private boolean status;
 
 	private boolean used;
 	private String carColor2;
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}
@@ -85,7 +88,6 @@ private boolean status;
 	public void setCarSearchId(Long carSearchId) {
 		this.carSearchId = carSearchId;
 	}
-	
 
 	public Long getUserId() {
 		return userId;
@@ -555,5 +557,4 @@ private boolean status;
 		this.sPcode = sPcode;
 	}
 
-	
 }

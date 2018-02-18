@@ -5,19 +5,16 @@ import java.util.List;
 
 public class MyVehicleVO {
 
-	/* Mapping 
-	 * "carColor" : $("carColor").val(),
-																			 "postCode":$('#postCode').val(),
-																			"make":$('#seats').val(),
-																			"bodyType":$('#driveType').val(),
-																			"state":$('#fuelType').val(),
-																			"region":$('#freetext').val(),
-																			"ausCapTer":$('#vehiclePurpose').val(),
-																			"region":$('#transmission').val(),
-																			"sMake":$('#extraExternal1').val(),
-	 * */
-	
+	/*
+	 * Mapping "carColor" : $("carColor").val(),
+	 * "postCode":$('#postCode').val(), "make":$('#seats').val(),
+	 * "bodyType":$('#driveType').val(), "state":$('#fuelType').val(),
+	 * "region":$('#freetext').val(), "ausCapTer":$('#vehiclePurpose').val(),
+	 * "region":$('#transmission').val(), "sMake":$('#extraExternal1').val(),
+	 */
+
 	private Long myVehicleId;
+
 	public Long getMyVehicleId() {
 		return myVehicleId;
 	}
@@ -31,30 +28,29 @@ public class MyVehicleVO {
 	private String make;
 	private String model;
 	private String variant;
-	
-	//Reg Info
+
+	// Reg Info
 	private String vin;
 	private String regNum;
 	private String regState;
 	private Date regExpDate;
-	
-	//Ins Info
+
+	// Ins Info
 	private String insProv;
 	private String insProvMan;
-	private double insPremPaid; 
+	private double insPremPaid;
 	private String insPremPaidFreq;
 	private Date insExpiry;
-	
-	
-	//Maintanence info
-	
+
+	// Maintanence info
+
 	private String odoMeter;
 	private Date lastServiceDt;
 	private Date nextServiceDt;
 	private int nextServKms;
-	
-	//Finance indfo
-	
+
+	// Finance indfo
+
 	private String finProvider;
 	private double loanAmt1;
 	private Date loanTakenDt;
@@ -62,20 +58,19 @@ public class MyVehicleVO {
 	private double loanAmt2;
 	private double loanPeriod;
 	private double loanInterest;
-	
-	
-	//Fuel card info'
+
+	// Fuel card info'
 	private String fuelCardProvider;
 	private String valFuelCard;
 	private String fuelType;
-	
-	//Photos
+
+	// Photos
 	private String photo1;
 	private String photo2;
 	private String photo3;
-	
-	//Flex
-	
+
+	// Flex
+
 	private String flex1;
 	private String flex2;
 	private String flex3;
@@ -101,10 +96,8 @@ public class MyVehicleVO {
 	private boolean vehServRemMon;
 	private boolean vehServRemTwo;
 	private boolean vehServRemOne;
-private long idp;
-	
-	
-	
+	private long idp;
+
 	public long getIdp() {
 		return idp;
 	}
@@ -112,6 +105,7 @@ private long idp;
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getRegExpDate() {
 		return regExpDate;
 	}
@@ -224,8 +218,6 @@ private long idp;
 		this.vehFinRemOne = vehFinRemOne;
 	}
 
-	
-	
 	public boolean isInsRemind() {
 		return insRemind;
 	}
@@ -253,9 +245,6 @@ private long idp;
 	List<MyVehicleLogBookVO> myVehicleLogBook;
 	List<MyVehicleFuelExpensesVO> myVehicleFuelExpenses;
 	List<MyVehicleServMaintVO> myVehicleServMaint;
-	
-	
-	
 
 	public List<MyVehicleLogBookVO> getMyVehicleLogBook() {
 		return myVehicleLogBook;
@@ -345,13 +334,12 @@ private long idp;
 		this.regState = regState;
 	}
 
-	/*public String getRegExpDate() {
-		return regExpDate;
-	}
-
-	public void setRegExpDate(String regExpDate) {
-		this.regExpDate = regExpDate;
-	}*/
+	/*
+	 * public String getRegExpDate() { return regExpDate; }
+	 * 
+	 * public void setRegExpDate(String regExpDate) { this.regExpDate =
+	 * regExpDate; }
+	 */
 
 	public String getInsProv() {
 		return insProv;
@@ -601,7 +589,4 @@ private long idp;
 		this.flex9 = flex9;
 	}
 
-	
-
-	
 }

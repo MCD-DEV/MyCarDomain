@@ -71,6 +71,7 @@ import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
+import au.com.pnspvtltd.mcd.web.model.DealerDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.DealerFinanceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerInsuranceMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerLoginVO;
@@ -767,9 +768,9 @@ public class DealerController {
 	}
 
 	@GetMapping(value = "dealerInfoforID", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public DealerVO getDealerForID(@RequestParam("dealerID") Long dealerID) {
+	public DealerDetailsVO getDealerForID(@RequestParam("dealerID") Long dealerID) {
 		LOGGER.info("Received request to get Dealer info for Dealer Id");
-		return dealerService.getDealerForID(dealerID);
+		return domainModelUtil.toDealerDetailsVO(dealerService.getDealerForID(dealerID));
 	}
 
 	@GetMapping(value = "getDealSearchInfoId", produces = { MediaType.APPLICATION_JSON_VALUE })
@@ -1551,4 +1552,11 @@ public class DealerController {
 		return inventoryVO;
 	}
 
+	
+	
+	//pulling dealerIds from VehicleDealerDetails
+	@GetMapping(value = "dealerIDs/{subscriptionType}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<Long> getDealerIDs(@PathVariable String subscriptionType){
+		return dealerService.getDealerIDs(subscriptionType);
+	}
 }

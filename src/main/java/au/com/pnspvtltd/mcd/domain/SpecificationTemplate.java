@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "templatespecification")
 public class SpecificationTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long templateSpecificationId;
 	private String colorName1;
 	private String colorName2;

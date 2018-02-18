@@ -10,10 +10,9 @@ public class UserTranspAdminVO {
 	private String modelName;
 	private String modelTrim;
 	private Date creationDate;
-	
+
 	List<SearchTranspVO> searchVO;
 
-	
 	public String getModelYear() {
 		return modelYear;
 	}
@@ -61,8 +60,5 @@ public class UserTranspAdminVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-
-	
-	
 
 }

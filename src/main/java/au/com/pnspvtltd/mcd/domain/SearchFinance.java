@@ -14,15 +14,18 @@ import javax.persistence.Table;
 @Table(name = "searchfinance")
 public class SearchFinance implements Serializable {
 
-	
-	//private boolean isNew;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	// private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long searchFinanceId;
 	private String postCode;
-	
+
 	private int year;
-	
+
 	private String make;
 	private String model;
 	private String variant;
@@ -35,7 +38,7 @@ public class SearchFinance implements Serializable {
 	private String incomeType;
 	private String creditRating;
 	private Date dateOfBirth;
-	
+
 	private int yearEmploymentBusiness;
 	private String incomeBeforeSuperTax;
 	private String incomeAfterSuperTax;
@@ -49,16 +52,16 @@ public class SearchFinance implements Serializable {
 	private String lastName;
 	private Date creationDate;
 	private long idp;
-	/*private int mobile;
-	private int landLine;*/
+	/*
+	 * private int mobile; private int landLine;
+	 */
 	private String abnNumber;
 	private String email;
 	private String drivingLicense;
 	private boolean credStat;
 	private boolean idCheck;
 	private boolean mobCheck;
-	
-	
+
 	public String getAbnNumber() {
 		return abnNumber;
 	}
@@ -75,21 +78,15 @@ public class SearchFinance implements Serializable {
 		this.email = email;
 	}
 
-	/*public int getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-
-	public int getLandLine() {
-		return landLine;
-	}
-
-	public void setLandLine(int landLine) {
-		this.landLine = landLine;
-	}*/
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
 	public String getDrivingLicense() {
 		return drivingLicense;
@@ -138,6 +135,7 @@ public class SearchFinance implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 	@Column(name = "REGO")
 	public String getRego() {
 		return rego;
@@ -146,6 +144,7 @@ public class SearchFinance implements Serializable {
 	public void setRego(String rego) {
 		this.rego = rego;
 	}
+
 	@Column(name = "REGOSTATE")
 	public String getRegoState() {
 		return regoState;
@@ -154,6 +153,7 @@ public class SearchFinance implements Serializable {
 	public void setRegoState(String regoState) {
 		this.regoState = regoState;
 	}
+
 	@Column(name = "STREETNO")
 	public String getStreetNo() {
 		return streetNo;
@@ -162,6 +162,7 @@ public class SearchFinance implements Serializable {
 	public void setStreetNo(String streetNo) {
 		this.streetNo = streetNo;
 	}
+
 	@Column(name = "STREETNAME")
 	public String getStreetName() {
 		return streetName;
@@ -170,6 +171,7 @@ public class SearchFinance implements Serializable {
 	public void setStreetName(String streetName) {
 		this.streetName = streetName;
 	}
+
 	@Column(name = "MR")
 	public String getMr() {
 		return mr;
@@ -178,6 +180,7 @@ public class SearchFinance implements Serializable {
 	public void setMr(String mr) {
 		this.mr = mr;
 	}
+
 	@Column(name = "FIRSTNAME")
 	public String getFirstName() {
 		return firstName;
@@ -186,6 +189,7 @@ public class SearchFinance implements Serializable {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
 	@Column(name = "LASTNAME")
 	public String getLastName() {
 		return lastName;
@@ -212,7 +216,7 @@ public class SearchFinance implements Serializable {
 	public void setNewer(boolean isNewer) {
 		this.isNewer = isNewer;
 	}
-	
+
 	public int getYearEmploymentBusiness() {
 		return yearEmploymentBusiness;
 	}
@@ -244,6 +248,7 @@ public class SearchFinance implements Serializable {
 	public void setIfBusinessProvideABN(String ifBusinessProvideABN) {
 		this.ifBusinessProvideABN = ifBusinessProvideABN;
 	}
+
 	@Column(name = "ISUSED")
 	public boolean isUsed() {
 		return isUsed;
@@ -253,14 +258,11 @@ public class SearchFinance implements Serializable {
 		this.isUsed = isUsed;
 	}
 
-	/*@Column(name = "ISNEW")
-	public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * @Column(name = "ISNEW") public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 	@Column(name = "DATEOFBIRTH")
 	public Date getDateOfBirth() {
 		return dateOfBirth;
@@ -269,7 +271,7 @@ public class SearchFinance implements Serializable {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	
+
 	@Column(name = "POSTCODE")
 	public String getPostCode() {
 		return postCode;
@@ -278,7 +280,7 @@ public class SearchFinance implements Serializable {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-	
+
 	@Column(name = "YEAR")
 	public int getYear() {
 		return year;
@@ -287,6 +289,7 @@ public class SearchFinance implements Serializable {
 	public void setYear(int year) {
 		this.year = year;
 	}
+
 	@Column(name = "MAKE")
 	public String getMake() {
 		return make;
@@ -295,6 +298,7 @@ public class SearchFinance implements Serializable {
 	public void setMake(String make) {
 		this.make = make;
 	}
+
 	@Column(name = "MODEL")
 	public String getModel() {
 		return model;
@@ -303,6 +307,7 @@ public class SearchFinance implements Serializable {
 	public void setModel(String model) {
 		this.model = model;
 	}
+
 	@Column(name = "VARIANT")
 	public String getVariant() {
 		return variant;
@@ -311,8 +316,7 @@ public class SearchFinance implements Serializable {
 	public void setVariant(String variant) {
 		this.variant = variant;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "SEARCHFINANCEID")
@@ -323,6 +327,7 @@ public class SearchFinance implements Serializable {
 	public void setSearchFinanceId(Long searchInsuranceId) {
 		this.searchFinanceId = searchInsuranceId;
 	}
+
 	@Column(name = "VEHVALUE")
 	public double getVehValue() {
 		return vehValue;
@@ -331,6 +336,7 @@ public class SearchFinance implements Serializable {
 	public void setVehValue(double vehValue) {
 		this.vehValue = vehValue;
 	}
+
 	@Column(name = "BALLOONPAY")
 	public double getBalloonPay() {
 		return balloonPay;
@@ -339,6 +345,7 @@ public class SearchFinance implements Serializable {
 	public void setBalloonPay(double balloonPay) {
 		this.balloonPay = balloonPay;
 	}
+
 	@Column(name = "LOANAMOUNT")
 	public double getLoanAmount() {
 		return loanAmount;
@@ -347,6 +354,7 @@ public class SearchFinance implements Serializable {
 	public void setLoanAmount(double loanAmount) {
 		this.loanAmount = loanAmount;
 	}
+
 	@Column(name = "LOANPERIOD")
 	public int getLoanPeriod() {
 		return loanPeriod;
@@ -355,6 +363,7 @@ public class SearchFinance implements Serializable {
 	public void setLoanPeriod(int loanPeriod) {
 		this.loanPeriod = loanPeriod;
 	}
+
 	@Column(name = "ANNUALINCOME")
 	public double getAnnualIncome() {
 		return annualIncome;
@@ -363,6 +372,7 @@ public class SearchFinance implements Serializable {
 	public void setAnnualIncome(double annualIncome) {
 		this.annualIncome = annualIncome;
 	}
+
 	@Column(name = "INCOMETYPE")
 	public String getIncomeType() {
 		return incomeType;
@@ -371,6 +381,7 @@ public class SearchFinance implements Serializable {
 	public void setIncomeType(String incomeType) {
 		this.incomeType = incomeType;
 	}
+
 	@Column(name = "CREDITRATING")
 	public String getCreditRating() {
 		return creditRating;
@@ -379,7 +390,5 @@ public class SearchFinance implements Serializable {
 	public void setCreditRating(String creditRating) {
 		this.creditRating = creditRating;
 	}
-	
-
 
 }

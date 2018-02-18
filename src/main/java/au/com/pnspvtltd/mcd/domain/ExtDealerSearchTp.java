@@ -51,8 +51,7 @@ public class ExtDealerSearchTp implements Serializable {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
-	
+
 	// Dealer info Start
 	private String category;
 	private String companyName;
@@ -72,36 +71,33 @@ public class ExtDealerSearchTp implements Serializable {
 	private float longitude;
 	private float latitude;
 	// Dealer info end
-	
-	
-	// transp search start
-		private String fromPostCodeAddr;
-		private String toPostCodeAddr;
-		private String transTypeReq;
-		private Date pickUpDateTime;
-		private int noOfCars;
-		private int year;
-		private String make;
-		private String model;
-		private String variant;
-		private String freeText;
-		private boolean transpInsReq;
-		private String howMay;
-		private String fromStreetNo;
-		private String toStreetName;
-		private String toStreetNo;
-		private String fromStreetName;
-		private String kindOfTransport;
-		private boolean flexWithDateDefault;
-		private String uploadPhotos;
-		private String photo;
-		private String regoNo;
-		private String regoState;
 
-		// trasp search end
-		
-	
-	
+	// transp search start
+	private String fromPostCodeAddr;
+	private String toPostCodeAddr;
+	private String transTypeReq;
+	private Date pickUpDateTime;
+	private int noOfCars;
+	private int year;
+	private String make;
+	private String model;
+	private String variant;
+	private String freeText;
+	private boolean transpInsReq;
+	private String howMay;
+	private String fromStreetNo;
+	private String toStreetName;
+	private String toStreetNo;
+	private String fromStreetName;
+	private String kindOfTransport;
+	private boolean flexWithDateDefault;
+	private String uploadPhotos;
+	private String photo;
+	private String regoNo;
+	private String regoState;
+
+	// trasp search end
+
 	public String getState() {
 		return state;
 	}
@@ -421,7 +417,7 @@ public class ExtDealerSearchTp implements Serializable {
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -440,7 +436,7 @@ public class ExtDealerSearchTp implements Serializable {
 
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -464,8 +460,6 @@ public class ExtDealerSearchTp implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
 
 	public Long getDealerId() {
 		return dealerId;
@@ -474,8 +468,7 @@ public class ExtDealerSearchTp implements Serializable {
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
-	
-	
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}

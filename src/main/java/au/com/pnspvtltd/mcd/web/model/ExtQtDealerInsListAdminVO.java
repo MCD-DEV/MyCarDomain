@@ -1,12 +1,11 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class ExtQtDealerInsListAdminVO {
 
 	private Long carSearchId;
-	
+
 	List<InsuranceQuotationVO> serviceMaintQuotationVO;
 
 	public Long getCarSearchId() {
@@ -25,11 +24,4 @@ public class ExtQtDealerInsListAdminVO {
 		this.serviceMaintQuotationVO = serviceMaintQuotationVO;
 	}
 
-	
-	
-	
-
-	
-
-	
 }

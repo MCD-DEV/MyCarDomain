@@ -513,7 +513,7 @@ mainApp1.controller('myController13',function($scope, $http) {
 	}
 	$scope.populateServicelev2 = function (){
 		$body.addClass("loading");
-		alert($scope.ServL1);
+		//alert($scope.ServL1);
     	$http({
             method : 'GET',
             url : 'api/level2?level1='+$scope.ServL1
@@ -521,7 +521,7 @@ mainApp1.controller('myController13',function($scope, $http) {
         	console.log(response);	
         	 $body.removeClass("loading");
         	 $scope.ServiceLev2s = response.data;
-        	 console.log($scope.ServiceLev2s);
+        	 //console.log($scope.ServiceLev2s);
         }, function myError(response) {
         	$scope.ServiceLev2s = response.statusText;
         });
@@ -587,9 +587,9 @@ mainApp1.controller('myController13',function($scope, $http) {
 	}
 	
 // To get all My Log Book
-	$scope.carLogBook = function(){
+	/*$scope.carLogBook = function(){
 		carLogBook();
-	}
+	}*/
 	//$scope.carLogBook = function(){
 	function carLogBook(){	
 		//alert("inside log book");
@@ -706,9 +706,9 @@ $("#"+"fuelCard4").html(outLogT);
 		}
 	
 // To get all My Vehicle Garage
-	$scope.carVehicleGarage = function(){
+	/*$scope.carVehicleGarage = function(){
 		carVehicleGarage();
-	}
+	}*/
 	//$scope.carVehicleGarage = function(){
 	function carVehicleGarage(){	
 		
@@ -1001,9 +1001,9 @@ $("#"+"fuelCard4").html(outLogT);
 
 
 	// start of sell my vehicle
-	$scope.sellMyVehicle = function(){
+	/*$scope.sellMyVehicle = function(){
 		sellMyVehicle();
-	}
+	}*/
 		//$scope.sellMyVehicle = function(){
 		function sellMyVehicle(){
 			//alert("came here");
@@ -1058,9 +1058,9 @@ $("#"+"fuelCard4").html(outLogT);
 
 		
 // start of reward points
-		$scope.loyalityProgram = function(){
+		/*$scope.loyalityProgram = function(){
 			loyalityProgram();
-		}
+		}*/
 		//$scope.loyalityProgram = function(){
 		function loyalityProgram(){
 			//alert("came here");

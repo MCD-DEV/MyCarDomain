@@ -6,10 +6,6 @@ public class UserEBidTransServVO {
 
 	private SearchTranspVO searchTranspLead;
 
-	
-
-	
-
 	public SearchTranspVO getSearchTranspLead() {
 		return searchTranspLead;
 	}
@@ -25,8 +21,5 @@ public class UserEBidTransServVO {
 	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-
-	
-	
 
 }

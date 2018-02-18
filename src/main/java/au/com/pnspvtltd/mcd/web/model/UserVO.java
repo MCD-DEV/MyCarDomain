@@ -3,19 +3,6 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.BlogPoints;
-import au.com.pnspvtltd.mcd.domain.MyVehicle;
-import au.com.pnspvtltd.mcd.domain.ReferencedPoints;
-import au.com.pnspvtltd.mcd.domain.ReviewPoints;
-import au.com.pnspvtltd.mcd.domain.UserNotification;
-import au.com.pnspvtltd.mcd.domain.UserReferPoints;
-import au.com.pnspvtltd.mcd.domain.ValTransPoints;
-
 public class UserVO {
 
 	private Long userId;
@@ -42,7 +29,7 @@ public class UserVO {
 	private boolean idCheck;
 	private boolean mobCheck;
 	private boolean loyalityFlag;
-	
+
 	public boolean isCredStat() {
 		return credStat;
 	}
@@ -82,6 +69,7 @@ public class UserVO {
 	public void setLoyalityFlag(boolean loyalityFlag) {
 		this.loyalityFlag = loyalityFlag;
 	}
+
 	public boolean isRefer() {
 		return refer;
 	}
@@ -89,6 +77,7 @@ public class UserVO {
 	public void setRefer(boolean refer) {
 		this.refer = refer;
 	}
+
 	List<SearchVO> search;
 	List<SearchInsuranceVO> searchInsurance;
 	List<SearchFinanceVO> searchFinance;
@@ -102,25 +91,25 @@ public class UserVO {
 	List<TranspServiceQuotationVO> transpServQuotation;
 	List<CurrentOffersVO> currentOffers;
 	List<UserNotificationVO> userNotification;
-	
+
 	List<UserReferPointsVO> userReferPoints;
 	List<ReferencedPointsVO> referencedPoints;
 	List<BlogPointsVO> blogPoints;
 	List<ReviewPointsVO> reviewPoints;
 	List<ValTransPointsVO> valTransPoints;
-	
+
 	private int searchCount;
 	private int searchInsCount;
 	private int searchFinCount;
 	private int searchServCount;
 	private int searchTranspCount;
-	
+
 	private int vehicleQuotCt;
 	private int insuranceQuotCt;
 	private int financeQuotCt;
 	private int servMaintQuotCt;
 	private int transpServQuotCt;
-	
+
 	public int getVehicleQuotCt() {
 		return vehicleQuotCt;
 	}
@@ -200,9 +189,9 @@ public class UserVO {
 	public void setSearchTranspCount(int searchTranspCount) {
 		this.searchTranspCount = searchTranspCount;
 	}
-	
+
 	private String gender;
-	
+
 	public String getGender() {
 		return gender;
 	}
@@ -212,7 +201,7 @@ public class UserVO {
 	}
 
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -230,8 +219,7 @@ public class UserVO {
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
-	
-	
+
 	public List<UserReferPointsVO> getUserReferPoints() {
 		return userReferPoints;
 	}
@@ -296,7 +284,6 @@ public class UserVO {
 		this.currentOffers = currentOffers;
 	}
 
-	
 	public List<UserNotificationVO> getUserNotification() {
 		return userNotification;
 	}
@@ -304,7 +291,6 @@ public class UserVO {
 	public void setUserNotification(List<UserNotificationVO> userNotification) {
 		this.userNotification = userNotification;
 	}
-
 
 	public Long getUserId() {
 		return userId;

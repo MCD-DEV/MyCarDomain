@@ -5,9 +5,9 @@ import java.util.List;
 public class ExternalDealerInsListVO {
 
 	private String category;
-	
+
 	private int postCode;
-	
+
 	List<ExternalDealerInsVO> externalDealerVO;
 
 	public String getCategory() {
@@ -33,6 +33,5 @@ public class ExternalDealerInsListVO {
 	public void setExternalDealerVO(List<ExternalDealerInsVO> externalDealerVO) {
 		this.externalDealerVO = externalDealerVO;
 	}
-	
-	
+
 }

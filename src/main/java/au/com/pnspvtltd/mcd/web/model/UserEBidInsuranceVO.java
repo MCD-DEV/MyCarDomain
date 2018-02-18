@@ -14,7 +14,6 @@ public class UserEBidInsuranceVO {
 		this.userId = userId;
 	}
 
-	
 	public SearchInsuranceVO getInsuranceLead() {
 		return insuranceLead;
 	}

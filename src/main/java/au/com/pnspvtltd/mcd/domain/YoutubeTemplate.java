@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "templateyoutube")
 public class YoutubeTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long templateYoutubeId;
 	private String ylink1;
 	private String flex1;

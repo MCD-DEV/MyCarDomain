@@ -1,48 +1,38 @@
 package au.com.pnspvtltd.mcd.domain;
-import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "vehicledealerInsdetails1") public class VehicleDealerInsDetails implements Serializable 
-{
-
+@Entity
+@Table(name = "vehicledealerInsdetails1")
+public class VehicleDealerInsDetails implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
 	 */
-												
-		
 
-	
 	private Long vehicleDealerFinInsDetailId;
-	
+
 	private String flex1;
 	private String flex2;
 	private String flex3;
 	private String flex4;
-	
-	
+
 	public String getFlex1() {
 		return flex1;
 	}
@@ -75,7 +65,10 @@ import javax.persistence.Table;
 		this.flex4 = flex4;
 	}
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "VEHICLEDEALERFININSDETAILID") public Long getVehicleDealerFinInsDetailId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "VEHICLEDEALERFININSDETAILID")
+	public Long getVehicleDealerFinInsDetailId() {
 		return vehicleDealerFinInsDetailId;
 	}
 
@@ -83,47 +76,10 @@ import javax.persistence.Table;
 		this.vehicleDealerFinInsDetailId = vehicleDealerFinInsDetailId;
 	}
 
-	
-	
-	
-	
+	/* end */
 
-
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
 	public VehicleDealerInsDetails() {
-        super();
-    }
-	
-	
+		super();
+	}
 
-	
-
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

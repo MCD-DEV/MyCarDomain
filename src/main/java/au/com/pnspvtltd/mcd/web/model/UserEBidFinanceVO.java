@@ -13,7 +13,6 @@ public class UserEBidFinanceVO {
 		this.userId = userId;
 	}
 
-
 	public SearchFinanceVO getFinanceLead() {
 		return financeLead;
 	}
@@ -21,6 +20,5 @@ public class UserEBidFinanceVO {
 	public void setFinanceLead(SearchFinanceVO financeLead) {
 		this.financeLead = financeLead;
 	}
-
 
 }

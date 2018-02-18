@@ -13,15 +13,20 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import au.com.pnspvtltd.mcd.domain.*;
+
+//import au.com.pnspvtltd.mcd.domain.*;
 @Entity
 @Table(name = "inventorydealer")
 public class Dealer implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long dealerId;
 	private String password;
 	private String email;
-	
+
 	private String vehicleType;
 	private String licenceNumber;
 	private String dealerGroupName;
@@ -31,7 +36,7 @@ public class Dealer implements Serializable {
 	private String subscriptionType;
 	private boolean new1;
 	private boolean used;
-	
+
 	private boolean isAdmin;
 	private boolean isDealer;
 	private boolean isInsurer;
@@ -49,7 +54,7 @@ public class Dealer implements Serializable {
 	private String suborb;
 	private String state;
 	private int postcode;
-	
+
 	public boolean isNew1() {
 		return new1;
 	}
@@ -85,7 +90,7 @@ public class Dealer implements Serializable {
 	List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode;
 	List<FinanceEntity> financeEntity;
 	List<VehicleResourceDetails> vehicleResourcDetails;
-	
+
 	// start
 	private int leaadSellCount;
 	private int leaadLeaseCount;
@@ -94,7 +99,7 @@ public class Dealer implements Serializable {
 	private int leadFinCount;
 	private int leadServCount;
 	private int leadTranspCount;
-	
+
 	private boolean isServMaint;
 	private boolean isSparesAccess;
 	private boolean isVehTransProv;
@@ -102,9 +107,7 @@ public class Dealer implements Serializable {
 	private boolean isAreaOfOperartinStates;
 	private boolean isAreaOfOperartinPostcodes;
 	private boolean isAllMakes;
-	
-	
-	
+
 	public int getLeadInsCount() {
 		return leadInsCount;
 	}
@@ -160,8 +163,6 @@ public class Dealer implements Serializable {
 	public void setLeaadBuyCount(int leaadBuyCount) {
 		this.leaadBuyCount = leaadBuyCount;
 	}
-
-	
 
 	public String getVehicleType() {
 		return vehicleType;
@@ -225,116 +226,112 @@ public class Dealer implements Serializable {
 		return financeEntity;
 	}
 
-	public void setFinanceEntity(
-			List<FinanceEntity> financeEntity) {
+	public void setFinanceEntity(List<FinanceEntity> financeEntity) {
 		this.financeEntity = financeEntity;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerDetails> getVehicleDealerDetails() {
 		return vehicleDealerDetails;
 	}
 
-	public void setVehicleDealerDetails(
-			List<VehicleDealerDetails> vehicleDealerDetails) {
+	public void setVehicleDealerDetails(List<VehicleDealerDetails> vehicleDealerDetails) {
 		this.vehicleDealerDetails = vehicleDealerDetails;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleResourceDetails> getVehicleResourceDetails() {
 		return vehicleResourcDetails;
 	}
 
-	public void setVehicleResourceDetails(
-			List<VehicleResourceDetails> vehicleResourcDetails) {
+	public void setVehicleResourceDetails(List<VehicleResourceDetails> vehicleResourcDetails) {
 		this.vehicleResourcDetails = vehicleResourcDetails;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerFinanceDetails> getVehicleDealerFinanceDetails() {
 		return vehicleDealerFinanceDetails;
 	}
 
-	public void setVehicleDealerFinanceDetails(
-			List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails) {
+	public void setVehicleDealerFinanceDetails(List<VehicleDealerFinanceDetails> vehicleDealerFinanceDetails) {
 		this.vehicleDealerFinanceDetails = vehicleDealerFinanceDetails;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerTranspDetails> getVehicleDealerTranspDetails() {
 		return vehicleDealerTranspDetails;
 	}
 
-	public void setVehicleDealerTranspDetails(
-			List<VehicleDealerTranspDetails> vehicleDealerTranspDetails) {
+	public void setVehicleDealerTranspDetails(List<VehicleDealerTranspDetails> vehicleDealerTranspDetails) {
 		this.vehicleDealerTranspDetails = vehicleDealerTranspDetails;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerInsuranceDetails> getVehicleDealerInsuranceDetails() {
 		return vehicleDealerInsuranceDetails;
 	}
 
-	public void setVehicleDealerInsuranceDetails(
-			List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails) {
+	public void setVehicleDealerInsuranceDetails(List<VehicleDealerInsuranceDetails> vehicleDealerInsuranceDetails) {
 		this.vehicleDealerInsuranceDetails = vehicleDealerInsuranceDetails;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerServMaintDetails> getVehicleDealerServMaintDetails() {
 		return vehicleDealerServMaintDetails;
 	}
 
-	public void setVehicleDealerServMaintDetails(
-			List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails) {
+	public void setVehicleDealerServMaintDetails(List<VehicleDealerServMaintDetails> vehicleDealerServMaintDetails) {
 		this.vehicleDealerServMaintDetails = vehicleDealerServMaintDetails;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerMakeList> getVehicleDealerMakeList() {
 		return vehicleDealerMakeList;
 	}
 
-	public void setVehicleDealerMakeList(
-			List<VehicleDealerMakeList> vehicleDealerMakeList) {
+	public void setVehicleDealerMakeList(List<VehicleDealerMakeList> vehicleDealerMakeList) {
 		this.vehicleDealerMakeList = vehicleDealerMakeList;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerAreaOfOperState> getVehicleDealerAreaOfOperState() {
 		return vehicleDealerAreaOfOperState;
 	}
 
-	public void setVehicleDealerAreaOfOperState(
-			List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperState) {
+	public void setVehicleDealerAreaOfOperState(List<VehicleDealerAreaOfOperState> vehicleDealerAreaOfOperState) {
 		this.vehicleDealerAreaOfOperState = vehicleDealerAreaOfOperState;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerAreaOfOperRegion> getVehicleDealerRegion() {
 		return vehicleDealerRegion;
 	}
 
-	public void setVehicleDealerRegion(
-			List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion) {
+	public void setVehicleDealerRegion(List<VehicleDealerAreaOfOperRegion> vehicleDealerRegion) {
 		this.vehicleDealerRegion = vehicleDealerRegion;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<VehicleDealerAreaOfOperPostCode> getVehicleDealerPostCode() {
 		return vehicleDealerPostCode;
 	}
 
-	public void setVehicleDealerPostCode(
-			List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode) {
+	public void setVehicleDealerPostCode(List<VehicleDealerAreaOfOperPostCode> vehicleDealerPostCode) {
 		this.vehicleDealerPostCode = vehicleDealerPostCode;
 	}
 
-	@Column(name = "ISSERVMAINT") public boolean isServMaint() {
+	@Column(name = "ISSERVMAINT")
+	public boolean isServMaint() {
 		return isServMaint;
 	}
 
@@ -342,7 +339,8 @@ public class Dealer implements Serializable {
 		this.isServMaint = isServMaint;
 	}
 
-	@Column(name = "ISSPARESACCESS") public boolean isSparesAccess() {
+	@Column(name = "ISSPARESACCESS")
+	public boolean isSparesAccess() {
 		return isSparesAccess;
 	}
 
@@ -350,7 +348,8 @@ public class Dealer implements Serializable {
 		this.isSparesAccess = isSparesAccess;
 	}
 
-	@Column(name = "ISVEHTRANSPROV") public boolean isVehTransProv() {
+	@Column(name = "ISVEHTRANSPROV")
+	public boolean isVehTransProv() {
 		return isVehTransProv;
 	}
 
@@ -358,7 +357,8 @@ public class Dealer implements Serializable {
 		this.isVehTransProv = isVehTransProv;
 	}
 
-	@Column(name = "ISAREAOFOPERALLAUS") public boolean isAreaOfOperartinAllAus() {
+	@Column(name = "ISAREAOFOPERALLAUS")
+	public boolean isAreaOfOperartinAllAus() {
 		return isAreaOfOperartinAllAus;
 	}
 
@@ -366,7 +366,8 @@ public class Dealer implements Serializable {
 		this.isAreaOfOperartinAllAus = isAreaOfOperartinAllAus;
 	}
 
-	@Column(name = "ISAREAOFOPERINSTATES") public boolean isAreaOfOperartinStates() {
+	@Column(name = "ISAREAOFOPERINSTATES")
+	public boolean isAreaOfOperartinStates() {
 		return isAreaOfOperartinStates;
 	}
 
@@ -374,7 +375,8 @@ public class Dealer implements Serializable {
 		this.isAreaOfOperartinStates = isAreaOfOperartinStates;
 	}
 
-	@Column(name = "ISAREAOFOPERPOSTCODE") public boolean isAreaOfOperartinPostcodes() {
+	@Column(name = "ISAREAOFOPERPOSTCODE")
+	public boolean isAreaOfOperartinPostcodes() {
 		return isAreaOfOperartinPostcodes;
 	}
 
@@ -382,7 +384,8 @@ public class Dealer implements Serializable {
 		this.isAreaOfOperartinPostcodes = isAreaOfOperartinPostcodes;
 	}
 
-	@Column(name = "ISALLMAKES")public boolean isAllMakes() {
+	@Column(name = "ISALLMAKES")
+	public boolean isAllMakes() {
 		return isAllMakes;
 	}
 
@@ -390,7 +393,8 @@ public class Dealer implements Serializable {
 		this.isAllMakes = isAllMakes;
 	}
 
-	@Column(name = "ISMAKELIST") public boolean isMakeList() {
+	@Column(name = "ISMAKELIST")
+	public boolean isMakeList() {
 		return isMakeList;
 	}
 
@@ -398,7 +402,8 @@ public class Dealer implements Serializable {
 		this.isMakeList = isMakeList;
 	}
 
-	@Column(name = "LICENSENO") public String getLicenseNo() {
+	@Column(name = "LICENSENO")
+	public String getLicenseNo() {
 		return licenseNo;
 	}
 
@@ -406,7 +411,8 @@ public class Dealer implements Serializable {
 		this.licenseNo = licenseNo;
 	}
 
-	@Column(name = "DEALGROUP") public String getDealGroup() {
+	@Column(name = "DEALGROUP")
+	public String getDealGroup() {
 		return dealGroup;
 	}
 
@@ -417,12 +423,7 @@ public class Dealer implements Serializable {
 	private boolean isMakeList;
 	private String licenseNo;
 	private String dealGroup;
-	
-	
-	
-	
-	
-	
+
 	public @Column(name = "ISADMIN") boolean isAdmin() {
 		return isAdmin;
 	}
@@ -467,6 +468,7 @@ public class Dealer implements Serializable {
 	public void setInventory(List<Inventory> inventory) {
 		this.inventory = inventory;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<DealerSearch> getDealSearch() {
@@ -476,7 +478,7 @@ public class Dealer implements Serializable {
 	public void setDealSearch(List<DealerSearch> search) {
 		this.dealSearch = search;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<DealerSearchFinance> getDealSearchFinance() {
@@ -486,6 +488,7 @@ public class Dealer implements Serializable {
 	public void setDealSearchFinance(List<DealerSearchFinance> search) {
 		this.dealSearchFinance = search;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<DealerSearchInsurance> getDealSearchInsurance() {
@@ -495,7 +498,7 @@ public class Dealer implements Serializable {
 	public void setDealSearchInsurance(List<DealerSearchInsurance> search) {
 		this.dealSearchInsurance = search;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<DealerSearchServMaint> getDealSearchServMaint() {
@@ -505,7 +508,7 @@ public class Dealer implements Serializable {
 	public void setDealSearchServMaint(List<DealerSearchServMaint> search) {
 		this.dealSearchServMaint = search;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
 	public List<DealerSearchTransp> getDealSearchTransp() {
@@ -515,8 +518,7 @@ public class Dealer implements Serializable {
 	public void setDealSearchTransp(List<DealerSearchTransp> search) {
 		this.dealSearchTransp = search;
 	}
-	
-	
+
 	@Column(name = "ISDEALER")
 	public boolean isDealer() {
 		return isDealer;

@@ -3,7 +3,7 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 
 public class DealerSearchInsuranceVO {
-	//private boolean isNew;
+	// private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long dealerSearchInsuranceId;
@@ -17,6 +17,7 @@ public class DealerSearchInsuranceVO {
 	private String model;
 	private String variant;
 	private String autoscoopTrim;
+
 	public boolean isNewer() {
 		return isNewer;
 	}
@@ -175,7 +176,7 @@ public class DealerSearchInsuranceVO {
 	private Date dateOfBirth;
 	private Date ageOfAdditionalDriver;
 	private Long userId;
-	
+
 	private String carParkedAt;
 	private String streetNO;
 	private String streetName;
@@ -200,13 +201,11 @@ public class DealerSearchInsuranceVO {
 		this.userId = userId;
 	}
 
-	/*public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;

@@ -51,33 +51,34 @@ public class ExtDealerSearchIns implements Serializable {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
-	
+
 	// start of Finance Ebid
-	private boolean isNewer;
-	private boolean isUsed;
-	
+	/*
+	 * private boolean isNewer; private boolean isUsed;
+	 */
 	private String finPostCode;
-	
+
 	private int year;
-	
+
 	private String make;
 	private String model;
 	private String variant;
 	private String autoscoopTrim;
 	private double vehValue;
 	private double balloonPay;
-	/*private double loanAmount;
-	private int loanPeriod;*/
+	/*
+	 * private double loanAmount; private int loanPeriod;
+	 */
 	private double annualIncome;
-	/*private String incomeType;
-	private String creditRating;
-	private Date dateOfBirth;*/
-	
-	/*private int yearEmploymentBusiness;
-	private String incomeBeforeSuperTax;
-	private String incomeAfterSuperTax;
-	private String ifBusinessProvideABN;*/
+	/*
+	 * private String incomeType; private String creditRating; private Date
+	 * dateOfBirth;
+	 */
+
+	/*
+	 * private int yearEmploymentBusiness; private String incomeBeforeSuperTax;
+	 * private String incomeAfterSuperTax; private String ifBusinessProvideABN;
+	 */
 	private String rego;
 	private String regoState;
 	private String streetNo;
@@ -85,27 +86,26 @@ public class ExtDealerSearchIns implements Serializable {
 	private String mr;
 	private String firstName;
 	private String lastName;
-	/*private Date creationDate;*/
+	/* private Date creationDate; */
 	// end of Finance Ebid
-	
+
 	// Start of search Insurance
-	
-	/*private boolean isNewer;
-	private boolean isUsed;
-	private Long searchInsuranceId;
-	private String postCode;
-	private String insuranceType;*/
+
+	/*
+	 * private boolean isNewer; private boolean isUsed; private Long
+	 * searchInsuranceId; private String postCode; private String insuranceType;
+	 */
 	private String regNo;
-	/*private String regoState;*/
-	/*private int year;
-	
-	private String make;
-	private String model;
-	private String variant;
-	private String autoscoopTrim;*/
+	/* private String regoState; */
+	/*
+	 * private int year;
+	 * 
+	 * private String make; private String model; private String variant;
+	 * private String autoscoopTrim;
+	 */
 	private double marketValue;
 	private double agreedValue;
-	/*private boolean finance;*/
+	/* private boolean finance; */
 	private String financeProvider;
 	private String drivingLicenseType;
 	private String drivingLicenseNo;
@@ -114,12 +114,13 @@ public class ExtDealerSearchIns implements Serializable {
 	private String otherIssues;
 	private String curInsProv;
 	private double prefExcessAmount;
-	/*private Date dateOfBirth;
-	private Date ageOfAdditionalDriver;*/
-	
+	/*
+	 * private Date dateOfBirth; private Date ageOfAdditionalDriver;
+	 */
+
 	private String carParkedAt;
-	//private String streetNO;
-	/*private String streetName;*/
+	// private String streetNO;
+	/* private String streetName; */
 	private String carUsedfor;
 	private String typeOfBusiness;
 	private String driverFirstName;
@@ -132,30 +133,30 @@ public class ExtDealerSearchIns implements Serializable {
 	private int avgNoOfKmYr;
 	private int noOfDrivers;
 	private boolean licenseGotSuspened;
-	
+
 	// Insurance extra requirements
-	private boolean extNudgeBar;//Emergency accommodation and Transport
-	private boolean extBullBar; //Accidental Damage
-	private boolean extsnokel; //Essential Temporary Repairs
-	private boolean intNudgeBar; //Cover Towing Cost
-	private boolean intBullBar; //Cover Theft & Fire
-	private boolean intsnokel;//No Claim Bonus Protection
-	private boolean AnyDriver;//Allow Under 25 Driver
-	private boolean FreeWindScreen;//Excess Free wind Screen
-	private boolean Roadsideasst;//Road Side Assistance
-	private boolean RentalCar; //Excess Free Window Screen
-	private boolean NewCarRepl;//New Car Replace
-	private boolean LifetimeWarrep;//Life time Warranty repairs
-	private boolean HireCar;//Hire Car after Accident(if any)
+	private boolean extNudgeBar;// Emergency accommodation and Transport
+	private boolean extBullBar; // Accidental Damage
+	private boolean extsnokel; // Essential Temporary Repairs
+	private boolean intNudgeBar; // Cover Towing Cost
+	private boolean intBullBar; // Cover Theft & Fire
+	private boolean intsnokel;// No Claim Bonus Protection
+	private boolean AnyDriver;// Allow Under 25 Driver
+	private boolean FreeWindScreen;// Excess Free wind Screen
+	private boolean Roadsideasst;// Road Side Assistance
+	private boolean RentalCar; // Excess Free Window Screen
+	private boolean NewCarRepl;// New Car Replace
+	private boolean LifetimeWarrep;// Life time Warranty repairs
+	private boolean HireCar;// Hire Car after Accident(if any)
 	private boolean BullBar;
 	private boolean Snokel;
-	private boolean NudgeBar; 
-	
-	/*private Date creationDate;
-private long idp;*/
+	private boolean NudgeBar;
+
+	/*
+	 * private Date creationDate; private long idp;
+	 */
 	// end of search Insurance
-	
-	
+
 	// Dealer info Start
 	private String category;
 	private String companyName;
@@ -175,8 +176,7 @@ private long idp;*/
 	private float longitude;
 	private float latitude;
 	// Dealer info end
-	
-	
+
 	public String getState() {
 		return state;
 	}
@@ -768,7 +768,7 @@ private long idp;*/
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -787,7 +787,7 @@ private long idp;*/
 
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -811,8 +811,6 @@ private long idp;*/
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
 
 	public Long getDealerId() {
 		return dealerId;
@@ -821,8 +819,7 @@ private long idp;*/
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
-	
-	
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}

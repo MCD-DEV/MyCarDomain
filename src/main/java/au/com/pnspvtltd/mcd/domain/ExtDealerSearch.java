@@ -51,8 +51,7 @@ public class ExtDealerSearch implements Serializable {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
-	
+
 	// Dealer info Start
 	private String category;
 	private String companyName;
@@ -78,8 +77,7 @@ public class ExtDealerSearch implements Serializable {
 	private Date estTimeBuy;
 	private Date vehReqDate;
 	// Dealer info end
-	
-	
+
 	public String getState() {
 		return state;
 	}
@@ -271,7 +269,7 @@ public class ExtDealerSearch implements Serializable {
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -290,7 +288,7 @@ public class ExtDealerSearch implements Serializable {
 
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -314,8 +312,6 @@ public class ExtDealerSearch implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
 
 	public Long getDealerId() {
 		return dealerId;
@@ -324,8 +320,7 @@ public class ExtDealerSearch implements Serializable {
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
-	
-	
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}

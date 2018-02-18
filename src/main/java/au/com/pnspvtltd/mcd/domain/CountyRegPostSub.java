@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "CountyRegPostSub")
 public class CountyRegPostSub implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int countyRegPostSubid;
 	private String country;
 	private String state;
@@ -28,6 +32,7 @@ public class CountyRegPostSub implements Serializable {
 	public void setCountry(String country) {
 		this.country = country;
 	}
+
 	@Column(name = "STATE")
 	public String getState() {
 		return state;
@@ -36,6 +41,7 @@ public class CountyRegPostSub implements Serializable {
 	public void setState(String state) {
 		this.state = state;
 	}
+
 	@Column(name = "REGION")
 	public String getRegion() {
 		return region;
@@ -44,6 +50,7 @@ public class CountyRegPostSub implements Serializable {
 	public void setRegion(String region) {
 		this.region = region;
 	}
+
 	@Column(name = "POSTCODE")
 	public int getPostCode() {
 		return postCode;
@@ -52,6 +59,7 @@ public class CountyRegPostSub implements Serializable {
 	public void setPostCode(int postCode) {
 		this.postCode = postCode;
 	}
+
 	@Column(name = "SUBURB")
 	public String getSuburb() {
 		return suburb;
@@ -60,8 +68,6 @@ public class CountyRegPostSub implements Serializable {
 	public void setSuburb(String suburb) {
 		this.suburb = suburb;
 	}
-
-
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

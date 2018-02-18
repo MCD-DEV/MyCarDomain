@@ -1,52 +1,46 @@
 package au.com.pnspvtltd.mcd.domain;
+
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "tempcarmodeloverview") public class TempCarModelOverview implements Serializable 
-{
-
+@Entity
+@Table(name = "tempcarmodeloverview")
+public class TempCarModelOverview implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
 	 */
-	
-	
+
 	private Long tempCarModelOverviewId;
-	
+
 	private double price;
 	private String priceGuideEGC;
-/*start */
-	private String drive;	
-	private String Badge;	
-	private String fuelType;	
-	private String series;	
+	/* start */
+	private String drive;
+	private String Badge;
+	private String fuelType;
+	private String series;
 	private String recommendedRonRating;
 	private String body;
 	private int releaseYear;
 	private int noOfDoors;
-	private  String vin;
+	private String vin;
 	private int seatCapacity;
 	private String countryOfOrigin;
 	private String transmission;
@@ -58,21 +52,21 @@ import javax.persistence.Table;
 	private String manfYear;
 
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
-	@Column(name = "FLEX1") public String getFlex1() {
+
+	@Column(name = "FLEX1")
+	public String getFlex1() {
 		return flex1;
 	}
 
@@ -80,7 +74,8 @@ import javax.persistence.Table;
 		this.flex1 = flex1;
 	}
 
-	@Column(name = "FLEX2") public String getFlex2() {
+	@Column(name = "FLEX2")
+	public String getFlex2() {
 		return flex2;
 	}
 
@@ -88,7 +83,8 @@ import javax.persistence.Table;
 		this.flex2 = flex2;
 	}
 
-	@Column(name = "FLEX3") public String getFlex3() {
+	@Column(name = "FLEX3")
+	public String getFlex3() {
 		return flex3;
 	}
 
@@ -96,7 +92,8 @@ import javax.persistence.Table;
 		this.flex3 = flex3;
 	}
 
-	@Column(name = "FLEX4") public String getFlex4() {
+	@Column(name = "FLEX4")
+	public String getFlex4() {
 		return flex4;
 	}
 
@@ -104,7 +101,8 @@ import javax.persistence.Table;
 		this.flex4 = flex4;
 	}
 
-	@Column(name = "FLEX5") public int getFlex5() {
+	@Column(name = "FLEX5")
+	public int getFlex5() {
 		return flex5;
 	}
 
@@ -112,7 +110,8 @@ import javax.persistence.Table;
 		this.flex5 = flex5;
 	}
 
-	@Column(name = "FLEX6") public int getFlex6() {
+	@Column(name = "FLEX6")
+	public int getFlex6() {
 		return flex6;
 	}
 
@@ -120,7 +119,8 @@ import javax.persistence.Table;
 		this.flex6 = flex6;
 	}
 
-	@Column(name = "FLEX7") public double getFlex7() {
+	@Column(name = "FLEX7")
+	public double getFlex7() {
 		return flex7;
 	}
 
@@ -128,7 +128,8 @@ import javax.persistence.Table;
 		this.flex7 = flex7;
 	}
 
-	@Column(name = "FLEX8") public double getFlex8() {
+	@Column(name = "FLEX8")
+	public double getFlex8() {
 		return flex8;
 	}
 
@@ -136,7 +137,8 @@ import javax.persistence.Table;
 		this.flex8 = flex8;
 	}
 
-	@Column(name = "FLEX9") public double getFlex9() {
+	@Column(name = "FLEX9")
+	public double getFlex9() {
 		return flex9;
 	}
 
@@ -144,7 +146,8 @@ import javax.persistence.Table;
 		this.flex9 = flex9;
 	}
 
-	@Column(name = "FLEX10") public double getFlex10() {
+	@Column(name = "FLEX10")
+	public double getFlex10() {
 		return flex10;
 	}
 
@@ -152,7 +155,8 @@ import javax.persistence.Table;
 		this.flex10 = flex10;
 	}
 
-	@Column(name = "FLEX11") public Date getFlex11() {
+	@Column(name = "FLEX11")
+	public Date getFlex11() {
 		return flex11;
 	}
 
@@ -160,31 +164,20 @@ import javax.persistence.Table;
 		this.flex11 = flex11;
 	}
 
-	@Column(name = "FLEX12") public Date getFlex12() {
+	@Column(name = "FLEX12")
+	public Date getFlex12() {
 		return flex12;
 	}
 
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	@Column(name = "PRICE") public double getPrice() {
+	@Column(name = "PRICE")
+	public double getPrice() {
 		return price;
 	}
 
@@ -192,7 +185,8 @@ import javax.persistence.Table;
 		this.price = price;
 	}
 
-	@Column(name = "PRICEGUIDEEGC") public String getPriceGuideEGC() {
+	@Column(name = "PRICEGUIDEEGC")
+	public String getPriceGuideEGC() {
 		return priceGuideEGC;
 	}
 
@@ -200,7 +194,8 @@ import javax.persistence.Table;
 		this.priceGuideEGC = priceGuideEGC;
 	}
 
-	@Column(name = "DRIVE") public String getDrive() {
+	@Column(name = "DRIVE")
+	public String getDrive() {
 		return drive;
 	}
 
@@ -208,7 +203,8 @@ import javax.persistence.Table;
 		this.drive = drive;
 	}
 
-	@Column(name = "BADGE") public String getBadge() {
+	@Column(name = "BADGE")
+	public String getBadge() {
 		return Badge;
 	}
 
@@ -216,7 +212,8 @@ import javax.persistence.Table;
 		Badge = badge;
 	}
 
-	@Column(name = "FUELTYPE") public String getFuelType() {
+	@Column(name = "FUELTYPE")
+	public String getFuelType() {
 		return fuelType;
 	}
 
@@ -224,7 +221,8 @@ import javax.persistence.Table;
 		this.fuelType = fuelType;
 	}
 
-	@Column(name = "SERIES") public String getSeries() {
+	@Column(name = "SERIES")
+	public String getSeries() {
 		return series;
 	}
 
@@ -232,7 +230,8 @@ import javax.persistence.Table;
 		this.series = series;
 	}
 
-	@Column(name = "RECOMRONRATING") public String getRecommendedRonRating() {
+	@Column(name = "RECOMRONRATING")
+	public String getRecommendedRonRating() {
 		return recommendedRonRating;
 	}
 
@@ -240,7 +239,8 @@ import javax.persistence.Table;
 		this.recommendedRonRating = recommendedRonRating;
 	}
 
-	@Column(name = "BODY") public String getBody() {
+	@Column(name = "BODY")
+	public String getBody() {
 		return body;
 	}
 
@@ -248,7 +248,8 @@ import javax.persistence.Table;
 		this.body = body;
 	}
 
-	@Column(name = "RELYEAR") public int getReleaseYear() {
+	@Column(name = "RELYEAR")
+	public int getReleaseYear() {
 		return releaseYear;
 	}
 
@@ -256,7 +257,8 @@ import javax.persistence.Table;
 		this.releaseYear = releaseYear;
 	}
 
-	@Column(name = "NOOFDOORS") public int getNoOfDoors() {
+	@Column(name = "NOOFDOORS")
+	public int getNoOfDoors() {
 		return noOfDoors;
 	}
 
@@ -264,7 +266,8 @@ import javax.persistence.Table;
 		this.noOfDoors = noOfDoors;
 	}
 
-	@Column(name = "VIN") public String getVin() {
+	@Column(name = "VIN")
+	public String getVin() {
 		return vin;
 	}
 
@@ -272,7 +275,8 @@ import javax.persistence.Table;
 		this.vin = vin;
 	}
 
-	@Column(name = "SEATCAPACITY") public int getSeatCapacity() {
+	@Column(name = "SEATCAPACITY")
+	public int getSeatCapacity() {
 		return seatCapacity;
 	}
 
@@ -280,7 +284,8 @@ import javax.persistence.Table;
 		this.seatCapacity = seatCapacity;
 	}
 
-	@Column(name = "COUNTRYOFORIGIN") public String getCountryOfOrigin() {
+	@Column(name = "COUNTRYOFORIGIN")
+	public String getCountryOfOrigin() {
 		return countryOfOrigin;
 	}
 
@@ -288,7 +293,8 @@ import javax.persistence.Table;
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	@Column(name = "TRANSMISSION") public String getTransmission() {
+	@Column(name = "TRANSMISSION")
+	public String getTransmission() {
 		return transmission;
 	}
 
@@ -296,7 +302,8 @@ import javax.persistence.Table;
 		this.transmission = transmission;
 	}
 
-	@Column(name = "OVERALLGREENRATING") public int getOverallGreenStarRating() {
+	@Column(name = "OVERALLGREENRATING")
+	public int getOverallGreenStarRating() {
 		return overallGreenStarRating;
 	}
 
@@ -304,7 +311,8 @@ import javax.persistence.Table;
 		this.overallGreenStarRating = overallGreenStarRating;
 	}
 
-	@Column(name = "ANCAPSAFETYRATING") public int getAncapSafetyRating() {
+	@Column(name = "ANCAPSAFETYRATING")
+	public int getAncapSafetyRating() {
 		return ancapSafetyRating;
 	}
 
@@ -312,7 +320,8 @@ import javax.persistence.Table;
 		this.ancapSafetyRating = ancapSafetyRating;
 	}
 
-	@Column(name = "NOOFGEARS") public int getNoOfGears() {
+	@Column(name = "NOOFGEARS")
+	public int getNoOfGears() {
 		return NoOfGears;
 	}
 
@@ -320,7 +329,8 @@ import javax.persistence.Table;
 		NoOfGears = noOfGears;
 	}
 
-	@Column(name = "STEERING") public String getSteering() {
+	@Column(name = "STEERING")
+	public String getSteering() {
 		return steering;
 	}
 
@@ -328,7 +338,8 @@ import javax.persistence.Table;
 		this.steering = steering;
 	}
 
-	@Column(name = "MANFYEAR") public String getManfYear() {
+	@Column(name = "MANFYEAR")
+	public String getManfYear() {
 		return manfYear;
 	}
 
@@ -337,27 +348,18 @@ import javax.persistence.Table;
 	}
 
 	public TempCarModelOverview() {
-        super();
-    }
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "TEMPCARMODELOVERVIEWID") public Long getTempCarModelOverviewId() {
-		return this.tempCarModelOverviewId;
+		super();
 	}
 
-   
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TEMPCARMODELOVERVIEWID")
+	public Long getTempCarModelOverviewId() {
+		return this.tempCarModelOverviewId;
+	}
 
 	public void setTempCarModelOverviewId(Long tempCarModelOverviewId) {
 		this.tempCarModelOverviewId = tempCarModelOverviewId;
 	}
 
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

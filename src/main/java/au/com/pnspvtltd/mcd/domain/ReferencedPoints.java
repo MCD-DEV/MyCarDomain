@@ -2,29 +2,22 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "referencedpoints")
 public class ReferencedPoints implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long referPointId;
 	private String referencedEmailId;
 	private String referencedFirstName;
@@ -41,7 +34,7 @@ public class ReferencedPoints implements Serializable {
 	private boolean provStatus;
 	private boolean status;
 	private long refUserId;
-	
+
 	public long getRefUserId() {
 		return refUserId;
 	}
@@ -50,7 +43,6 @@ public class ReferencedPoints implements Serializable {
 		this.refUserId = refUserId;
 	}
 
-	
 	public boolean isProvStatus() {
 		return provStatus;
 	}
@@ -74,6 +66,7 @@ public class ReferencedPoints implements Serializable {
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -81,7 +74,7 @@ public class ReferencedPoints implements Serializable {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -89,6 +82,7 @@ public class ReferencedPoints implements Serializable {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -96,8 +90,7 @@ public class ReferencedPoints implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "REFERPOINTID")
@@ -108,12 +101,10 @@ public class ReferencedPoints implements Serializable {
 	public void setReferPointId(Long referPointId) {
 		this.referPointId = referPointId;
 	}
-	
+
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
-
-	
 
 	public String getReferencedEmailId() {
 		return referencedEmailId;
@@ -174,7 +165,5 @@ public class ReferencedPoints implements Serializable {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

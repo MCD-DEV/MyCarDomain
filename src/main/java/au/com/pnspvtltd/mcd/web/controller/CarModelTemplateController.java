@@ -55,37 +55,39 @@ public class CarModelTemplateController {
 		return carModelTemplateService.getAllCarModelTemplates();
 
 	}
-	
+
 	@GetMapping(value = "carModelYears", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllCarModelYears() {
 		LOGGER.info("Received request to get All CarModelYears");
 		return carModelTemplateService.getAllCarModelYears();
 
 	}
-	
-	//Makes in select box
+
+	// Makes in select box
 	@GetMapping(value = "carModelMakesForYear", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<String> getAllCarModelMakesForYear(@RequestParam("modelYear") String modelYear) {
 		LOGGER.info("Received request to get All CarModelMakes");
 		return carModelTemplateService.getAllCarModelMakesForYear(modelYear);
 
 	}
-	
-	//MODEL in Select Box
+
+	// MODEL in Select Box
 	@GetMapping(value = "carModelNamesForMake", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<String> getAllCarModelNamesForMake(@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
+	public List<String> getAllCarModelNamesForMake(@RequestParam("modelDisplay") String modelDisplay,
+			@RequestParam("modelYear") String modelYear) {
 		LOGGER.info("Received request to get All CarModelNames");
-		return carModelTemplateService.getAllCarModelNamesForMake(modelDisplay,modelYear);
+		return carModelTemplateService.getAllCarModelNamesForMake(modelDisplay, modelYear);
 
 	}
-	
-	//String modelName,String modelDisplay,String modelYear
-	//Variant in Select Box
-		@GetMapping(value = "carModelVariantForModel", produces = { MediaType.APPLICATION_JSON_VALUE })
-		public List<String> getAllCarModelVariantsForModel(@RequestParam("modelName") String modelName,@RequestParam("modelDisplay") String modelDisplay,@RequestParam("modelYear") String modelYear) {
-			LOGGER.info("Received request to get All CarModelvariant");
-			return carModelTemplateService.getAllCarModelVariantsForModel(modelName,modelDisplay,modelYear);
 
-		}
+	// String modelName,String modelDisplay,String modelYear
+	// Variant in Select Box
+	@GetMapping(value = "carModelVariantForModel", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<String> getAllCarModelVariantsForModel(@RequestParam("modelName") String modelName,
+			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelYear") String modelYear) {
+		LOGGER.info("Received request to get All CarModelvariant");
+		return carModelTemplateService.getAllCarModelVariantsForModel(modelName, modelDisplay, modelYear);
+
+	}
 
 }

@@ -1,6 +1,5 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class ExtDealerSearchLdAdminVO {
@@ -14,8 +13,5 @@ public class ExtDealerSearchLdAdminVO {
 	public void setExtDealerSearchVO(List<ExtDealerSearchVO> extDealerSearchVO) {
 		this.extDealerSearchVO = extDealerSearchVO;
 	}
-	
 
-	
-	
 }

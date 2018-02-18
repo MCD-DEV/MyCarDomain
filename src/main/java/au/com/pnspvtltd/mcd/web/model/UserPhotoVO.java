@@ -17,9 +17,7 @@ public class UserPhotoVO {
 	private String state;
 	private String desc;
 	private String gender;
-	
-	
-	
+
 	public String getGender() {
 		return gender;
 	}
@@ -116,8 +114,6 @@ public class UserPhotoVO {
 		this.photo = photo;
 	}
 
-	
-
 	public Long getUserId() {
 		return userId;
 	}
@@ -126,7 +122,4 @@ public class UserPhotoVO {
 		this.userId = userId;
 	}
 
-	
-
-	
 }

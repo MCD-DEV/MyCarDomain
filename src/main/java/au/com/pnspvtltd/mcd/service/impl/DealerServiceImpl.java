@@ -54,6 +54,7 @@ import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
 import au.com.pnspvtltd.mcd.repository.InventoryRepository;
 import au.com.pnspvtltd.mcd.repository.UserRepository;
 import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleDealerDetailsRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleFinanceMasterRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleInsuranceMasterRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
@@ -149,6 +150,11 @@ public class DealerServiceImpl implements DealerService {
 
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private VehicleDealerDetailsRepo vehicleDealerDetailsRepo;
+	
+	
 	@Override
 	@Transactional(readOnly = true)
 	public AdminAutoVO findUserName(String userName) {
@@ -1060,5 +1066,11 @@ public class DealerServiceImpl implements DealerService {
 		return dealerVO;
 		
 		
+	}
+
+	@Override
+	public List<Long> getDealerIDs(String subscriptionType) {
+		// TODO Auto-generated method stub
+		return vehicleDealerDetailsRepo.getDealerIDs(subscriptionType);
 	}
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import au.com.pnspvtltd.mcd.service.InventoryService;
-import au.com.pnspvtltd.mcd.web.model.DealerVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryStatisticsVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
 import au.com.pnspvtltd.mcd.web.model.TempCarModelColourVO;
@@ -46,29 +45,27 @@ public class InventoryController {
 		return inventoryService.getStatisticsFor(modelYear, modelDisplay, modelName, autoscoopTrim);
 
 	}
-	
+
 	@GetMapping(value = "inventory/getColorFor", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<TempCarModelColourVO> getColorFor(@RequestParam("modelYear") String modelYear,
 			@RequestParam("modelDisplay") String modelDisplay, @RequestParam("modelName") String modelName,
 			@RequestParam("autoscoopTrim") String autoscoopTrim) {
 		TempCarModelHeaderVO tempVO = inventoryService.getColorFor(modelYear, modelDisplay, modelName, autoscoopTrim);
-		
+
 		return tempVO.getCarModel3();
 
 	}
-	
+
 	@GetMapping(value = "inventory/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public InventoryVO getInventoryUnique(@PathVariable Long id, HttpServletResponse response) {
 		LOGGER.debug("Received request to get Dealer Inventory with unique id {} ", id);
-		
+
 		InventoryVO dealer = inventoryService.findById(id);
 		if (dealer == null) {
 			response.setStatus(HttpStatus.NO_CONTENT.value());
 		}
 		return dealer;
-		
+
 	}
-	
-	
 
 }

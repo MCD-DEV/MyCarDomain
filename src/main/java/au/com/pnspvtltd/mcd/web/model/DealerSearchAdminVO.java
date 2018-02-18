@@ -34,7 +34,6 @@ public class DealerSearchAdminVO {
 	private Date ageOfAdditionalDriver;
 	private Long userId;
 	private Long carSearchId;
-	
 
 	public Long getCarSearchId() {
 		return carSearchId;
@@ -520,5 +519,4 @@ public class DealerSearchAdminVO {
 		this.sPcode = sPcode;
 	}
 
-	
 }

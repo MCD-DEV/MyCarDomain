@@ -3,8 +3,6 @@ package au.com.pnspvtltd.mcd.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,7 +16,7 @@ import au.com.pnspvtltd.mcd.web.model.CarModelTemplateVO;
 @Service
 public class CarModelTemplateServiceImpl implements CarModelTemplateService {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(CarModelTemplateServiceImpl.class);
+	//private static final Logger LOGGER = LoggerFactory.getLogger(CarModelTemplateServiceImpl.class);
 
 	@Autowired
 	private CarModelTemplateRepository carModelTemplateRepository;
@@ -47,7 +45,7 @@ public class CarModelTemplateServiceImpl implements CarModelTemplateService {
 	@Transactional(readOnly = true)
 	public List<CarModelTemplateVO> getAllCarModelTemplates() {
 		List<CarModelTemplate> carModelTemplates = carModelTemplateRepository.findAll();
-		//carModelTemplateRepository.findAll(modelYear)
+		// carModelTemplateRepository.findAll(modelYear)
 		List<CarModelTemplateVO> carModelTemplateVOs = new ArrayList<>();
 		for (CarModelTemplate carModelTemplate : carModelTemplates) {
 			carModelTemplateVOs.add(domainModelUtil.fromCarModelTemplate(carModelTemplate, false));
@@ -72,14 +70,15 @@ public class CarModelTemplateServiceImpl implements CarModelTemplateService {
 	@Override
 	public List<String> getAllCarModelNamesForMake(String modelDisplay, String modelYear) {
 		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelNamesForMake(modelDisplay,modelYear);
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelNamesForMake(modelDisplay, modelYear);
 		return carModelTemplates;
 	}
 
 	@Override
-	public List<String> getAllCarModelVariantsForModel(String modelName,String modelDisplay,String modelYear) {
+	public List<String> getAllCarModelVariantsForModel(String modelName, String modelDisplay, String modelYear) {
 		// TODO Auto-generated method stub
-		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelVariantsForModel(modelName,modelDisplay,modelYear);
+		List<String> carModelTemplates = carModelTemplateRepository.getAllCarModelVariantsForModel(modelName,
+				modelDisplay, modelYear);
 		return carModelTemplates;
 	}
 

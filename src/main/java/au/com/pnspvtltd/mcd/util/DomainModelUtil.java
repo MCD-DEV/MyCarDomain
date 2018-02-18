@@ -3693,4 +3693,15 @@ public VehicleDealerInsuranceDetailsVO toDealerInsVOMast(final VehicleDealerInsu
 		return currentOfferVO;
 	}
 
+	public DealerDetailsVO toDealerDetailsVO(final DealerVO currentOffer) {
+		DealerDetailsVO currentOfferVO = new DealerDetailsVO();
+		try {
+			BeanUtils.copyProperties(currentOfferVO, currentOffer);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return currentOfferVO;
+	}
+	
 }

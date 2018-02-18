@@ -1,12 +1,11 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class ExtDealerTranspListAdminVO {
 
 	private Long searchServMaintId;
-	
+
 	List<ExtDealerSearchTpVO> extDealerSearchVO;
 
 	public Long getSearchServMaintId() {
@@ -25,11 +24,4 @@ public class ExtDealerTranspListAdminVO {
 		this.extDealerSearchVO = extDealerSearchVO;
 	}
 
-	
-	
-	
-
-	
-
-	
 }

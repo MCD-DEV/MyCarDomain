@@ -2,39 +2,28 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class TempCarModelRelatedModelVO {
 
-
-
-
-	
 	private Long tempCarModelRelatedModelId;
 	private String realatedModelTrim;
 	private String relatedModelDescription;
 	private double relatedModelPriceWhenNew;
-	
-	
+
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
-public String getFlex1() {
+
+	public String getFlex1() {
 		return flex1;
 	}
 
@@ -42,7 +31,7 @@ public String getFlex1() {
 		this.flex1 = flex1;
 	}
 
- public String getFlex2() {
+	public String getFlex2() {
 		return flex2;
 	}
 
@@ -129,9 +118,8 @@ public String getFlex1() {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-	
-	
+	// End of flex
+
 	public String getRealatedModelTrim() {
 		return realatedModelTrim;
 	}
@@ -156,50 +144,16 @@ public String getFlex1() {
 		this.relatedModelPriceWhenNew = relatedModelPriceWhenNew;
 	}
 
+	/* start */
 
+	/* end */
 
-	
-/*start */
-	
-	
-
-		
-	
-	
-	
-
-
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-	
 	public Long getTempCarModelRelatedModelId() {
 		return this.tempCarModelRelatedModelId;
 	}
-
-   
 
 	public void setTempCarModelRelatedModelId(Long tempCarModelRelatedModelId) {
 		this.tempCarModelRelatedModelId = tempCarModelRelatedModelId;
 	}
 
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

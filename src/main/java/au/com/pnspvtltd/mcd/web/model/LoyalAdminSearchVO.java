@@ -10,10 +10,9 @@ public class LoyalAdminSearchVO {
 	private String email;
 	private int postCode;
 	private Date creationDate;
-	
+
 	List<LoyalityProgAdminVO> userVO;
 
-	
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -61,7 +60,5 @@ public class LoyalAdminSearchVO {
 	public void setUserVO(List<LoyalityProgAdminVO> userVO) {
 		this.userVO = userVO;
 	}
-
-	
 
 }

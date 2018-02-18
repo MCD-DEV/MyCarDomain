@@ -4,7 +4,6 @@ import java.util.List;
 
 public class DealerResourceVO {
 
-	
 	public Long getDealerId() {
 		return dealerId;
 	}
@@ -22,6 +21,6 @@ public class DealerResourceVO {
 	}
 
 	private Long dealerId;
-	
+
 	List<VehicleResourceDetailsVO> vehicleResourceDetails;
 }

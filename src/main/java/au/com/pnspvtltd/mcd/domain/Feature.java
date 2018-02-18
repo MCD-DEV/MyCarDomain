@@ -13,6 +13,10 @@ import javax.persistence.Table;
 @Table(name = "features")
 public class Feature implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private long featureId;
 	private String featureName;
 	private String featurDescription;

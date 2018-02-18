@@ -2,22 +2,17 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-
 public class MyVehicleFuelExpensesVO {
 
-	/* Mapping 
-	 
-																			 "postCode":$('#postCode').val(),
-																			"make":$('#seats').val(),
-																			"bodyType":$('#driveType').val(),
-																			"state":$('#fuelType').val(),
-																			"region":$('#freetext').val(),
-																			"ausCapTer":$('#vehiclePurpose').val(),
-																			"region":$('#transmission').val(),
-																			"sMake":$('#extraExternal1').val(),
-	 * */
-	
+	/*
+	 * Mapping
+	 * 
+	 * "postCode":$('#postCode').val(), "make":$('#seats').val(),
+	 * "bodyType":$('#driveType').val(), "state":$('#fuelType').val(),
+	 * "region":$('#freetext').val(), "ausCapTer":$('#vehiclePurpose').val(),
+	 * "region":$('#transmission').val(), "sMake":$('#extraExternal1').val(),
+	 */
+
 	private Long myVehicleFuelExpensesId;
 	private Date date;
 	private Date Time;
@@ -28,9 +23,7 @@ public class MyVehicleFuelExpensesVO {
 	private String private2;
 	private String others;
 	private String photoOfInvoice;
-	
-	
-	
+
 	private String flex1;
 	private String flex2;
 	private String flex3;
@@ -40,10 +33,6 @@ public class MyVehicleFuelExpensesVO {
 	private double flex7;
 	private Date flex8;
 	private Date flex9;
-	
-	
-	
-	
 
 	public Long getMyVehicleFuelExpensesId() {
 		return myVehicleFuelExpensesId;
@@ -197,7 +186,4 @@ public class MyVehicleFuelExpensesVO {
 		this.flex9 = flex9;
 	}
 
-	
-
-	
 }

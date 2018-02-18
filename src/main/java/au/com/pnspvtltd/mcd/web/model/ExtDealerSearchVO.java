@@ -39,36 +39,33 @@ public class ExtDealerSearchVO {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
-	
-	
+
 	// Dealer info Start
-		private String category;
-		private String companyName;
-		private String street;
-		private String suburb;
-		private String dealState;
-		private int postCode;
-		private String country;
-		private String phone;
-		private String website;
-		private String mobile;
-		private String tollFree;
-		private String fax;
-		private String afterHours;
-		private String postalAddress;
-		private String email;
-		private float longitude;
-		private float latitude;
-		private boolean credStat;
-		private boolean idCheck;
-		private boolean mobCheck;
-		private boolean finAppvd;
-		private Date estTimeBuy;
-		private Date vehReqDate;
-		// Dealer info end
-	
-	
+	private String category;
+	private String companyName;
+	private String street;
+	private String suburb;
+	private String dealState;
+	private int postCode;
+	private String country;
+	private String phone;
+	private String website;
+	private String mobile;
+	private String tollFree;
+	private String fax;
+	private String afterHours;
+	private String postalAddress;
+	private String email;
+	private float longitude;
+	private float latitude;
+	private boolean credStat;
+	private boolean idCheck;
+	private boolean mobCheck;
+	private boolean finAppvd;
+	private Date estTimeBuy;
+	private Date vehReqDate;
+	// Dealer info end
+
 	public String getState() {
 		return state;
 	}
@@ -260,7 +257,7 @@ public class ExtDealerSearchVO {
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -276,9 +273,10 @@ public class ExtDealerSearchVO {
 	public void setUsed(boolean used) {
 		this.used = used;
 	}
+
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -294,7 +292,7 @@ public class ExtDealerSearchVO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -302,7 +300,7 @@ public class ExtDealerSearchVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+
 	public Long getUserid() {
 		return userid;
 	}
@@ -318,6 +316,7 @@ public class ExtDealerSearchVO {
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}
@@ -325,9 +324,7 @@ public class ExtDealerSearchVO {
 	public void setCarSearchId(Long carSearchId) {
 		this.carSearchId = carSearchId;
 	}
-	
 
-	
 	public String getExtraExter2() {
 		return extraExter2;
 	}
@@ -788,5 +785,4 @@ public class ExtDealerSearchVO {
 		this.sPcode = sPcode;
 	}
 
-	
 }

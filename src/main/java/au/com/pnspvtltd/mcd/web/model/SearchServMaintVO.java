@@ -2,8 +2,6 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-
 public class SearchServMaintVO {
 
 	private Long searchServMaintId;
@@ -40,9 +38,8 @@ public class SearchServMaintVO {
 	private boolean credStat;
 	private boolean idCheck;
 	private boolean mobCheck;
-	
-	
-	//New fields
+
+	// New fields
 	private Date preferredServDt;
 	private boolean doorStep;
 	private String address;
@@ -51,7 +48,6 @@ public class SearchServMaintVO {
 	private boolean complCar;
 	private String contactNum;
 	private String contactPerson;
-	
 
 	/*
 	 * public int getMobile() { return mobile; }

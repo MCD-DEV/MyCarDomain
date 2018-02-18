@@ -1,37 +1,23 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
-
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperPostCode;
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperRegion;
-import au.com.pnspvtltd.mcd.domain.VehicleAreaOfOperState;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperPostCode;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperRegion;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerAreaOfOperState;
-import au.com.pnspvtltd.mcd.domain.VehicleDealerMakeList;
-import au.com.pnspvtltd.mcd.domain.VehicleMakeList;
-import au.com.pnspvtltd.mcd.domain.VehicleSocialList;
 
 public class VehicleResourceDetailsInvVO {
 
+	private Long vehicleResourceDetailId;
 
-	
-	
-private Long vehicleResourceDetailId;
-	
 	private String contactPerson;
-	
-	private String designation;	
-	private String contactNumber1;	
-	private String contactNumber2;	
+
+	private String designation;
+	private String contactNumber1;
+	private String contactNumber2;
 	private String email;
-	private String additionalInfo;	
-	private String lastName;	
+	private String additionalInfo;
+	private String lastName;
 	private String title;
-	private String employeeCode;	
-	private String id;	
-	 
+	private String employeeCode;
+	private String id;
+
 	List<VehicleSocialListVO> vehicleSocialList;
 
 	public Long getVehicleResourceDetailId() {
@@ -129,12 +115,5 @@ private Long vehicleResourceDetailId;
 	public void setVehicleSocialList(List<VehicleSocialListVO> vehicleSocialList) {
 		this.vehicleSocialList = vehicleSocialList;
 	}
-	 
-	
 
-	
-		
-
-	 	
-	
 }

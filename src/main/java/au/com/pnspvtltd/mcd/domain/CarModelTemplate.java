@@ -19,6 +19,10 @@ import javax.persistence.Table;
 @Table(name = "templatecarmodel")
 public class CarModelTemplate implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long tempModelId;
 	private String modelYear;
 	private String modelDisplay;

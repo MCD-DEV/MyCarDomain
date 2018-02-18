@@ -116,4 +116,6 @@ public interface DealerService {
 	VehicleDealerInsuranceDetailsVO getInsMasterId(long id);
 
 	List<VehicleDealerInsuranceDetailsVO> getInsuranceMast(Long dealerId);
+	
+	List<Long> getDealerIDs(String subscriptionType);
 }

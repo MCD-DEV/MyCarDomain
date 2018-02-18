@@ -5,8 +5,7 @@ public class MyVehicleLogBookStoreVO {
 	private Long myVehicleId;
 
 	private MyVehicleLogBookVO myVehicleLogBookVO;
-	
-	
+
 	public Long getMyVehicleId() {
 		return myVehicleId;
 	}
@@ -22,7 +21,5 @@ public class MyVehicleLogBookStoreVO {
 	public void setMyVehicleLogBookVO(MyVehicleLogBookVO myVehicleLogBookVO) {
 		this.myVehicleLogBookVO = myVehicleLogBookVO;
 	}
-	
 
-	
 }

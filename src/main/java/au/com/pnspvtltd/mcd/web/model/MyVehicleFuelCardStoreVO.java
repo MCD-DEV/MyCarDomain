@@ -6,9 +6,6 @@ public class MyVehicleFuelCardStoreVO {
 
 	private MyVehicleFuelExpensesVO myVehicleFuelExpensesVO;
 
-	
-	
-
 	public MyVehicleFuelExpensesVO getMyVehicleFuelExpensesVO() {
 		return myVehicleFuelExpensesVO;
 	}
@@ -16,7 +13,6 @@ public class MyVehicleFuelCardStoreVO {
 	public void setMyVehicleFuelExpensesVO(MyVehicleFuelExpensesVO myVehicleFuelExpensesVO) {
 		this.myVehicleFuelExpensesVO = myVehicleFuelExpensesVO;
 	}
-
 
 	public Long getMyVehicleId() {
 		return myVehicleId;
@@ -26,7 +22,4 @@ public class MyVehicleFuelCardStoreVO {
 		this.myVehicleId = myVehicleId;
 	}
 
-	
-
-	
 }

@@ -2,120 +2,86 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-
 public class SearchInsAdditionalDrivVO {
 
+	/**
+	 * 
+	 */
 
 	/**
 	 * 
 	 */
 
-	
-
-	/**
-	 * 
-	 */
-												
-		
-
-	
 	private Long searchInsAddDrivId;
-	
-	
-	
+
 	private String lastName;
 	private String firstName;
 	private String drivingLicenseType;
 	private Date dateOfBirth;
-	
-	
-	
-	
-	
-	
 
-	
-	
-	
-/*start */
-	
-	
+	/* start */
+
 	// Flex start
 	private String flex1;
+
 	public Long getSearchInsAddDrivId() {
 		return searchInsAddDrivId;
 	}
-
 
 	public void setSearchInsAddDrivId(Long searchInsAddDrivId) {
 		this.searchInsAddDrivId = searchInsAddDrivId;
 	}
 
-	 
 	public String getLastName() {
 		return lastName;
 	}
-
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
-	 
 	public String getFirstName() {
 		return firstName;
 	}
-
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
-	 
 	public String getDrivingLicenseType() {
 		return drivingLicenseType;
 	}
-
 
 	public void setDrivingLicenseType(String drivingLicenseType) {
 		this.drivingLicenseType = drivingLicenseType;
 	}
 
-	 
 	public Date getDateOfBirth() {
 		return dateOfBirth;
 	}
-
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	private String flex2;	
-	private String flex3;	
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-		
-	
-	
-
-	
-
 
 	public String getFlex1() {
 		return flex1;
 	}
 
-	
 	public boolean isFlex13() {
 		return isFlex13;
 	}
@@ -223,35 +189,8 @@ public class SearchInsAdditionalDrivVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
-	
-	
-
-	 	
-	
 }

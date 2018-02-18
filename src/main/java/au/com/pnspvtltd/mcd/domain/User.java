@@ -15,13 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
-
 @Entity
 @Table(name = "userrepo")
 public class User implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long userId;
 	private String password;
 	private String abnNumber;
@@ -47,9 +48,7 @@ public class User implements Serializable {
 	private boolean mobCheck;
 	private String gender;
 	private Date creationDate;
-	
-	
-	
+
 	public boolean isCredStat() {
 		return credStat;
 	}
@@ -123,25 +122,25 @@ public class User implements Serializable {
 	List<SearchTransp> searchTransp;
 	List<MyVehicle> myVehicle;
 	List<UserNotification> userNotification;
-	
+
 	List<UserReferPoints> userReferPoints;
 	List<ReferencedPoints> referencedPoints;
 	List<BlogPoints> blogPoints;
 	List<ReviewPoints> reviewPoints;
 	List<ValTransPoints> valTransPoints;
-	
+
 	private int searchCount;
 	private int searchInsCount;
 	private int searchFinCount;
 	private int searchServCount;
 	private int searchTranspCount;
-	
+
 	private int vehicleQuotCt;
 	private int insuranceQuotCt;
 	private int financeQuotCt;
 	private int servMaintQuotCt;
 	private int transpServQuotCt;
-	
+
 	public int getVehicleQuotCt() {
 		return vehicleQuotCt;
 	}
@@ -221,6 +220,7 @@ public class User implements Serializable {
 	public void setSearchTranspCount(int searchTranspCount) {
 		this.searchTranspCount = searchTranspCount;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<UserReferPoints> getUserReferPoints() {
@@ -230,6 +230,7 @@ public class User implements Serializable {
 	public void setUserReferPoints(List<UserReferPoints> userReferPoints) {
 		this.userReferPoints = userReferPoints;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<ReferencedPoints> getReferencedPoints() {
@@ -239,6 +240,7 @@ public class User implements Serializable {
 	public void setReferencedPoints(List<ReferencedPoints> referencedPoints) {
 		this.referencedPoints = referencedPoints;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<BlogPoints> getBlogPoints() {
@@ -248,6 +250,7 @@ public class User implements Serializable {
 	public void setBlogPoints(List<BlogPoints> blogPoints) {
 		this.blogPoints = blogPoints;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<ReviewPoints> getReviewPoints() {
@@ -257,6 +260,7 @@ public class User implements Serializable {
 	public void setReviewPoints(List<ReviewPoints> reviewPoints) {
 		this.reviewPoints = reviewPoints;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<ValTransPoints> getValTransPoints() {
@@ -459,6 +463,7 @@ public class User implements Serializable {
 	public void setSearch(List<Search> search) {
 		this.search = search;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<SearchInsurance> getSearchInsurance() {
@@ -468,6 +473,7 @@ public class User implements Serializable {
 	public void setSearchInsurance(List<SearchInsurance> search) {
 		this.searchInsurance = search;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<SearchFinance> getSearchFinance() {
@@ -477,7 +483,7 @@ public class User implements Serializable {
 	public void setSearchFinance(List<SearchFinance> search) {
 		this.searchFinance = search;
 	}
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<SearchServMaint> getSearchServMaint() {
@@ -487,6 +493,7 @@ public class User implements Serializable {
 	public void setSearchServMaint(List<SearchServMaint> search) {
 		this.searchServMaint = search;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "userId")
 	public List<SearchTransp> getSearchTransp() {
@@ -496,6 +503,5 @@ public class User implements Serializable {
 	public void setSearchTransp(List<SearchTransp> search) {
 		this.searchTransp = search;
 	}
-
 
 }

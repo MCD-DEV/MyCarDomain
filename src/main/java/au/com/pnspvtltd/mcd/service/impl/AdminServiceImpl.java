@@ -6,14 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.com.pnspvtltd.mcd.domain.AdminAuto;
-import au.com.pnspvtltd.mcd.domain.ComingSoonUser;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.service.AdminService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 
-public class AdminServiceImpl implements AdminService{
-	
+public class AdminServiceImpl implements AdminService {
+
 	@Autowired
 	AdminRepository adminRepository;
 	@Autowired
@@ -29,7 +28,5 @@ public class AdminServiceImpl implements AdminService{
 		}
 		return domainModelUtil.fromAdmin(admins.get(0));
 	}
-	
-	
 
 }

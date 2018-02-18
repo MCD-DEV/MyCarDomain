@@ -39,230 +39,230 @@ public class ExtDealerSearchTpVO {
 	private boolean newer;
 	private boolean used;
 	private String state;
-	
+
 	// transp search start
-			private String fromPostCodeAddr;
-			private String toPostCodeAddr;
-			private String transTypeReq;
-			private Date pickUpDateTime;
-			private int noOfCars;
-			private int year;
-			private String make;
-			private String model;
-			private String variant;
-			private String freeText;
-			private boolean transpInsReq;
-			private String howMay;
-			private String fromStreetNo;
-			private String toStreetName;
-			private String toStreetNo;
-			private String fromStreetName;
-			private String kindOfTransport;
-			private boolean flexWithDateDefault;
-			private String uploadPhotos;
-			private String photo;
-			private String regoNo;
-			private String regoState;
+	private String fromPostCodeAddr;
+	private String toPostCodeAddr;
+	private String transTypeReq;
+	private Date pickUpDateTime;
+	private int noOfCars;
+	private int year;
+	private String make;
+	private String model;
+	private String variant;
+	private String freeText;
+	private boolean transpInsReq;
+	private String howMay;
+	private String fromStreetNo;
+	private String toStreetName;
+	private String toStreetNo;
+	private String fromStreetName;
+	private String kindOfTransport;
+	private boolean flexWithDateDefault;
+	private String uploadPhotos;
+	private String photo;
+	private String regoNo;
+	private String regoState;
 
-			// trasp search end
-	
-	
+	// trasp search end
+
 	// Dealer info Start
-		private String category;
-		public String getFromPostCodeAddr() {
-			return fromPostCodeAddr;
-		}
+	private String category;
 
-		public void setFromPostCodeAddr(String fromPostCodeAddr) {
-			this.fromPostCodeAddr = fromPostCodeAddr;
-		}
+	public String getFromPostCodeAddr() {
+		return fromPostCodeAddr;
+	}
 
-		public String getToPostCodeAddr() {
-			return toPostCodeAddr;
-		}
+	public void setFromPostCodeAddr(String fromPostCodeAddr) {
+		this.fromPostCodeAddr = fromPostCodeAddr;
+	}
 
-		public void setToPostCodeAddr(String toPostCodeAddr) {
-			this.toPostCodeAddr = toPostCodeAddr;
-		}
+	public String getToPostCodeAddr() {
+		return toPostCodeAddr;
+	}
 
-		public String getTransTypeReq() {
-			return transTypeReq;
-		}
+	public void setToPostCodeAddr(String toPostCodeAddr) {
+		this.toPostCodeAddr = toPostCodeAddr;
+	}
 
-		public void setTransTypeReq(String transTypeReq) {
-			this.transTypeReq = transTypeReq;
-		}
+	public String getTransTypeReq() {
+		return transTypeReq;
+	}
 
-		public Date getPickUpDateTime() {
-			return pickUpDateTime;
-		}
+	public void setTransTypeReq(String transTypeReq) {
+		this.transTypeReq = transTypeReq;
+	}
 
-		public void setPickUpDateTime(Date pickUpDateTime) {
-			this.pickUpDateTime = pickUpDateTime;
-		}
+	public Date getPickUpDateTime() {
+		return pickUpDateTime;
+	}
 
-		public int getNoOfCars() {
-			return noOfCars;
-		}
+	public void setPickUpDateTime(Date pickUpDateTime) {
+		this.pickUpDateTime = pickUpDateTime;
+	}
 
-		public void setNoOfCars(int noOfCars) {
-			this.noOfCars = noOfCars;
-		}
+	public int getNoOfCars() {
+		return noOfCars;
+	}
 
-		public int getYear() {
-			return year;
-		}
+	public void setNoOfCars(int noOfCars) {
+		this.noOfCars = noOfCars;
+	}
 
-		public void setYear(int year) {
-			this.year = year;
-		}
+	public int getYear() {
+		return year;
+	}
 
-		public String getMake() {
-			return make;
-		}
+	public void setYear(int year) {
+		this.year = year;
+	}
 
-		public void setMake(String make) {
-			this.make = make;
-		}
+	public String getMake() {
+		return make;
+	}
 
-		public String getModel() {
-			return model;
-		}
+	public void setMake(String make) {
+		this.make = make;
+	}
 
-		public void setModel(String model) {
-			this.model = model;
-		}
+	public String getModel() {
+		return model;
+	}
 
-		public String getVariant() {
-			return variant;
-		}
+	public void setModel(String model) {
+		this.model = model;
+	}
 
-		public void setVariant(String variant) {
-			this.variant = variant;
-		}
+	public String getVariant() {
+		return variant;
+	}
 
-		public String getFreeText() {
-			return freeText;
-		}
+	public void setVariant(String variant) {
+		this.variant = variant;
+	}
 
-		public void setFreeText(String freeText) {
-			this.freeText = freeText;
-		}
+	public String getFreeText() {
+		return freeText;
+	}
 
-		public boolean isTranspInsReq() {
-			return transpInsReq;
-		}
+	public void setFreeText(String freeText) {
+		this.freeText = freeText;
+	}
 
-		public void setTranspInsReq(boolean transpInsReq) {
-			this.transpInsReq = transpInsReq;
-		}
+	public boolean isTranspInsReq() {
+		return transpInsReq;
+	}
 
-		public String getHowMay() {
-			return howMay;
-		}
+	public void setTranspInsReq(boolean transpInsReq) {
+		this.transpInsReq = transpInsReq;
+	}
 
-		public void setHowMay(String howMay) {
-			this.howMay = howMay;
-		}
+	public String getHowMay() {
+		return howMay;
+	}
 
-		public String getFromStreetNo() {
-			return fromStreetNo;
-		}
+	public void setHowMay(String howMay) {
+		this.howMay = howMay;
+	}
 
-		public void setFromStreetNo(String fromStreetNo) {
-			this.fromStreetNo = fromStreetNo;
-		}
+	public String getFromStreetNo() {
+		return fromStreetNo;
+	}
 
-		public String getToStreetName() {
-			return toStreetName;
-		}
+	public void setFromStreetNo(String fromStreetNo) {
+		this.fromStreetNo = fromStreetNo;
+	}
 
-		public void setToStreetName(String toStreetName) {
-			this.toStreetName = toStreetName;
-		}
+	public String getToStreetName() {
+		return toStreetName;
+	}
 
-		public String getToStreetNo() {
-			return toStreetNo;
-		}
+	public void setToStreetName(String toStreetName) {
+		this.toStreetName = toStreetName;
+	}
 
-		public void setToStreetNo(String toStreetNo) {
-			this.toStreetNo = toStreetNo;
-		}
+	public String getToStreetNo() {
+		return toStreetNo;
+	}
 
-		public String getFromStreetName() {
-			return fromStreetName;
-		}
+	public void setToStreetNo(String toStreetNo) {
+		this.toStreetNo = toStreetNo;
+	}
 
-		public void setFromStreetName(String fromStreetName) {
-			this.fromStreetName = fromStreetName;
-		}
+	public String getFromStreetName() {
+		return fromStreetName;
+	}
 
-		public String getKindOfTransport() {
-			return kindOfTransport;
-		}
+	public void setFromStreetName(String fromStreetName) {
+		this.fromStreetName = fromStreetName;
+	}
 
-		public void setKindOfTransport(String kindOfTransport) {
-			this.kindOfTransport = kindOfTransport;
-		}
+	public String getKindOfTransport() {
+		return kindOfTransport;
+	}
 
-		public boolean isFlexWithDateDefault() {
-			return flexWithDateDefault;
-		}
+	public void setKindOfTransport(String kindOfTransport) {
+		this.kindOfTransport = kindOfTransport;
+	}
 
-		public void setFlexWithDateDefault(boolean flexWithDateDefault) {
-			this.flexWithDateDefault = flexWithDateDefault;
-		}
+	public boolean isFlexWithDateDefault() {
+		return flexWithDateDefault;
+	}
 
-		public String getUploadPhotos() {
-			return uploadPhotos;
-		}
+	public void setFlexWithDateDefault(boolean flexWithDateDefault) {
+		this.flexWithDateDefault = flexWithDateDefault;
+	}
 
-		public void setUploadPhotos(String uploadPhotos) {
-			this.uploadPhotos = uploadPhotos;
-		}
+	public String getUploadPhotos() {
+		return uploadPhotos;
+	}
 
-		public String getPhoto() {
-			return photo;
-		}
+	public void setUploadPhotos(String uploadPhotos) {
+		this.uploadPhotos = uploadPhotos;
+	}
 
-		public void setPhoto(String photo) {
-			this.photo = photo;
-		}
+	public String getPhoto() {
+		return photo;
+	}
 
-		public String getRegoNo() {
-			return regoNo;
-		}
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
-		public void setRegoNo(String regoNo) {
-			this.regoNo = regoNo;
-		}
+	public String getRegoNo() {
+		return regoNo;
+	}
 
-		public String getRegoState() {
-			return regoState;
-		}
+	public void setRegoNo(String regoNo) {
+		this.regoNo = regoNo;
+	}
 
-		public void setRegoState(String regoState) {
-			this.regoState = regoState;
-		}
-		private String companyName;
-		private String street;
-		private String suburb;
-		private String dealState;
-		private int postCode;
-		private String country;
-		private String phone;
-		private String website;
-		private String mobile;
-		private String tollFree;
-		private String fax;
-		private String afterHours;
-		private String postalAddress;
-		private String email;
-		private float longitude;
-		private float latitude;
-		// Dealer info end
-	
-	
+	public String getRegoState() {
+		return regoState;
+	}
+
+	public void setRegoState(String regoState) {
+		this.regoState = regoState;
+	}
+
+	private String companyName;
+	private String street;
+	private String suburb;
+	private String dealState;
+	private int postCode;
+	private String country;
+	private String phone;
+	private String website;
+	private String mobile;
+	private String tollFree;
+	private String fax;
+	private String afterHours;
+	private String postalAddress;
+	private String email;
+	private float longitude;
+	private float latitude;
+	// Dealer info end
+
 	public String getState() {
 		return state;
 	}
@@ -406,7 +406,7 @@ public class ExtDealerSearchTpVO {
 	public void setState(String sState) {
 		this.state = sState;
 	}
-	
+
 	public boolean isNewer() {
 		return newer;
 	}
@@ -422,9 +422,10 @@ public class ExtDealerSearchTpVO {
 	public void setUsed(boolean used) {
 		this.used = used;
 	}
+
 	// User Creation Date
 	private Date userCreationDate;
-	
+
 	public Date getUserCreationDate() {
 		return userCreationDate;
 	}
@@ -440,7 +441,7 @@ public class ExtDealerSearchTpVO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -448,7 +449,7 @@ public class ExtDealerSearchTpVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+
 	public Long getUserid() {
 		return userid;
 	}
@@ -464,6 +465,7 @@ public class ExtDealerSearchTpVO {
 	public void setDealerId(Long extdealerId) {
 		this.dealerId = extdealerId;
 	}
+
 	public Long getCarSearchId() {
 		return carSearchId;
 	}
@@ -471,9 +473,7 @@ public class ExtDealerSearchTpVO {
 	public void setCarSearchId(Long carSearchId) {
 		this.carSearchId = carSearchId;
 	}
-	
 
-	
 	public String getExtraExter2() {
 		return extraExter2;
 	}
@@ -934,5 +934,4 @@ public class ExtDealerSearchTpVO {
 		this.sPcode = sPcode;
 	}
 
-	
 }

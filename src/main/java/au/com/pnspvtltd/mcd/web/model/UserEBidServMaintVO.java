@@ -22,7 +22,4 @@ public class UserEBidServMaintVO {
 		this.userId = userId;
 	}
 
-	
-	
-
 }

@@ -44,16 +44,20 @@ public class ComingSoonController {
 		LOGGER.debug("Received request to create User with email {}", userVO.getComingSoonUserEmail());
 
 		// If User with the given email already exists?
-		/*if (comingSoonUserService.findUserByEmail(userVO.getComingSoonUserEmail()) != null) {
-			LOGGER.debug("User with email {} already exists/notified", userVO.getComingSoonUserEmail());
-			return new ResponseEntity<>(null, HttpStatus.ALREADY_REPORTED);
-		}*/
+		/*
+		 * if
+		 * (comingSoonUserService.findUserByEmail(userVO.getComingSoonUserEmail(
+		 * )) != null) { LOGGER.debug(
+		 * "User with email {} already exists/notified",
+		 * userVO.getComingSoonUserEmail()); return new ResponseEntity<>(null,
+		 * HttpStatus.ALREADY_REPORTED); }
+		 */
 
 		ComingSoonVO createdUser = comingSoonUserService.createUser(userVO);
 		response.setStatus(HttpStatus.CREATED.value());
 
 		try {
-			smtp.sendMail(userVO.getComingSoonUserEmail(), "","","","","Autoscoop Notification",
+			smtp.sendMail(userVO.getComingSoonUserEmail(), "", "", "", "", "Autoscoop Notification",
 					"You have been successfully Registered");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
@@ -71,7 +75,7 @@ public class ComingSoonController {
 		String recipient = rec;
 
 		try {
-			smtp.sendMail(recipient, "","","","","Autoscoop", "You have been successfully Registered");
+			smtp.sendMail(recipient, "", "", "", "", "Autoscoop", "You have been successfully Registered");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

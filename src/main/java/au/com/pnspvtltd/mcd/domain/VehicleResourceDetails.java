@@ -1,6 +1,6 @@
 package au.com.pnspvtltd.mcd.domain;
+
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -19,38 +19,32 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "vehicledealerresource") public class VehicleResourceDetails implements Serializable 
-{
-
+@Entity
+@Table(name = "vehicledealerresource")
+public class VehicleResourceDetails implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
 	 */
-												
-		
 
-	
 	private Long vehicleResourceDetailId;
-	
+
 	private String contactPerson;
 	private Dealer dealer;
-	private String designation;	
-	private String contactNumber1;	
-	private String contactNumber2;	
+	private String designation;
+	private String contactNumber1;
+	private String contactNumber2;
 	private String email;
-	private String additionalInfo;	
-	private String lastName;	
+	private String additionalInfo;
+	private String lastName;
 	private String title;
-	private String employeeCode;	
-	private String id;	
-	
-	
+	private String employeeCode;
+	private String id;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "dealerId")
@@ -61,8 +55,6 @@ import javax.persistence.Table;
 	public void setDealer(Dealer dealer) {
 		this.dealer = dealer;
 	}
-	
-
 
 	public String getContactPerson() {
 		return contactPerson;
@@ -143,21 +135,23 @@ import javax.persistence.Table;
 	public void setId(String id) {
 		this.id = id;
 	}
-	
+
 	List<VehicleSocialList> vehicleSocialList;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "vehicleResourceDetailId")
 	public List<VehicleSocialList> getVehicleSocialList() {
 		return vehicleSocialList;
 	}
 
-	public void setVehicleSocialList(
-			List<VehicleSocialList> vehicleSocialList) {
+	public void setVehicleSocialList(List<VehicleSocialList> vehicleSocialList) {
 		this.vehicleSocialList = vehicleSocialList;
 	}
 
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "VEHICLERESOURCEDETAILID") public Long getVehicleResourceDetailId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "VEHICLERESOURCEDETAILID")
+	public Long getVehicleResourceDetailId() {
 		return vehicleResourceDetailId;
 	}
 
@@ -165,36 +159,10 @@ import javax.persistence.Table;
 		this.vehicleResourceDetailId = vehicleResourceDetailId;
 	}
 
-	
-	
-	
+	/* end */
 
-
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
 	public VehicleResourceDetails() {
-        super();
-    }
-	
-	
+		super();
+	}
 
-	 	
-	
 }

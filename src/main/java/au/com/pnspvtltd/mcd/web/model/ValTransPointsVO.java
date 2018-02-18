@@ -1,18 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 
 public class ValTransPointsVO {
 
@@ -31,7 +19,7 @@ public class ValTransPointsVO {
 	private String action;
 	private boolean provStatus;
 	private boolean status;
-	
+
 	public boolean isProvStatus() {
 		return provStatus;
 	}
@@ -55,6 +43,7 @@ public class ValTransPointsVO {
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -62,7 +51,7 @@ public class ValTransPointsVO {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -70,6 +59,7 @@ public class ValTransPointsVO {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -77,9 +67,7 @@ public class ValTransPointsVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
 	public Long getValTransPointId() {
 		return valTransPointId;
 	}
@@ -88,12 +76,10 @@ public class ValTransPointsVO {
 		this.valTransPointId = valTransPointId;
 	}
 
-	
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
 
-	
 	public long getId() {
 		return id;
 	}
@@ -153,7 +139,5 @@ public class ValTransPointsVO {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

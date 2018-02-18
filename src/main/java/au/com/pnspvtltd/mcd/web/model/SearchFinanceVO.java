@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class SearchFinanceVO {
 
-	//private boolean isNew;
+	// private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private Long searchFinanceId;
@@ -24,12 +24,12 @@ public class SearchFinanceVO {
 	private String incomeType;
 	private String creditRating;
 	private Date dateOfBirth;
-	
+
 	private int yearEmploymentBusiness;
 	private String incomeBeforeSuperTax;
 	private String incomeAfterSuperTax;
 	private String ifBusinessProvideABN;
-	
+
 	private String rego;
 	private String regoState;
 	private String streetNo;
@@ -38,16 +38,17 @@ public class SearchFinanceVO {
 	private String firstName;
 	private String lastName;
 	private long idp;
-	
-	/*private int mobile;
-	private int landLine;*/
+
+	/*
+	 * private int mobile; private int landLine;
+	 */
 	private String abnNumber;
 	private String email;
 	private String drivingLicense;
 	private boolean credStat;
 	private boolean idCheck;
 	private boolean mobCheck;
-	
+
 	public String getAbnNumber() {
 		return abnNumber;
 	}
@@ -63,22 +64,15 @@ public class SearchFinanceVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-/*
-	public int getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-
-	public int getLandLine() {
-		return landLine;
-	}
-
-	public void setLandLine(int landLine) {
-		this.landLine = landLine;
-	}*/
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
 	public String getDrivingLicense() {
 		return drivingLicense;
@@ -119,8 +113,9 @@ public class SearchFinanceVO {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -128,7 +123,7 @@ public class SearchFinanceVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
+
 	public String getRego() {
 		return rego;
 	}
@@ -192,7 +187,7 @@ public class SearchFinanceVO {
 	public void setAutoscoopTrim(String autoscoopTrim) {
 		this.autoscoopTrim = autoscoopTrim;
 	}
-	
+
 	public boolean isNewer() {
 		return isNewer;
 	}
@@ -241,13 +236,11 @@ public class SearchFinanceVO {
 		this.isUsed = isUsed;
 	}
 
-	/*public boolean isNew() {
-		return isNew;
-	}
-
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
+	/*
+	 * public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 
 	public Date getDateOfBirth() {
 		return dateOfBirth;

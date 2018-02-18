@@ -3,17 +3,10 @@ package au.com.pnspvtltd.mcd.web.model;
 import java.sql.Date;
 import java.util.List;
 
-import au.com.pnspvtltd.mcd.domain.VehicleDealerFinInsDetails;
-
-
 public class VehicleDealerFinanceDetailsVO {
 
-
-		
-
-	
 	private Long vehicleDealerFinanceDetailId;
-	
+
 	private String vehicleType;
 	private String afslNo;
 	private String authRepNo;
@@ -27,8 +20,7 @@ public class VehicleDealerFinanceDetailsVO {
 	private boolean isNewCar;
 	private boolean isUsedCar;
 	private boolean isBoth;
-	
-	
+
 	public String getContactPerson() {
 		return contactPerson;
 	}
@@ -102,8 +94,7 @@ public class VehicleDealerFinanceDetailsVO {
 	private Date dob;
 	private String lastName;
 	private String title;
-	
-	
+
 	public Date getDob() {
 		return dob;
 	}
@@ -112,10 +103,9 @@ public class VehicleDealerFinanceDetailsVO {
 		this.dob = dob;
 	}
 
-	
-/*start */
+	/* start */
 	List<VehicleDealerFinInsDetailsVO> vehicleDealerFinInsDetails;
-	
+
 	public List<VehicleDealerFinInsDetailsVO> getVehicleDealerFinInsDetails() {
 		return vehicleDealerFinInsDetails;
 	}
@@ -173,22 +163,21 @@ public class VehicleDealerFinanceDetailsVO {
 	}
 
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-	
-	
+
 	public Long getVehicleDealerFinanceDetailId() {
 		return vehicleDealerFinanceDetailId;
 	}
@@ -364,46 +353,8 @@ public class VehicleDealerFinanceDetailsVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
-
-	
-	
-
-	
-
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

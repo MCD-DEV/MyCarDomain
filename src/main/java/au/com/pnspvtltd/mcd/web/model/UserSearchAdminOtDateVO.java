@@ -1,6 +1,5 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class UserSearchAdminOtDateVO {
@@ -9,11 +8,9 @@ public class UserSearchAdminOtDateVO {
 	private String modelDisplay;
 	private String modelName;
 	private String modelTrim;
-	
-	
+
 	List<SearchVO> searchVO;
 
-	
 	public String getModelYear() {
 		return modelYear;
 	}
@@ -53,9 +50,5 @@ public class UserSearchAdminOtDateVO {
 	public void setSearchVO(List<SearchVO> searchVO) {
 		this.searchVO = searchVO;
 	}
-
-	
-	
-	
 
 }

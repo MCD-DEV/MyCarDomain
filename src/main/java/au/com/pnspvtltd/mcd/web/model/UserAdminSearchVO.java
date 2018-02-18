@@ -10,10 +10,9 @@ public class UserAdminSearchVO {
 	private String email;
 	private int postCode;
 	private Date creationDate;
-	
+
 	List<UserVO> userVO;
 
-	
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -61,7 +60,5 @@ public class UserAdminSearchVO {
 	public void setUserVO(List<UserVO> userVO) {
 		this.userVO = userVO;
 	}
-
-	
 
 }

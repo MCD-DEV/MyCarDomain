@@ -4,149 +4,95 @@ import java.sql.Date;
 
 public class RegoStateUrlVO {
 
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2795828321233759004L;
-	
-
-	/**
-	 * 
-	 */
-												
-		
-
-	
 	private Long regoStateUrlId;
-	
-	
-	 
-	
+
 	private String vehState;
 	private String vehType;
 	private String vinHinNum;
 	private String regNo;
-	
+
 	private Date creationDate;
 	private boolean status;
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	/* start */
 
-	
-
-	
-/*start */
-	
-	
-	
-	
-	
 	public Long getRegoStateUrlId() {
 		return regoStateUrlId;
 	}
-
 
 	public void setRegoStateUrlId(Long regoStateUrlId) {
 		this.regoStateUrlId = regoStateUrlId;
 	}
 
-	
 	public String getVehState() {
 		return vehState;
 	}
-
 
 	public void setVehState(String vehState) {
 		this.vehState = vehState;
 	}
 
-	
 	public String getVehType() {
 		return vehType;
 	}
-
 
 	public void setVehType(String vehType) {
 		this.vehType = vehType;
 	}
 
-	
 	public String getVinHinNum() {
 		return vinHinNum;
 	}
-
 
 	public void setVinHinNum(String vinHinNum) {
 		this.vinHinNum = vinHinNum;
 	}
 
-	
 	public String getRegNo() {
 		return regNo;
 	}
-
 
 	public void setRegNo(String regNo) {
 		this.regNo = regNo;
 	}
 
-
 	public Date getCreationDate() {
 		return creationDate;
 	}
-
 
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-
 	public boolean isStatus() {
 		return status;
 	}
 
-
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	
-	// Flex start
-		private String flex1;
 
-	private String flex2;	
-	private String flex3;	
+	// Flex start
+	private String flex1;
+
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-		
-	
-	
-
-	
-
 
 	public String getFlex1() {
 		return flex1;
 	}
 
-	
 	public boolean isFlex13() {
 		return isFlex13;
 	}
@@ -254,35 +200,8 @@ public class RegoStateUrlVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
-	
-	
-
-	 	
-	
 }

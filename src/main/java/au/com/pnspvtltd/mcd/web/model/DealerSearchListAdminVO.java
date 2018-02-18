@@ -1,12 +1,11 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class DealerSearchListAdminVO {
 
 	private Long carSearchId;
-	
+
 	List<DealerSearchVO> dealerSearchVO;
 
 	public Long getCarSearchId() {
@@ -25,9 +24,4 @@ public class DealerSearchListAdminVO {
 		this.dealerSearchVO = dealerSearchVO;
 	}
 
-	
-
-	
-
-	
 }

@@ -1,14 +1,13 @@
 package au.com.pnspvtltd.mcd.web.model;
 
-import java.sql.Date;
 import java.util.List;
 
 public class FinanceEntityListVO {
 
-	public FinanceEntityListVO(){
-		
+	public FinanceEntityListVO() {
+
 	}
-	
+
 	List<FinanceEntityVO> financeEntityVO;
 
 	public List<FinanceEntityVO> getInventoryVO() {
@@ -18,8 +17,5 @@ public class FinanceEntityListVO {
 	public void setInventoryVO(List<FinanceEntityVO> financeEntityVO) {
 		this.financeEntityVO = financeEntityVO;
 	}
-	
-	
-	
-	
+
 }

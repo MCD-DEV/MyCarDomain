@@ -1,71 +1,64 @@
 package au.com.pnspvtltd.mcd.domain;
+
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "tempcarmodelpricing") public class TempCarModelPricing implements Serializable 
-{
-
+@Entity
+@Table(name = "tempcarmodelpricing")
+public class TempCarModelPricing implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
 	 */
-												
 
-	
 	private Long tempCarModelPricingId;
-	
+
 	private double prices;
 	private String redbookPriceGuide;
-/*start */
-	
-	private double privatePriceGuideMin;	
-	private double privatePriceGuideMax;	
-	private double tradePriceGuideMin;	
+	/* start */
+
+	private double privatePriceGuideMin;
+	private double privatePriceGuideMax;
+	private double tradePriceGuideMin;
 	private double tradePriceGuideMax;
 	private double averageKmMin;
 	private double averageKmMax;
 	private double priceWhenNew;
-	private  String state;
+	private String state;
 	private String rego;
-	
+
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
-	@Column(name = "FLEX1") public String getFlex1() {
+
+	@Column(name = "FLEX1")
+	public String getFlex1() {
 		return flex1;
 	}
 
@@ -73,7 +66,8 @@ import javax.persistence.Table;
 		this.flex1 = flex1;
 	}
 
-	@Column(name = "FLEX2") public String getFlex2() {
+	@Column(name = "FLEX2")
+	public String getFlex2() {
 		return flex2;
 	}
 
@@ -81,7 +75,8 @@ import javax.persistence.Table;
 		this.flex2 = flex2;
 	}
 
-	@Column(name = "FLEX3") public String getFlex3() {
+	@Column(name = "FLEX3")
+	public String getFlex3() {
 		return flex3;
 	}
 
@@ -89,7 +84,8 @@ import javax.persistence.Table;
 		this.flex3 = flex3;
 	}
 
-	@Column(name = "FLEX4") public String getFlex4() {
+	@Column(name = "FLEX4")
+	public String getFlex4() {
 		return flex4;
 	}
 
@@ -97,7 +93,8 @@ import javax.persistence.Table;
 		this.flex4 = flex4;
 	}
 
-	@Column(name = "FLEX5") public int getFlex5() {
+	@Column(name = "FLEX5")
+	public int getFlex5() {
 		return flex5;
 	}
 
@@ -105,7 +102,8 @@ import javax.persistence.Table;
 		this.flex5 = flex5;
 	}
 
-	@Column(name = "FLEX6") public int getFlex6() {
+	@Column(name = "FLEX6")
+	public int getFlex6() {
 		return flex6;
 	}
 
@@ -113,7 +111,8 @@ import javax.persistence.Table;
 		this.flex6 = flex6;
 	}
 
-	@Column(name = "FLEX7") public double getFlex7() {
+	@Column(name = "FLEX7")
+	public double getFlex7() {
 		return flex7;
 	}
 
@@ -121,7 +120,8 @@ import javax.persistence.Table;
 		this.flex7 = flex7;
 	}
 
-	@Column(name = "FLEX8") public double getFlex8() {
+	@Column(name = "FLEX8")
+	public double getFlex8() {
 		return flex8;
 	}
 
@@ -129,7 +129,8 @@ import javax.persistence.Table;
 		this.flex8 = flex8;
 	}
 
-	@Column(name = "FLEX9") public double getFlex9() {
+	@Column(name = "FLEX9")
+	public double getFlex9() {
 		return flex9;
 	}
 
@@ -137,7 +138,8 @@ import javax.persistence.Table;
 		this.flex9 = flex9;
 	}
 
-	@Column(name = "FLEX10") public double getFlex10() {
+	@Column(name = "FLEX10")
+	public double getFlex10() {
 		return flex10;
 	}
 
@@ -145,7 +147,8 @@ import javax.persistence.Table;
 		this.flex10 = flex10;
 	}
 
-	@Column(name = "FLEX11") public Date getFlex11() {
+	@Column(name = "FLEX11")
+	public Date getFlex11() {
 		return flex11;
 	}
 
@@ -153,33 +156,20 @@ import javax.persistence.Table;
 		this.flex11 = flex11;
 	}
 
-	@Column(name = "FLEX12") public Date getFlex12() {
+	@Column(name = "FLEX12")
+	public Date getFlex12() {
 		return flex12;
 	}
 
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
+	// End of flex
 
-		
-	
-	
-	
+	/* end */
 
-
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	@Column(name = "PRICES") public double getPrices() {
+	@Column(name = "PRICES")
+	public double getPrices() {
 		return prices;
 	}
 
@@ -187,8 +177,8 @@ import javax.persistence.Table;
 		this.prices = prices;
 	}
 
-	
-	@Column(name = "REDBOOKPRICEGUIDE") public String getRedbookPriceGuide() {
+	@Column(name = "REDBOOKPRICEGUIDE")
+	public String getRedbookPriceGuide() {
 		return redbookPriceGuide;
 	}
 
@@ -196,7 +186,8 @@ import javax.persistence.Table;
 		this.redbookPriceGuide = redbookPriceGuide;
 	}
 
-	@Column(name = "PRIVATEPRICEGUIDEMIN") public double getPrivatePriceGuideMin() {
+	@Column(name = "PRIVATEPRICEGUIDEMIN")
+	public double getPrivatePriceGuideMin() {
 		return privatePriceGuideMin;
 	}
 
@@ -204,7 +195,8 @@ import javax.persistence.Table;
 		this.privatePriceGuideMin = privatePriceGuideMin;
 	}
 
-	@Column(name = "PRIVATEPRICEGUIDEMAX") public double getPrivatePriceGuideMax() {
+	@Column(name = "PRIVATEPRICEGUIDEMAX")
+	public double getPrivatePriceGuideMax() {
 		return privatePriceGuideMax;
 	}
 
@@ -212,7 +204,8 @@ import javax.persistence.Table;
 		this.privatePriceGuideMax = privatePriceGuideMax;
 	}
 
-	@Column(name = "TRADEPRICEGUIDEMIN") public double getTradePriceGuideMin() {
+	@Column(name = "TRADEPRICEGUIDEMIN")
+	public double getTradePriceGuideMin() {
 		return tradePriceGuideMin;
 	}
 
@@ -220,7 +213,8 @@ import javax.persistence.Table;
 		this.tradePriceGuideMin = tradePriceGuideMin;
 	}
 
-	@Column(name = "TRADEPRICEGUIDEMAX") public double getTradePriceGuideMax() {
+	@Column(name = "TRADEPRICEGUIDEMAX")
+	public double getTradePriceGuideMax() {
 		return tradePriceGuideMax;
 	}
 
@@ -228,7 +222,8 @@ import javax.persistence.Table;
 		this.tradePriceGuideMax = tradePriceGuideMax;
 	}
 
-	@Column(name = "AVERAGEKMMIN") public double getAverageKmMin() {
+	@Column(name = "AVERAGEKMMIN")
+	public double getAverageKmMin() {
 		return averageKmMin;
 	}
 
@@ -236,7 +231,8 @@ import javax.persistence.Table;
 		this.averageKmMin = averageKmMin;
 	}
 
-	@Column(name = "AVERAGEKMMAX") public double getAverageKmMax() {
+	@Column(name = "AVERAGEKMMAX")
+	public double getAverageKmMax() {
 		return averageKmMax;
 	}
 
@@ -244,7 +240,8 @@ import javax.persistence.Table;
 		this.averageKmMax = averageKmMax;
 	}
 
-	@Column(name = "PRICEWHENNEW") public double getPriceWhenNew() {
+	@Column(name = "PRICEWHENNEW")
+	public double getPriceWhenNew() {
 		return priceWhenNew;
 	}
 
@@ -252,7 +249,8 @@ import javax.persistence.Table;
 		this.priceWhenNew = priceWhenNew;
 	}
 
-	@Column(name = "STATE") public String getState() {
+	@Column(name = "STATE")
+	public String getState() {
 		return state;
 	}
 
@@ -260,7 +258,8 @@ import javax.persistence.Table;
 		this.state = state;
 	}
 
-	@Column(name = "REGO") public String getRego() {
+	@Column(name = "REGO")
+	public String getRego() {
 		return rego;
 	}
 
@@ -269,27 +268,18 @@ import javax.persistence.Table;
 	}
 
 	public TempCarModelPricing() {
-        super();
-    }
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "TEMPCARMODELPRICINGID") public Long getTempCarModelPricingId() {
-		return this.tempCarModelPricingId;
+		super();
 	}
 
-   
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "TEMPCARMODELPRICINGID")
+	public Long getTempCarModelPricingId() {
+		return this.tempCarModelPricingId;
+	}
 
 	public void setTempCarModelPricingId(Long tempCarModelPricingId) {
 		this.tempCarModelPricingId = tempCarModelPricingId;
 	}
 
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

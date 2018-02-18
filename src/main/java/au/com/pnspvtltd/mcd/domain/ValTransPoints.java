@@ -2,29 +2,22 @@ package au.com.pnspvtltd.mcd.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "valtranspoints")
 public class ValTransPoints implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Long valTransPointId;
 	private long id;
 	private String typeOfTrans;
@@ -40,7 +33,7 @@ public class ValTransPoints implements Serializable {
 	private String action;
 	private boolean provStatus;
 	private boolean status;
-	
+
 	public boolean isProvStatus() {
 		return provStatus;
 	}
@@ -64,6 +57,7 @@ public class ValTransPoints implements Serializable {
 	public void setAction(String action) {
 		this.action = action;
 	}
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -71,7 +65,7 @@ public class ValTransPoints implements Serializable {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -79,6 +73,7 @@ public class ValTransPoints implements Serializable {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -86,8 +81,7 @@ public class ValTransPoints implements Serializable {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "VALTRPOINTID")
@@ -99,12 +93,10 @@ public class ValTransPoints implements Serializable {
 		this.valTransPointId = valTransPointId;
 	}
 
-	
 	public int getNoOfPoints() {
 		return noOfPoints;
 	}
 
-	
 	public long getId() {
 		return id;
 	}
@@ -164,7 +156,5 @@ public class ValTransPoints implements Serializable {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

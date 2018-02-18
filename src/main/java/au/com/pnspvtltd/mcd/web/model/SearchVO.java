@@ -6,20 +6,16 @@ import javax.persistence.Column;
 
 public class SearchVO {
 
-	/* Mapping 
-	 * "carColor" : $("carColor").val(),
-																			 "postCode":$('#postCode').val(),
-																			"make":$('#seats').val(),
-																			"bodyType":$('#driveType').val(),
-																			"state":$('#fuelType').val(),
-																			"region":$('#freetext').val(),
-																			"ausCapTer":$('#vehiclePurpose').val(),
-																			"region":$('#transmission').val(),
-																			"sMake":$('#extraExternal1').val(),
-	 * */
-	
+	/*
+	 * Mapping "carColor" : $("carColor").val(),
+	 * "postCode":$('#postCode').val(), "make":$('#seats').val(),
+	 * "bodyType":$('#driveType').val(), "state":$('#fuelType').val(),
+	 * "region":$('#freetext').val(), "ausCapTer":$('#vehiclePurpose').val(),
+	 * "region":$('#transmission').val(), "sMake":$('#extraExternal1').val(),
+	 */
+
 	private Long carSearchId;
-	//private boolean isNew;
+	// private boolean isNew;
 	private boolean isNewer;
 	private boolean isUsed;
 	private String modelYear;
@@ -45,17 +41,17 @@ public class SearchVO {
 	private boolean thirdPartyCover;
 	private String ausCapTer;
 	private Long userid;
-	/*private int mobile;
-	private int landLine;*/
+	/*
+	 * private int mobile; private int landLine;
+	 */
 	private String abnNumber;
 	private String email;
 	private String drivingLicense;
-	
+
 	private boolean credStat;
 	private boolean idCheck;
 	private boolean mobCheck;
-	
-	
+
 	public String getAbnNumber() {
 		return abnNumber;
 	}
@@ -96,21 +92,15 @@ public class SearchVO {
 		this.mobCheck = mobCheck;
 	}
 
-	/*public int getMobile() {
-		return mobile;
-	}
-
-	public void setMobile(int mobile) {
-		this.mobile = mobile;
-	}
-
-	public int getLandLine() {
-		return landLine;
-	}
-
-	public void setLandLine(int landLine) {
-		this.landLine = landLine;
-	}*/
+	/*
+	 * public int getMobile() { return mobile; }
+	 * 
+	 * public void setMobile(int mobile) { this.mobile = mobile; }
+	 * 
+	 * public int getLandLine() { return landLine; }
+	 * 
+	 * public void setLandLine(int landLine) { this.landLine = landLine; }
+	 */
 
 	public String getDrivingLicense() {
 		return drivingLicense;
@@ -127,8 +117,9 @@ public class SearchVO {
 	public void setUserid(Long userid) {
 		this.userid = userid;
 	}
+
 	private Date creationDate;
-	
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -136,6 +127,7 @@ public class SearchVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
+
 	public boolean isNewer() {
 		return isNewer;
 	}
@@ -152,16 +144,15 @@ public class SearchVO {
 		this.isUsed = isUsed;
 	}
 
-	/*public boolean isNew() {
-		return isNew;
-	}
+	/*
+	 * public boolean isNew() { return isNew; }
+	 * 
+	 * public void setNew(boolean isNew) { this.isNew = isNew; }
+	 */
 
-	public void setNew(boolean isNew) {
-		this.isNew = isNew;
-	}*/
-	
 	// FLEX1
 	private String sModel;
+
 	public String getsModel() {
 		return sModel;
 	}
@@ -169,12 +160,14 @@ public class SearchVO {
 	public void setsModel(String sModel) {
 		this.sModel = sModel;
 	}
+
 	private String sMake;
 	private String extraExter2;
-	private String extraExter3;	
-	private String extraExter4;	
+	private String extraExter3;
+	private String extraExter4;
 	private String extraExter5;
 	private String extraExter6;
+
 	public String getExtraExter6() {
 		return extraExter6;
 	}
@@ -231,18 +224,18 @@ public class SearchVO {
 		this.extraIntern11 = extraIntern11;
 	}
 
-	private String extraIntern1;	
-	private String extraIntern2;	
-	private String extraIntern3;	
-	private String extraIntern4;	
+	private String extraIntern1;
+	private String extraIntern2;
+	private String extraIntern3;
+	private String extraIntern4;
 	private String extraIntern5;
-	private String extraIntern6;	
-	private String extraIntern7;	
-	private String extraIntern8;	
-	private String extraIntern9;	
+	private String extraIntern6;
+	private String extraIntern7;
+	private String extraIntern8;
+	private String extraIntern9;
 	private String extraIntern10;
 	private String extraIntern11;
-	
+
 	public Long getCarSearchId() {
 		return this.carSearchId;
 	}
@@ -498,10 +491,13 @@ public class SearchVO {
 	public void setExtraIntern5(String extraIntern5) {
 		this.extraIntern5 = extraIntern5;
 	}
-	@Column(name = "SMAKE") public String getsMake() {
- 		return sMake;
- 	}
- 	public void setsMake(String sMake) {
- 		this.sMake = sMake;
- 	}
+
+	@Column(name = "SMAKE")
+	public String getsMake() {
+		return sMake;
+	}
+
+	public void setsMake(String sMake) {
+		this.sMake = sMake;
+	}
 }

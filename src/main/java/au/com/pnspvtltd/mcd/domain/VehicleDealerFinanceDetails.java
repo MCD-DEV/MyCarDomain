@@ -1,4 +1,5 @@
 package au.com.pnspvtltd.mcd.domain;
+
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
@@ -18,25 +19,21 @@ import javax.persistence.Table;
  * Entity implementation class for Entity: TEMPCARMODELOVERVIEW
  * 
  */
-@Entity @Table(name = "vehicledealerfinancedetails") public class VehicleDealerFinanceDetails implements Serializable 
-{
-
+@Entity
+@Table(name = "vehicledealerfinancedetails")
+public class VehicleDealerFinanceDetails implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2795828321233759004L;
-	
 
 	/**
 	 * 
 	 */
-												
-		
 
-	
 	private Long vehicleDealerFinanceDetailId;
-	
+
 	private String vehicleType;
 	private String afslNo;
 	private String authRepNo;
@@ -44,19 +41,19 @@ import javax.persistence.Table;
 	private String brokerLicenceNo;
 	private boolean isLoanNewVeh;
 	private boolean isLoanUsedVeh;
-	
-	private boolean loanNewVeh;
-	private boolean loanUsedVeh;
-	
+
+	/*private boolean loanNewVeh;
+	private boolean loanUsedVeh;*/
+
 	private boolean isIndividual;
 	private boolean isLicensedBroker;
 	private boolean isFinancialInstitute;
 	private boolean isNewCar;
 	private boolean isUsedCar;
 	private boolean isBoth;
-	
-	
+
 	private String contactPerson;
+
 	public String getContactPerson() {
 		return contactPerson;
 	}
@@ -129,15 +126,6 @@ import javax.persistence.Table;
 		this.title = title;
 	}
 
-
-
-
-
-
-
-
-
-
 	private String designation;
 	private String contactNumber1;
 	private String contactNumber2;
@@ -146,11 +134,9 @@ import javax.persistence.Table;
 	private Date dob;
 	private String lastName;
 	private String title;
-	
-	
-/*start */
-	
-	
+
+	/* start */
+
 	public String getAclNo() {
 		return aclNo;
 	}
@@ -199,51 +185,47 @@ import javax.persistence.Table;
 		this.isLoanUsedVeh = isLoanUsedVeh;
 	}
 
-
-
-
-
-
-
-
-
-
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
 	private boolean isFlex13;
 	private boolean isFlex14;
-	
+
 	List<VehicleDealerFinInsDetails> vehicleDealerFinInsDetails;
-	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "VEHICLEDEALERFINANCEDETAILID") public Long getVehicleDealerFinanceDetailId() {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "VEHICLEDEALERFINANCEDETAILID")
+	public Long getVehicleDealerFinanceDetailId() {
 		return vehicleDealerFinanceDetailId;
 	}
 
 	public void setVehicleDealerFinanceDetailId(Long vehicleDealerFinanceDetailId) {
 		this.vehicleDealerFinanceDetailId = vehicleDealerFinanceDetailId;
 	}
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
 	@JoinColumn(name = "vehicleDealerFinanceDetailId")
 	public List<VehicleDealerFinInsDetails> getVehicleDealerFinInsDetails() {
 		return vehicleDealerFinInsDetails;
 	}
 
-	public void setVehicleDealerFinInsDetails(
-			List<VehicleDealerFinInsDetails> vehicleDealerFinInsDetails) {
+	public void setVehicleDealerFinInsDetails(List<VehicleDealerFinInsDetails> vehicleDealerFinInsDetails) {
 		this.vehicleDealerFinInsDetails = vehicleDealerFinInsDetails;
 	}
-	@Column(name = "VEHICLETYPE") public String getVehicleType() {
+
+	@Column(name = "VEHICLETYPE")
+	public String getVehicleType() {
 		return vehicleType;
 	}
 
@@ -251,7 +233,8 @@ import javax.persistence.Table;
 		this.vehicleType = vehicleType;
 	}
 
-	@Column(name = "ISINDIVIDUAL") public boolean isIndividual() {
+	@Column(name = "ISINDIVIDUAL")
+	public boolean isIndividual() {
 		return isIndividual;
 	}
 
@@ -259,7 +242,8 @@ import javax.persistence.Table;
 		this.isIndividual = isIndividual;
 	}
 
-	@Column(name = "ISLICENSEDBROKER") public boolean isLicensedBroker() {
+	@Column(name = "ISLICENSEDBROKER")
+	public boolean isLicensedBroker() {
 		return isLicensedBroker;
 	}
 
@@ -267,7 +251,8 @@ import javax.persistence.Table;
 		this.isLicensedBroker = isLicensedBroker;
 	}
 
-	@Column(name = "ISFINANCIALINSTITUTE") public boolean isFinancialInstitute() {
+	@Column(name = "ISFINANCIALINSTITUTE")
+	public boolean isFinancialInstitute() {
 		return isFinancialInstitute;
 	}
 
@@ -275,7 +260,8 @@ import javax.persistence.Table;
 		this.isFinancialInstitute = isFinancialInstitute;
 	}
 
-	@Column(name = "ISNEWCAR") public boolean isNewCar() {
+	@Column(name = "ISNEWCAR")
+	public boolean isNewCar() {
 		return isNewCar;
 	}
 
@@ -283,7 +269,8 @@ import javax.persistence.Table;
 		this.isNewCar = isNewCar;
 	}
 
-	@Column(name = "ISUSEDCAR") public boolean isUsedCar() {
+	@Column(name = "ISUSEDCAR")
+	public boolean isUsedCar() {
 		return isUsedCar;
 	}
 
@@ -291,7 +278,8 @@ import javax.persistence.Table;
 		this.isUsedCar = isUsedCar;
 	}
 
-	@Column(name = "ISBOTH") public boolean isBoth() {
+	@Column(name = "ISBOTH")
+	public boolean isBoth() {
 		return isBoth;
 	}
 
@@ -299,7 +287,8 @@ import javax.persistence.Table;
 		this.isBoth = isBoth;
 	}
 
-	@Column(name = "ISFLEX13") public boolean isFlex13() {
+	@Column(name = "ISFLEX13")
+	public boolean isFlex13() {
 		return isFlex13;
 	}
 
@@ -307,7 +296,8 @@ import javax.persistence.Table;
 		this.isFlex13 = isFlex13;
 	}
 
-	@Column(name = "FLEX14") public boolean isFlex14() {
+	@Column(name = "FLEX14")
+	public boolean isFlex14() {
 		return isFlex14;
 	}
 
@@ -315,7 +305,8 @@ import javax.persistence.Table;
 		this.isFlex14 = isFlex14;
 	}
 
-	@Column(name = "FLEX1") public String getFlex1() {
+	@Column(name = "FLEX1")
+	public String getFlex1() {
 		return flex1;
 	}
 
@@ -323,7 +314,8 @@ import javax.persistence.Table;
 		this.flex1 = flex1;
 	}
 
-	@Column(name = "FLEX2") public String getFlex2() {
+	@Column(name = "FLEX2")
+	public String getFlex2() {
 		return flex2;
 	}
 
@@ -331,7 +323,8 @@ import javax.persistence.Table;
 		this.flex2 = flex2;
 	}
 
-	@Column(name = "FLEX3") public String getFlex3() {
+	@Column(name = "FLEX3")
+	public String getFlex3() {
 		return flex3;
 	}
 
@@ -339,7 +332,8 @@ import javax.persistence.Table;
 		this.flex3 = flex3;
 	}
 
-	@Column(name = "FLEX4") public String getFlex4() {
+	@Column(name = "FLEX4")
+	public String getFlex4() {
 		return flex4;
 	}
 
@@ -347,7 +341,8 @@ import javax.persistence.Table;
 		this.flex4 = flex4;
 	}
 
-	@Column(name = "FLEX5") public int getFlex5() {
+	@Column(name = "FLEX5")
+	public int getFlex5() {
 		return flex5;
 	}
 
@@ -355,7 +350,8 @@ import javax.persistence.Table;
 		this.flex5 = flex5;
 	}
 
-	@Column(name = "FLEX6") public int getFlex6() {
+	@Column(name = "FLEX6")
+	public int getFlex6() {
 		return flex6;
 	}
 
@@ -363,7 +359,8 @@ import javax.persistence.Table;
 		this.flex6 = flex6;
 	}
 
-	@Column(name = "FLEX7") public double getFlex7() {
+	@Column(name = "FLEX7")
+	public double getFlex7() {
 		return flex7;
 	}
 
@@ -371,7 +368,8 @@ import javax.persistence.Table;
 		this.flex7 = flex7;
 	}
 
-	@Column(name = "FLEX8") public double getFlex8() {
+	@Column(name = "FLEX8")
+	public double getFlex8() {
 		return flex8;
 	}
 
@@ -379,7 +377,8 @@ import javax.persistence.Table;
 		this.flex8 = flex8;
 	}
 
-	@Column(name = "FLEX9") public double getFlex9() {
+	@Column(name = "FLEX9")
+	public double getFlex9() {
 		return flex9;
 	}
 
@@ -387,7 +386,8 @@ import javax.persistence.Table;
 		this.flex9 = flex9;
 	}
 
-	@Column(name = "FLEX10") public double getFlex10() {
+	@Column(name = "FLEX10")
+	public double getFlex10() {
 		return flex10;
 	}
 
@@ -395,7 +395,8 @@ import javax.persistence.Table;
 		this.flex10 = flex10;
 	}
 
-	@Column(name = "FLEX11") public Date getFlex11() {
+	@Column(name = "FLEX11")
+	public Date getFlex11() {
 		return flex11;
 	}
 
@@ -403,55 +404,20 @@ import javax.persistence.Table;
 		this.flex11 = flex11;
 	}
 
-	@Column(name = "FLEX12") public Date getFlex12() {
+	@Column(name = "FLEX12")
+	public Date getFlex12() {
 		return flex12;
 	}
 
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-		
-	
-	
-	
+	// End of flex
 
+	/* end */
 
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-		
-
-	
 	public VehicleDealerFinanceDetails() {
-        super();
-    }
-	
-	
+		super();
+	}
 
-	
-
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

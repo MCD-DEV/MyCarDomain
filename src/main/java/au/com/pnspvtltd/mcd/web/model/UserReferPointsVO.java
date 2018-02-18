@@ -1,18 +1,6 @@
 package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
-import java.util.List;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
-import au.com.pnspvtltd.mcd.domain.SearchInsAdditionalDriv;
 
 public class UserReferPointsVO {
 
@@ -32,10 +20,10 @@ public class UserReferPointsVO {
 	private String action;
 	private String fName;
 	private String lName;
-	
+
 	private boolean provStatus;
 	private boolean status;
-	
+
 	public String getfName() {
 		return fName;
 	}
@@ -67,6 +55,7 @@ public class UserReferPointsVO {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
 	public Long getUserId() {
 		return userId;
 	}
@@ -82,7 +71,7 @@ public class UserReferPointsVO {
 	public void setAction(String action) {
 		this.action = action;
 	}
-	
+
 	public int getActualPoints() {
 		return actualPoints;
 	}
@@ -90,7 +79,7 @@ public class UserReferPointsVO {
 	public void setActualPoints(int actualPoints) {
 		this.actualPoints = actualPoints;
 	}
-	
+
 	public long getIdp() {
 		return idp;
 	}
@@ -98,6 +87,7 @@ public class UserReferPointsVO {
 	public void setIdp(long idp) {
 		this.idp = idp;
 	}
+
 	public Date getCreationDate() {
 		return creationDate;
 	}
@@ -105,9 +95,7 @@ public class UserReferPointsVO {
 	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
-	
-	
-	
+
 	public Long getUserReferPointId() {
 		return userReferPointId;
 	}
@@ -179,7 +167,5 @@ public class UserReferPointsVO {
 	public void setUsdVal(double usdVal) {
 		this.usdVal = usdVal;
 	}
-
-	
 
 }

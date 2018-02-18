@@ -651,7 +651,8 @@
                             };
 
 
-
+                            console.log(jsonInputToAPI);
+                            console.log(JSON.stringify(jsonInputToAPI));
                             var wsURL = 'api/eBid/servmaint';
 
                             // change here
@@ -672,7 +673,7 @@
                                 	alert("No upload of images found. Redirecting to your dashboard..");
                                 	 var url = "Db_BetaV1.html#travel-stories3";
 
-                                     window.location = url;
+                                     //window.location = url;
                                 }
 
                             });

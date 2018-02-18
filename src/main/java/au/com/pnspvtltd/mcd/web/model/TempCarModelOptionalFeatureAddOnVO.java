@@ -2,42 +2,37 @@ package au.com.pnspvtltd.mcd.web.model;
 
 import java.sql.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public class TempCarModelOptionalFeatureAddOnVO {
 
-
-											
-
-	
 	private Long tempCarModelOptFeatId;
-	
+
 	private double prices;
 	private String optionaFeature;
-/*start */
-	
-	
-	
-	
+	/* start */
 
 	// Flex start
-	private String flex1;	
-	private String flex2;	
-	private String flex3;	
+	private String flex1;
+
+	public String getOptionaFeature() {
+		return optionaFeature;
+	}
+
+	public void setOptionaFeature(String optionaFeature) {
+		this.optionaFeature = optionaFeature;
+	}
+
+	private String flex2;
+	private String flex3;
 	private String flex4;
-	private int flex5;	
-	private int flex6;	
-	private double flex7;	
+	private int flex5;
+	private int flex6;
+	private double flex7;
 	private double flex8;
-	private double flex9;	
+	private double flex9;
 	private double flex10;
 	private Date flex11;
 	private Date flex12;
-		
-	
+
 	public String getFlex1() {
 		return flex1;
 	}
@@ -133,22 +128,9 @@ public class TempCarModelOptionalFeatureAddOnVO {
 	public void setFlex12(Date flex12) {
 		this.flex12 = flex12;
 	}
-// End of flex
-	
-	
-	
+	// End of flex
 
-
-	
-	
-	
-		
-	/*end*/
-	
-
-	
-
-	
+	/* end */
 
 	public double getPrices() {
 		return prices;
@@ -158,28 +140,12 @@ public class TempCarModelOptionalFeatureAddOnVO {
 		this.prices = prices;
 	}
 
-	
-	
-
-	
 	public Long getTempCarModelOptFeatId() {
 		return this.tempCarModelOptFeatId;
 	}
-
-   
 
 	public void setTempCarModelOptFeatId(Long tempCarModelOptFeatId) {
 		this.tempCarModelOptFeatId = tempCarModelOptFeatId;
 	}
 
-	 
-    
- 
-
- 	
- 	
- 	
- 	
- 	
-	
 }

@@ -4,12 +4,8 @@ public class MyVehicleServMaintStoreVO {
 
 	private Long myVehicleId;
 
-	
 	private MyVehicleServMaintVO myVehicleServMaintVO;
-	
-	
 
-	
 	public MyVehicleServMaintVO getMyVehicleServMaintVO() {
 		return myVehicleServMaintVO;
 	}
@@ -26,7 +22,4 @@ public class MyVehicleServMaintStoreVO {
 		this.myVehicleId = myVehicleId;
 	}
 
-		
-
-	
 }
