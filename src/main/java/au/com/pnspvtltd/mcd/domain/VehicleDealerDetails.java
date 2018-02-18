@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -48,7 +49,17 @@ import javax.persistence.Table;
 	
 /*start */
 	
-	
+	private Dealer dealer;
+
+	@ManyToOne
+	@JoinColumn(name = "DEALERID")
+	public Dealer getDealer() {
+		return dealer;
+	}
+
+	public void setDealer(Dealer dealer) {
+		this.dealer = dealer;
+	}
 	// Flex start
 	private String flex1;	
 	public String getVehicleType() {
