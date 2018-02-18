@@ -220,7 +220,7 @@ public class VehicleQuotationController {
 			
 			
 			
-			
+			if (vehicleQuotationVO.getUserQuotaDocs() != null) {
 			List<UserQuotaDocVO> qvo2 = vehicleQuotationVO.getUserQuotaDocs();
 			List<UserQuotaDocs> quoList2 = new ArrayList<UserQuotaDocs>();
 
@@ -241,7 +241,8 @@ public class VehicleQuotationController {
 				vehicleQuotation.setUserQuotaDocs(quoList2);
 
 			}
-			
+			}
+			if (vehicleQuotationVO.getUserQuotaReqTestDrive() != null) {
 			List<UserQuotaReqTestDriveVO> qvo3 = vehicleQuotationVO.getUserQuotaReqTestDrive();
 			List<UserQuotaReqTestDrive> quoList3 = new ArrayList<UserQuotaReqTestDrive>();
 
@@ -262,7 +263,8 @@ public class VehicleQuotationController {
 				vehicleQuotation.setUserQuotaReqTestDrive(quoList3);
 
 			}
-			
+			}
+			if (vehicleQuotationVO.getUserQuotationHistoryVO() != null){
 			List<UserQuotationHistoryVO> qvo4 = vehicleQuotationVO.getUserQuotationHistoryVO();
 			List<UserQuotationHistory> quoList4 = new ArrayList<UserQuotationHistory>();
 
@@ -283,7 +285,7 @@ public class VehicleQuotationController {
 				vehicleQuotation.setUserQuotationHistory(quoList4);
 
 			}
-			
+			}
 			
 			
 			
