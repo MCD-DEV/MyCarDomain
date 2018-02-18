@@ -2448,6 +2448,13 @@ mainApp1.controller('myController13',function($scope, $http) {
 					//alert("in user con");function vehicleRetrievalforLogBook(){
 	//alert("in angular");
 	$scope.vehicleData;
+	$scope.flag = "";
+	
+	$scope.srchServnfo ={};
+	$scope.srchTranInfo ={};
+	$scope.srchInsInfo ={};
+	$scope.srchFinInfo ={};
+	
 	$scope.carEbidreq121214=true;
 	$scope.scarEbidreq8818=true;
 	$scope.qcarEbidreq99=true;
@@ -2522,16 +2529,64 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$('#User	Region').val(value.drivingLicense);
 	$('#UserState').val(value.state);
 	*/
-	$body.addClass("loading");
-	$http({
-        method : 'GET',
-        url : 'api/dealerIDs'
-    }).then(function mySuccess(response) {
-    	 $body.removeClass("loading");
-    	 $scope.dealerIds = response.data;
-    }, function myError(response) {
-    	$scope.dealerIds = response.statusText;
-    });
+	
+	function pullDealerIds(subscriptionType){
+		
+		console.log("pullDealerIds"+subscriptionType);
+		$http({
+	        method : 'GET',
+	        url : 'api/dealerIDs/'+subscriptionType
+	    }).then(function mySuccess(response) {
+	    	if(subscriptionType === "Finance"){
+	    		$scope.dealerIdsF = response.data;
+	    	}else if(subscriptionType === "Insurance"){
+	    		$scope.dealerIdsI = response.data;
+	    	}else if(subscriptionType === "Servicemaintenance"){
+	    		$scope.dealerIdsSM = response.data;
+	    	}else if(subscriptionType === "Transport"){
+	    		$scope.dealerIdsT = response.data;
+	    	}
+	    	
+	    }, function myError(response) {
+	    	if(subscriptionType === "Finance"){
+	    		$scope.dealerIdsF = response.statusText;
+	    	}else if(subscriptionType === "Insurance"){
+	    		$scope.dealerIdsI = response.statusText;
+	    	}else if(subscriptionType === "Servicemaintenance"){
+	    		$scope.dealerIdsSM = response.statusText;
+	    	}else if(subscriptionType === "Transport"){
+	    		$scope.dealerIdsT = response.statusText;
+	    	}
+	    });
+		
+	}
+	
+	
+	
+	$scope.isDealerIdsNull = function(dealerId){
+		if(dealerId === null){
+			return false;
+		}
+		return true;
+		
+	}
+	//Pulling dealer Information
+	
+	$scope.dealerSvInfoForID = function(){
+		console.log("Pulling Dealer Info");
+		$http({
+	        method : 'GET',
+	        url : 'api/dealerInfoforID?dealerID='+ $scope.LeadSvDealerId
+	    }).then(function mySuccess(response) {
+	    	 console.log("response.data",response.data);
+	    	 $scope.leadSvDealerName = response.data.dealername;
+	    	 $scope.leadSvDealerABN = response.data.abnnumber;
+	    	 $scope.leadSvDealerEmail = response.data.email;
+	    }, function myError(response) {
+	    	$scope.leadSvDealerName = response.statusText;
+	    });
+	
+	}
 	
 	// start of External Dealer creation
 $scope.carCarQuotation = function(userId){
@@ -3395,7 +3450,7 @@ $scope.carCarQuotation = function(userId){
 	    	 //alert("Bis");
 	    	 //alert(response.data.dealername);
 	    	 $scope.leadDealerName = response.data.dealername;
-    		 $scope.leadDealerABN = response.data.abnnumber;
+    		 $scope.leadDealerABN = response.data.ABNNumber;
 			 $scope.leadDealerEmail = response.data.email;
 	    	 console.log(response.data);
 	    }, function myError(response) {
@@ -3798,6 +3853,72 @@ $scope.carCarQuotation = function(userId){
 	            }
 	// end get all finance 
 
+	 //Send Lead to Dealer
+	 
+	 
+
+		$scope.submitMyLeadNewSvfrm = function() {
+			console.log("submitMyLeadNewSvfrm");
+			console.log("srchTranInfo"+$scope.srchServnfo);
+			$http({
+		        method : 'POST',
+		        url : 'post/dealerSnM/'+$scope.LeadSvDealerId,
+				data: $scope.srchServnfo
+		    }).then(function mySuccess(response) {
+		    	 alert("Successfully Saved Internal Dealer Lead");
+		    	 console.log(response);
+		    }, function myError(response) {
+		    	alert("Error Successfully Saved Internal Dealer Lead");
+		    });
+
+		}
+		$scope.submitMyLeadNewFfrm = function() {
+			console.log("submitMyLeadNewFfrm");
+			
+			console.log("srchTranInfo"+$scope.srchFinInfo);
+			$http({
+		        method : 'POST',
+		        url : 'post/dealerFin/'+$scope.LeadSvDealerId,
+				data: $scope.srchFinInfo
+		    }).then(function mySuccess(response) {
+		    	 alert("Successfully Saved Internal Dealer Lead");
+		    	 console.log(response);
+		    }, function myError(response) {
+		    	alert("Error Successfully Saved Internal Dealer Lead");
+		    });
+		}
+		$scope.submitMyLeadNewIfrm = function() {
+			console.log("submitMyLeadNewIfrm");
+			console.log("srchTranInfo"+$scope.srchInsInfo);
+			$http({
+		        method : 'POST',
+		        url : 'post/dealerIns/'+$scope.LeadSvDealerId,
+				data: $scope.srchInsInfo
+		    }).then(function mySuccess(response) {
+		    	 alert("Successfully Saved Internal Dealer Lead");
+		    	 console.log(response);
+		    }, function myError(response) {
+		    	alert("Error Successfully Saved Internal Dealer Lead");
+		    });
+		}
+		$scope.submitMyLeadNewTfrm = function() {
+			console.log("submitMyLeadNewTfrm");
+
+			console.log("srchTranInfo"+$scope.srchTranInfo);
+			$http({
+		        method : 'POST',
+		        url : 'post/dealerTrans/'+$scope.LeadSvDealerId,
+				data: $scope.srchTranInfo
+		    }).then(function mySuccess(response) {
+		    	 alert("Successfully Saved Internal Dealer Lead");
+		    	 console.log(response);
+		    }, function myError(response) {
+		    	alert("Error Successfully Saved Internal Dealer Lead");
+		    });
+		}
+	 
+	 
+	 
 	// start of insurance
 	 $scope.getallDealerIsInfo = function () {
 	        alert("start");
@@ -4599,7 +4720,8 @@ alert("data"+jsonInput);
     $scope.getsmInforAll = function () {
         
                        var wsURL = 'api/getsmInforAll';
-                        
+                $scope.flag = "Servicemaintenance";     
+                pullDealerIds($scope.flag);
                 $body.addClass("loading");
                $http({
                     method: 'GET',
@@ -4677,7 +4799,8 @@ alert("data"+jsonInput);
     // start of S&M
     $scope.getsmInfor = function () {
         //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
-      
+    	$scope.flag = "Servicemaintenance";     
+        pullDealerIds($scope.flag);
                         var jsonInputToAPI = {
                     "modelYear": $scope.caryears,
                     "modelDisplay": $scope.carmakes,
@@ -4777,6 +4900,7 @@ alert("data"+jsonInput);
 
        		//alert(data);
        		//console.log(data);
+    		$scope.srchServnfo = data;
        		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="servMaintId" value="' + data.searchServMaintId + '" />';
 			/*var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -4832,38 +4956,41 @@ alert("data"+jsonInput);
 			editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>null</g, ">--NA--<");
 			editDealerVehicleservmaintForm = editDealerVehicleservmaintForm.replace(/>undefined</g, ">--NA--<");
 			$(".edit-dealer-vehicle-servmaint-content").html(editDealerVehicleservmaintForm);
-    		
-    		var wsURL = 'api/getDealSearchInfoId?carSearchId='+data.carSearchId ;
-  		  	$body.addClass("loading");
-    		$.ajax({
-				type: "GET",
-				url: wsURL,
-				success: function(data){
-					$body.removeClass("loading");
-	                  //alert("successfully retrieved");
-	                  out="";
-	                  if(data.dealerSearchVO && data.dealerSearchVO.length!=0)
-	                	  {
-		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
-		   	           	   for(i=0;i<data.dealerSearchVO.length;i++)
-		   	          		{
-		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
-	
-		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.dealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.dealerSearchVO[i].modelYear+'<td>'+data.dealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.dealerSearchVO[i].modelName+'</td>'+'<td>'+data.dealerSearchVO[i].modelTrim+'</td></tr>';
-	
-		   	          		}
-	                	  }
-	           	 
-	                  else{
-	           		out='<h2>No records</h2>';
-	           	   }
-	           	
-	           	   out = out.replace(/>null</g, ">--NA--<");
-	           	   out = out.replace(/>undefined</g, ">--NA--<");
-	           	   $("#LeadTable").html(out);
+			console.log(data);
+    		if(data.carSearchId != null){
+    			var wsURL = 'api/getDealSearchInfoId?carSearchId='+data.carSearchId ;
+      		  	$body.addClass("loading");
+        		$.ajax({
+    				type: "GET",
+    				url: wsURL,
+    				success: function(data){
+    					$body.removeClass("loading");
+    	                  //alert("successfully retrieved");
+    	                  out="";
+    	                  if(data.dealerSearchVO && data.dealerSearchVO.length!=0)
+    	                	  {
+    		                	  out += '<tr><th>'+"Operation"+'</th><th>'+"Car Ebid ID"+'</th><th>'+"Year"+'</th>'+'<th>'+"Make"+'</th><th>'+"Model"+'</th><th>'+"Autoscoop Variant"+'</th></tr>';
+    		   	           	   for(i=0;i<data.dealerSearchVO.length;i++)
+    		   	          		{
+    		   	           		   //out= out+'<tr>'+'<ul class'+'='+'"'+'slides'+'"'+'><li><img src'+'='+'"'+result.search[i].photo1+' alt'+'='+'"'+'" /></li></ul>'+'<td>'+result.search[i].carSearchId+'</td>'+'<td>'+result.search[i].modelYear+'<td>'+result.search[i].modelDisplay+'</td>'+'</td>'+'<td>'+result.search[i].modelName+'</td>'+'<td>'+result.search[i].sModel+'</td>'+'<td><a href="#" id="anchor-editDealerVehicleSearchModal-' + result.search[i].carSearchId + '" data-details=\'' + JSON.stringify(result.search[i]) + '\' class="anchor-editDealerVehicleSearchModal btn btn-success btn-sm" data-toggle="modal" data-target="#editDealerVehicleSearchModal">View</a></td></tr>';
+    	
+    		   	          		 out= out+'<tr>'+'<td></td>'+'<td>'+data.dealerSearchVO[i].carSearchId+'</td>'+'<td>'+data.dealerSearchVO[i].modelYear+'<td>'+data.dealerSearchVO[i].modelDisplay+'</td>'+'</td>'+'<td>'+data.dealerSearchVO[i].modelName+'</td>'+'<td>'+data.dealerSearchVO[i].modelTrim+'</td></tr>';
+    	
+    		   	          		}
+    	                	  }
+    	           	 
+    	                  else{
+    	           		out='<h2>No records</h2>';
+    	           	   }
+    	           	
+    	           	   out = out.replace(/>null</g, ">--NA--<");
+    	           	   out = out.replace(/>undefined</g, ">--NA--<");
+    	           	   $("#LeadTable").html(out);
 
-				}
-			});
+    				}
+    			});
+    		}
+    		
     		
     		
     		
@@ -5369,7 +5496,8 @@ alert("data"+jsonInput);
     $scope.getinsInforAll = function () {
         
         var wsURL = 'api/getinsInforAll';
-         
+         $scope.flag="Insurance";
+         pullDealerIds($scope.flag);
  $body.addClass("loading");
 $http({
      method: 'GET',
@@ -5413,7 +5541,7 @@ $http({
 }
 
 
-$scope.getsmInfor = function () {
+/*$scope.getsmInfor = function () {
 //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
 
          var jsonInputToAPI = {
@@ -5435,10 +5563,10 @@ $scope.getsmInfor = function () {
  //var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
  //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
  //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
- /* alert(jsonInputToAPI.comingSoonUserEmail);
+  alert(jsonInputToAPI.comingSoonUserEmail);
  alert(jsonInputToAPI.flex1);
  alert(jsonInputToAPI.flex2);
- alert(jsonInputToAPI.flex3); */
+ alert(jsonInputToAPI.flex3); 
  // change here
 
  $body.addClass("loading");
@@ -5451,8 +5579,8 @@ $http({
      alert("successfully retrieved"+data.searchVO.length);
      out10="";
 
-/*	         	   var servRCt = result.length;
-	   document.getElementById('servRCt').innerHTML=servRCt;*/
+	         	   var servRCt = result.length;
+	   document.getElementById('servRCt').innerHTML=servRCt;
 	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
 	   for(i=data.searchVO.length-1;i>=0;i--)
 		{
@@ -5476,7 +5604,7 @@ $http({
 	registerEditDealerVehicleservmaintModal();
 					});
 
-}
+}*/
 
 
 function registerEditDealerVehicleInsuranceModal(){
@@ -5515,6 +5643,7 @@ var data = $(event.target).data('details');
 
 //alert(data);
 //console.log(data);
+$scope.srchInsInfo = data;
 $scope.vehicleData = data;
 var quotIdHiddenField = '<input type="hidden" name="searchInsuranceId" value="' + data.searchInsuranceId + '" />';
 /*var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -6378,7 +6507,8 @@ this.model_data_id = model_data_id;
     $scope.getfinInforAll = function () {
         
         var wsURL = 'api/getfinInforAll';
-         
+         $scope.flag = "Finance";
+         pullDealerIds($scope.flag);
  $body.addClass("loading");
 $http({
      method: 'GET',
@@ -6422,7 +6552,7 @@ $http({
 }
 
 
-$scope.getsmInfor = function () {
+/*$scope.getsmInfor = function () {
 //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
 
          var jsonInputToAPI = {
@@ -6444,10 +6574,10 @@ $scope.getsmInfor = function () {
  //var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
  //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
  //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
- /* alert(jsonInputToAPI.comingSoonUserEmail);
+  alert(jsonInputToAPI.comingSoonUserEmail);
  alert(jsonInputToAPI.flex1);
  alert(jsonInputToAPI.flex2);
- alert(jsonInputToAPI.flex3); */
+ alert(jsonInputToAPI.flex3); 
  // change here
 
  $body.addClass("loading");
@@ -6460,8 +6590,8 @@ $http({
      alert("successfully retrieved"+data.searchVO.length);
      out10="";
 
-/*	         	   var servRCt = result.length;
-	   document.getElementById('servRCt').innerHTML=servRCt;*/
+	         	   var servRCt = result.length;
+	   document.getElementById('servRCt').innerHTML=servRCt;
 	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
 	   for(i=data.searchVO.length-1;i>=0;i--)
 		{
@@ -6485,7 +6615,7 @@ $http({
 	registerEditDealerVehicleservmaintModal();
 					});
 
-}
+}*/
 
 
 function registerEditDealerVehicleFinanceModal(){
@@ -6524,6 +6654,7 @@ var data = $(event.target).data('details');
 
 //alert(data);
 //console.log(data);
+$scope.srchFinInfo = data;
 $scope.vehicleData = data;
 var quotIdHiddenField = '<input type="hidden" name="searchFinanceId" value="' + data.searchFinanceId + '" />';
 /*var moveToUser = '<input type="checkbox" name="moveToUser" />';
@@ -7162,7 +7293,8 @@ this.model_data_id = model_data_id;
     $scope.gettpInforAll = function () {
         
                        var wsURL = 'api/gettpInforAll';
-                        
+                        $scope.flag = "Transport";
+                        pullDealerIds($scope.flag);
                 $body.addClass("loading");
                $http({
                     method: 'GET',
@@ -7203,7 +7335,7 @@ this.model_data_id = model_data_id;
 
             }
     
-
+/*
     $scope.getsmInfor = function () {
         //alert("invoke in before call getEbidInfor lead"+$scope.caryears+$scope.creationDateLd);
       
@@ -7226,10 +7358,10 @@ this.model_data_id = model_data_id;
                 //var wsURL = 'api/getSearchInfor?modelYear='+ $scope.caryears + '&modelDisplay=' +$scope.carmakes + '&modelName=' + $scope.carmodels + '&modelTrim=' + $scope.carmodeltrims + '&creationDate=' +$scope.creationDateLd;
                 //var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/insurance';
                 //var wsURL = 'http://www.autoscoop.com.au/api/eBid/insurance';
-                /* alert(jsonInputToAPI.comingSoonUserEmail);
+                 alert(jsonInputToAPI.comingSoonUserEmail);
                 alert(jsonInputToAPI.flex1);
                 alert(jsonInputToAPI.flex2);
-                alert(jsonInputToAPI.flex3); */
+                alert(jsonInputToAPI.flex3); 
                 // change here
 
                 $body.addClass("loading");
@@ -7242,8 +7374,8 @@ this.model_data_id = model_data_id;
                     alert("successfully retrieved"+data.searchVO.length);
                     out10="";
 
- /*	         	   var servRCt = result.length;
- 	         	   document.getElementById('servRCt').innerHTML=servRCt;*/
+ 	         	   var servRCt = result.length;
+ 	         	   document.getElementById('servRCt').innerHTML=servRCt;
  	         	   out10 += '<tr><th>'+"Car Serv Maint ID"+'</th><th>'+"Servic L1"+'</th><th>'+"Service L2"+'</th><th>'+"Rego State"+'</th><th>'+"Operation"+'</th></tr>';
  	         	   for(i=data.searchVO.length-1;i>=0;i--)
  	        		{
@@ -7267,7 +7399,7 @@ this.model_data_id = model_data_id;
  	         	registerEditDealerVehicleservmaintModal();
 								});
 
-            }
+            }*/
 
            
     function registerEditDealerVehicletranspModal(){
@@ -7306,6 +7438,7 @@ this.model_data_id = model_data_id;
 
        		//alert(data);
        		//console.log(data);
+    		$scope.srchTranInfo = data;
        		$scope.vehicleData = data;
     		var quotIdHiddenField = '<input type="hidden" name="searchTranspId" value="' + data.searchTranspId + '" />';
 			/*var moveToUser = '<input type="checkbox" name="moveToUser" />';

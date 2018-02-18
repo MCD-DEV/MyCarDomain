@@ -1852,7 +1852,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																    	<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
 																						<div class="selector">
-																							<select class="full-width" id="LeadSvDealerId" name="LeadSvDealerId" ng-model="LeadSvDealerId" ng-options="x for x in dealerIds" ng-change="dealerSvInfoForID()">
+																							<select class="full-width" ng-model="LeadSvDealerId" ng-options="x for x in (dealerIdsSM | filter:isDealerIdsNull) track by x" ng-change="dealerSvInfoForID()">
 																								<option value="" disabled selected>Select a Dealer ID</option>
 																							</select>
 																						</div>
@@ -1860,22 +1860,22 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerName" name="leadSvDealerName" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																				<input type="text" ng-model="leadSvDealerName" class="input-text full-width" placeholder="Dealer Name" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerABN" name="leadSvDealerABN" ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																				<input type="text" ng-model="leadSvDealerABN" class="input-text full-width"  placeholder="Dealer ABN Number" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerEmail" name="leadSvDealerEmail" ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																				<input type="text" ng-model="leadSvDealerEmail" class="input-text full-width"  placeholder="Dealer Email" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<textarea rows="4" cols="50" id="LongSvNotes" class="input-text full-width" ng-model="LongSvNotes" name="LongSvNotes" placeholder="Long Text"></textarea>
+																				<textarea rows="4" cols="50" id="LongSvNotesSM" class="input-text full-width" ng-model="LongSvNotes" name="LongSvNotesSM" placeholder="Long Text"></textarea>
 																			 </div>
 																		</div>
 																		<div class="row">
@@ -2310,12 +2310,12 @@ Date is Required</b></span>
 														    </div>
 	
 															<div class="booking-section travelo-box" id="LeadNew">
-																<form class="booking-form" id="LeadNewSvfrm" name="LeadNewSvfrm" ng-submit="submitMyLeadNewSvfrm()" novalidate>
+																<form class="booking-form" id="LeadNewTfrm" name="LeadNewTfrm" ng-submit="submitMyLeadNewTfrm()" novalidate>
 																<h4><center>Lead creation for Internal Dealer</center></h4>
 																    	<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
 																						<div class="selector">
-																							<select class="full-width" id="LeadSvDealerId" name="LeadSvDealerId" ng-model="LeadSvDealerId" ng-options="x for x in dealerIds" ng-change="dealerSvInfoForID()">
+																							<select class="full-width"  ng-model="LeadSvDealerId" ng-options="x for x in (dealerIdsT | filter:isDealerIdsNull) track by x" ng-change="dealerSvInfoForID()">
 																								<option value="" disabled selected>Select a Dealer ID</option>
 																							</select>
 																						</div>
@@ -2323,17 +2323,17 @@ Date is Required</b></span>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerName" name="leadSvDealerName" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																				<input type="text" ng-model="leadSvDealerName" class="input-text full-width"  placeholder="Dealer Name" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerABN" name="leadSvDealerABN" ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																				<input type="text" ng-model="leadSvDealerABN" class="input-text full-width"  placeholder="Dealer ABN Number" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerEmail" name="leadSvDealerEmail" ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																				<input type="text" ng-model="leadSvDealerEmail" class="input-text full-width" placeholder="Dealer Email" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
@@ -2770,12 +2770,12 @@ Date is Required</b></span>
 														    </div>
 	
 															<div class="booking-section travelo-box" id="LeadNew">
-																<form class="booking-form" id="LeadNewSvfrm" name="LeadNewSvfrm" ng-submit="submitMyLeadNewSvfrm()" novalidate>
+																<form class="booking-form" id="LeadNewFfrm" name="LeadNewFfrm" ng-submit="submitMyLeadNewFfrm()" novalidate>
 																<h4><center>Lead creation for Internal Dealer</center></h4>
 																    	<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
 																						<div class="selector">
-																							<select class="full-width" id="LeadSvDealerId" name="LeadSvDealerId" ng-model="LeadSvDealerId" ng-options="x for x in dealerIds" ng-change="dealerSvInfoForID()">
+																							<select class="full-width"  ng-model="LeadSvDealerId" ng-options="x for x in (dealerIdsF | filter:isDealerIdsNull) track by x" ng-change="dealerSvInfoForID()">
 																								<option value="" disabled selected>Select a Dealer ID</option>
 																							</select>
 																						</div>
@@ -2783,17 +2783,17 @@ Date is Required</b></span>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerName" name="leadSvDealerName" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																				<input type="text" ng-model="leadSvDealerName" class="input-text full-width" placeholder="Dealer Name" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerABN" name="leadSvDealerABN" ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																				<input type="text" ng-model="leadSvDealerABN" class="input-text full-width" placeholder="Dealer ABN Number" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerEmail" name="leadSvDealerEmail" ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																				<input type="text" ng-model="leadSvDealerEmail" class="input-text full-width"  placeholder="Dealer Email" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
@@ -3233,12 +3233,12 @@ Date is Required</b></span>
 														    </div>
 	
 															<div class="booking-section travelo-box" id="LeadNew">
-																<form class="booking-form" id="LeadNewSvfrm" name="LeadNewSvfrm" ng-submit="submitMyLeadNewSvfrm()" novalidate>
+																<form class="booking-form" id="LeadNewIfrm" name="LeadNewIfrm" ng-submit="submitMyLeadNewIfrm()" novalidate>
 																<h4><center>Lead creation for Internal Dealer</center></h4>
 																    	<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
 																						<div class="selector">
-																							<select class="full-width" id="LeadSvDealerId" name="LeadSvDealerId" ng-model="LeadSvDealerId" ng-options="x for x in dealerIds" ng-change="dealerSvInfoForID()">
+																							<select class="full-width" ng-model="LeadSvDealerId" ng-options="x for x in (dealerIdsI | filter:isDealerIdsNull) track by x" ng-change="dealerSvInfoForID()">
 																								<option value="" disabled selected>Select a Dealer ID</option>
 																							</select>
 																						</div>
@@ -3246,17 +3246,17 @@ Date is Required</b></span>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerName" name="leadSvDealerName" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
+																				<input type="text" ng-model="leadSvDealerName" class="input-text full-width" value="" placeholder="Dealer Name" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerABN" name="leadSvDealerABN" ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
+																				<input type="text"  ng-model="leadSvDealerABN" class="input-text full-width" value="" placeholder="Dealer ABN Number" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
-																				<input type="text" id="leadSvDealerEmail" name="leadSvDealerEmail" ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
+																				<input type="text"  ng-model="leadSvDealerEmail" class="input-text full-width" value="" placeholder="Dealer Email" readonly />
 																			 </div>
 																		</div>
 																		<div class="row">
