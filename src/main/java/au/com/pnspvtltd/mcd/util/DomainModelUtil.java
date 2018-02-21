@@ -508,6 +508,85 @@ public class DomainModelUtil {
 	}
 	
 	
+	public DealerSearchServMaintVO fromServicenMaint(final DealerSearchServMaint inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		DealerSearchServMaintVO inventoryVO = new DealerSearchServMaintVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
+	
+	public DealerSearchInsuranceVO fromDealerIns(final DealerSearchInsurance inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		DealerSearchInsuranceVO inventoryVO = new DealerSearchInsuranceVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
+	
+	public DealerSearchFinanceVO fromDealerFin(final DealerSearchFinance inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		DealerSearchFinanceVO inventoryVO = new DealerSearchFinanceVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
+	
+	public DealerSearchTranspVO fromTransport(final DealerSearchTransp inventory, boolean isMinified) {
+		if (inventory == null) {
+			return null;
+		}
+
+		DealerSearchTranspVO inventoryVO = new DealerSearchTranspVO();
+		try {
+			// TODO: return only minified if required
+			BeanUtils.copyProperties(inventoryVO, inventory);
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return inventoryVO;
+	}
+	
 	public VehicleDealerInsuranceDetailsVO fromInsuranceMast(final VehicleDealerInsuranceDetails inventory, boolean isMinified) {
 		if (inventory == null) {
 			return null;

@@ -16,6 +16,8 @@ import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerServMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
@@ -118,4 +120,12 @@ public interface DealerService {
 	List<VehicleDealerInsuranceDetailsVO> getInsuranceMast(Long dealerId);
 	
 	List<Long> getDealerIDs(String subscriptionType);
+
+	List<DealerSearchServMaintVO> getDealerSearchSnM(Long dealerId);
+
+	List<DealerSearchTranspVO> getDealerSearchTrans(Long dealerId);
+
+	List<DealerSearchInsuranceVO> getDealerSearchIns(Long dealerId);
+
+	List<DealerSearchFinanceVO> getDealerSearchFin(Long dealerId);
 }

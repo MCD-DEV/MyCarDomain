@@ -19,6 +19,8 @@ import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.DealerSearchFinance;
 import au.com.pnspvtltd.mcd.domain.DealerSearchInsurance;
+import au.com.pnspvtltd.mcd.domain.DealerSearchServMaint;
+import au.com.pnspvtltd.mcd.domain.DealerSearchTransp;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaint;
 import au.com.pnspvtltd.mcd.domain.ExtDealServMaintr1;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
@@ -43,7 +45,11 @@ import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
 import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
 import au.com.pnspvtltd.mcd.repository.AdminRepository;
 import au.com.pnspvtltd.mcd.repository.DealerRepository;
+import au.com.pnspvtltd.mcd.repository.DealerSearchFinRepository;
+import au.com.pnspvtltd.mcd.repository.DealerSearchInsRepository;
 import au.com.pnspvtltd.mcd.repository.DealerSearchRepository;
+import au.com.pnspvtltd.mcd.repository.DealerSearchSnMRepository;
+import au.com.pnspvtltd.mcd.repository.DealerSearchTranRepository;
 import au.com.pnspvtltd.mcd.repository.ExtDealerServMaintPRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerFinRepository;
 import au.com.pnspvtltd.mcd.repository.ExternalDealerInsRepository;
@@ -73,6 +79,8 @@ import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchAdminVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchInsuranceVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
+import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchVO;
 import au.com.pnspvtltd.mcd.web.model.DealerServMasterVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSubscriptionSBLVO;
@@ -147,9 +155,16 @@ public class DealerServiceImpl implements DealerService {
 	private VehicleFinanceMasterRepo vehicleFinanceMasterRepo;
 	@Autowired
 	private VehicleInsuranceMasterRepo vehicleInsuranceMasterRepo;
-
+	@Autowired
+	DealerSearchSnMRepository dealerSearchSnMRepository;
+	@Autowired
+	DealerSearchTranRepository dealerSearchTranRepository;
+	@Autowired
+	DealerSearchFinRepository dealerSearchFinRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	DealerSearchInsRepository dealerSearchInsRepository;
 	
 	@Autowired
 	private VehicleDealerDetailsRepo vehicleDealerDetailsRepo;
@@ -709,6 +724,64 @@ public class DealerServiceImpl implements DealerService {
 		
 		for(FinanceEntity inventory : vehicleFinanceMasterRepo.findByDealer(dealer)){
 			inventoryList.add(domainModelUtil.fromFinancevMast(inventory, true));
+		}
+		return inventoryList;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchServMaintVO> getDealerSearchSnM(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<DealerSearchServMaintVO> inventoryList = new ArrayList<>();
+		
+		for(DealerSearchServMaint inventory : dealerSearchSnMRepository.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromServicenMaint(inventory, true));
+		}
+		return inventoryList;
+	}
+	
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchInsuranceVO> getDealerSearchIns(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<DealerSearchInsuranceVO> inventoryList = new ArrayList<>();
+		
+		for(DealerSearchInsurance inventory : dealerSearchInsRepository.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromDealerIns(inventory, true));
+		}
+		return inventoryList;
+	}
+	
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchFinanceVO> getDealerSearchFin(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<DealerSearchFinanceVO> inventoryList = new ArrayList<>();
+		
+		for(DealerSearchFinance inventory : dealerSearchFinRepository.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromDealerFin(inventory, true));
+		}
+		return inventoryList;
+	}
+	
+	@Override
+	@Transactional(readOnly = true)
+	public List<DealerSearchTranspVO> getDealerSearchTrans(Long dealerId) {
+		Dealer dealer = new Dealer();
+		dealer.setDealerId(dealerId);
+		
+		List<DealerSearchTranspVO> inventoryList = new ArrayList<>();
+		
+		for(DealerSearchTransp inventory : dealerSearchTranRepository.findByDealer(dealer)){
+			inventoryList.add(domainModelUtil.fromTransport(inventory, true));
 		}
 		return inventoryList;
 	}

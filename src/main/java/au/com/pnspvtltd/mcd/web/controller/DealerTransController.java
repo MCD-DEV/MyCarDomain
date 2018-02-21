@@ -3,6 +3,8 @@
  */
 package au.com.pnspvtltd.mcd.web.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -11,12 +13,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.com.pnspvtltd.mcd.service.DealerService;
 import au.com.pnspvtltd.mcd.service.DealerTransService;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchServMaintVO;
 import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
@@ -25,7 +29,7 @@ import au.com.pnspvtltd.mcd.web.model.DealerSearchTranspVO;
  * @author Sairam Kanjarla
  *
  */
-
+@CrossOrigin
 @RestController
 public class DealerTransController {
 
@@ -33,6 +37,9 @@ public class DealerTransController {
 
 	@Autowired
 	DealerTransService dealerTransService;
+	
+	@Autowired
+	DealerService dealerService;
 
 	@GetMapping(value = "dealerSearchTrans/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public DealerSearchTranspVO getDealerSearchTrans(@PathVariable Long id) {
@@ -40,6 +47,12 @@ public class DealerTransController {
 		return dealerTransService.findById(id);
 	}
 
+	@GetMapping(value = "dealer/{id}/dealerSearchTrans", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<DealerSearchTranspVO> getDealeSearchTrans(@PathVariable Long id) {
+		LOGGER.debug("Received request to get Dealer Search trans with id {} ", id);
+		return dealerService.getDealerSearchTrans(id);
+	}
+	
 	@PostMapping(value = "post/dealerTrans/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<DealerSearchTranspVO> verify(@RequestBody DealerSearchTranspVO dealerSearchTranspVO,
 			@PathVariable Long id, HttpServletResponse response) {
