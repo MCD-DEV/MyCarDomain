@@ -287,4 +287,21 @@ public class InsQuotationController {
 
 		return userAdminSearchVO12;
 	}
+	
+	
+	@GetMapping(value = "getExtQtDealInsInfoIdDealrId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerInsListAdminVO getExtQtDealInsInfoId(@RequestParam("searchInsuranceId") Long carSearchId, @RequestParam("dealerId") Long dealerId) {
+		LOGGER.debug("Received request to get Insurance car Search id {} ", carSearchId);
+		ExtQtDealerInsListAdminVO userAdminSearchVO12 = new ExtQtDealerInsListAdminVO();
+
+		List<InsuranceQuotation> users = servMaintQuotationRepository.getDealerSmForIDDealId(carSearchId,dealerId);
+		List<InsuranceQuotationVO> searchVOs = new ArrayList<InsuranceQuotationVO>();
+		for (InsuranceQuotation search : users) {
+			InsuranceQuotationVO dealVO = domainModelUtil.toExtQtInsDealerSearchVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setServiceMaintQuotationVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
 }

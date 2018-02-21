@@ -227,4 +227,20 @@ public class FinQuotationController {
 
 		return userAdminSearchVO12;
 	}
+	
+	@GetMapping(value = "getExtQtDealFinInfoIdDealrId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerFinListAdminVO getExtQtDealFinInfoId(@RequestParam("searchFinanceId") Long carSearchId, @RequestParam("dealerId") Long dealerId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtQtDealerFinListAdminVO userAdminSearchVO12 = new ExtQtDealerFinListAdminVO();
+
+		List<FinanceQuotation> users = servMaintQuotationRepository.getDealerSmForIDDealId(carSearchId,dealerId);
+		List<FinanceQuotationVO> searchVOs = new ArrayList<FinanceQuotationVO>();
+		for (FinanceQuotation search : users) {
+			FinanceQuotationVO dealVO = domainModelUtil.toExtQtFinDealerSearchVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setServiceMaintQuotationVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
 }

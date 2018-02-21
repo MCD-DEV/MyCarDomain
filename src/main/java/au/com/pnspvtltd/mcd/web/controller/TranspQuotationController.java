@@ -214,4 +214,20 @@ public class TranspQuotationController {
 
 		return userAdminSearchVO12;
 	}
+	
+	@GetMapping(value = "getExtQtDealTpInfoIdDealrId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerTpListAdminVO getExtQtDealTpInfoId(@RequestParam("searchTranpsId") Long carSearchId, @RequestParam("dealerId") Long dealerId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtQtDealerTpListAdminVO userAdminSearchVO12 = new ExtQtDealerTpListAdminVO();
+
+		List<TranspServiceQuotation> users = servMaintQuotationRepository.getDealerSmForIDDealId(carSearchId, dealerId);
+		List<TranspServiceQuotationVO> searchVOs = new ArrayList<TranspServiceQuotationVO>();
+		for (TranspServiceQuotation search : users) {
+			TranspServiceQuotationVO dealVO = domainModelUtil.toExtQtTpDealerSearchVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setServiceMaintQuotationVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
 }

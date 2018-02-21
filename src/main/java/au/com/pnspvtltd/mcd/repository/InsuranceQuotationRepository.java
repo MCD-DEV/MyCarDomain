@@ -18,6 +18,10 @@ public interface InsuranceQuotationRepository extends JpaRepository<InsuranceQuo
 	List<InsuranceQuotation> getDealerSmForID(Long carServMaintId);
 	
 	
+	@Query("SELECT deal FROM InsuranceQuotation deal where deal.carSearchId = ?1 AND deal.dealerId = ?2")
+	List<InsuranceQuotation> getDealerSmForIDDealId(Long carServMaintId, Long dealerId);
+	
+	
 	@Query("SELECT vehicleQuotation FROM InsuranceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
 	List<InsuranceQuotation> getQuotForUserChat(Long userId);
 	

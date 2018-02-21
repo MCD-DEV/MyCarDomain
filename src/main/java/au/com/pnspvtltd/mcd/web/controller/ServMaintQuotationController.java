@@ -188,4 +188,23 @@ public class ServMaintQuotationController {
 
 		return userAdminSearchVO12;
 	}
+	
+	
+	@GetMapping(value = "getExtQtDealSmInfoIdDealrId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerSmListAdminVO getExtQtDealSmInfoId(@RequestParam("searchServMaintId") Long carSearchId, @RequestParam("dealerId") Long dealerId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtQtDealerSmListAdminVO userAdminSearchVO12 = new ExtQtDealerSmListAdminVO();
+
+		List<ServiceMaintQuotation> users = servMaintQuotationRepository.getDealerSmForDealId(carSearchId, dealerId);
+		List<ServiceMaintQuotationVO> searchVOs = new ArrayList<ServiceMaintQuotationVO>();
+		for (ServiceMaintQuotation search : users) {
+			ServiceMaintQuotationVO dealVO = domainModelUtil.toExtQtSmDealerSearchVO(search);
+			searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setServiceMaintQuotationVO(searchVOs);
+
+		return userAdminSearchVO12;
+	}
+	
+	
 }
