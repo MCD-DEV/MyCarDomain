@@ -6,6 +6,7 @@ public class DealerLoginVO {
 	private String lastName;
 	private String email;
 	private String password;
+	private String userIdGen;
 
 	public String getFirstName() {
 		return firstName;
@@ -25,6 +26,14 @@ public class DealerLoginVO {
 
 	public String getEmail() {
 		return email;
+	}
+
+	public String getUserIdGen() {
+		return userIdGen;
+	}
+
+	public void setUserIdGen(String userIdGen) {
+		this.userIdGen = userIdGen;
 	}
 
 	public void setEmail(String email) {

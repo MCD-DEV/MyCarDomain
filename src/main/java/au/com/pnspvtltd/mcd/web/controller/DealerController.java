@@ -195,15 +195,22 @@ public class DealerController {
 	public ResponseEntity<DealerVO> login(@RequestBody DealerLoginVO adminAutoVO, HttpServletResponse response) {
 		LOGGER.debug("Dealer tries to register", adminAutoVO.getEmail());
 		HttpStatus status = HttpStatus.OK;
+		ResponseEntity<DealerVO> responseSuc;
 		DealerVO createdDealer;
 		createdDealer = dealerService.findByEmailIgnoreCase(adminAutoVO.getEmail());
 		if (createdDealer == null) {
 			createdDealer = dealerService.createDealerLogin(adminAutoVO);
+			response.setStatus(HttpStatus.CREATED.value());
+			responseSuc =new ResponseEntity<>(createdDealer, status);
 		} else {
-			status = HttpStatus.NO_CONTENT;
+			status = HttpStatus.CONFLICT;
+			//status = HttpStatus.NO_CONTENT;
+			responseSuc =new ResponseEntity<>(null, status);
 		}
-		response.setStatus(HttpStatus.CREATED.value());
-		return new ResponseEntity<>(createdDealer, status);
+		/*response.setStatus(HttpStatus.CREATED.value());
+		//return new ResponseEntity<>(createdDealer, status);
+*/		
+		return responseSuc;
 
 	}
 

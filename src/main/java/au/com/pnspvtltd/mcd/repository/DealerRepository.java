@@ -24,5 +24,9 @@ public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
 	@Query("SELECT deal FROM Dealer deal where deal.dealerId = ?1")
 	Dealer getDealerForID(Long dealerID);
+	
+	
+	@Query("SELECT deal FROM Dealer deal where deal.streetNumber = ?1")
+	Dealer getDealerForIDGen(String userIdGen);
 
 }

@@ -1,10 +1,13 @@
 package au.com.pnspvtltd.mcd.service.impl;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.mail.MessagingException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
@@ -68,6 +71,7 @@ import au.com.pnspvtltd.mcd.repository.VehicleResourceDetailsRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleServMasterRepo;
 import au.com.pnspvtltd.mcd.repository.VehicleTranspMasterRepo;
 import au.com.pnspvtltd.mcd.service.DealerService;
+import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
@@ -165,6 +169,11 @@ public class DealerServiceImpl implements DealerService {
 	private UserRepository userRepository;
 	@Autowired
 	DealerSearchInsRepository dealerSearchInsRepository;
+	@Autowired
+	private SmtpMailSender smtp;
+	
+//	@Autowired
+	SUID suid;
 	
 	@Autowired
 	private VehicleDealerDetailsRepo vehicleDealerDetailsRepo;
@@ -220,6 +229,26 @@ public class DealerServiceImpl implements DealerService {
 	public DealerVO createDealerLogin(DealerLoginVO dealerLoginVO) {
 		DealerVO dealerVO = new DealerVO();
 		dealerVO.setDealerId(null);
+		// start king
+		suid = new SUID(0);
+		String uniqueId = suid.getUniqueId();
+		System.out.println("inside Delaer vo"+uniqueId);
+		dealerLoginVO.setUserIdGen(uniqueId);
+		dealerLoginVO.setPassword(uniqueId);
+		dealerVO.setPassword(uniqueId);
+		
+		// send email
+		try {
+			smtp.sendMail(dealerLoginVO.getFirstName(),dealerLoginVO.getLastName(),dealerLoginVO.getFirstName(),dealerLoginVO.getLastName(),dealerLoginVO.getEmail(), "Autoscoop Notification",
+					"You have been successfully Registered... Your User Id ="+uniqueId+"and Password="+uniqueId);
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		return domainModelUtil.fromLoginDealer(dealerRepository.save(domainModelUtil.toLoginDealer(dealerLoginVO)), true);
 	}
 
@@ -911,7 +940,8 @@ public class DealerServiceImpl implements DealerService {
 	@Override
 	public DealerVO findByEmailIgnoreCase(String email) {
 		// TODO Auto-generated method stub
-		return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email), true);
+		//return domainModelUtil.fromDealer(dealerRepository.findByEmailIgnoreCase(email), true);
+		return domainModelUtil.fromDealer(dealerRepository.getDealerForIDGen(email), true);
 		
 	}
 

@@ -551,7 +551,7 @@ public class SmtpMailSender {
 				+ "                        " + "                            <h1>Hi " + firstName + " " + lastName
 				+ " !</h1>" + ""
 				+ "<p style=\"text-align:center !important;\">Your are invited to Register with <a href=\"https://www.autoscoop.com.au\" target=\"_blank\">www.AutoScoop.com.au</a>,<br>"
-				+ "<br>" + "I " + fName + " " + lName
+				+ "<br>" + "I " + fName + " " + lName+text
 				+ " have started using <a data-saferedirecturl=\"https://www.google.com/url?hl=en&q=http://www.AutoScoop.com.au&source=gmail&ust=1503478351801000&usg=AFQjCNHTyJRw36aHH-mV3uK07NYJHzN9-Q\" href=\"http://www.autoscoop.com.au/\" target=\"_blank\">AutoScoop</a> , I recommend you to Join and reap the benifits, as it is a one stop shop for all your Vehicle Needs.<br>"
 				+ "<br>" + "I use AutoScoop for</p>" + "" + "                        </td>"
 				+ "                    </tr>" + "                </tbody></table>" + "	<!--[if mso]>" + "	</td>"
