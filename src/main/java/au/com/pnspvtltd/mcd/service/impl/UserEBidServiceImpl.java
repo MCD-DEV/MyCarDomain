@@ -2107,4 +2107,21 @@ public class UserEBidServiceImpl implements UserEBidService {
 		}
 		return searchVOs;
 	}
+
+	@Override
+	public List<UserReferPointsVO> getReferredDetails() {
+		
+		// TODO Auto-generated method stub
+		
+		List<UserReferPointsVO> searchVOs = new ArrayList<UserReferPointsVO>();
+		List<UserReferPoints> searchs = userReferPointsRepository.findAll();
+		UserReferPointsVO searchVO;
+		for (UserReferPoints search : searchs) {
+			searchVO = domainModelUtil.toUserReferVO(search);
+			// BeanUtils.copyProperties(searchVO, search);
+			searchVOs.add(searchVO);
+		}
+		return searchVOs;
+		
+	}
 }

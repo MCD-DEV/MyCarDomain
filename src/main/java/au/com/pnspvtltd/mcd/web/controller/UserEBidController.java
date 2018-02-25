@@ -252,6 +252,14 @@ public class UserEBidController {
 		//return null;
 	}
 	
+	@GetMapping(value = "getReferredDetails", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public List<UserReferPointsVO> getReferredDetails()
+	{
+		LOGGER.debug("Received request to loyality referred Details");
+		return userEBidService.getReferredDetails();
+		//return null;
+	}
+	
 	@GetMapping(value = "getReferencedUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<ReferencedPointsVO> getReferencedUserId(@RequestParam("userid") Long userid)
 	{

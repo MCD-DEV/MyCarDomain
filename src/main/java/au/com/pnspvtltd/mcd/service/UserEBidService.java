@@ -50,6 +50,7 @@ public interface UserEBidService {
 	List<SearchVO> getSearchByUserId(Long userid);
 	List<InventoryVO> getSellMyVehByUserId(Long userid);
 	List<UserReferPointsVO> getReferUserId(Long userid);
+	List<UserReferPointsVO> getReferredDetails();
 	List<ReferencedPointsVO> getReferencedUserId(Long userid);
 	List<BlogPointsVO> getBlogUserId(Long userid);
 	List<ReviewPointsVO> getReviewUserId(Long userid);
