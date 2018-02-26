@@ -2461,6 +2461,40 @@ mainApp1.controller('myController13',function($scope, $http) {
 	$body = $("body");
 	
 	$http({
+		method : 'GET',
+		url : 'api/getReferredDetails'
+
+	}).success(function(result) {
+		
+		 out3="";
+    	   out3 += '<tr><th>'+"Referenced ID"+'</th><th>'+"Referrenced Email"+'</th><th>'+"Status"+'</th><th>'+"Referer"+'</th><th>'+"Operation"+'</th></tr>';
+    	   console.log("from referred Details",result);
+    		   for(i=result.length-1;i>=0;i--)
+   		{
+    			   //alert("data"+JSON.stringify(result[i]));
+   		out3= out3+'<tr>'+'<td>'+result[i].userReferPointId+'</td>'+'<td>'+result[i].referedEmailId+'</td>'+'<td>'+result[i].status+'</td>'+'<td>'+result[i].userId+'</td>'+'<td>'+"Verify Send Updates"+'</td>'+'</tr>';
+
+
+   		}
+    	   out3 = out3.replace(/>null</g, ">--NA--<");
+    	   out3 = out3.replace(/>undefined</g, ">--NA--<");
+    	   var LogQuotation = result;
+
+    	   if(LogQuotation && result.length==0){
+    	   outLogT="";
+    	   outLogT='<h2>No records found</h2>';
+    	   //forFinance("quo-model-data",outLogT);
+    	   $("#"+"referencedUsers").html(outLogT);
+    	   }else{
+    	   //forFinance("quo-model-data",out3);
+    	   $("#"+"referencedUsers").html(out3);
+	   }
+    	   
+    	    	});
+	
+
+	
+	$http({
         method : 'GET',
         url : 'api/tempCarModelYears'
     }).then(function mySuccess(response) {

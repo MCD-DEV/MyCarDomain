@@ -239,8 +239,8 @@ public class DealerServiceImpl implements DealerService {
 		
 		// send email
 		try {
-			smtp.sendMail(dealerLoginVO.getFirstName(),dealerLoginVO.getLastName(),dealerLoginVO.getFirstName(),dealerLoginVO.getLastName(),dealerLoginVO.getEmail(), "Autoscoop Notification",
-					"You have been successfully Registered... Your User Id ="+uniqueId+"and Password="+uniqueId);
+			smtp.sendDealerRegistration(dealerLoginVO.getFirstName(),dealerLoginVO.getLastName(),dealerLoginVO.getEmail(), "Dealer Registration",uniqueId,uniqueId,
+					"You have been successfully Registered...");
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

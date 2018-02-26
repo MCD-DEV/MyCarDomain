@@ -23,6 +23,7 @@ public class UserReferPoints implements Serializable {
 	private String firstName;
 	private String lastName;
 	private String fName;
+	private Long userId;
 	private String lName;
 	private int noOfPoints;
 	private int actualPoints;
@@ -36,6 +37,14 @@ public class UserReferPoints implements Serializable {
 	private String action;
 	private boolean provStatus;
 	private boolean status;
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 
 	public String getfName() {
 		return fName;

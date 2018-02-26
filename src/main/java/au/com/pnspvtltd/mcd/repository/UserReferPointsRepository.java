@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import au.com.pnspvtltd.mcd.domain.User;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 
 public interface UserReferPointsRepository extends JpaRepository<UserReferPoints, Long> {
@@ -17,5 +18,8 @@ public interface UserReferPointsRepository extends JpaRepository<UserReferPoints
 
 	@Query("SELECT search FROM UserReferPoints search WHERE search.idp=?1")
 	public List<UserReferPoints> getReferByUserId(Long userid);
+	
+	@Query("SELECT user FROM UserReferPoints user WHERE user.referedEmailId=?1" + " ORDER BY user.userReferPointId")
+	public List<UserReferPoints> getReferEmail(String email);
 
 }

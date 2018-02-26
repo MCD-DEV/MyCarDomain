@@ -1,9 +1,9 @@
 package au.com.pnspvtltd.mcd.web.controller;
 
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.io.UnsupportedEncodingException;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.mail.MessagingException;
@@ -24,12 +24,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerQuotationHistory;
-import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.FinanceQuotation;
 import au.com.pnspvtltd.mcd.domain.InsuranceQuotation;
-import au.com.pnspvtltd.mcd.domain.Inventory;
 import au.com.pnspvtltd.mcd.domain.MyVehicle;
 import au.com.pnspvtltd.mcd.domain.MyVehicleFuelExpenses;
 import au.com.pnspvtltd.mcd.domain.MyVehicleLogBook;
@@ -63,14 +60,33 @@ import au.com.pnspvtltd.mcd.domain.UserQuotationHistoryServ;
 import au.com.pnspvtltd.mcd.domain.UserQuotationHistoryTranp;
 import au.com.pnspvtltd.mcd.domain.UserReferPoints;
 import au.com.pnspvtltd.mcd.domain.VehicleQuotation;
-import au.com.pnspvtltd.mcd.domain.VehicleResourceDetails;
+import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
+import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
+import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
+import au.com.pnspvtltd.mcd.repository.SearchInsuranceRepository;
+import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
+import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
+import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.TranspServQuotationRepository;
+import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepo;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoFin;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoIns;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoServ;
+import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoTranp;
+import au.com.pnspvtltd.mcd.repository.UserReferPointsRepository;
+import au.com.pnspvtltd.mcd.repository.UserRepository;
+import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
+import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 import au.com.pnspvtltd.mcd.service.SmtpMailSender;
 import au.com.pnspvtltd.mcd.service.UserEBidService;
 import au.com.pnspvtltd.mcd.util.DomainModelUtil;
 import au.com.pnspvtltd.mcd.web.model.BlogPointsVO;
 import au.com.pnspvtltd.mcd.web.model.CurrentOffersVO;
-import au.com.pnspvtltd.mcd.web.model.DealerResourceVO;
-import au.com.pnspvtltd.mcd.web.model.DealerSearchFinanceVO;
 import au.com.pnspvtltd.mcd.web.model.FinanceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InsuranceQuotationVO;
 import au.com.pnspvtltd.mcd.web.model.InventoryVO;
@@ -106,11 +122,9 @@ import au.com.pnspvtltd.mcd.web.model.UserNotificationVO;
 import au.com.pnspvtltd.mcd.web.model.UserPhotoVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaAllSingleVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaAllVO;
-import au.com.pnspvtltd.mcd.web.model.UserQuotaDocFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaDocVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqBookSlotServVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqBookSlotTranpVO;
-import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotaReqTestDriveVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryFinVO;
 import au.com.pnspvtltd.mcd.web.model.UserQuotationHistoryInsVO;
@@ -127,29 +141,7 @@ import au.com.pnspvtltd.mcd.web.model.UserTransportSlotVO;
 import au.com.pnspvtltd.mcd.web.model.UserVO;
 import au.com.pnspvtltd.mcd.web.model.ValTransPointsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleQuotationVO;
-import au.com.pnspvtltd.mcd.web.model.VehicleResourceDetailsVO;
 import au.com.pnspvtltd.mcd.web.model.VehicleUserChatVO;
-import au.com.pnspvtltd.mcd.repository.FinanceQuotationRepository;
-import au.com.pnspvtltd.mcd.repository.InsuranceQuotationRepository;
-import au.com.pnspvtltd.mcd.repository.MyVehicleFuelExpensesRepository;
-import au.com.pnspvtltd.mcd.repository.MyVehicleLogBookRepository;
-import au.com.pnspvtltd.mcd.repository.MyVehicleRepository;
-import au.com.pnspvtltd.mcd.repository.MyVehicleServMaintRepository;
-import au.com.pnspvtltd.mcd.repository.SearchFinanceRepository;
-import au.com.pnspvtltd.mcd.repository.SearchInsuranceRepository;
-import au.com.pnspvtltd.mcd.repository.SearchServMtLeadRepository;
-import au.com.pnspvtltd.mcd.repository.SearchTranspRepository;
-import au.com.pnspvtltd.mcd.repository.ServMaintQuotationRepository;
-import au.com.pnspvtltd.mcd.repository.TranspServQuotationRepository;
-import au.com.pnspvtltd.mcd.repository.UserNotificationRepository;
-import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepo;
-import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoFin;
-import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoIns;
-import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoServ;
-import au.com.pnspvtltd.mcd.repository.UserQuotationHistoryRepoTranp;
-import au.com.pnspvtltd.mcd.repository.UserRepository;
-import au.com.pnspvtltd.mcd.repository.UserSearchLeadRepository;
-import au.com.pnspvtltd.mcd.repository.VehicleQuotationRepository;
 //@CrossOrigin(origins = "http://localhost:8018")
 //@CrossOrigin(origins = "http://autoscoop-staging.s3-website-ap-southeast-2.amazonaws.com")
 //@CrossOrigin(origins = "https://www.autoscoop.com.au/")
@@ -230,6 +222,8 @@ public class UserEBidController {
 	
 	@Autowired
 	UserQuotationHistoryRepoTranp userQuotationHistoryRepoTranp;
+	@Autowired
+	UserReferPointsRepository userReferPointsRepository;
 
 	@GetMapping(value = "getSearchByUserId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public List<SearchVO> getSearchByUserId(@RequestParam("userid") Long userid)
@@ -2519,6 +2513,22 @@ public class UserEBidController {
 	}//email, firstName, creationDate
 	
 		return userAdminSearchVO12;
+	}
+	
+	@GetMapping(value = "getStatusforReferenced")
+	public boolean getStatusforReferenced(@RequestParam("rEmailId") String rEmailId){
+		if(userRepository.getUserEmail(rEmailId) == null){
+			return false;
+		}else{
+			// logic to update refernced email
+			List<UserReferPoints> checkUserReferPoints=userReferPointsRepository.getReferEmail(rEmailId);
+			for (UserReferPoints checkUserReferPoint : checkUserReferPoints) {
+				checkUserReferPoint.setStatus(true);
+				userReferPointsRepository.flush();
+			}
+			return true;
+		}
+		
 	}
 
 }
