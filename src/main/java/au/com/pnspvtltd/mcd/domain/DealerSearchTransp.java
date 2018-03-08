@@ -36,8 +36,290 @@ public class DealerSearchTransp implements Serializable {
 	private boolean transpInsReq;
 	private String uploadPhotos;
 	private Long userId;
+	private boolean status;
+	// user Transp Serv lead id
+	private Long searchTranspId;
+	private Long idp;
+	
+	
+	// Dealer info Start
+		private String category;
+		private String companyName;
+		private String street;
+		private String suburb;
+		private String dealState;
+		private int postCode;
+		private String country;
+		private String phone;
+		private String website;
+		private String mobile;
+		private String tollFree;
+		private String fax;
+		private String afterHours;
+		private String postalAddress;
+		private String email;
+		private float longitude;
+		private float latitude;
+		// Dealer info end
+		
+		
+		// transp search start
+		private String howMay;
+		private String fromStreetNo;
+		private String toStreetName;
+		private String toStreetNo;
+		private String fromStreetName;
+		private String kindOfTransport;
+		private boolean flexWithDateDefault;
+		private String photo;
+		private String regoNo;
+		private String regoState;
+	
+	
+	
+	
+	
+	public String getCategory() {
+			return category;
+		}
+
+		public void setCategory(String category) {
+			this.category = category;
+		}
+
+		public String getCompanyName() {
+			return companyName;
+		}
+
+		public void setCompanyName(String companyName) {
+			this.companyName = companyName;
+		}
+
+		public String getStreet() {
+			return street;
+		}
+
+		public void setStreet(String street) {
+			this.street = street;
+		}
+
+		public String getSuburb() {
+			return suburb;
+		}
+
+		public void setSuburb(String suburb) {
+			this.suburb = suburb;
+		}
+
+		public String getDealState() {
+			return dealState;
+		}
+
+		public void setDealState(String dealState) {
+			this.dealState = dealState;
+		}
+
+		public int getPostCode() {
+			return postCode;
+		}
+
+		public void setPostCode(int postCode) {
+			this.postCode = postCode;
+		}
+
+		public String getCountry() {
+			return country;
+		}
+
+		public void setCountry(String country) {
+			this.country = country;
+		}
+
+		public String getPhone() {
+			return phone;
+		}
+
+		public void setPhone(String phone) {
+			this.phone = phone;
+		}
+
+		public String getWebsite() {
+			return website;
+		}
+
+		public void setWebsite(String website) {
+			this.website = website;
+		}
+
+		public String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(String mobile) {
+			this.mobile = mobile;
+		}
+
+		public String getTollFree() {
+			return tollFree;
+		}
+
+		public void setTollFree(String tollFree) {
+			this.tollFree = tollFree;
+		}
+
+		public String getFax() {
+			return fax;
+		}
+
+		public void setFax(String fax) {
+			this.fax = fax;
+		}
+
+		public String getAfterHours() {
+			return afterHours;
+		}
+
+		public void setAfterHours(String afterHours) {
+			this.afterHours = afterHours;
+		}
+
+		public String getPostalAddress() {
+			return postalAddress;
+		}
+
+		public void setPostalAddress(String postalAddress) {
+			this.postalAddress = postalAddress;
+		}
+
+		public String getEmail() {
+			return email;
+		}
+
+		public void setEmail(String email) {
+			this.email = email;
+		}
+
+		public float getLongitude() {
+			return longitude;
+		}
+
+		public void setLongitude(float longitude) {
+			this.longitude = longitude;
+		}
+
+		public float getLatitude() {
+			return latitude;
+		}
+
+		public void setLatitude(float latitude) {
+			this.latitude = latitude;
+		}
+
+		public String getHowMay() {
+			return howMay;
+		}
+
+		public void setHowMay(String howMay) {
+			this.howMay = howMay;
+		}
+
+		public String getFromStreetNo() {
+			return fromStreetNo;
+		}
+
+		public void setFromStreetNo(String fromStreetNo) {
+			this.fromStreetNo = fromStreetNo;
+		}
+
+		public String getToStreetName() {
+			return toStreetName;
+		}
+
+		public void setToStreetName(String toStreetName) {
+			this.toStreetName = toStreetName;
+		}
+
+		public String getToStreetNo() {
+			return toStreetNo;
+		}
+
+		public void setToStreetNo(String toStreetNo) {
+			this.toStreetNo = toStreetNo;
+		}
+
+		public String getFromStreetName() {
+			return fromStreetName;
+		}
+
+		public void setFromStreetName(String fromStreetName) {
+			this.fromStreetName = fromStreetName;
+		}
+
+		public String getKindOfTransport() {
+			return kindOfTransport;
+		}
+
+		public void setKindOfTransport(String kindOfTransport) {
+			this.kindOfTransport = kindOfTransport;
+		}
+
+		public boolean isFlexWithDateDefault() {
+			return flexWithDateDefault;
+		}
+
+		public void setFlexWithDateDefault(boolean flexWithDateDefault) {
+			this.flexWithDateDefault = flexWithDateDefault;
+		}
+
+		public String getPhoto() {
+			return photo;
+		}
+
+		public void setPhoto(String photo) {
+			this.photo = photo;
+		}
+
+		public String getRegoNo() {
+			return regoNo;
+		}
+
+		public void setRegoNo(String regoNo) {
+			this.regoNo = regoNo;
+		}
+
+		public String getRegoState() {
+			return regoState;
+		}
+
+		public void setRegoState(String regoState) {
+			this.regoState = regoState;
+		}
+
+	public Long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(Long idp) {
+		this.idp = idp;
+	}
 
 	private Dealer dealer;
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public Long getSearchTranspId() {
+		return searchTranspId;
+	}
+
+	public void setSearchTranspId(Long userTranspServId) {
+		this.searchTranspId = userTranspServId;
+	}
 
 	@ManyToOne
 	@JoinColumn(name = "DEALERID")
@@ -50,7 +332,7 @@ public class DealerSearchTransp implements Serializable {
 	}
 
 
-	@Column(name = "USERID")
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -59,7 +341,6 @@ public class DealerSearchTransp implements Serializable {
 		this.userId = userId;
 	}
 
-	@Column(name = "FROMPOSTADDR")
 	public String getFromPostCodeAddr() {
 		return fromPostCodeAddr;
 	}
@@ -68,7 +349,7 @@ public class DealerSearchTransp implements Serializable {
 		this.fromPostCodeAddr = fromPostCodeAddr;
 	}
 
-	@Column(name = "TOPOSTADDR")
+	
 	public String getToPostCodeAddr() {
 		return toPostCodeAddr;
 	}
@@ -77,7 +358,7 @@ public class DealerSearchTransp implements Serializable {
 		this.toPostCodeAddr = toPostCodeAddr;
 	}
 
-	@Column(name = "TRANSTYPEREQ")
+	
 	public String getTransTypeReq() {
 		return transTypeReq;
 	}
@@ -86,7 +367,7 @@ public class DealerSearchTransp implements Serializable {
 		this.transTypeReq = transTypeReq;
 	}
 
-	@Column(name = "PICKUPDATETIME")
+	
 	public Date getPickUpDateTime() {
 		return pickUpDateTime;
 	}
@@ -95,7 +376,7 @@ public class DealerSearchTransp implements Serializable {
 		this.pickUpDateTime = pickUpDateTime;
 	}
 
-	@Column(name = "NOOFCARS")
+	
 	public int getNoOfCars() {
 		return noOfCars;
 	}
@@ -104,7 +385,7 @@ public class DealerSearchTransp implements Serializable {
 		this.noOfCars = noOfCars;
 	}
 
-	@Column(name = "ISTRANSINSREQ")
+	
 	public boolean isTranspInsReq() {
 		return transpInsReq;
 	}
@@ -124,7 +405,6 @@ public class DealerSearchTransp implements Serializable {
 		this.dealerSearchTranspId = dealerSearchTranspId;
 	}
 
-	@Column(name = "UPLOADPHOTO")
 	public String getUploadPhotos() {
 		return uploadPhotos;
 	}
@@ -133,7 +413,7 @@ public class DealerSearchTransp implements Serializable {
 		this.uploadPhotos = uploadPhotos;
 	}
 
-	@Column(name = "FREETEXT")
+	
 	public String getFreeText() {
 		return freeText;
 	}
@@ -142,7 +422,7 @@ public class DealerSearchTransp implements Serializable {
 		this.freeText = freeText;
 	}
 
-	@Column(name = "YEAR")
+	
 	public int getYear() {
 		return year;
 	}
@@ -151,7 +431,7 @@ public class DealerSearchTransp implements Serializable {
 		this.year = year;
 	}
 
-	@Column(name = "MAKE")
+	
 	public String getMake() {
 		return make;
 	}
@@ -160,7 +440,7 @@ public class DealerSearchTransp implements Serializable {
 		this.make = make;
 	}
 
-	@Column(name = "MODEL")
+	
 	public String getModel() {
 		return model;
 	}
@@ -169,7 +449,7 @@ public class DealerSearchTransp implements Serializable {
 		this.model = model;
 	}
 
-	@Column(name = "VARIANT")
+	
 	public String getVariant() {
 		return variant;
 	}

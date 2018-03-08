@@ -25,6 +25,9 @@ public interface FinanceQuotationRepository extends JpaRepository<FinanceQuotati
 	@Query("SELECT vehicleQuotation FROM FinanceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
 	List<FinanceQuotation> getQuotForUserChat(Long userId);
 	
+	@Query("SELECT vehicleQuotation FROM FinanceQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1")
+	List<FinanceQuotation> getQuotForUserChatDlr(Long userId);
+	
 	@Query("SELECT vehicleQuotation FROM FinanceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.carSearchId = ?2")
 	List<FinanceQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
 }

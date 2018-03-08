@@ -411,6 +411,7 @@ public class VehicleQuotationController {
 		//vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
 		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
+		vehicleQuotation.setInternal(true);
 		//vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotationRepository.save(vehicleQuotation);
 		vehicleQuotationRepository.flush();
@@ -511,6 +512,7 @@ public class VehicleQuotationController {
 		//vehicleQuotation.setDriveType(dealerVO.getDriveType());// more about more requirement
 		vehicleQuotation.setRefId(l);
 		vehicleQuotation.setAddress(dealerVO.getAddress()); // set image
+		vehicleQuotation.setExternal(true);
 		//vehicleQuotation.setUserId(dealerVO.getUserId());
 		vehicleQuotationRepository.save(vehicleQuotation);
 		vehicleQuotationRepository.flush();
@@ -541,6 +543,24 @@ public class VehicleQuotationController {
 		ExtQtDealerSearchListAdminVO userAdminSearchVO12 = new ExtQtDealerSearchListAdminVO();
 
 		List<VehicleQuotation> users = vehicleQuotationRepository.getDealerSearchDealID(carSearchId, dealerId);
+		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
+		for (VehicleQuotation search : users) {
+			//VehicleQuotationVO dealVO= domainModelUtil.toExtQtDealerSearchVO(search);
+			VehicleQuotationVO dealVO= domainModelUtil.fromVehicleQuotation(search,false);
+			
+		searchVOs.add(dealVO);
+		}
+		userAdminSearchVO12.setVehicleQuotationVO(searchVOs);
+	
+		return userAdminSearchVO12;
+	}
+	
+	@GetMapping(value = "getExtQtSearchInfoIdDealrIdExt", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ExtQtDealerSearchListAdminVO getExtQtDealSearchInfoIdExt(@RequestParam("leadId") Long carSearchId, @RequestParam("dealerId") Long dealerId) {
+		LOGGER.debug("Received request to get Dealer car Search id {} ", carSearchId);
+		ExtQtDealerSearchListAdminVO userAdminSearchVO12 = new ExtQtDealerSearchListAdminVO();
+
+		List<VehicleQuotation> users = vehicleQuotationRepository.getDealerSearchDealIDExt(carSearchId, dealerId);
 		List<VehicleQuotationVO> searchVOs = new ArrayList<VehicleQuotationVO>();
 		for (VehicleQuotation search : users) {
 			//VehicleQuotationVO dealVO= domainModelUtil.toExtQtDealerSearchVO(search);

@@ -1805,6 +1805,67 @@ public class UserEBidServiceImpl implements UserEBidService {
 	}
 	
 	@Override
+	public List<VehicleQuotation> getVehQuotaByDealerID(long userid) {
+		
+		
+		
+		return vehicleQuotationRepository.getQuotForUserChatDeal(userid );
+		
+		
+		
+	}
+	
+	// finance
+	@Override
+	public List<FinanceQuotation> getFinQuotaByDealID(long userid) {
+		
+		
+		
+		return financeQuotationRepository.getQuotForUserChatDlr(userid );
+		
+		
+		
+	}
+	
+	// insurance
+		@Override
+		public List<InsuranceQuotation> getInsQuotaByDealID(long userid) {
+			
+			
+			
+			return insuranceQuotationRepository.getQuotForUserChatDlr(userid );
+			
+			
+			
+		}
+		// Service
+				@Override
+				public List<ServiceMaintQuotation> getServQuotaByDealID(long userid) {
+					
+					
+					
+					return servMaintQuotationRepository.getQuotForUserChatDlr(userid );
+					
+					
+					
+				}
+				
+				// transport
+				@Override
+				public List<TranspServiceQuotation> getTranpQuotaByDealrID(long userid) {
+					
+					
+					
+					return transpServQuotationRepository.getQuotForUserChatDlr(userid );
+					
+					
+					
+				}
+	
+	
+	
+	
+	@Override
 	public List<VehicleQuotation> getVehQuotaByUserID(long userid) {
 		
 		

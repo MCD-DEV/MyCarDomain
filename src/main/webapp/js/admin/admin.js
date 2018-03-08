@@ -2579,6 +2579,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    		$scope.dealerIdsSM = response.data;
 	    	}else if(subscriptionType === "Transport"){
 	    		$scope.dealerIdsT = response.data;
+	    	}else if(subscriptionType === "SellVehicle"){
+	    		$scope.dealerIds = response.data;
 	    	}
 	    	
 	    }, function myError(response) {
@@ -2590,6 +2592,8 @@ mainApp1.controller('myController13',function($scope, $http) {
 	    		$scope.dealerIdsSM = response.statusText;
 	    	}else if(subscriptionType === "Transport"){
 	    		$scope.dealerIdsT = response.statusText;
+	    	}else if(subscriptionType === "SellVehicle"){
+	    		$scope.dealerIds = response.data;
 	    	}
 	    });
 		
@@ -3473,8 +3477,11 @@ $scope.carCarQuotation = function(userId){
 		
 	}
 	
+	
+	
 	$scope.dealerInfoForID = function() {
 		//alert("Hi Dude");
+		console.log("Pulling Dealer Info");
 		$body.addClass("loading");
 		$http({
 	        method : 'GET',
@@ -3894,6 +3901,7 @@ $scope.carCarQuotation = function(userId){
 		$scope.submitMyLeadNewSvfrm = function() {
 			console.log("submitMyLeadNewSvfrm");
 			console.log("srchTranInfo"+$scope.srchServnfo);
+			//var new_jsonstr = $scope.srchServnfo.replace('"idp"', '"userid"');
 			$http({
 		        method : 'POST',
 		        url : 'post/dealerSnM/'+$scope.LeadSvDealerId,
@@ -8104,7 +8112,8 @@ this.model_data_id = model_data_id;
     $scope.getAllEbidInfor = function () {
         
                         var wsURL = 'api/getSearchInforAll';
-                        
+                        $scope.flag = "SellVehicle";     
+                        pullDealerIds($scope.flag);
                 $body.addClass("loading");
                 $http({
                     method: 'GET',
@@ -11042,7 +11051,7 @@ this.model_data_id = model_data_id;
 															
 															//alert("new"+JSON.stringify(new_obj));
 															
-															//console.log(JSON.stringify(new_obj));
+															console.log(JSON.stringify(new_obj));
 															//alert("Before Call");
 															//var wsURL = 'http://localhost:8080/MyCarDomain/api/eBid/myVehicle/';
 															//var wsURL = 'http://www.autoscoop.com.au/api/eBid/myVehicle/';
@@ -11202,6 +11211,8 @@ this.model_data_id = model_data_id;
 																var jsonInputToAPI = { "category": $scope.categorySvExt, "companyName": $scope.companySvExt, "street": $scope.streetSvExt, "suburb": $scope.suborbSvExt, "state": $scope.stateSvExt, "postCode": $scope.postSvExt, "phone": $scope.phoneSvExt, "website": $scope.websiteSvExt, "mobile": $scope.mobileSvExt, "tollFree": $scope.tollfreeSvExt, "fax": $scope.faxSvExt, "afterHours": $scope.afterHoursSvExt, "postalAddress": $scope.postalAddressSvExt, "email": $scope.emailSvExt, "longitude": $scope.longitudeSvExt, "latitude": $scope.latitudeSvExt};
 																	
 																//alert("jsonInputToAPI"+jsonInputToAPI);
+																
+																console.log(jsonInputToAPI);
 									                            var wsURL = 'api/extdealerSvCreation';
 																//var wsURL = '';
 																$body.addClass("loading");

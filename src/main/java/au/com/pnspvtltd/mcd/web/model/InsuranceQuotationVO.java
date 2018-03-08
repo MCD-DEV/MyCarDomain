@@ -88,9 +88,30 @@ public class InsuranceQuotationVO {
 	private String adhoc4;
 	private boolean interested;
 	private boolean testDrive;
+	private boolean external;
+	private boolean internal;
 	
 	
-	
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
+
+
 	public boolean isInterested() {
 		return interested;
 	}

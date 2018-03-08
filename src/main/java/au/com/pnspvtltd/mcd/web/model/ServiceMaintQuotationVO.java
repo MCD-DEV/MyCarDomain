@@ -10,6 +10,7 @@ import javax.persistence.OneToMany;
 
 import au.com.pnspvtltd.mcd.domain.UserQuotaDocsServ;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasServ;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsServQuo;
 
 
 public class ServiceMaintQuotationVO {
@@ -36,6 +37,9 @@ public class ServiceMaintQuotationVO {
 	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
+	private boolean external;
+	private boolean internal;
+	
 	// User Creation Date
 			private Date userCreationDate;
 			//Creation Date
@@ -85,6 +89,26 @@ public class ServiceMaintQuotationVO {
 	private String modelYear;
 	private String quotaStatus;
 	
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
+
+
 	public String getQuotaStatus() {
 		return quotaStatus;
 	}
@@ -93,12 +117,23 @@ public class ServiceMaintQuotationVO {
 	public void setQuotaStatus(String quotaStatus) {
 		this.quotaStatus = quotaStatus;
 	}
+	List<VehicleResourceDetailsServQuoVO> vehicleResourcDetails;
 	List<UserQuotaDocServVO> userQuotaDocs;
 	List<UserQuotaReqBookSlotServVO> userQuotaReqBookSlotServ;
 	
 	List<UserQuotaReqTestDriveServVO> userQuotaReqTestDrive;
 	
 	
+	public List<VehicleResourceDetailsServQuoVO> getVehicleResourcDetails() {
+		return vehicleResourcDetails;
+	}
+
+
+	public void setVehicleResourcDetails(List<VehicleResourceDetailsServQuoVO> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
+	}
+
+
 	public List<UserQuotaDocServVO> getUserQuotaDocs() {
 		return userQuotaDocs;
 	}

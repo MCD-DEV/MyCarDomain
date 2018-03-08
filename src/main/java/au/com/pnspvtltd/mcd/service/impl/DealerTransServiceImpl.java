@@ -45,6 +45,26 @@ public class DealerTransServiceImpl implements DealerTransService {
 		// TODO Auto-generated method stub
 		DealerSearchTransp dealerSearchTransp = domainModelUtil.toDealerSearchTransp1(dealerSearchTranspVO);
 		Dealer dealer = dealerRepository.findOne(id);
+		// start of External Dealer
+		dealerSearchTransp.setCategory(dealer.getDealerGroupName());
+		dealerSearchTransp.setCompanyName(dealer.getDealername());
+		dealerSearchTransp.setStreet("Internal");
+		dealerSearchTransp.setSuburb("Internal");
+							//extDealerSearchVO.setState(dealer.getState());
+							//extDealerSearchVO.setPostCode(dealer.getPostCode());
+		dealerSearchTransp.setCountry("Internal");
+		dealerSearchTransp.setPhone("Internal");
+		dealerSearchTransp.setWebsite(dealer.getWebsite());
+		dealerSearchTransp.setMobile("Internal");
+		dealerSearchTransp.setTollFree("Internal");
+		dealerSearchTransp.setFax("Internal");
+		dealerSearchTransp.setAfterHours("Internal");
+		dealerSearchTransp.setPostalAddress("Internal");
+		dealerSearchTransp.setEmail(dealer.getEmail());
+		dealerSearchTransp.setLongitude(0);
+		dealerSearchTransp.setLatitude(0);
+		dealerSearchTransp.setUserId(dealerSearchTranspVO.getIdp());
+							// end of External Dealer
 		dealerSearchTransp.setDealer(dealer);
 		return domainModelUtil.toDealerSearchTranspVO(dealerSearchTranRepository.saveAndFlush(dealerSearchTransp));
 	}

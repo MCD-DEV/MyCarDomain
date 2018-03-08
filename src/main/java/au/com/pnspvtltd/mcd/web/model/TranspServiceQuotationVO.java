@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 import au.com.pnspvtltd.mcd.domain.UserQuotaDocsTranp;
 import au.com.pnspvtltd.mcd.domain.UserQuotaReqBookSlotTranp;
 import au.com.pnspvtltd.mcd.domain.VehQuotExtrasTp;
+import au.com.pnspvtltd.mcd.domain.VehicleResourceDetailsTpQuo;
 
 public class TranspServiceQuotationVO {
 
@@ -36,7 +37,8 @@ public class TranspServiceQuotationVO {
 	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
-	
+	private boolean external;
+	private boolean internal;
 	
 	private String fromPostCodeAddr;
 	private String toPostCodeAddr;
@@ -130,6 +132,26 @@ public class TranspServiceQuotationVO {
 		private boolean testDrive;
 		private String quotaStatus;
 		
+		public boolean isExternal() {
+			return external;
+		}
+
+
+		public void setExternal(boolean external) {
+			this.external = external;
+		}
+
+
+		public boolean isInternal() {
+			return internal;
+		}
+
+
+		public void setInternal(boolean internal) {
+			this.internal = internal;
+		}
+
+
 		public String getQuotaStatus() {
 			return quotaStatus;
 		}
@@ -203,10 +225,21 @@ public class TranspServiceQuotationVO {
 					public void setUserQuotaReqTestDrive(List<UserQuotaReqTestDriveTranpVO> userQuotaReqTestDrive) {
 						this.userQuotaReqTestDrive = userQuotaReqTestDrive;
 					}
+					List<VehicleResourceDetailsTpQuoVO> vehicleResourcDetails;
 					List<UserQuotaDocTranpVO> userQuotaDocs;			
 		List<VehQuotExtrasTp> vehQuotExtras;
 		
 		
+		public List<VehicleResourceDetailsTpQuoVO> getVehicleResourcDetails() {
+			return vehicleResourcDetails;
+		}
+
+
+		public void setVehicleResourcDetails(List<VehicleResourceDetailsTpQuoVO> vehicleResourcDetails) {
+			this.vehicleResourcDetails = vehicleResourcDetails;
+		}
+
+
 		public List<UserQuotaDocTranpVO> getUserQuotaDocs() {
 			return userQuotaDocs;
 		}

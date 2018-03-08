@@ -123,6 +123,30 @@ public class InsuranceQuotation implements Serializable {
 	private String adhoc2;
 	private String adhoc3;
 	private String adhoc4;
+	
+	private boolean external;
+	private boolean internal;
+	
+	
+
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
 
 	List<VehQuotExtrasIns> vehQuotExtras;
 	List<UserQuotaDocsIns> userQuotaDocs;

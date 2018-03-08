@@ -1601,9 +1601,9 @@ public class SmtpMailSender {
 				"<br>"+
 				"Log on to your Account to Subscribe for Selling your Vehicles and offer specific services you would like to offer. use the following below User ID and Temporary Password ( used for reset your Password ).</span><br>"+
 				"<br>"+
-				"<span style=\"font-size:19px\"><strong>Your Login User ID: \"  \"<br>"+userid+
-				"Temporary Password : \"\"</strong></span><br>"+pwd+
-				"<br>"+
+				"<span style=\"font-size:19px\"><strong>Your Login User ID: \"  "+userid+"\"<br>"+
+				"Temporary Password : \"</strong></span>"+pwd+
+				"\"<br>"+
 				" </p>"+
 				""+
 				"                        </td>"+
@@ -1882,7 +1882,7 @@ public class SmtpMailSender {
 
 		// String msg="<img
 		// src=\"src/main/java/au/com/pnspvtltd/mcd/service/AutoscoopImg.png\">";
-		helper.setFrom(new InternetAddress("support@autoscoop.com.au", "support@autoscoop.com.au"));
+		helper.setFrom(new InternetAddress("DoNOtReply@autoscoop.com.au", "DoNOtReply@autoscoop.com.au"));
 		// message.setDescription(msg,"text/html; charset=utf-8");
 		// message.setContent(msg,"text/html");
 		message.setContent(msg, "text/html; charset=utf-8");

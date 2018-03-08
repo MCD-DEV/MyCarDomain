@@ -1225,7 +1225,7 @@ $('#cq-show-data1').click(  function(){ carquery.populateCarDataStore('car-model
 																    	<div class="row">
 																	    	<div class="col-sm-6 col-md-6">
 																						<div class="selector">
-																							<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" ng-options="x for x in dealerIds" ng-change="dealerInfoForID()">
+																							<select class="full-width" id="LeadDealerId" name="LeadDealerId" ng-model="LeadDealerId" ng-options="x for x in (dealerIds | filter:isDealerIdsNull) track by x" ng-change="dealerInfoForID()">
 																								<option value="" disabled selected>Select a Dealer ID</option>
 																							</select>
 																						</div>

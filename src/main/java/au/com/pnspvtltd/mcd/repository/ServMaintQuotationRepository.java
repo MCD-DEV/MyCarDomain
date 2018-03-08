@@ -17,15 +17,30 @@ public interface ServMaintQuotationRepository extends JpaRepository<ServiceMaint
 
 	List<ServiceMaintQuotation> findByDealerId(Long dealerId);
 	
+	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.searchServMaintId = ?1 AND deal.internal = true")
+	List<ServiceMaintQuotation> getDealerSmForIDInt(Long carServMaintId);
+	
+	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.searchServMaintId = ?1 AND deal.external = true")
+	List<ServiceMaintQuotation> getDealerSmForIDExt(Long carServMaintId);
+	
 	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.searchServMaintId = ?1")
 	List<ServiceMaintQuotation> getDealerSmForID(Long carServMaintId);
 	
-	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.searchServMaintId = ?1 AND deal.dealerId = ?2")
-	List<ServiceMaintQuotation> getDealerSmForDealId(Long carServMaintId, Long dealerId);
+	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.dealServMaintId = ?1 AND deal.dealerId = ?2 AND deal.internal = true")
+	List<ServiceMaintQuotation> getDealerSmForDealIdInt(Long dealServMaintId, Long dealerId);
+	
+	@Query("SELECT deal FROM ServiceMaintQuotation deal where deal.dealServMaintId = ?1 AND deal.dealerId = ?2 AND deal.external = true")
+	List<ServiceMaintQuotation> getDealerSmForDealIdExt(Long carServMaintId, Long dealerId);
 	
 	
 	@Query("SELECT vehicleQuotation FROM ServiceMaintQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
 	List<ServiceMaintQuotation> getQuotForUserChat(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM ServiceMaintQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1 AND vehicleQuotation.internal = true")
+	List<ServiceMaintQuotation> getQuotForUserChatDlr(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM ServiceMaintQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1 AND vehicleQuotation.external = true")
+	List<ServiceMaintQuotation> getQuotForUserChatDlrExt(Long userId);
 
 	@Query("SELECT vehicleQuotation FROM ServiceMaintQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.searchServMaintId = ?2")
 	List<ServiceMaintQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);

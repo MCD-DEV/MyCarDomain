@@ -49,6 +49,8 @@ public class ServiceMaintQuotation implements Serializable {
 	private Long refId;
 	private boolean autoBid;
 	private boolean moveToUser;
+	private boolean external;
+	private boolean internal;
 	
 	// Dealer info Start
 			private String category;
@@ -94,6 +96,26 @@ public class ServiceMaintQuotation implements Serializable {
 	private String modelYear;
 	private String quotaStatus;
 	
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
+
+
 	public String getQuotaStatus() {
 		return quotaStatus;
 	}
@@ -102,7 +124,18 @@ public class ServiceMaintQuotation implements Serializable {
 	public void setQuotaStatus(String quotaStatus) {
 		this.quotaStatus = quotaStatus;
 	}
+	List<VehicleResourceDetailsServQuo> vehicleResourcDetails;
 	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "servMaintQuotId")
+	public List<VehicleResourceDetailsServQuo> getVehicleResourcDetails() {
+		return vehicleResourcDetails;
+	}
+
+	public void setVehicleResourcDetails(
+			List<VehicleResourceDetailsServQuo> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
+	}
 	List<UserQuotaReqBookSlotServ> userQuotaReqBookSlotServ;
 	
 	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
@@ -402,7 +435,7 @@ public class ServiceMaintQuotation implements Serializable {
 		public void setServMaintQuotId(Long servMaintQuotId) {
 			this.servMaintQuotId = servMaintQuotId;
 		}
-		@Column(name = "DEALERSERVMAINTID")
+		//@Column(name = "DEALERSERVMAINTID")
 		public Long getDealServMaintId() {
 			return dealServMaintId;
 		}
@@ -410,7 +443,7 @@ public class ServiceMaintQuotation implements Serializable {
 		public void setDealServMaintId(Long dealServMaintId) {
 			this.dealServMaintId = dealServMaintId;
 		}
-		@Column(name = "USERSERVMAINTID")
+		//@Column(name = "USERSERVMAINTID")
 		public Long getSearchServMaintId() {
 			return searchServMaintId;
 		}

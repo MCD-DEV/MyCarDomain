@@ -25,6 +25,9 @@ public interface InsuranceQuotationRepository extends JpaRepository<InsuranceQuo
 	@Query("SELECT vehicleQuotation FROM InsuranceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
 	List<InsuranceQuotation> getQuotForUserChat(Long userId);
 	
+	@Query("SELECT vehicleQuotation FROM InsuranceQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1")
+	List<InsuranceQuotation> getQuotForUserChatDlr(Long userId);
+	
 	@Query("SELECT vehicleQuotation FROM InsuranceQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.carSearchId = ?2")
 	List<InsuranceQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
 }

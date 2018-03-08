@@ -92,4 +92,9 @@ public interface UserEBidService {
 	List<InsuranceQuotationVO> getInsQuotaByUserIDEbidId(long userid, long eBidid);
 	List<ServiceMaintQuotationVO> getServQuotaByUserIDEbidId(long userid, long eBidid);
 	List<TranspServiceQuotationVO> getTranspQuotaByUserIDEbidId(long userid, long eBidid);
+	List<VehicleQuotation> getVehQuotaByDealerID(long userid);
+	List<FinanceQuotation> getFinQuotaByDealID(long userid);
+	List<InsuranceQuotation> getInsQuotaByDealID(long userid);
+	List<ServiceMaintQuotation> getServQuotaByDealID(long userid);
+	List<TranspServiceQuotation> getTranpQuotaByDealrID(long userid);
 }

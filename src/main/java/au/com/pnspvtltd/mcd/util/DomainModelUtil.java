@@ -2439,6 +2439,7 @@ public class DomainModelUtil {
 		dealer.setDealername(dealerVO.getLastName());
 		//dealer.setDealername(dealerVO.getFirstName() + dealerVO.getLastName());
 		dealer.setStreetNumber(dealerVO.getUserIdGen());
+		dealer.setPassword(dealerVO.getUserIdGen());
 		return dealer;
 	}
 	// end login dealer

@@ -143,6 +143,9 @@ public class FinanceQuotation implements Serializable {
 		private String email;
 		private float longitude;
 		private float latitude;
+		
+		private boolean external;
+		private boolean internal;
 		// Dealer info end
 	// end of External Dealer info
 	
@@ -151,6 +154,26 @@ public class FinanceQuotation implements Serializable {
 	
 	// Start from DealerFinance Lead 
 	private boolean isNewer;
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
+
+
 	public String getPhone() {
 		return phone;
 	}

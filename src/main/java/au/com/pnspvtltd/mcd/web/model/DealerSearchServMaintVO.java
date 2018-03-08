@@ -1,4 +1,5 @@
 package au.com.pnspvtltd.mcd.web.model;
+import java.sql.Date;
 
 public class DealerSearchServMaintVO {
 
@@ -17,8 +18,234 @@ public class DealerSearchServMaintVO {
 	private boolean coveredUnderIns;
 	private String curInsProv;
 	private String freeText;
-	private Long userId;
+	private String autoscoopTrim;
+	private String lookService;
+	private String curFinProv;
+	private boolean coveredUnderFin;
+	private String photo1;
+	private String photo2;
+	private String photo3;
+	private Long idp;
 
+	private Long userId;
+	private Long searchServMaintId;
+	private Long dealerId;
+	private Date creationDate;
+
+	private boolean status;
+	// Dealer info Start
+	private String category;
+	private String companyName;
+	private String street;
+	private String suburb;
+	private String dealState;
+	private int dealPostCode;
+	private String country;
+	private String phone;
+	private String website;
+	private String mobile;
+	private String tollFree;
+	private String fax;
+	private String afterHours;
+	private String postalAddress;
+	private String email;
+	private float longitude;
+	private float latitude;
+	// Dealer info end
+
+	
+	public String getCategory() {
+		return category;
+	}
+
+	public Long getIdp() {
+		return idp;
+	}
+
+	public void setIdp(Long idp) {
+		this.idp = idp;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
+	public String getSuburb() {
+		return suburb;
+	}
+
+	public void setSuburb(String suburb) {
+		this.suburb = suburb;
+	}
+
+	public String getDealState() {
+		return dealState;
+	}
+
+	public void setDealState(String dealState) {
+		this.dealState = dealState;
+	}
+
+	public int getDealPostCode() {
+		return dealPostCode;
+	}
+
+	public void setDealPostCode(int postCode) {
+		this.dealPostCode = postCode;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getWebsite() {
+		return website;
+	}
+
+	public void setWebsite(String website) {
+		this.website = website;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public String getTollFree() {
+		return tollFree;
+	}
+
+	public void setTollFree(String tollFree) {
+		this.tollFree = tollFree;
+	}
+
+	public String getFax() {
+		return fax;
+	}
+
+	public void setFax(String fax) {
+		this.fax = fax;
+	}
+
+	public String getAfterHours() {
+		return afterHours;
+	}
+
+	public void setAfterHours(String afterHours) {
+		this.afterHours = afterHours;
+	}
+
+	public String getPostalAddress() {
+		return postalAddress;
+	}
+
+	public void setPostalAddress(String postalAddress) {
+		this.postalAddress = postalAddress;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+
+	// User Creation Date
+	private Date userCreationDate;
+
+	public Date getUserCreationDate() {
+		return userCreationDate;
+	}
+
+	public void setUserCreationDate(Date userCreationDate) {
+		this.userCreationDate = userCreationDate;
+	}
+
+	
+	
+	
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	public Date getCreationDate() {
+		return creationDate;
+	}
+
+	public void setCreationDate(Date creationDate) {
+		this.creationDate = creationDate;
+	}
+
+	public Long getDealerId() {
+		return dealerId;
+	}
+
+	public void setDealerId(Long extdealerId) {
+		this.dealerId = extdealerId;
+	}
+
+	public Long getSearchServMaintId() {
+		return searchServMaintId;
+	}
+
+	public void setSearchServMaintId(Long carSearchId) {
+		this.searchServMaintId = carSearchId;
+	}
+
+	
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -33,6 +260,61 @@ public class DealerSearchServMaintVO {
 
 	public void setDealerSearchServMaintId(Long dealerSearchServMaintId) {
 		this.dealerSearchServMaintId = dealerSearchServMaintId;
+	}
+	public String getAutoscoopTrim() {
+		return autoscoopTrim;
+	}
+
+	public void setAutoscoopTrim(String autoscoopTrim) {
+		this.autoscoopTrim = autoscoopTrim;
+	}
+
+	public String getLookService() {
+		return lookService;
+	}
+
+	public void setLookService(String lookService) {
+		this.lookService = lookService;
+	}
+
+	public String getCurFinProv() {
+		return curFinProv;
+	}
+
+	public void setCurFinProv(String curFinProv) {
+		this.curFinProv = curFinProv;
+	}
+
+	public boolean isCoveredUnderFin() {
+		return coveredUnderFin;
+	}
+
+	public void setCoveredUnderFin(boolean coveredUnderFin) {
+		this.coveredUnderFin = coveredUnderFin;
+	}
+
+	public String getPhoto1() {
+		return photo1;
+	}
+
+	public void setPhoto1(String photo1) {
+		this.photo1 = photo1;
+	}
+
+	public String getPhoto2() {
+		return photo2;
+	}
+
+	public void setPhoto2(String photo2) {
+		this.photo2 = photo2;
+	}
+
+	public String getPhoto3() {
+		return photo3;
+	}
+
+	public void setPhoto3(String photo3) {
+		this.photo3 = photo3;
 	}
 
 	public String getFeulType() {

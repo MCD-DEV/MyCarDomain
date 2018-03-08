@@ -53,7 +53,31 @@ public class TranspServiceQuotation implements Serializable {
 	private boolean interested;
 	private boolean testDrive;
 	private String quotaStatus;
+	private boolean external;
+	private boolean internal;
 	
+	
+	
+	public boolean isExternal() {
+		return external;
+	}
+
+
+	public void setExternal(boolean external) {
+		this.external = external;
+	}
+
+
+	public boolean isInternal() {
+		return internal;
+	}
+
+
+	public void setInternal(boolean internal) {
+		this.internal = internal;
+	}
+
+
 	public String getQuotaStatus() {
 		return quotaStatus;
 	}
@@ -93,6 +117,18 @@ public class TranspServiceQuotation implements Serializable {
 	public void setUserQuotaDocs(
 			List<UserQuotaDocsTranp> userQuotaDocs) {
 		this.userQuotaDocs = userQuotaDocs;
+	}
+	List<VehicleResourceDetailsTpQuo> vehicleResourcDetails;
+	
+	@OneToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinColumn(name = "TranspServQuotId")
+	public List<VehicleResourceDetailsTpQuo> getVehicleResourcDetails() {
+		return vehicleResourcDetails;
+	}
+
+	public void setVehicleResourcDetails(
+			List<VehicleResourceDetailsTpQuo> vehicleResourcDetails) {
+		this.vehicleResourcDetails = vehicleResourcDetails;
 	}
 	List<UserQuotaReqBookSlotTranp> userQuotaReqBookSlotTranp;
 	
@@ -481,7 +517,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setTranspServQuotId(Long transpServQuotId) {
 			TranspServQuotId = transpServQuotId;
 		}
-		@Column(name = "DEALTRANSSERVID")
+		//@Column(name = "DEALTRANSSERVID")
 		public Long getDealTranspServId() {
 			return dealTranspServId;
 		}
@@ -489,7 +525,7 @@ public class TranspServiceQuotation implements Serializable {
 		public void setDealTranspServId(Long dealTranspServId) {
 			this.dealTranspServId = dealTranspServId;
 		}
-		@Column(name = "USERTRANSPSERVID")
+		//@Column(name = "USERTRANSPSERVID")
 		public Long getUserTranspServId() {
 			return userTranspServId;
 		}

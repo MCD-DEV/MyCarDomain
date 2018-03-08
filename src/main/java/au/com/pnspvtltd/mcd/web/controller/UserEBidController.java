@@ -1813,6 +1813,89 @@ public class UserEBidController {
 	
 	
 	
+	@GetMapping(value = "chatByDealerId", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public UserChatAllVO getChatByDealerid(@RequestParam("dealerid") Long userid) {
+		LOGGER.debug("Received request to get User Chat{} ", userid);
+		String name = userEBidService.getNameByUserID(userid);
+		List<UserQuotationHistoryVO> inventoryList = new ArrayList<>();
+		List<VehicleQuotation> searchs = userEBidService.getVehQuotaByDealerID(userid);
+		for (VehicleQuotation search : searchs) {
+			
+			for(UserQuotationHistory inventory : userQuotationHistoryRepo.findByVehicleQuotation(search)){
+				//inventory.setName(name);
+				//inventory.setIdp(search.getQuotId());
+				inventoryList.add(domainModelUtil.fromChatHistory(inventory, true));
+			}
+			
+		}
+		
+		// start of finance history
+		List<UserQuotationHistoryFinVO> inventoryListFin = new ArrayList<>();
+		List<FinanceQuotation> searchFins = userEBidService.getFinQuotaByDealID(userid);
+		for (FinanceQuotation searchFin : searchFins) {
+			
+			for(UserQuotationHistoryFin inventory : userQuotationHistoryRepoFin.findByVehicleQuotation(searchFin)){
+				//inventory.setName(name);
+				//inventory.setIdp(searchFin.getFinQuotId());
+				inventoryListFin.add(domainModelUtil.fromChatHistoryFin(inventory, true));
+			}
+			
+		}
+		// end of finance history
+		
+		// start of insurance history
+				List<UserQuotationHistoryInsVO> inventoryListIns = new ArrayList<>();
+				List<InsuranceQuotation> searchInss = userEBidService.getInsQuotaByDealID(userid);
+				for (InsuranceQuotation searchIns : searchInss) {
+					
+					for(UserQuotationHistoryIns inventory : userQuotationHistoryRepoIns.findByVehicleQuotation(searchIns)){
+						//inventory.setName(name);
+						//inventory.setIdp(searchIns.getInsQuotId());
+						inventoryListIns.add(domainModelUtil.fromChatHistoryIns(inventory, true));
+					}
+					
+				}
+		// end of insurance history
+		
+				// start of serv history
+				List<UserQuotationHistoryServVO> inventoryListServ = new ArrayList<>();
+				List<ServiceMaintQuotation> searchServs = userEBidService.getServQuotaByDealID(userid);
+				for (ServiceMaintQuotation searchServ : searchServs) {
+					
+					for(UserQuotationHistoryServ inventory : userQuotationHistoryRepoServ.findByVehicleQuotation(searchServ)){
+						//inventory.setName(name);
+						//inventory.setIdp(searchServ.getServMaintQuotId());
+						inventoryListServ.add(domainModelUtil.fromChatHistoryServ(inventory, true));
+					}
+					
+				}
+		// end of serv history
+				
+				// start of transp history
+				List<UserQuotationHistoryTranpVO> inventoryListTransp = new ArrayList<>();
+				List<TranspServiceQuotation> searchTranps = userEBidService.getTranpQuotaByDealrID(userid);
+				for (TranspServiceQuotation searchTrans : searchTranps) {
+					
+					for(UserQuotationHistoryTranp inventory : userQuotationHistoryRepoTranp.findByVehicleQuotation(searchTrans)){
+						//inventory.setName(name);
+						//inventory.setIdp(searchTrans.getTranspServQuotId());
+						inventoryListTransp.add(domainModelUtil.fromChatHistoryTransp(inventory, true));
+					}
+					
+				}
+		// end of serv history
+		
+		UserChatAllVO userChatAllVO = new UserChatAllVO();
+		userChatAllVO.setUserQuotationHistoryFinVO(inventoryListFin);
+		userChatAllVO.setUserQuotationHistoryVO(inventoryList);
+		userChatAllVO.setUserQuotationHistoryInsVO(inventoryListIns);
+		userChatAllVO.setUserQuotationHistoryServVO(inventoryListServ);
+		userChatAllVO.setUserQuotationHistoryTranspVO(inventoryListTransp);
+		return userChatAllVO;
+		
+	}
+	
+	
 	@PutMapping("vehicleSearchQuotation")
 	@Transactional
 	public VehicleQuotationVO vehicleSearchQuotation(@RequestBody VehicleQuotationVO vehicleQuotationVO,

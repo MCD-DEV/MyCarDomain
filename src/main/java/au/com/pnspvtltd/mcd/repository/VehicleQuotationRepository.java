@@ -18,9 +18,11 @@ public interface VehicleQuotationRepository extends JpaRepository<VehicleQuotati
 	@Query("SELECT deal FROM VehicleQuotation deal where deal.carSearchId = ?1")
 	List<VehicleQuotation> getDealerSearchForID(Long carSearchId);
 	
-	@Query("SELECT deal FROM VehicleQuotation deal where deal.dealSearchId = ?1 AND deal.dealerId = ?2")
+	@Query("SELECT deal FROM VehicleQuotation deal where deal.dealSearchId = ?1 AND deal.dealerId = ?2 AND deal.internal = true")
 	List<VehicleQuotation> getDealerSearchDealID(Long carSearchId, Long dealerId);
 	
+	@Query("SELECT deal FROM VehicleQuotation deal where deal.dealSearchId = ?1 AND deal.dealerId = ?2 AND deal.external = true")
+	List<VehicleQuotation> getDealerSearchDealIDExt(Long carSearchId, Long dealerId);
 	
 	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1 AND vehicleQuotation.carSearchId = ?2")
 	List<VehicleQuotation> getQuotationsForUserIdEbidId(Long userId, Long carSearchId);
@@ -28,5 +30,11 @@ public interface VehicleQuotationRepository extends JpaRepository<VehicleQuotati
 	
 	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.userId=?1")
 	List<VehicleQuotation> getQuotForUserChat(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1 AND vehicleQuotation.internal = true")
+	List<VehicleQuotation> getQuotForUserChatDeal(Long userId);
+	
+	@Query("SELECT vehicleQuotation FROM VehicleQuotation vehicleQuotation WHERE vehicleQuotation.dealerId=?1 AND vehicleQuotation.external = true")
+	List<VehicleQuotation> getQuotForUserChatDealExt(Long userId);
 	
 }

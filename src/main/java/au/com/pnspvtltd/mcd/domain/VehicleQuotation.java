@@ -105,7 +105,32 @@ public class VehicleQuotation implements Serializable {
 		private boolean idCheck;
 		private boolean mobCheck;
 		private String quotaStatus;
+		private boolean external;
+		private boolean internal;
 		
+		
+		
+		
+		public boolean isExternal() {
+			return external;
+		}
+
+
+		public void setExternal(boolean external) {
+			this.external = external;
+		}
+
+
+		public boolean isInternal() {
+			return internal;
+		}
+
+
+		public void setInternal(boolean internal) {
+			this.internal = internal;
+		}
+
+
 		public String getQuotaStatus() {
 			return quotaStatus;
 		}
