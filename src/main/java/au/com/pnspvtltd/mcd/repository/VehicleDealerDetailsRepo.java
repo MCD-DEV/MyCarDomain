@@ -12,5 +12,7 @@ public interface VehicleDealerDetailsRepo extends JpaRepository<VehicleDealerDet
 	
 	@Query("SELECT ds.dealer.dealerId FROM VehicleDealerDetails ds where ds.subscriptionType = ?1")
 	public List<Long> getDealerIDs(String subscriptionType);
+	
+	
 
 }

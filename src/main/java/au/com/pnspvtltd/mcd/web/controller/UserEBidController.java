@@ -1816,7 +1816,7 @@ public class UserEBidController {
 	@GetMapping(value = "chatByDealerId", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public UserChatAllVO getChatByDealerid(@RequestParam("dealerid") Long userid) {
 		LOGGER.debug("Received request to get User Chat{} ", userid);
-		String name = userEBidService.getNameByUserID(userid);
+		//String name = userEBidService.getNameByUserID(userid);
 		List<UserQuotationHistoryVO> inventoryList = new ArrayList<>();
 		List<VehicleQuotation> searchs = userEBidService.getVehQuotaByDealerID(userid);
 		for (VehicleQuotation search : searchs) {

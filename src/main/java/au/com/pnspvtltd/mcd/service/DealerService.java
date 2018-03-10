@@ -6,6 +6,7 @@ import au.com.pnspvtltd.mcd.domain.Dealer;
 import au.com.pnspvtltd.mcd.domain.DealerEBidVO;
 import au.com.pnspvtltd.mcd.domain.DealerSearch;
 import au.com.pnspvtltd.mcd.domain.ExtDealerSearch;
+import au.com.pnspvtltd.mcd.domain.VehicleDealerDetails;
 import au.com.pnspvtltd.mcd.web.model.AdminAutoVO;
 import au.com.pnspvtltd.mcd.web.model.AdminStatusVO;
 import au.com.pnspvtltd.mcd.web.model.AdminVerifyVO;
@@ -128,4 +129,5 @@ public interface DealerService {
 	List<DealerSearchInsuranceVO> getDealerSearchIns(Long dealerId);
 
 	List<DealerSearchFinanceVO> getDealerSearchFin(Long dealerId);
+
 }

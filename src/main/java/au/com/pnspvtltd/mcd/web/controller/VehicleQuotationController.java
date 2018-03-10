@@ -365,12 +365,12 @@ public class VehicleQuotationController {
 		int vehQuotCountTemp = user.getVehicleQuotCt();
 		user.setVehicleQuotCt(vehQuotCountTemp+1);
 		// Dealer info Start
-		/*vehicleQuotation.setCategory(extDealerSearch.getCategory());
+		vehicleQuotation.setCategory(extDealerSearch.getCategory());
 		vehicleQuotation.setCompanyName(extDealerSearch.getCompanyName());;
 		vehicleQuotation.setStreet(extDealerSearch.getStreet());
 		vehicleQuotation.setSuburb(extDealerSearch.getSuburb());;
 		vehicleQuotation.setDealState(extDealerSearch.getDealState());;
-		vehicleQuotation.setDealPostCode(extDealerSearch.getPostCode());;
+		vehicleQuotation.setDealPostCode(extDealerSearch.getsPostCode());;
 		vehicleQuotation.setCountry(extDealerSearch.getCountry());;
 		vehicleQuotation.setPhone(extDealerSearch.getPhone());;
 		vehicleQuotation.setWebsite(extDealerSearch.getWebsite());;
@@ -382,11 +382,11 @@ public class VehicleQuotationController {
 		vehicleQuotation.setEmail(extDealerSearch.getEmail());
 		vehicleQuotation.setLongitude(extDealerSearch.getLongitude());
 		vehicleQuotation.setLatitude(extDealerSearch.getLatitude());
-		vehicleQuotation.setColor(extDealerSearch.getCarColor());
+		vehicleQuotation.setColor(extDealerSearch.getsCarColor());
 		vehicleQuotation.setDriveType(extDealerSearch.getState());
 		vehicleQuotation.setIdCheck(extDealerSearch.isIdCheck());
 		vehicleQuotation.setCredStat(extDealerSearch.isCredStat());
-		vehicleQuotation.setMobCheck(extDealerSearch.isMobCheck());*/
+		vehicleQuotation.setMobCheck(extDealerSearch.isMobCheck());
 		vehicleQuotation.setDealStockNo(0);
 		vehicleQuotation.setAutoscpStockNo(0);
 		//vehicleQuotation.

@@ -308,8 +308,34 @@ public class DealerServiceImpl implements DealerService {
 		    dealerSearch.setsCarColor(search.getCarColor());
 		    dealerSearch.setCarColor2(search.getsModel());//carcolor2
 		    dealerSearch.setsState(search.getState());// tell me more about
-			
-			
+		    //List<VehicleDealerDetails>  vehicleDealerDetails=this.getDealerInfo(dealerVO.getDealerId(),"SellVehicle");
+		    List<VehicleDealerDetails>  vehicleDealerDetails=dealer.getVehicleDealerDetails();
+		    if(vehicleDealerDetails != null){
+		    for (VehicleDealerDetails singleRecord : vehicleDealerDetails) {
+		    	if(singleRecord.getSubscriptionType() == "SellVehicle")
+		    	// start of External Dealer
+		    	dealerSearch.setCategory(singleRecord.getDealerType());
+		    	dealerSearch.setCompanyName(singleRecord.getDealerGroupName());
+		    	dealerSearch.setStreet(singleRecord.getStreetName());
+		    	dealerSearch.setSuburb(singleRecord.getSuborb());
+		    	dealerSearch.setDealState(singleRecord.getState());
+		    	dealerSearch.setsPostCode(singleRecord.getPostcode());
+		    	dealerSearch.setCountry("Australia");
+		    	dealerSearch.setPhone(singleRecord.getContactNumber2());
+		    	dealerSearch.setWebsite(singleRecord.getWebsite());
+		    	dealerSearch.setMobile(singleRecord.getDelmobile());
+		    	/*extDealerSearchVO.setTollFree(singleRecord.getTollFree());
+				extDealerSearchVO.setFax(singleRecord.getFax());
+				extDealerSearchVO.setAfterHours(dealer.getAfterHours());
+				extDealerSearchVO.setPostalAddress(dealer.getPostalAddress());*/
+		    	dealerSearch.setEmail(dealer.getEmail());
+				/*extDealerSearchVO.setLongitude(dealer.getLongitude());
+				extDealerSearchVO.setLatitude(dealer.getLatitude());*/
+		    }
+		    }
+	
+			// end of External Dealer
+
 			if (dealer.getDealSearch() != null) {
 				dealer.getDealSearch().add(dealerSearch);
 			} else {
@@ -1176,4 +1202,6 @@ public class DealerServiceImpl implements DealerService {
 		// TODO Auto-generated method stub
 		return vehicleDealerDetailsRepo.getDealerIDs(subscriptionType);
 	}
+	
+	
 }
